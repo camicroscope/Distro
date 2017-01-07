@@ -8,20 +8,7 @@ The goal of this guide is to be able to install all of caMicroscope componenets 
 # Requirements
 Please make sure you have `docker` and `git` installed.
 
-# Building container images
-## Clone all docker images
-* `git clone https://github.com/camicroscope/DataDockerContainer`
-* `git clone https://github.com/camicroscope/LoaderDockerContainer`
-* `git clone https://github.com/camicroscope/ViewerDockerContainer`
-
-## Build the docker images
-* `docker build -t camicroscope_data DataDockerContainer`
-* `docker build -t camicroscope_loader LoaderDockerContainer`
-* `docker build -t camicroscope_viewer ViewerDockerContainer`
-
-
-
-# Running docker containers
+# Build and run all 3 docker containers
 * `./install.sh` will run the 3 containers in default configuration
 
 
