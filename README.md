@@ -13,7 +13,7 @@ Please make sure you have `docker` and `git` installed.
 
 
 # Configuring viewer to use Data container.
-Edit `/var/www/html/camicroscope2/api/Configuration/config.php` to set the `$baseUrl` to the IP of dataDockerContainer.
+In the viewer container, edit `/var/www/html/camicroscope2/api/Configuration/config.php` to set the `$baseUrl` to the IP of dataDockerContainer.
 
 # Loading image
 Let's download a test image from Openslide (openslide.org — a C++ library that is used by caMicroscope to help read the proprietary image formats.). Go to http://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/ and download CMU-1.svs to your home directory. To view this image in caMicroscope you'll need to load the image through caMicroscope data loader.
