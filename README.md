@@ -16,16 +16,15 @@ Please make sure you have `docker` and `git` installed.
 Edit `/var/www/html/camicroscope2/api/Configuration/config.php` to set the `$baseUrl` to the IP of dataDockerContainer.
 
 # Loading image
-Lets assume you have an image `TCGA-A1-A0SD-01A-01-BS1.svs` on your file system.
-To view this image in caMicroscope you'll need to load the image through caMicroscope data loader.
+Let's download a test image from Openslide (openslide.org — a C++ library that is used by caMicroscope to help read the proprietary image formats.). Go to http://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/ and download CMU-1.svs to your home directory. To view this image in caMicroscope you'll need to load the image through caMicroscope data loader.
 
 ### Post Image 
-`curl -v -F case_id=TCGA-A1-A0SD -F file_location=@TCGA-A1-A0SD-01A-01-BS1.svs http://localhost:6002/submitData`
+`curl -v -F case_id=CMU1 -F file_location=~/CMU-1.svs http://localhost:6002/submitData`
 or go to
 `http://localhost:6002` in your browser to use the uploader UI.
 You should get a success message.
 
 # Viewing image
-Open `http://localhost:1337/camicroscope2/osdCamicroscope.php?tissueId=TCGA-A1-A0SD` to view the image. Please note the `tissueId` parameter is the `case_id` you supplied while loading the image
+Open `http://localhost:1337/camicroscope2/osdCamicroscope.php?tissueId=CMU1` to view the image. Please note the `tissueId` parameter is the `case_id` you supplied while loading the image
 
 
