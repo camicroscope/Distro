@@ -1,3 +1,12 @@
+git clone https://github.com/camicroscope/DataDockerContainer
+git clone https://github.com/camicroscope/LoaderDockerContainer
+git clone https://github.com/camicroscope/ViewerDockerContainer
+
+docker build -t camicroscope_data DataDockerContainer
+docker build -t camicroscope_loader LoaderDockerContainer
+docker build -t camicroscope_viewer ViewerDockerContainer
+
+
 mkdir img
 mkdir data
 
