@@ -20,8 +20,11 @@ Let's download a test image from Openslide (openslide.org — a C++ library tha
 
 ### Post Image 
 `curl -v -F case_id=CMU1 -F file_location=~/CMU-1.svs http://localhost:6002/submitData`
+
 or go to
+
 `http://localhost:6002` in your browser to use the uploader UI.
+
 You should get a success message.
 
 # Viewing image
