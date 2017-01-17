@@ -6,7 +6,11 @@ The goal of this guide is to be able to install all of caMicroscope components u
 ![camicroscope architecture](https://wiki.nci.nih.gov/download/attachments/325550279/caMicroscope-Architecture.png?version=1&modificationDate=1468862245000&api=v2)
 
 # Requirements
-Please make sure you have `docker` and `git` installed. Docker needs to 
+### Hardware
+Make sure you have > 15 GB disk space.
+
+### Software
+Please make sure you have `docker` and `git` installed. Docker needs to run without sudo.
 
 # Build and run all 3 docker containers
 * `./install.sh` will run the 3 containers in default configuration
