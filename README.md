@@ -6,14 +6,14 @@ The goal of this guide is to be able to install all of caMicroscope components u
 ![camicroscope architecture](https://wiki.nci.nih.gov/download/attachments/325550279/caMicroscope-Architecture.png?version=1&modificationDate=1468862245000&api=v2)
 
 # Requirements
-Please make sure you have `docker` and `git` installed.
+Please make sure you have `docker` and `git` installed. Docker needs to 
 
 # Build and run all 3 docker containers
 * `./install.sh` will run the 3 containers in default configuration
 
 
 # Configuring viewer to use Data container.
-Login to the viewer container ([How?](http://stackoverflow.com/questions/30172605/how-to-get-into-a-docker-container)), edit `/var/www/html/camicroscope2/api/Configuration/config.php` to set the `$baseUrl` to the IP of dataDockerContainer.
+Login to the viewer container ([How?](http://stackoverflow.com/questions/30172605/how-to-get-into-a-docker-container)), edit `/var/www/html/camicroscope/api/Configuration/config.php` to set the `$baseUrl` to the IP of dataDockerContainer.
 
 # Loading image
 Let's download a test image from Openslide (openslide.org — a C++ library that is used by caMicroscope to help read the proprietary image formats.). Go to http://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/ and download CMU-1.svs to your home directory. To view this image in caMicroscope you'll need to load the image through caMicroscope data loader.
