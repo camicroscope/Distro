@@ -33,6 +33,6 @@ or go to
 You should get a success message.
 
 # Viewing image
-Open `http://localhost:1337/camicroscope2/osdCamicroscope.php?tissueId=CMU1` to view the image. Please note the `tissueId` parameter is the `case_id` you supplied while loading the image
+Open `http://localhost:1337/camicroscope/osdCamicroscope.php?tissueId=CMU1` to view the image. Please note the `tissueId` parameter is the `case_id` you supplied while loading the image
 
 
