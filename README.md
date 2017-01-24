@@ -36,3 +36,67 @@ You should get a success message.
 Open `http://localhost:1337/camicroscope/osdCamicroscope.php?tissueId=CMU1` to view the image. Please note the `tissueId` parameter is the `case_id` you supplied while loading the image
 
 
+
+# Dynamic services components
+
+* Install and run [OSS-Lite](https://github.com/camicroscope/oss-lite) container: `docker run -itd -p 5000:5000 -v $CAMIC_IMAGES_DIR:/data/images oss-lite`
+* Install and run [Ordering Service](https://github.com/camicroscope/OrderingService)
+* Install and run [Dynamic Services](https://github.com/camicroscope/DynamicServices)
+* Configure dynamic services
+
+```
+{
+    "orders":
+    {
+        "redis":
+        {
+            "host": "172.17.0.5",
+            "port": "6379",
+            "channel": "q:events"
+        },
+        "kue":
+        {
+            "host": "172.17.0.5",
+            "port": "3000",
+            "path": "/job/"
+        }
+    },
+    "images":
+    {
+        "location":
+        {
+            "host" : "172.17.0.2",
+            "port" : "9099" ,
+            "path" : "/services/Camicroscope_DataLoader/DataLoader/query/getFileLocationByIID"
+        },
+        "imageServer":
+        {
+            "url":"172.17.0.6:5000",
+            "format":"JPEG"
+        },
+        "api_key_file": "/tmp/DynamicServices/configs/bindaas_apikey.json"
+    },
+    "annotations":
+    {
+        "server":
+        {
+            "host": "172.17.0.3",
+            "port": "3001",
+            "path": "/submitZipOrder"
+        },
+        "redis":
+        {
+            "host": "172.17.0.3",
+            "port": "6379",
+            "channel": "q:events"
+        }
+    }
+}
+```
+
+* `\orders\redis\host`: Set host as IP of Ordering service container
+* `\orders\kue\host`: Set host as IP of Ordering service container
+* `\annotations\server\host`: Set host as IP of Loader container
+* `\annotations\redis\host`: Set host as IP of Loader container
+* `\images\location\host`: Set host as IP of Data container
+* `\images\location\imageServer\url`: Set as IP address of OSS lite.
