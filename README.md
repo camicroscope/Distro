@@ -105,3 +105,5 @@ Part 2 of this guide will focus on installing dynamic services to run segmentati
 * `\annotations\redis\host`: Set host as IP of Loader container
 * `\images\location\host`: Set host as IP of Data container
 * `\images\location\imageServer\url`: Set as IP address of OSS lite.
+
+You should be able to use dynamic services on http://localhost:1337/camicroscopeDS/osdCamicroscope.php?tissueId=CMU1
