@@ -37,6 +37,11 @@ Open `http://localhost:1337/camicroscope/osdCamicroscope.php?tissueId=CMU1` to v
 
 
 
+Part 2 of this guide will focus on installing dynamic services to run segmentation algorithms and view results on the loaded image.
+
+----
+
+
 # Dynamic services components
 
 * Install and run [OSS-Lite](https://github.com/camicroscope/oss-lite) container: `docker run -itd -p 5000:5000 -v $CAMIC_IMAGES_DIR:/data/images oss-lite`
