@@ -33,8 +33,9 @@ echo $CAMIC_DATA_IP
 # Run loader container
 dataloader_host="http://"$CAMIC_DATA_IP":9099"
 annotations_host="http://"$CAMIC_DATA_IP":9099"
+mongo_host="$CAMIC_DATA_IP"
 
-loader_container=$(docker run -itd -p $CAMIC_KUE_PORT:3000 -p $CAMIC_MARKUPLOADER_PORT:3001 -p $CAMIC_DATALOADER_PORT:3002 -v $CAMIC_IMAGES_DIR:/data/images -e "dataloader_host=$(echo $dataloader_host)" -e "annotations_host=$(echo $annotations_host)" camicroscope_loader)
+loader_container=$(docker run -itd -p $CAMIC_KUE_PORT:3000 -p $CAMIC_MARKUPLOADER_PORT:3001 -p $CAMIC_DATALOADER_PORT:3002 -v $CAMIC_IMAGES_DIR:/data/images -e "mongo_host=$(echo $mongo_host)" -e "dataloader_host=$(echo $dataloader_host)" -e "annotations_host=$(echo $annotations_host)" camicroscope_loader)
 echo "Started loader container: " $loader_container
 
 
