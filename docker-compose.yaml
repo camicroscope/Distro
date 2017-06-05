@@ -1,0 +1,45 @@
+version: '2.0'
+networks:
+    camicroscope_nw:
+volumes:
+    camicroscope-images-vol:
+services:
+    mongo: 
+        image: mongo
+        container_name: camicroscope-mongo
+        ports:
+            - "27017"
+    bindaas:
+        image: camicroscope_bindaas
+        container_name: camicroscope-bindaas
+        ports:
+            - "9099"
+    uaimloader:
+        image: camicroscope_uaimloader
+        container_name: camicroscope-uaimloader
+        environment:
+            "mongo_host": "camicroscope-mongo"
+            "mongo_port": "27017"
+            "annotations_host": "http://camicroscope-bindaas:9099`"
+        ports: 
+            - "3000"
+    imageloader:
+        image: imageloader
+        container_name: camicroscope-imageloader
+        volumes:
+             - camicroscope-images-vol:/data/images
+        environment:
+            "mongo_host": "camicroscope-mongo"
+            "mongo_port": "27017"
+            "dataloader_host": "http://camicroscope-bindaas:9099"
+        ports: 
+            - "3002"
+    viewer:
+        image: quip_viewer
+        container_name: camicroscope-viewer
+        volumes:
+             - camicroscope-images-vol:/data/images        
+        ports:
+           - "80:80"
+        
+ 
