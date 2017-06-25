@@ -10,13 +10,17 @@ services:
         ports:
             - "27017"
     bindaas:
-        image: camicroscope_bindaas
+        image: camicroscope/bindaas
         container_name: camicroscope-bindaas
+        depends_on:
+            - "mongo"
         ports:
             - "9099"
     uaimloader:
-        image: camicroscope_uaimloader
+        image: camicroscope/uaimdataloader:latest 
         container_name: camicroscope-uaimloader
+        depends_on:
+            - "bindaas"
         environment:
             "mongo_host": "camicroscope-mongo"
             "mongo_port": "27017"
@@ -24,22 +28,48 @@ services:
         ports: 
             - "3000"
     imageloader:
-        image: imageloader
+        image: camicroscope/imageloader:develop
         container_name: camicroscope-imageloader
+        depends_on:
+             - "bindaas"       
         volumes:
              - camicroscope-images-vol:/data/images
         environment:
             "mongo_host": "camicroscope-mongo"
             "mongo_port": "27017"
-            "dataloader_host": "http://camicroscope-bindaas:9099"
+            "bindaas_host": "http://camicroscope-bindaas:9099"
         ports: 
             - "3002"
     viewer:
-        image: quip_viewer
+        image: camicroscope/quip_viewer:camicroscope_release
         container_name: camicroscope-viewer
+        depends_on:
+             - "bindaas"
         volumes:
              - camicroscope-images-vol:/data/images        
         ports:
-           - "80:80"
-        
+           - "8080:80"
+    jobs:
+        image: camicroscope/quip_jobs
+        container_name: camicroscope-jobs
+        ports:
+           - "3000"
+    dynamic:
+        image: camicroscope/quip_dynamic:camicroscope_release
+        container_name: camicroscope-dynamic
+        depends_on:
+            - "bindaas"
+            - "uaimloader"
+            - "jobs"
+        environment:
+            "camicroscope-jobs" : "camicroscope-jobs" 
+            "camicroscope-oss": "camicroscope-oss"
+            "camicroscope-bindaas": "camicroscope-bindaas"
+            "camicroscope-uaimloader": "camicroscope-uaimloader"
+    oss-lite:
+        image: camicroscope/oss-lite
+        container_name: camicroscope-oss
+        volumes:
+            - camicroscope-images-vol:/data/images 
+       
  
