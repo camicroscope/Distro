@@ -28,7 +28,7 @@ services:
         ports: 
             - "3000"
     imageloader:
-        image: camicroscope/imageloader:release
+        image: camicroscope/imageloader:camicroscope_release
         container_name: camicroscope-imageloader
         depends_on:
              - "bindaas"       
