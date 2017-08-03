@@ -1,5 +1,5 @@
 
-var url = "http://192.168.1.121:8080/select.php";
+var url = "http://localhost:8080/select.php";
 
 
 casper.test.begin('Link to flextables works fine', 3, function suite(test) {
