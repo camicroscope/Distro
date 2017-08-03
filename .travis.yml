@@ -1,7 +1,10 @@
 sudo: required
 services:
     - docker
+    - nodejs
+    - phantomjs
 before_install:
     - docker-compose up -d
+    - npm install tests/ 
 scripts:
-    - docker ps | grep -q camicroscope
+    - tests/node_modules/casperjs/bin/casperjs tests/casper_test.js
