@@ -5,6 +5,7 @@ services:
     - phantomjs
 before_install:
     - docker-compose up -d
-    - npm install tests/ 
+    - cd tests
+    - npm install  
 script:
-    - tests/node_modules/casperjs/bin/casperjs tests/casper_test.js
+    - ./node_modules/casperjs/bin/casperjs tests/casper_test.js
