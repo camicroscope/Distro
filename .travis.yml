@@ -9,4 +9,4 @@ before_install:
     - npm install -g casperjs
     - npm install  
 script:
-    - casperjs tests/casper_test.js
+    - casperjs casper_test.js
