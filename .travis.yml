@@ -6,6 +6,7 @@ services:
 before_install:
     - docker-compose up -d
     - cd tests
+    - npm install -g casperjs
     - npm install  
 script:
-    - ./node_modules/casperjs/bin/casperjs tests/casper_test.js
+    - casperjs tests/casper_test.js
