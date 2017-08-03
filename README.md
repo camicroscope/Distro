@@ -1,5 +1,6 @@
 # Goal of this guide
 
+
 The goal of this guide is to be able to install all of caMicroscope components using docker containers. This guide will also guide you how to upload an image, its markups and see them in caMicroscope viewer. 
 
 # Architecture
