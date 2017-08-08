@@ -1,6 +1,7 @@
 # Goal of this guide [![Build Status](https://travis-ci.org/camicroscope/Distro.svg?branch=camicroscope_release)](https://travis-ci.org/camicroscope/Distro)
 
 
+
 The goal of this guide is to be able to install all of caMicroscope components using docker containers. This guide will also guide you how to upload an image, its markups and see them in caMicroscope viewer. 
 
 # Architecture
