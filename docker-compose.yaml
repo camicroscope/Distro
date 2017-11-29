@@ -24,7 +24,7 @@ services:
         environment:
             "mongo_host": "camicroscope-mongo"
             "mongo_port": "27017"
-            "annotations_host": "http://camicroscope-bindaas:9099`"
+            "annotations_host": "http://camicroscope-bindaas:9099"
         ports: 
             - "3000"
     imageloader:
