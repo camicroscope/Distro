@@ -46,7 +46,8 @@ services:
         depends_on:
              - "bindaas"
         volumes:
-             - camicroscope-images-vol:/data/images        
+             - camicroscope-images-vol:/data/images
+             - ./config:/var/www/html/config
         ports:
            - "8080:80"
     jobs:
