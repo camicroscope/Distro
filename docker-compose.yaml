@@ -28,7 +28,7 @@ services:
         ports: 
             - "3000"
     imageloader:
-        image: camicroscope/imageloader:camicroscope_release
+        image: camicroscope/imageloader:develop
         container_name: camicroscope-imageloader
         depends_on:
              - "bindaas"       
@@ -41,7 +41,7 @@ services:
         ports: 
             - "3002"
     viewer:
-        image: camicroscope/quip_viewer:camicroscope_release
+        image: camicroscope/quip_viewer:develop
         container_name: camicroscope-viewer
         depends_on:
              - "bindaas"
@@ -55,7 +55,7 @@ services:
         ports:
            - "3000"
     dynamic:
-        image: camicroscope/quip_dynamic:camicroscope_release
+        image: camicroscope/quip_dynamic:develop
         container_name: camicroscope-dynamic
         depends_on:
             - "bindaas"
