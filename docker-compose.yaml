@@ -47,7 +47,7 @@ services:
              - "bindaas"
         volumes:
              - camicroscope-images-vol:/data/images
-             - ./config.ini:/var/www/html/config.ini
+             - ./config:/var/www/html/config
         ports:
            - "8080:80"
     jobs:
