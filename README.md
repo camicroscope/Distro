@@ -14,7 +14,7 @@ Make sure you have > 15 GB disk space.
 Please make sure you have `docker`(with `docker-compose`) and `git` installed. Docker needs to run without sudo.
 
 # Deploy
-Run `docker compose up -d` to start all the containers 
+Run `docker-compose up -d` to start all the containers 
 
 
 
