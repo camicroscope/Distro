@@ -1,0 +1,12 @@
+sudo: required
+services:
+    - docker
+    - nodejs
+    - phantomjs
+before_install:
+    - docker-compose up -d
+    - cd tests
+    - npm install -g casperjs
+    - npm install  
+script:
+    - casperjs test casper_test.js
