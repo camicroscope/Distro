@@ -1,0 +1,747 @@
+{
+  "profiles": {
+    "Collection": {
+      "dataSource": {
+        "host": "172.17.0.2",
+        "port": "27017",
+        "db": "camic",
+        "collection": "collection",
+        "initialize": true
+      },
+      "queryEndpoints": {
+        "find": {
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"name\" : {$regex: \"$name$\", $options: \"i\"}, \"type\" : {$regex: \"$type$\", $options: \"i\"}} ,\n                            \"limit\" : 1000\n                        }\n}   ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "type": {
+              "name": "type",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "find",
+          "timeCreated": "Thu Aug 02 20:18:50 UTC 2018",
+          "createdBy": "admin",
+          "description": "find on fields other than Id           "
+        },
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId($id$) } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Thu Aug 02 20:51:11 UTC 2018",
+          "createdBy": "admin",
+          "description": "gets one by Id "
+        }
+      },
+      "deleteEndpoints": {},
+      "submitEndpoints": {
+        "csvFile": {
+          "type": "MULTIPART",
+          "properties": {
+            "inputType": "CSV_FILE"
+          },
+          "name": "csvFile",
+          "timeCreated": "Wed Aug 01 17:22:38 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "jsonFile": {
+          "type": "MULTIPART",
+          "properties": {
+            "inputType": "JSON_FILE"
+          },
+          "name": "jsonFile",
+          "timeCreated": "Wed Aug 01 17:22:38 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "csv": {
+          "type": "FORM_DATA",
+          "properties": {
+            "inputType": "CSV"
+          },
+          "name": "csv",
+          "timeCreated": "Wed Aug 01 17:22:38 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "json": {
+          "type": "FORM_DATA",
+          "properties": {
+            "inputType": "JSON"
+          },
+          "name": "json",
+          "timeCreated": "Wed Aug 01 17:22:38 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
+      "providerId": "edu.emory.cci.bindaas.datasource.provider.mongodb.MongoDBProvider",
+      "providerVersion": 1,
+      "name": "Collection",
+      "timeCreated": "Wed Aug 01 17:22:38 UTC 2018",
+      "createdBy": "admin",
+      "description": "Collections of Slides or Collections"
+    },
+    "Heatmap": {
+      "dataSource": {
+        "host": "172.17.0.2",
+        "port": "27017",
+        "db": "camic",
+        "collection": "heatmap",
+        "initialize": true
+      },
+      "queryEndpoints": {
+        "find": {
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"slide\" : {$regex: \"$slide$\", $options: \"i\"}} ,\n                                        \"key\" : {$regex: \"$key$\", $options: \"i\"}}\n                            \"limit\" : 1000\n                        }\n}    ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "key": {
+              "name": "key",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "find",
+          "timeCreated": "Thu Aug 02 20:43:03 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId($id$) } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Thu Aug 02 20:51:24 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
+      "deleteEndpoints": {},
+      "submitEndpoints": {
+        "csvFile": {
+          "type": "MULTIPART",
+          "properties": {
+            "inputType": "CSV_FILE"
+          },
+          "name": "csvFile",
+          "timeCreated": "Wed Aug 01 17:23:11 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "jsonFile": {
+          "type": "MULTIPART",
+          "properties": {
+            "inputType": "JSON_FILE"
+          },
+          "name": "jsonFile",
+          "timeCreated": "Wed Aug 01 17:23:11 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "csv": {
+          "type": "FORM_DATA",
+          "properties": {
+            "inputType": "CSV"
+          },
+          "name": "csv",
+          "timeCreated": "Wed Aug 01 17:23:11 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "json": {
+          "type": "FORM_DATA",
+          "properties": {
+            "inputType": "JSON"
+          },
+          "name": "json",
+          "timeCreated": "Wed Aug 01 17:23:11 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
+      "providerId": "edu.emory.cci.bindaas.datasource.provider.mongodb.MongoDBProvider",
+      "providerVersion": 1,
+      "name": "Heatmap",
+      "timeCreated": "Wed Aug 01 17:23:11 UTC 2018",
+      "createdBy": "admin",
+      "description": "Heatmap Representation"
+    },
+    "mark": {
+      "dataSource": {
+        "host": "172.17.0.2",
+        "port": "27017",
+        "db": "camic",
+        "collection": "mark",
+        "initialize": true
+      },
+      "queryEndpoints": {
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId($id$) } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Thu Aug 02 20:51:36 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "findTypes": {
+          "queryTemplate": "{ \"_operation\" : \"distinct\" , \"_operation_args\" : { \"field\" : \"marktype\", \"query\" : {\u0027marktype.name\u0027: {$regex: \"$name$\", $options: \"i\"},\u0027marktype.slide\u0027: {$regex: \"$slide$\", $options: \"i\"} } } } ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "findTypes",
+          "timeCreated": "Thu Aug 02 22:19:19 UTC 2018",
+          "createdBy": "admin",
+          "description": "   "
+        },
+        "find": {
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"marktype.name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"marktype.slide\" : {$regex: \"$slide$\", $options: \"i\"}} ,\n                                        \"marktype.type\" : {$regex: \"$key$\", $options: \"i\"}}\n                            \"limit\" : 1000\n                        }\n}     ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "key": {
+              "name": "key",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "find",
+          "timeCreated": "Thu Aug 02 22:19:38 UTC 2018",
+          "createdBy": "admin",
+          "description": " "
+        },
+        "findPoint": {
+          "queryTemplate": "{ \"_operation\" : \"find\" , \"_operation_args\" : { \"query\" : {\"marktype.name\": {$regex: \"$name$\", $options: \"i\"}, \"marktype.slide\": {$regex: \"$slide$\", $options: \"i\"}, geometry: { $geoIntersects: { $geometry: { type: \"Point\", coordinates: [ $x$, $y$ ] } } } }, \"limit\" : 1000} } ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "x": {
+              "name": "x",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "y": {
+              "name": "y",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "findPoint",
+          "timeCreated": "Thu Aug 02 22:24:50 UTC 2018",
+          "createdBy": "admin",
+          "description": "find where intersects point "
+        }
+      },
+      "deleteEndpoints": {},
+      "submitEndpoints": {
+        "csvFile": {
+          "type": "MULTIPART",
+          "properties": {
+            "inputType": "CSV_FILE"
+          },
+          "name": "csvFile",
+          "timeCreated": "Wed Aug 01 17:23:41 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "jsonFile": {
+          "type": "MULTIPART",
+          "properties": {
+            "inputType": "JSON_FILE"
+          },
+          "name": "jsonFile",
+          "timeCreated": "Wed Aug 01 17:23:41 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "csv": {
+          "type": "FORM_DATA",
+          "properties": {
+            "inputType": "CSV"
+          },
+          "name": "csv",
+          "timeCreated": "Wed Aug 01 17:23:41 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "json": {
+          "type": "FORM_DATA",
+          "properties": {
+            "inputType": "JSON"
+          },
+          "name": "json",
+          "timeCreated": "Wed Aug 01 17:23:41 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
+      "providerId": "edu.emory.cci.bindaas.datasource.provider.mongodb.MongoDBProvider",
+      "providerVersion": 1,
+      "name": "mark",
+      "timeCreated": "Wed Aug 01 17:23:41 UTC 2018",
+      "createdBy": "admin",
+      "description": "Geospatial Marking Objects"
+    },
+    "Overlay": {
+      "dataSource": {
+        "host": "172.17.0.2",
+        "port": "27017",
+        "db": "camic",
+        "collection": "overlay",
+        "initialize": true
+      },
+      "queryEndpoints": {
+        "find": {
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"slide\" : {$regex: \"$slide$\", $options: \"i\"}} ,\n                                        \"path\" : {$regex: \"$key$\", $options: \"i\"}}\n                            \"limit\" : 1000\n                        }\n}    ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "key": {
+              "name": "key",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "find",
+          "timeCreated": "Thu Aug 02 20:48:38 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId($id$) } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Thu Aug 02 20:51:48 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
+      "deleteEndpoints": {},
+      "submitEndpoints": {
+        "csvFile": {
+          "type": "MULTIPART",
+          "properties": {
+            "inputType": "CSV_FILE"
+          },
+          "name": "csvFile",
+          "timeCreated": "Wed Aug 01 17:24:16 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "jsonFile": {
+          "type": "MULTIPART",
+          "properties": {
+            "inputType": "JSON_FILE"
+          },
+          "name": "jsonFile",
+          "timeCreated": "Wed Aug 01 17:24:16 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "csv": {
+          "type": "FORM_DATA",
+          "properties": {
+            "inputType": "CSV"
+          },
+          "name": "csv",
+          "timeCreated": "Wed Aug 01 17:24:16 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "json": {
+          "type": "FORM_DATA",
+          "properties": {
+            "inputType": "JSON"
+          },
+          "name": "json",
+          "timeCreated": "Wed Aug 01 17:24:16 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
+      "providerId": "edu.emory.cci.bindaas.datasource.provider.mongodb.MongoDBProvider",
+      "providerVersion": 1,
+      "name": "Overlay",
+      "timeCreated": "Wed Aug 01 17:24:16 UTC 2018",
+      "createdBy": "admin",
+      "description": "Overlay Representation"
+    },
+    "Slide": {
+      "dataSource": {
+        "host": "172.17.0.2",
+        "port": "27017",
+        "db": "camic",
+        "collection": "slide",
+        "initialize": true
+      },
+      "queryEndpoints": {
+        "find": {
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"location\" : {$regex: \"$location$\", $options: \"i\"}} ,\n                                        \"mpp\" : {$regex: \"$mpp$\", $options: \"i\"}}\n                            \"limit\" : 1000\n                        }\n}    ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "location": {
+              "name": "location",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "mpp": {
+              "name": "mpp",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "find",
+          "timeCreated": "Thu Aug 02 20:49:47 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId($id$) } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Thu Aug 02 20:51:59 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
+      "deleteEndpoints": {},
+      "submitEndpoints": {
+        "csvFile": {
+          "type": "MULTIPART",
+          "properties": {
+            "inputType": "CSV_FILE"
+          },
+          "name": "csvFile",
+          "timeCreated": "Wed Aug 01 17:24:37 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "jsonFile": {
+          "type": "MULTIPART",
+          "properties": {
+            "inputType": "JSON_FILE"
+          },
+          "name": "jsonFile",
+          "timeCreated": "Wed Aug 01 17:24:37 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "csv": {
+          "type": "FORM_DATA",
+          "properties": {
+            "inputType": "CSV"
+          },
+          "name": "csv",
+          "timeCreated": "Wed Aug 01 17:24:37 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "json": {
+          "type": "FORM_DATA",
+          "properties": {
+            "inputType": "JSON"
+          },
+          "name": "json",
+          "timeCreated": "Wed Aug 01 17:24:37 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
+      "providerId": "edu.emory.cci.bindaas.datasource.provider.mongodb.MongoDBProvider",
+      "providerVersion": 1,
+      "name": "Slide",
+      "timeCreated": "Wed Aug 01 17:24:37 UTC 2018",
+      "createdBy": "admin",
+      "description": "Represents Slide Objects"
+    },
+    "Template": {
+      "dataSource": {
+        "host": "172.17.0.2",
+        "port": "27017",
+        "db": "camic",
+        "collection": "template",
+        "initialize": true
+      },
+      "queryEndpoints": {
+        "find": {
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"type\" : {$regex: \"$type$\", $options: \"i\"}}\n                            \"limit\" : 1000\n                        }\n}    ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "type": {
+              "name": "type",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "find",
+          "timeCreated": "Thu Aug 02 20:50:46 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId($id$) } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Thu Aug 02 20:52:10 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
+      "deleteEndpoints": {},
+      "submitEndpoints": {
+        "csvFile": {
+          "type": "MULTIPART",
+          "properties": {
+            "inputType": "CSV_FILE"
+          },
+          "name": "csvFile",
+          "timeCreated": "Wed Aug 01 17:25:14 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "jsonFile": {
+          "type": "MULTIPART",
+          "properties": {
+            "inputType": "JSON_FILE"
+          },
+          "name": "jsonFile",
+          "timeCreated": "Wed Aug 01 17:25:14 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "csv": {
+          "type": "FORM_DATA",
+          "properties": {
+            "inputType": "CSV"
+          },
+          "name": "csv",
+          "timeCreated": "Wed Aug 01 17:25:14 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "json": {
+          "type": "FORM_DATA",
+          "properties": {
+            "inputType": "JSON"
+          },
+          "name": "json",
+          "timeCreated": "Wed Aug 01 17:25:14 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
+      "providerId": "edu.emory.cci.bindaas.datasource.provider.mongodb.MongoDBProvider",
+      "providerVersion": 1,
+      "name": "Template",
+      "timeCreated": "Wed Aug 01 17:25:14 UTC 2018",
+      "createdBy": "admin",
+      "description": "Templates for Forms, JSONFORM type"
+    }
+  },
+  "params": {},
+  "name": "caMicroscope",
+  "timeCreated": "Wed Aug 01 17:17:55 UTC 2018",
+  "createdBy": "admin",
+  "description": "caMicroscope Data model"
+}
