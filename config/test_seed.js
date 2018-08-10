@@ -1,5 +1,6 @@
 var collections = [{name: "testCollection", type: 'slide', contents: []}]
 var slides = [{name: "CMU1", location:"somewhere", mpp:0.499}]
+var auths = [{name: "CMU", slides:["CMU1"]}]
 var marks = [{marktype:{
   name: "Alpha",
   slide: "CMU1",
@@ -56,7 +57,7 @@ var marks = [{marktype:{
 const annotation_schema = {
   "type": "object",
   "id": "annotation-form",
-  "title": "",
+  "title": "AnnotSchema",
   "description": "",
   "links": [],
   "additionalProperties": false,
@@ -128,7 +129,7 @@ const annotation_schema = {
 const algorithm_1_schema = {
   "type": "object",
   "id": "algorithm01",
-  "title": "",
+  "title": "Alg1Schema",
   "description": "",
   "links": [],
   "additionalProperties": false,
@@ -153,7 +154,7 @@ const algorithm_1_schema = {
 const algorithm_2_schema = {
   "type": "object",
   "id": "algorithm02",
-  "title": "",
+  "title": "Alg1Schema",
   "description": "",
   "links": [],
   "additionalProperties": false,
@@ -193,3 +194,4 @@ db.collection.insertMany(collections)
 db.slide.insertMany(slides)
 db.mark.insertMany(marks)
 db.template.insertMany(templates)
+db.authorization.insertMany(auths)

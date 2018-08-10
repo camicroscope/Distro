@@ -153,7 +153,7 @@ db.createCollection("template", {
               description: "pure-form questions object",
               additionalProperties: {
                 bsonType: "object",
-                required: ["title", "id", "type"]
+                required: ["title", "type"]
               }
            },
          }
