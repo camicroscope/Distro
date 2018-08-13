@@ -4,24 +4,23 @@ services:
   mongo:
     image: mongo
     container_name: ca-mongo
-    ports:
-      ["27017"]
   bindaas:
     build: "https://github.com/sharmalab/bindaas.git#:docker"
     depends_on:
       - "mongo"
     container_name: ca-data
-    ports: ["9099:9099", "8080:8080"]
     volumes:
       - ./config/bindaas_projects/:/root/bindaas/bin/projects/
       - ./config/bindaas.config.json:/root/bindaas/bin/bindaas.config.json
   iip:
     build: "https://github.com/camicroscope/iipImage.git"
     container_name: ca-iip
-    ports: ["4010:4010"]
     environment:
       - CHECK_HEADER='no'
   viewer:
     build: "https://github.com/camicroscope/caMicroscope.git#refactor"
     container_name: ca-front
-    ports: ["80:8088"]
+  elevate:
+    build: "https://github.com/ensigns/elevate.git#camic"
+    container_name: ca-elevate
+    ports: ["4010:4010"]

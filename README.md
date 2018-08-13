@@ -1,7 +1,7 @@
 # caMicDist
 Camic 2.0 distribution
 
-run with docker-compose -d -f caMiroscope.yml up
+run with docker-compose -f caMiroscope.yml up
 
 ## LIMITATIONS
 As of now, please be aware that you need to run config/mongo_idx.js then config/test_seed.js manually.
