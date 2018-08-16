@@ -17,7 +17,10 @@ services:
     build: "https://github.com/camicroscope/iipImage.git"
     container_name: ca-iip
     environment:
-      - CHECK_HEADER='no'
+      - CHECK_HEADER=no
+    ports: ["4011:4010"]
+    volumes:
+      - ./images/:/images/
   viewer:
     build: "https://github.com/camicroscope/caMicroscope.git#refactor"
     container_name: ca-front

@@ -1,5 +1,5 @@
 var collections = [{name: "testCollection", type: 'slide', contents: []}]
-var slides = [{name: "CMU1", location:"somewhere", mpp:0.499}]
+var slides = [{name: "CMU1", location:"/img/sample.dzi", mpp:0.499}]
 var auths = [{name: "CMU", slides:["CMU1"]}]
 var marks = [{marktype:{
   name: "Alpha",
