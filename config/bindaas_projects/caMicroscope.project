@@ -166,7 +166,7 @@
           "description": "   "
         },
         "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"marktype.name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"marktype.slide\" : {$regex: \"$slide$\", $options: \"i\"} ,\n                                        \"marktype.type\" : {$regex: \"$key$\", $options: \"i\"}}\n                            \"limit\" : 1000\n                        }\n}     ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"marktype.name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"marktype.slide\" : {$regex: \"$slide$\", $options: \"i\"} ,\n                                        \"marktype.type\" : {$regex: \"$key$\", $options: \"i\"}},\n                            \"limit\" : 1000\n                        }\n}     ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
