@@ -138,13 +138,13 @@ db.createCollection("template", {
   validator: {
      $jsonSchema: {
        bsonType: "object",
-        required: [ "id", "title", "properties"],
+        required: [ "id", "name", "properties"],
         properties: {
            id: {
               bsonType: "string",
               description: "must be a string and is required"
            },
-           title: {
+           name: {
               bsonType: "string",
               description: "must be a string and is required"
            },

@@ -9,7 +9,7 @@ services:
     depends_on:
       - "mongo"
     container_name: ca-data
-    ports: ["8080:8080"]
+    ports: ["8080:8080", "9099:9099"]
     volumes:
       - ./config/bindaas_projects/:/root/bindaas/bin/projects/
       - ./config/bindaas.config.json:/root/bindaas/bin/bindaas.config.json

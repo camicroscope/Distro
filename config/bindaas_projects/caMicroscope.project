@@ -117,27 +117,6 @@
         "initialize": true
       },
       "queryEndpoints": {
-        "get": {
-          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId($id$) } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "id": {
-              "name": "id",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "get",
-          "timeCreated": "Thu Aug 02 20:51:36 UTC 2018",
-          "createdBy": "admin",
-          "description": ""
-        },
         "findTypes": {
           "queryTemplate": "{ \"_operation\" : \"distinct\" , \"_operation_args\" : { \"field\" : \"marktype\", \"query\" : {\u0027marktype.name\u0027: {$regex: \"$name$\", $options: \"i\"},\u0027marktype.slide\u0027: {$regex: \"$slide$\", $options: \"i\"} } } } ",
           "metaData": {},
@@ -236,6 +215,27 @@
           "timeCreated": "Thu Aug 02 22:24:50 UTC 2018",
           "createdBy": "admin",
           "description": "find where intersects point "
+        },
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : {\"_id\" : ObjectId($id$)}\n\t\t\t\t\t\t}\n}\n        ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Tue Aug 21 21:32:14 UTC 2018",
+          "createdBy": "admin",
+          "description": "       "
         }
       },
       "deleteEndpoints": {},
@@ -519,29 +519,8 @@
         "initialize": true
       },
       "queryEndpoints": {
-        "get": {
-          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId($id$) } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "id": {
-              "name": "id",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "get",
-          "timeCreated": "Thu Aug 02 20:52:10 UTC 2018",
-          "createdBy": "admin",
-          "description": ""
-        },
         "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"type\" : {$regex: \"$type$\", $options: \"i\"}}\n                        }\n}     ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : {\"name\": {$regex: \"$name$\", $options: \"i\"},\n                                            \"type\": {$regex: \"$location$\", $options: \"i\"}}\n                        }\n}                   ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -563,7 +542,28 @@
             "outputFormat": "JSON"
           },
           "name": "find",
-          "timeCreated": "Tue Aug 21 20:47:05 UTC 2018",
+          "timeCreated": "Tue Aug 21 21:16:25 UTC 2018",
+          "createdBy": "admin",
+          "description": "     "
+        },
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId(\"$id$\") } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n  ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Tue Aug 21 21:20:30 UTC 2018",
           "createdBy": "admin",
           "description": " "
         }

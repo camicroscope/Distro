@@ -57,7 +57,7 @@ var marks = [{marktype:{
 const annotation_schema = {
   "type": "object",
   "id": "annotation-form",
-  "title": "AnnotSchema",
+  "name": "AnnotSchema",
   "description": "",
   "links": [],
   "additionalProperties": false,
@@ -129,7 +129,7 @@ const annotation_schema = {
 const algorithm_1_schema = {
   "type": "object",
   "id": "algorithm01",
-  "title": "Alg1Schema",
+  "name": "Alg1Schema",
   "description": "",
   "links": [],
   "additionalProperties": false,
@@ -154,7 +154,7 @@ const algorithm_1_schema = {
 const algorithm_2_schema = {
   "type": "object",
   "id": "algorithm02",
-  "title": "Alg1Schema",
+  "name": "Alg1Schema",
   "description": "",
   "links": [],
   "additionalProperties": false,
