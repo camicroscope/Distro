@@ -6,7 +6,7 @@ db.createCollection("collection", {
         properties: {
            name: {
               bsonType: "string",
-              description: "must be a string and is required"
+              description: "The Collection's Name"
            },
            type: {
               enum: ["slide", "collection"],
@@ -14,7 +14,7 @@ db.createCollection("collection", {
            },
            contents: {
               bsonType: "array",
-              description: "must have contents"
+              description: "The slide or collection identifiers, depending on type"
            }
          }
      }
@@ -29,7 +29,7 @@ db.createCollection("authorization", {
         properties: {
            name: {
               bsonType: "string",
-              description: "must be a string and is required"
+              description: "The User Name"
            },
            slides: {
               bsonType: "array",
@@ -37,7 +37,7 @@ db.createCollection("authorization", {
            },
            collections: {
               bsonType: "array",
-              description: "must have contents"
+              description: "collections user has access to"
            }
          }
      }
@@ -52,16 +52,16 @@ db.createCollection("slide", {
          properties: {
             name: {
                bsonType: "string",
-               description: "must be a string and is required"
+               description: "Slide display name"
             },
             location: {
                bsonType: "string",
-               description: "must be a string and is required"
+               description: "Slide location, used for opening"
             },
             mpp: {
                bsonType: "number",
                minimum: 0,
-               description: "must be a string and is required"
+               description: "Microns per pixel for scalebar"
             }
           }
       }
@@ -76,29 +76,29 @@ db.createCollection("heatmap", {
         properties: {
            name: {
               bsonType: "string",
-              description: "must be a string and is required"
+              description: "Hetamap identifier"
            },
            slide: {
               bsonType: "string",
-              description: "must be a string and is required"
+              description: "The associated slide"
            },
            height: {
               bsonType: "number",
               minimum: 0,
-              description: "must be a number and is required"
+              description: "Height of the heatmap in its coordinates"
            },
            width: {
               bsonType: "number",
               minimum: 0,
-              description: "must be a number and is required"
+              description: "Width of the heatmap in its coordinates"
            },
            key: {
               bsonType: "string",
-              description: "must be a string and is required"
+              description: "What the heatmap values mean"
            },
            values: {
               bsonType: "array",
-              description: "must be an array of array of values"
+              description: "array of values, in form of [x,y,value]"
            }
          }
      }
@@ -109,23 +109,19 @@ db.createCollection("mark", {
   validator: {
      $jsonSchema: {
        bsonType: "object",
-        required: [ "marktype" ],
+        required: [ "provenance" ],
         properties: {
           marktype: {
             bsonType: "object",
-            required: ["name", "slide", "type"],
+            required: ["image", "analysis"],
             properties: {
-             name: {
-                bsonType: "string",
-                description: "must be a string and is required"
+             image: {
+               bsonType: "object",
+               required: ["slide"],
              },
-             slide: {
-                bsonType: "string",
-                description: "must be a string and is required"
-             },
-             type: {
-                bsonType: "string",
-                description: "must be a string and is required"
+             analysis: {
+               bsonType: "object",
+               required: ["source", "execution_id"],
              }
            }
          }
@@ -142,11 +138,11 @@ db.createCollection("template", {
         properties: {
            id: {
               bsonType: "string",
-              description: "must be a string and is required"
+              description: "template identifier"
            },
            name: {
               bsonType: "string",
-              description: "must be a string and is required"
+              description: "template display name"
            },
            properties: {
               bsonType: "object",
@@ -165,19 +161,19 @@ db.createCollection("overlay", {
   validator: {
      $jsonSchema: {
        bsonType: "object",
-        required: [ "name", "path", "slide"],
+        required: [ "name", "location", "slide"],
         properties: {
            name: {
               bsonType: "string",
-              description: "must be a string and is required"
+              description: "Overlay identifier"
            },
-           path: {
+           location: {
               bsonType: "string",
-              description: "must be a string and is required"
+              description: "Location of the overlay, for open"
            },
            slide: {
               bsonType: "string",
-              description: "must be a string and is required"
+              description: "associated slide"
            }
          }
      }
