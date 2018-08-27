@@ -22,7 +22,8 @@ var marks = [{
             "execution_id": "Alpha"
         }
     },
-    "geometry": {
+    }
+    "geometry": [{
         "type": "Polygon",
         "coordinates": [
             [
@@ -34,7 +35,7 @@ var marks = [{
             ]
         ]
 
-    }
+    }],
 }, {
     "provenance": {
         "image": {
@@ -45,7 +46,7 @@ var marks = [{
             "execution_id": "Alpha"
         }
     },
-    "geometry": {
+    "geometry": [{
         "type": "Polygon",
         "coordinates": [
             [
@@ -57,7 +58,7 @@ var marks = [{
             ]
         ]
 
-    }
+    }],
 }, {
     "provenance": {
         "image": {
@@ -68,7 +69,7 @@ var marks = [{
             "execution_id": "Gamma"
         }
     },
-    "geometry": {
+    "geometry": [{
         "type": "Polygon",
         "coordinates": [
             [
@@ -80,7 +81,7 @@ var marks = [{
             ]
         ]
 
-    }
+    }]
 }];
 
 const annotation_schema = {

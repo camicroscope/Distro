@@ -117,11 +117,11 @@ db.createCollection("mark", {
             properties: {
              image: {
                bsonType: "object",
-               required: ["slide"],
+               required: ["image", "analysis"],
              },
              analysis: {
                bsonType: "object",
-               required: ["source", "execution_id"],
+               required: ["image", "analysis"],
              }
            }
          }
