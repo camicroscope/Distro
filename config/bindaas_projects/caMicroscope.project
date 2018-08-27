@@ -519,8 +519,29 @@
         "initialize": true
       },
       "queryEndpoints": {
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId(\"$id$\") } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n  ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Tue Aug 21 21:20:30 UTC 2018",
+          "createdBy": "admin",
+          "description": " "
+        },
         "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : {\"name\": {$regex: \"$name$\", $options: \"i\"},\n                                            \"type\": {$regex: \"$location$\", $options: \"i\"}}\n                        }\n}                   ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : {\"name\": {$regex: \"$name$\", $options: \"i\"},\n                                            \"type\": {$regex: \"$type$\", $options: \"i\"}}\n                        }\n}                    ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -542,30 +563,9 @@
             "outputFormat": "JSON"
           },
           "name": "find",
-          "timeCreated": "Tue Aug 21 21:16:25 UTC 2018",
+          "timeCreated": "Mon Aug 27 15:46:51 UTC 2018",
           "createdBy": "admin",
-          "description": "     "
-        },
-        "get": {
-          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId(\"$id$\") } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n  ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "id": {
-              "name": "id",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "get",
-          "timeCreated": "Tue Aug 21 21:20:30 UTC 2018",
-          "createdBy": "admin",
-          "description": " "
+          "description": "      "
         }
       },
       "deleteEndpoints": {},
