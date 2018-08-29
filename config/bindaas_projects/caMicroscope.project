@@ -164,8 +164,29 @@
         "initialize": true
       },
       "queryEndpoints": {
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}} ,\n\t\t\t\t\t\t\t\"limit\" : 1\n\t\t\t\t\t\t}\n}\n      ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Wed Aug 29 18:40:50 UTC 2018",
+          "createdBy": "admin",
+          "description": "         "
+        },
         "findPoint": {
-          "queryTemplate": "{ \"_operation\" : \"find\" , \"_operation_args\" : { \"query\" : {\"marktype.name\": {$regex: \"$name$\", $options: \"i\"}, \"marktype.slide\": {$regex: \"$slide$\", $options: \"i\"}, geometry: { $geoIntersects: { $geometry: { type: \"Point\", coordinates: [ $x$, $y$ ] } } } }, \"limit\" : 1000} } ",
+          "queryTemplate": "{ \"_operation\" : \"find\" , \"_operation_args\" : { \"query\" : {\"marktype.name\": {$regex: \"$name$\", $options: \"i\"}, \"marktype.slide\": \"$slide$\", geometry: { $geoIntersects: { $geometry: { type: \"Point\", coordinates: [ $x$, $y$ ] } } } }, \"limit\" : 1000} }  ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -177,7 +198,7 @@
             },
             "slide": {
               "name": "slide",
-              "required": false,
+              "required": true,
               "defaultValue": "",
               "description": ""
             },
@@ -199,39 +220,12 @@
             "outputFormat": "JSON"
           },
           "name": "findPoint",
-          "timeCreated": "Thu Aug 02 22:24:50 UTC 2018",
+          "timeCreated": "Wed Aug 29 20:30:55 UTC 2018",
           "createdBy": "admin",
-          "description": "find where intersects point "
-        },
-        "findTypes": {
-          "queryTemplate": "{ \"_operation\" : \"distinct\" , \"_operation_args\" : { \"field\" : \"provenance\", \"query\" : {\u0027provenance.analysis.execution_id\u0027: {$regex: \"$name$\", $options: \"i\"},\u0027provenance.image.slide\u0027: {$regex: \"$slide$\", $options: \"i\"} } } }  ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "name": {
-              "name": "name",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
-            "slide": {
-              "name": "slide",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "findTypes",
-          "timeCreated": "Fri Aug 24 15:16:00 UTC 2018",
-          "createdBy": "admin",
-          "description": "    "
+          "description": "find where intersects point  "
         },
         "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"} ,\n                                        \"provenance.analysis.source\" : {$regex: \"$key$\", $options: \"i\"}}\n                        }\n}      ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : \"$slide$\",\n                                        \"provenance.analysis.source\" : {$regex: \"$key$\", $options: \"i\"}}\n                        }\n}       ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -243,7 +237,7 @@
             },
             "slide": {
               "name": "slide",
-              "required": false,
+              "required": true,
               "defaultValue": "",
               "description": ""
             },
@@ -259,17 +253,23 @@
             "outputFormat": "JSON"
           },
           "name": "find",
-          "timeCreated": "Fri Aug 24 15:16:47 UTC 2018",
+          "timeCreated": "Wed Aug 29 20:34:15 UTC 2018",
           "createdBy": "admin",
-          "description": "  "
+          "description": "   "
         },
-        "get": {
-          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}} ,\n\t\t\t\t\t\t\t\"limit\" : 1\n\t\t\t\t\t\t}\n}\n      ",
+        "findTypes": {
+          "queryTemplate": "{ \"_operation\" : \"distinct\" , \"_operation_args\" : { \"field\" : \"provenance\", \"query\" : {\u0027provenance.analysis.execution_id\u0027: {$regex: \"$name$\", $options: \"i\"},\u0027provenance.image.slide\u0027: \"$slide$\" } } }   ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
-            "id": {
-              "name": "id",
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
               "required": true,
               "defaultValue": "",
               "description": ""
@@ -279,10 +279,10 @@
           "outputFormat": {
             "outputFormat": "JSON"
           },
-          "name": "get",
-          "timeCreated": "Wed Aug 29 18:40:50 UTC 2018",
+          "name": "findTypes",
+          "timeCreated": "Wed Aug 29 20:34:44 UTC 2018",
           "createdBy": "admin",
-          "description": "         "
+          "description": "     "
         }
       },
       "deleteEndpoints": {
@@ -390,7 +390,7 @@
           "description": " "
         },
         "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"slide\" : {$regex: \"$slide$\", $options: \"i\"} ,\n                                        \"location\" : {$regex: \"$location$\", $options: \"i\"}}\n                        }\n}       ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"slide\" : \"$slide$\",\n                                        \"location\" : {$regex: \"$location$\", $options: \"i\"}}\n                        }\n}        ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -402,7 +402,7 @@
             },
             "slide": {
               "name": "slide",
-              "required": false,
+              "required": true,
               "defaultValue": "",
               "description": ""
             },
@@ -418,9 +418,9 @@
             "outputFormat": "JSON"
           },
           "name": "find",
-          "timeCreated": "Wed Aug 29 20:07:10 UTC 2018",
+          "timeCreated": "Wed Aug 29 20:33:50 UTC 2018",
           "createdBy": "admin",
-          "description": "   "
+          "description": "    "
         }
       },
       "deleteEndpoints": {
@@ -541,33 +541,6 @@
         "initialize": true
       },
       "queryEndpoints": {
-        "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : {\u0027name\u0027: {$regex: \"$name$\", $options: \"i\"},\n                                            \u0027location\u0027: {$regex: \"$location$\", $options: \"i\"}}\n                        }\n}               ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "name": {
-              "name": "name",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
-            "location": {
-              "name": "location",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "find",
-          "timeCreated": "Fri Aug 10 19:43:40 UTC 2018",
-          "createdBy": "admin",
-          "description": "           "
-        },
         "get": {
           "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}} ,\n\t\t\t\t\t\t\t\"limit\" : 1\n\t\t\t\t\t\t}\n}\n      ",
           "metaData": {},
@@ -588,6 +561,33 @@
           "timeCreated": "Wed Aug 29 18:41:29 UTC 2018",
           "createdBy": "admin",
           "description": "   "
+        },
+        "find": {
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : {\u0027name\u0027: \"$slide$\",\n                                            \u0027location\u0027: {$regex: \"$location$\", $options: \"i\"}}\n                        }\n}                ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "slide": {
+              "name": "slide",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "location": {
+              "name": "location",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "find",
+          "timeCreated": "Wed Aug 29 20:32:34 UTC 2018",
+          "createdBy": "admin",
+          "description": "            "
         }
       },
       "deleteEndpoints": {
