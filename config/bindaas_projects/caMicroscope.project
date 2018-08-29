@@ -58,7 +58,54 @@
           "description": "gets one by Id "
         }
       },
-      "deleteEndpoints": {},
+      "deleteEndpoints": {
+        "deleteCollection": {
+          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027name\u0027 : \u0027$name$\u0027 }\n\t\t\t\t\t\t}\n}\n",
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "name": "deleteCollection",
+          "timeCreated": "Wed Aug 29 17:48:31 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "addToCollection": {
+          "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027name\u0027 : \u0027$name$\u0027, \u0027type\u0027: \"$type$\" } ,\n\t\t\t\t\t\t\t\"update\": {$push: { \u0027contents\u0027 : \u0027$push$\u0027 }},\n\t\t\t\t\t\t\t\"upsert\": \u0027true\u0027,\n\t\t\t\t\t\t\t\"multi\" : \u0027false\u0027\n\t\t\t\t\t\t}\n}\n",
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "type": {
+              "name": "type",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "push": {
+              "name": "push",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "name": "addToCollection",
+          "timeCreated": "Wed Aug 29 17:54:44 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
       "submitEndpoints": {
         "csvFile": {
           "type": "MULTIPART",
@@ -238,7 +285,31 @@
           "description": "  "
         }
       },
-      "deleteEndpoints": {},
+      "deleteEndpoints": {
+        "deleteMark": {
+          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027provenance.analysis.execution_id\u0027 : \u0027$name$\u0027, \u0027provenance.image.slide\u0027: \"$slide$\" }\n\t\t\t\t\t\t}\n}\n",
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "name": "deleteMark",
+          "timeCreated": "Wed Aug 29 17:47:55 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
       "submitEndpoints": {
         "csvFile": {
           "type": "MULTIPART",
@@ -352,7 +423,66 @@
           "description": " "
         }
       },
-      "deleteEndpoints": {},
+      "deleteEndpoints": {
+        "deleteOverlay": {
+          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027name\u0027 : \u0027$name$\u0027, \u0027slide\u0027: \"$slide$\" }\n\t\t\t\t\t\t}\n}\n",
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "name": "deleteOverlay",
+          "timeCreated": "Wed Aug 29 17:47:11 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "updateOverlay": {
+          "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027slide\u0027 : \u0027$slide$\u0027, \u0027name\u0027:\"$name$\"} ,\n\t\t\t\t\t\t\t\"update\": {$set: { \u0027$field$\u0027 : \u0027$value$\u0027 }},\n\t\t\t\t\t\t\t\"upsert\": \u0027true\u0027,\n\t\t\t\t\t\t\t\"multi\" : \u0027false\u0027\n\t\t\t\t\t\t}\n}\n  ",
+          "tags": [],
+          "bindVariables": {
+            "slide": {
+              "name": "slide",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "name": {
+              "name": "name",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "field": {
+              "name": "field",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "value": {
+              "name": "value",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "name": "updateOverlay",
+          "timeCreated": "Wed Aug 29 17:55:38 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
       "submitEndpoints": {
         "csvFile": {
           "type": "MULTIPART",
@@ -460,7 +590,54 @@
           "description": "  "
         }
       },
-      "deleteEndpoints": {},
+      "deleteEndpoints": {
+        "deleteSlide": {
+          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027slide.name\u0027 : \u0027$slide$\u0027 }\n\t\t\t\t\t\t}\n}\n",
+          "tags": [],
+          "bindVariables": {
+            "slide": {
+              "name": "slide",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "name": "deleteSlide",
+          "timeCreated": "Wed Aug 29 17:45:23 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "updateSlide": {
+          "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027name\u0027 : \u0027$slide$\u0027} ,\n\t\t\t\t\t\t\t\"update\": {$set: { \u0027$field$\u0027 : \u0027$value$\u0027 }},\n\t\t\t\t\t\t\t\"upsert\": \u0027true\u0027,\n\t\t\t\t\t\t\t\"multi\" : \u0027false\u0027\n\t\t\t\t\t\t}\n}\n ",
+          "tags": [],
+          "bindVariables": {
+            "slide": {
+              "name": "slide",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "field": {
+              "name": "field",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "value": {
+              "name": "value",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "name": "updateSlide",
+          "timeCreated": "Wed Aug 29 17:52:22 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
       "submitEndpoints": {
         "csvFile": {
           "type": "MULTIPART",
@@ -568,7 +745,25 @@
           "description": "      "
         }
       },
-      "deleteEndpoints": {},
+      "deleteEndpoints": {
+        "deleteTemplate": {
+          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027template.id\u0027 : \u0027$id$\u0027 }\n\t\t\t\t\t\t}\n}",
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "name": "deleteTemplate",
+          "timeCreated": "Wed Aug 29 17:46:20 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        }
+      },
       "submitEndpoints": {
         "csvFile": {
           "type": "MULTIPART",
