@@ -10,7 +10,7 @@
       },
       "queryEndpoints": {
         "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"name\" : {$regex: \"$name$\", $options: \"i\"}, \"type\" : {$regex: \"$type$\", $options: \"i\"}} ,\n                            \"limit\" : 1000\n                        }\n}   ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : {\"name\" : {$regex: \"$name$\", $options: \"i\"}, \"type\" : {$regex: \"$type$\", $options: \"i\"}} ,\n                            \"limit\" : 1000\n                        }\n}         ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -32,12 +32,12 @@
             "outputFormat": "JSON"
           },
           "name": "find",
-          "timeCreated": "Thu Aug 02 20:18:50 UTC 2018",
+          "timeCreated": "Wed Aug 29 18:37:10 UTC 2018",
           "createdBy": "admin",
-          "description": "find on fields other than Id           "
+          "description": "find on fields other than Id                 "
         },
         "get": {
-          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId($id$) } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n ",
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}} ,\n\t\t\t\t\t\t\t\"limit\" : 1\n\t\t\t\t\t\t}\n}\n     ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -53,9 +53,9 @@
             "outputFormat": "JSON"
           },
           "name": "get",
-          "timeCreated": "Thu Aug 02 20:51:11 UTC 2018",
+          "timeCreated": "Wed Aug 29 18:39:52 UTC 2018",
           "createdBy": "admin",
-          "description": "gets one by Id "
+          "description": "gets one by Id     "
         }
       },
       "deleteEndpoints": {
@@ -203,27 +203,6 @@
           "createdBy": "admin",
           "description": "find where intersects point "
         },
-        "get": {
-          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : {\"_id\" : ObjectId(\"$id$\")}\n\t\t\t\t\t\t}\n}\n         ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "id": {
-              "name": "id",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "get",
-          "timeCreated": "Wed Aug 22 16:22:38 UTC 2018",
-          "createdBy": "admin",
-          "description": "        "
-        },
         "findTypes": {
           "queryTemplate": "{ \"_operation\" : \"distinct\" , \"_operation_args\" : { \"field\" : \"provenance\", \"query\" : {\u0027provenance.analysis.execution_id\u0027: {$regex: \"$name$\", $options: \"i\"},\u0027provenance.image.slide\u0027: {$regex: \"$slide$\", $options: \"i\"} } } }  ",
           "metaData": {},
@@ -283,6 +262,27 @@
           "timeCreated": "Fri Aug 24 15:16:47 UTC 2018",
           "createdBy": "admin",
           "description": "  "
+        },
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}} ,\n\t\t\t\t\t\t\t\"limit\" : 1\n\t\t\t\t\t\t}\n}\n      ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Wed Aug 29 18:40:50 UTC 2018",
+          "createdBy": "admin",
+          "description": "         "
         }
       },
       "deleteEndpoints": {
@@ -368,27 +368,6 @@
         "initialize": true
       },
       "queryEndpoints": {
-        "get": {
-          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId($id$) } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "id": {
-              "name": "id",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "get",
-          "timeCreated": "Thu Aug 02 20:51:48 UTC 2018",
-          "createdBy": "admin",
-          "description": ""
-        },
         "find": {
           "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"slide\" : {$regex: \"$slide$\", $options: \"i\"}} ,\n                                        \"location\" : {$regex: \"$location$\", $options: \"i\"}}\n                            \"limit\" : 1000\n                        }\n}     ",
           "metaData": {},
@@ -419,6 +398,27 @@
           },
           "name": "find",
           "timeCreated": "Fri Aug 24 15:15:16 UTC 2018",
+          "createdBy": "admin",
+          "description": " "
+        },
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}} ,\n\t\t\t\t\t\t\t\"limit\" : 1\n\t\t\t\t\t\t}\n}\n      ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Wed Aug 29 18:41:00 UTC 2018",
           "createdBy": "admin",
           "description": " "
         }
@@ -569,7 +569,7 @@
           "description": "           "
         },
         "get": {
-          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : {\"_id\":ObjectId(\"5b75dc9bf9ba7d9c071cbe49\")},\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1\n\t\t\t\t\t\t}\n}\n   ",
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}} ,\n\t\t\t\t\t\t\t\"limit\" : 1\n\t\t\t\t\t\t}\n}\n      ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -585,9 +585,9 @@
             "outputFormat": "JSON"
           },
           "name": "get",
-          "timeCreated": "Tue Aug 21 21:37:40 UTC 2018",
+          "timeCreated": "Wed Aug 29 18:41:29 UTC 2018",
           "createdBy": "admin",
-          "description": "  "
+          "description": "   "
         }
       },
       "deleteEndpoints": {
@@ -696,27 +696,6 @@
         "initialize": true
       },
       "queryEndpoints": {
-        "get": {
-          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : ObjectId(\"$id$\") } ,\n\t\t\t\t\t\t\t\"fields\" :{ \u0027_id\u0027 : 0 },\n\t\t\t\t\t\t\t\"limit\" : 1,\n\t\t\t\t\t\t}\n}\n  ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "id": {
-              "name": "id",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "get",
-          "timeCreated": "Tue Aug 21 21:20:30 UTC 2018",
-          "createdBy": "admin",
-          "description": " "
-        },
         "find": {
           "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : {\"name\": {$regex: \"$name$\", $options: \"i\"},\n                                            \"type\": {$regex: \"$type$\", $options: \"i\"}}\n                        }\n}                    ",
           "metaData": {},
@@ -743,6 +722,27 @@
           "timeCreated": "Mon Aug 27 15:46:51 UTC 2018",
           "createdBy": "admin",
           "description": "      "
+        },
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}} ,\n\t\t\t\t\t\t\t\"limit\" : 1\n\t\t\t\t\t\t}\n}\n      ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Wed Aug 29 18:41:36 UTC 2018",
+          "createdBy": "admin",
+          "description": "  "
         }
       },
       "deleteEndpoints": {
