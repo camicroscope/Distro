@@ -59,23 +59,6 @@
         }
       },
       "deleteEndpoints": {
-        "deleteCollection": {
-          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027name\u0027 : \u0027$name$\u0027 }\n\t\t\t\t\t\t}\n}\n",
-          "tags": [],
-          "bindVariables": {
-            "name": {
-              "name": "name",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "name": "deleteCollection",
-          "timeCreated": "Wed Aug 29 17:48:31 UTC 2018",
-          "createdBy": "admin",
-          "description": ""
-        },
         "addToCollection": {
           "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027name\u0027 : \u0027$name$\u0027, \u0027type\u0027: \"$type$\" } ,\n\t\t\t\t\t\t\t\"update\": {$push: { \u0027contents\u0027 : \u0027$push$\u0027 }},\n\t\t\t\t\t\t\t\"upsert\": \u0027true\u0027,\n\t\t\t\t\t\t\t\"multi\" : \u0027false\u0027\n\t\t\t\t\t\t}\n}\n",
           "tags": [],
@@ -102,6 +85,23 @@
           "stage": "UNVERIFIED",
           "name": "addToCollection",
           "timeCreated": "Wed Aug 29 17:54:44 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "deleteCollection": {
+          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}}\n\t\t\t\t\t\t}\n}\n ",
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "name": "deleteCollection",
+          "timeCreated": "Wed Aug 29 18:43:25 UTC 2018",
           "createdBy": "admin",
           "description": ""
         }
@@ -287,11 +287,11 @@
       },
       "deleteEndpoints": {
         "deleteMark": {
-          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027provenance.analysis.execution_id\u0027 : \u0027$name$\u0027, \u0027provenance.image.slide\u0027: \"$slide$\" }\n\t\t\t\t\t\t}\n}\n",
+          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}, \u0027provenance.image.slide\u0027: \"$slide$\" }\n\t\t\t\t\t\t}\n}\n ",
           "tags": [],
           "bindVariables": {
-            "name": {
-              "name": "name",
+            "id": {
+              "name": "id",
               "required": true,
               "defaultValue": "",
               "description": ""
@@ -305,7 +305,7 @@
           },
           "stage": "UNVERIFIED",
           "name": "deleteMark",
-          "timeCreated": "Wed Aug 29 17:47:55 UTC 2018",
+          "timeCreated": "Wed Aug 29 18:43:50 UTC 2018",
           "createdBy": "admin",
           "description": ""
         }
@@ -424,29 +424,6 @@
         }
       },
       "deleteEndpoints": {
-        "deleteOverlay": {
-          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027name\u0027 : \u0027$name$\u0027, \u0027slide\u0027: \"$slide$\" }\n\t\t\t\t\t\t}\n}\n",
-          "tags": [],
-          "bindVariables": {
-            "name": {
-              "name": "name",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            },
-            "slide": {
-              "name": "slide",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "name": "deleteOverlay",
-          "timeCreated": "Wed Aug 29 17:47:11 UTC 2018",
-          "createdBy": "admin",
-          "description": ""
-        },
         "updateOverlay": {
           "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027slide\u0027 : \u0027$slide$\u0027, \u0027name\u0027:\"$name$\"} ,\n\t\t\t\t\t\t\t\"update\": {$set: { \u0027$field$\u0027 : \u0027$value$\u0027 }},\n\t\t\t\t\t\t\t\"upsert\": \u0027true\u0027,\n\t\t\t\t\t\t\t\"multi\" : \u0027false\u0027\n\t\t\t\t\t\t}\n}\n  ",
           "tags": [],
@@ -479,6 +456,29 @@
           "stage": "UNVERIFIED",
           "name": "updateOverlay",
           "timeCreated": "Wed Aug 29 17:55:38 UTC 2018",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "deleteOverlay": {
+          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}, \u0027slide\u0027: \"$slide$\" }\n\t\t\t\t\t\t}\n}\n ",
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "name": "deleteOverlay",
+          "timeCreated": "Wed Aug 29 18:44:12 UTC 2018",
           "createdBy": "admin",
           "description": ""
         }
@@ -747,7 +747,7 @@
       },
       "deleteEndpoints": {
         "deleteTemplate": {
-          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027template.id\u0027 : \u0027$id$\u0027 }\n\t\t\t\t\t\t}\n}",
+          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}}\n\t\t\t\t\t\t}\n} ",
           "tags": [],
           "bindVariables": {
             "id": {
@@ -759,7 +759,7 @@
           },
           "stage": "UNVERIFIED",
           "name": "deleteTemplate",
-          "timeCreated": "Wed Aug 29 17:46:20 UTC 2018",
+          "timeCreated": "Wed Aug 29 18:44:30 UTC 2018",
           "createdBy": "admin",
           "description": ""
         }
