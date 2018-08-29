@@ -19,69 +19,152 @@ var marks = [{
         },
         "analysis": {
             "source": "human",
-            "execution_id": "Alpha"
+            "execution_id": "Gamma"
         }
     },
+    "properties":{
+        "annotations":{
+        "name": "test 1",
+        "digital_slide_quality":true,
+        "histology":"PDAC",
+        "hist_other_type":"Colloid carcinoma (mucinous noncystic carcinoma)",
+        "cellularity_10":"31-40%",
+        "tumor_cellularity":"<20%",
+        "tumor_necrosis":"<20%",
+        "adequacy":"Adequate",
+        "normal_tissue_type":"Duodenum",
+        "tumor_present":false,
+        "additional_notes":"test note"
+        }
     }
-    "geometry": [{
-        "type": "Polygon",
-        "coordinates": [
-            [
-                [0, 0],
-                [0, 0.1],
-                [0.1, 0.1],
-                [0.1, 0],
-                [0, 0]
-            ]
+    "geometries":{
+        "type":"FeatureCollection",
+        "features":[
+            {
+                "type":"Feature",
+                "properties": {
+                    "style": {
+                        "color":"#7cfc00",
+                        "lineCap":"round",
+                        "lineJoin":"round",
+                        "lineWidth":3
+                    }
+                },
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [0, 1.333075238564],
+                            [0.9211833251318, 1.333075238564],
+                            [0.9211833251318, 1.4056976389659],
+                            [0.84856092473, 1.4056976389659],
+                            [0.84856092473, 1.333075238564]
+                        ]
+                    ]
+                }
+            },
+            {
+                "type":"Feature",
+                "properties": {
+                    "style": {
+                        "color":"#7cfc00",
+                        "lineCap":"round",
+                        "lineJoin":"round",
+                        "lineWidth":3
+                    }
+                },
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [0.0819138121014, 1.2558071323124],
+                            [0.987611451067, 1.2558071323124],
+                            [0.987611451067, 1.9173119035902],
+                            [0.0819138121014, 1.9173119035902],
+                            [0.0819138121014, 1.2558071323124]
+                        ]
+                    ]
+                }
+            },
         ]
-
-    }],
-}, {
+    }
+},
+{
     "provenance": {
         "image": {
-            "slide": "CMU1"
-        },
-        "analysis": {
-            "source": "human",
-            "execution_id": "Alpha"
-        }
-    },
-    "geometry": [{
-        "type": "Polygon",
-        "coordinates": [
-            [
-                [0, 0],
-                [0, 0.5],
-                [1, 0.5],
-                [1, 0],
-                [0, 0]
-            ]
-        ]
-
-    }],
-}, {
-    "provenance": {
-        "image": {
-            "slide": "CMU1"
+            "slide": "smaple"
         },
         "analysis": {
             "source": "human",
             "execution_id": "Gamma"
         }
     },
-    "geometry": [{
-        "type": "Polygon",
-        "coordinates": [
-            [
-                [0.01, 0.01],
-                [0.99, 0.99],
-                [0.98, 0.98],
-                [0.02, 0.02],
-                [0.01, 0.01]
-            ]
+    "properties":{
+        "annotations":{
+        "name": "test 1",
+        "digital_slide_quality":true,
+        "histology":"PDAC",
+        "hist_other_type":"Colloid carcinoma (mucinous noncystic carcinoma)",
+        "cellularity_10":"31-40%",
+        "tumor_cellularity":"<20%",
+        "tumor_necrosis":"<20%",
+        "adequacy":"Adequate",
+        "normal_tissue_type":"Duodenum",
+        "tumor_present":false,
+        "additional_notes":"test note"
+        }
+    }
+    "geometries":{
+        "type":"FeatureCollection",
+        "features":[
+            {
+                "type":"Feature",
+                "properties": {
+                    "style": {
+                        "color":"#7cfc00",
+                        "lineCap":"round",
+                        "lineJoin":"round",
+                        "lineWidth":3
+                    }
+                },
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [0, 1.333075238564],
+                            [0.9211833251318, 1.333075238564],
+                            [0.9211833251318, 1.4056976389659],
+                            [0.84856092473, 1.4056976389659],
+                            [0.84856092473, 1.333075238564]
+                        ]
+                    ]
+                }
+            },
+            {
+                "type":"Feature",
+                "properties": {
+                    "style": {
+                        "color":"#7cfc00",
+                        "lineCap":"round",
+                        "lineJoin":"round",
+                        "lineWidth":3
+                    }
+                },
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [0.0819138121014, 1.2558071323124],
+                            [0.987611451067, 1.2558071323124],
+                            [0.987611451067, 1.9173119035902],
+                            [0.0819138121014, 1.9173119035902],
+                            [0.0819138121014, 1.2558071323124]
+                        ]
+                    ]
+                }
+            },
         ]
-
-    }]
+    }
 }];
 
 const annotation_schema = {
@@ -230,7 +313,7 @@ const algorithm_2_schema = {
 
 
 var templates = [algorithm_2_schema, algorithm_1_schema, annotation_schema]
-
+db.mark.createIndex({"geometries.features.geometry":"2dsphere"})
 db.collection.insertMany(collections)
 db.slide.insertMany(slides)
 db.mark.insertMany(marks)
