@@ -117,11 +117,11 @@ db.createCollection("mark", {
             properties: {
              image: {
                bsonType: "object",
-               required: ["image", "analysis"],
+               required: ["slide"],
              },
              analysis: {
                bsonType: "object",
-               required: ["image", "analysis"],
+               required: ["execution_id"],
              }
            }
          }
@@ -180,4 +180,4 @@ db.createCollection("overlay", {
  }
 });
 
-db.mark.createIndex({ geometry: "2dsphere" });
+b.mark.createIndex({"geometries.features.geometry":"2dsphere"})
