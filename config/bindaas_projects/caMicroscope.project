@@ -368,8 +368,29 @@
         "initialize": true
       },
       "queryEndpoints": {
+        "get": {
+          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}} ,\n\t\t\t\t\t\t\t\"limit\" : 1\n\t\t\t\t\t\t}\n}\n      ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Wed Aug 29 18:41:00 UTC 2018",
+          "createdBy": "admin",
+          "description": " "
+        },
         "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"slide\" : {$regex: \"$slide$\", $options: \"i\"}} ,\n                                        \"location\" : {$regex: \"$location$\", $options: \"i\"}}\n                            \"limit\" : 1000\n                        }\n}     ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"name\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"slide\" : {$regex: \"$slide$\", $options: \"i\"} ,\n                                        \"location\" : {$regex: \"$location$\", $options: \"i\"}}\n                        }\n}       ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -397,30 +418,9 @@
             "outputFormat": "JSON"
           },
           "name": "find",
-          "timeCreated": "Fri Aug 24 15:15:16 UTC 2018",
+          "timeCreated": "Wed Aug 29 20:07:10 UTC 2018",
           "createdBy": "admin",
-          "description": " "
-        },
-        "get": {
-          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}} ,\n\t\t\t\t\t\t\t\"limit\" : 1\n\t\t\t\t\t\t}\n}\n      ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "id": {
-              "name": "id",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "get",
-          "timeCreated": "Wed Aug 29 18:41:00 UTC 2018",
-          "createdBy": "admin",
-          "description": " "
+          "description": "   "
         }
       },
       "deleteEndpoints": {
