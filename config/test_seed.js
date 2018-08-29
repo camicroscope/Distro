@@ -313,7 +313,6 @@ const algorithm_2_schema = {
 
 
 var templates = [algorithm_2_schema, algorithm_1_schema, annotation_schema]
-db.mark.createIndex({"geometries.features.geometry":"2dsphere"})
 db.collection.insertMany(collections)
 db.slide.insertMany(slides)
 db.mark.insertMany(marks)
