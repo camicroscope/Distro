@@ -180,4 +180,4 @@ db.createCollection("overlay", {
  }
 });
 
-b.mark.createIndex({"geometries.features.geometry":"2dsphere"})
+db.mark.createIndex({"geometries.features.geometry":"2dsphere"})
