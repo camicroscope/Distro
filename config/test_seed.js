@@ -36,7 +36,7 @@ var marks = [{
         "tumor_present":false,
         "additional_notes":"test note"
         }
-    }
+    },
     "geometries":{
         "type":"FeatureCollection",
         "features":[
@@ -113,7 +113,7 @@ var marks = [{
         "tumor_present":false,
         "additional_notes":"test note"
         }
-    }
+    },
     "geometries":{
         "type":"FeatureCollection",
         "features":[
