@@ -1,26 +1,3 @@
-db.createCollection("collection", {
-  validator: {
-     $jsonSchema: {
-       bsonType: "object",
-        required: ["name", "type", "contents"],
-        properties: {
-           name: {
-              bsonType: "string",
-              description: "The Collection's Name"
-           },
-           type: {
-              enum: ["slide", "collection"],
-              description: "can be a collection of slides or of collections"
-           },
-           contents: {
-              bsonType: "array",
-              description: "The slide or collection identifiers, depending on type"
-           }
-         }
-     }
- }
-});
-
 db.createCollection("authorization", {
   validator: {
      $jsonSchema: {
@@ -34,10 +11,6 @@ db.createCollection("authorization", {
            slides: {
               bsonType: "array",
               description: "slides user has access to"
-           },
-           collections: {
-              bsonType: "array",
-              description: "collections user has access to"
            }
          }
      }
