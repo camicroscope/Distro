@@ -22,6 +22,6 @@ services:
     build: "https://github.com/camicroscope/caMicroscope.git#refactor"
     container_name: ca-front
   elevate:
-    build: "https://github.com/ensigns/elevate.git#camic"
-    container_name: ca-elevate
+    build: "https://github.com/camicroscope/Security.git#refactor"
+    container_name: ca-security
     ports: ["4010:4010"]
