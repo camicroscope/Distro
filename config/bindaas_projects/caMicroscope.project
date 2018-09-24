@@ -30,78 +30,6 @@
           "createdBy": "admin",
           "description": "         "
         },
-        "findPoint": {
-          "queryTemplate": "{ \"_operation\" : \"find\" , \"_operation_args\" : { \"query\" : {\"marktype.name\": {$regex: \"$name$\", $options: \"i\"}, \"marktype.slide\": \"$slide$\", geometry: { $geoIntersects: { $geometry: { type: \"Point\", coordinates: [ $x$, $y$ ] } } } }, \"limit\" : 1000} }  ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "name": {
-              "name": "name",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
-            "slide": {
-              "name": "slide",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            },
-            "x": {
-              "name": "x",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            },
-            "y": {
-              "name": "y",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "findPoint",
-          "timeCreated": "Wed Aug 29 20:30:55 UTC 2018",
-          "createdBy": "admin",
-          "description": "find where intersects point  "
-        },
-        "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : \"$slide$\",\n                                        \"provenance.analysis.source\" : {$regex: \"$key$\", $options: \"i\"}}\n                        }\n}       ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "name": {
-              "name": "name",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
-            "slide": {
-              "name": "slide",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            },
-            "key": {
-              "name": "key",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "find",
-          "timeCreated": "Wed Aug 29 20:34:15 UTC 2018",
-          "createdBy": "admin",
-          "description": "   "
-        },
         "findTypes": {
           "queryTemplate": "{ \"_operation\" : \"distinct\" , \"_operation_args\" : { \"field\" : \"provenance\", \"query\" : {\u0027provenance.analysis.execution_id\u0027: {$regex: \"$name$\", $options: \"i\"},\u0027provenance.image.slide\u0027: \"$slide$\" } } }   ",
           "metaData": {},
@@ -128,6 +56,78 @@
           "timeCreated": "Wed Aug 29 20:34:44 UTC 2018",
           "createdBy": "admin",
           "description": "     "
+        },
+        "find": {
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"},\n                                        \"provenance.analysis.source\" : {$regex: \"$key$\", $options: \"i\"}}\n                        }\n}        ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "key": {
+              "name": "key",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "find",
+          "timeCreated": "Mon Sep 24 18:11:46 UTC 2018",
+          "createdBy": "admin",
+          "description": "    "
+        },
+        "findPoint": {
+          "queryTemplate": "{ \"_operation\" : \"find\" , \"_operation_args\" : { \"query\" : {\"marktype.name\": {$regex: \"$name$\", $options: \"i\"}, \"marktype.slide\": {$regex: \"$slide$\", $options: \"i\"}, geometry: { $geoIntersects: { $geometry: { type: \"Point\", coordinates: [ $x$, $y$ ] } } } }, \"limit\" : 1000} }   ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "x": {
+              "name": "x",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "y": {
+              "name": "y",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "findPoint",
+          "timeCreated": "Mon Sep 24 18:12:11 UTC 2018",
+          "createdBy": "admin",
+          "description": "find where intersects point   "
         }
       },
       "deleteEndpoints": {
