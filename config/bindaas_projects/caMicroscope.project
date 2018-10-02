@@ -128,6 +128,39 @@
           "timeCreated": "Mon Sep 24 18:15:21 UTC 2018",
           "createdBy": "admin",
           "description": "      "
+        },
+        "multiFind": {
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$in: $name$}},\n                                        \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"},\n                                        \"provenance.analysis.source\" : {$regex: \"$key$\", $options: \"i\"}}\n                        }\n}          ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": true,
+              "defaultValue": "",
+              "description": "list required"
+            },
+            "slide": {
+              "name": "slide",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "key": {
+              "name": "key",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "multiGet",
+          "timeCreated": "Tue Oct 02 20:55:49 UTC 2018",
+          "createdBy": "admin",
+          "description": " "
         }
       },
       "deleteEndpoints": {
