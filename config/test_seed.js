@@ -1,6 +1,6 @@
 var slides = [{
     name: "CMU1",
-    location: "/img/sample.svs",
+    location: "/images/sample.svs",
     mpp: 0.499
 }]
 var auths = [{
