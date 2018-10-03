@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "mark": {
+    "Mark": {
       "dataSource": {
         "host": "ca-mongo",
         "port": "27017",
@@ -142,13 +142,13 @@
             },
             "slide": {
               "name": "slide",
-              "required": true,
+              "required": false,
               "defaultValue": "",
               "description": ""
             },
             "key": {
               "name": "key",
-              "required": true,
+              "required": false,
               "defaultValue": "",
               "description": ""
             }
@@ -447,7 +447,7 @@
           "bindVariables": {
             "slide": {
               "name": "slide",
-              "required": true,
+              "required": false,
               "defaultValue": "",
               "description": ""
             },
