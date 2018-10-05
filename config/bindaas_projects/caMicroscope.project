@@ -130,7 +130,7 @@
           "description": "      "
         },
         "multiFind": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$in: $name$}},\n                                        \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"},\n                                        \"provenance.analysis.source\" : {$regex: \"$key$\", $options: \"i\"}}\n                        }\n}          ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$in: $name$}},\n                                        \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"},\n                                        \"provenance.analysis.source\" : {$regex: \"$key$\", $options: \"i\"}}\n                        }",
           "metaData": {},
           "tags": [],
           "bindVariables": {
