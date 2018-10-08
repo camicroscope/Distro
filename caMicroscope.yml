@@ -5,7 +5,7 @@ services:
     image: mongo
     container_name: ca-mongo
   bindaas:
-    build: "https://github.com/sharmalab/bindaas.git#:docker"
+    build: "./Deps/Bindaas/"
     depends_on:
       - "mongo"
     container_name: ca-data
