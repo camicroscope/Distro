@@ -31,3 +31,5 @@ services:
     build: "https://github.com/camicroscope/SlideLoader.git"
     container_name: ca-security
     ports: ["4010:4010"]
+    environment:
+      - DISABLE_SEC=true
