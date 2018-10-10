@@ -25,8 +25,10 @@ ENV PATH /root/src/jre1.8.0_171/bin:$PATH
 # Bindaas
 RUN mkdir -p /root/bindaas
 
-ADD https://github.com/sharmalab/bindaas/releases/download/v3.0.2/bindaas-dist-3.0.2.tar.gz /root/bindaas/
+ADD https://github.com/sharmalab/bindaas/releases/download/v3.0.2/bindaas-dist-3.0.2.tar.gz /root/bindaas/bindaas.tar.gz
 WORKDIR /root/bindaas
+RUN tar -xvf bindaas.tar.gz 2> /dev/null
+RUN rm bindaas.tar.gz 2> /dev/null
 
 COPY bindaas.config.json /root/bindaas/bin/
 
