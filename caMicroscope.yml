@@ -22,13 +22,12 @@ services:
     build: "https://github.com/camicroscope/caMicroscope.git#refactor"
     container_name: ca-front
   loader:
-    build: "https://github.com/camicroscope/Security.git#refactor"
+    build: "https://github.com/camicroscope/SlideLoader.git"
     container_name: ca-load
-    ports: ["4000:4000"]
     volumes:
       - ./images/:/data/images/
   elevate:
-    build: "https://github.com/camicroscope/SlideLoader.git"
+    build: "https://github.com/camicroscope/Security.git#refactor"
     container_name: ca-security
     ports: ["4010:4010"]
     environment:
