@@ -1,5 +1,12 @@
 sudo: required
+language: node_js
+before_script:
+  - cd test
+  - npm install
 services:
     - docker
 script:
- - docker-compose -f caMicroscope.yml build
+ - docker-compose -f ../caMicroscope.yml build
+ - docker-compose -f ../caMicroscope.yml up
+ - sleep 30
+ - npm test
