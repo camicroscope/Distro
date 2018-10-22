@@ -12,4 +12,4 @@ script:
  - docker-compose -f ../caMicroscope.yml build
  - docker-compose -f ../caMicroscope.yml up -d
  - sleep 30
- - mocha test_basic.js
+ - mocha *.js --exit
