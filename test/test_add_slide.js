@@ -37,6 +37,7 @@ describe('Slide Loading Step 2', function () {
     let getProcess = fetch(findurl)
     getProcess.then(x=>x.json()).then(x=>{
       assert.equal(x.length,1, "Slide Shows up in API List")
+      done()
     }).catch(e=>{
       console.log("err")
       console.log(e)
