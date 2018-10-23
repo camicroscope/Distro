@@ -6,15 +6,6 @@ const { JSDOM } = jsdom;
 const testurl = "http://localhost:4010/viewer.html"
 
 
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
-
 describe('Minimal Distribution Test', function () {
 
   // Can we see the table?
