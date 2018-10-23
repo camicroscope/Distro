@@ -6,6 +6,7 @@ const fetch = require("node-fetch")
 // jsdom instance
 const testurl = "http://localhost:4010/table.html"
 const posturl = "http://localhost:4010/data/Slide/post"
+const findurl = "http://localhost:4010/data/Slide/find?slide=TEST"
 
 
 describe('Slide Loading Step 1', function () {
