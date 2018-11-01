@@ -74,6 +74,12 @@
               "defaultValue": "",
               "description": ""
             },
+            "key": {
+              "name": "key",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
             "slide": {
               "name": "slide",
               "required": false,
