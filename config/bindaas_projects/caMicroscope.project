@@ -63,8 +63,8 @@
           "createdBy": "admin",
           "description": "    "
         },
-        "findPoint": {
-          "queryTemplate": "{ \"_operation\" : \"find\" , \"_operation_args\" : { \"query\" : {\"marktype.name\": {$regex: \"$name$\", $options: \"i\"}, \"marktype.slide\": {$regex: \"$slide$\", $options: \"i\"}, geometry: { $geoIntersects: { $geometry: { type: \"Point\", coordinates: [ $x$, $y$ ] } } } }, \"limit\" : 1000} }   ",
+        "findBound": {
+          "queryTemplate": "{ \"_operation\" : \"find\" , \"_operation_args\" : { \"query\" : {\"marktype.name\": {$regex: \"$name$\", $options: \"i\"}, \"marktype.slide\": {$regex: \"$slide$\", $options: \"i\"}, bound: { $geoIntersects: { $geometry: { type: \"Polygon\", coordinates: [[[ $x0$, $y0$ ],[ $x0$, $y1$ ],[ $x1$, $y1$ ],[ $x1$, $y0$ ],[ $x0$, $y0$ ]]] } } } }, \"limit\" : 1000} }   ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -80,14 +80,26 @@
               "defaultValue": "",
               "description": ""
             },
-            "x": {
-              "name": "x",
+            "x0": {
+              "name": "x0",
               "required": true,
               "defaultValue": "",
               "description": ""
             },
-            "y": {
-              "name": "y",
+            "y0": {
+              "name": "y0",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "x1": {
+              "name": "x1",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "y1": {
+              "name": "y1",
               "required": true,
               "defaultValue": "",
               "description": ""
@@ -97,10 +109,10 @@
           "outputFormat": {
             "outputFormat": "JSON"
           },
-          "name": "findPoint",
-          "timeCreated": "Mon Sep 24 18:12:11 UTC 2018",
+          "name": "findBound",
+          "timeCreated": "Thur Nov 1 18:12:11 UTC 2018",
           "createdBy": "admin",
-          "description": "find where intersects point   "
+          "description": "find where bound intersects given rect"
         },
         "findTypes": {
           "queryTemplate": "{ \"_operation\" : \"distinct\" , \"_operation_args\" : { \"field\" : \"provenance\", \"query\" : {\u0027provenance.analysis.execution_id\u0027: {$regex: \"$name$\", $options: \"i\"},\u0027provenance.image.slide\u0027: {$regex: \"$slide$\", $options: \"i\"} } } }    ",
