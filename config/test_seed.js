@@ -87,7 +87,7 @@ var marks = [{
 {
     "provenance": {
         "image": {
-            "slide": "smaple"
+            "slide": "sample"
         },
         "analysis": {
             "source": "human",
