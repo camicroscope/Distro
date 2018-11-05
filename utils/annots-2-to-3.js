@@ -5,19 +5,21 @@
 
 var fs = require("fs");
 var annots = JSON.parse(fs.readFileSync("annots.json"));
-
+names = new Set()
 res = {}
 for (x in annots){
   annot = annots[x]
+  name = annot.provenance.analysis.execution_id
+  names.add(name)
   // pick a color, default style
   color = "#090c63"
   annot.provenance.image.slide = annot.provenance.image.case_id
   annot.properties = {annotations:{name:  annot.provenance.analysis.execution_id}}
   annot.provenance.analysis.execution_id = "_a" + x
   props = {footprint: annot.footprint, style: {color:color, "lineJoin": "round", "lineCap": "round", lineWidth:"30"}}
-  if (annot.properties.name in res){
+  if (name in res){
     // recalculate bounds
-    s = annot.geometry.coordinates[0].concat(res[annot.properties.name].geometries.features[0].bound)
+    s = annot.geometry.coordinates[0].concat(res[name].geometries.features[0].bound)
     xs = s.map(x=>x[0])
     ys =  s.map(x=>x[1])
     // get bounds
@@ -25,9 +27,9 @@ for (x in annots){
     x1 = Math.max.apply(null, xs)
     y0 = Math.min.apply(null, ys)
     y1 = Math.max.apply(null, ys)
-    res[annot.properties.name].geometries.features[0].bound = {type:"Polygon", coordinates: coords}
+    res[name].geometries.features[0].bound = {type:"Polygon", coordinates: coords}
     // add polygon
-    res[annot.properties.name].geometries.features.push({type:"Feature", properties:props, geometry: annot.geometry})
+    res[name].geometries.features.push({type:"Feature", properties:props, geometry: annot.geometry})
   } else {
     // convert geometry
     annot.geometries = {type:"FeatureCollection", features:[{type:"Feature", properties:props, geometry: annot.geometry}]}
@@ -44,10 +46,11 @@ for (x in annots){
     // remove old geometry
     delete annot['geometry']
     delete annot['_id']
-    res[annot.properties.name] = annot
+    res[name] = annot
   }
 }
 var values = Object.keys(res).map(function(key){
     return res[key];
 });
+//console.log(names)
 console.log(JSON.stringify(values))
