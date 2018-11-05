@@ -3,16 +3,18 @@
 // convert annots to new form
 // spit out result to stdout
 
+
 var fs = require("fs");
 var annots = JSON.parse(fs.readFileSync("annots.json"));
 names = new Set()
 res = {}
+var available_colors = ['#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c', '#fdbf6f', '#ff7f00', '#cab2d6', '#6a3d9a', '#ffff99', '#b15928'];
 for (x in annots){
   annot = annots[x]
   name = annot.provenance.analysis.execution_id
   names.add(name)
   // pick a color, default style
-  color = "#090c63"
+  color = available_colors[x%available_colors.length]
   annot.provenance.image.slide = annot.provenance.image.case_id
   annot.properties = {annotations:{name:  annot.provenance.analysis.execution_id}}
   annot.provenance.analysis.execution_id = "_a" + x
@@ -29,9 +31,11 @@ for (x in annots){
     y1 = Math.max.apply(null, ys)
     res[name].geometries.features[0].bound = {type:"Polygon", coordinates: coords}
     // add polygon
+    props.style.color = res[name].geometries.features[0].properties.style.color
     res[name].geometries.features.push({type:"Feature", properties:props, geometry: annot.geometry})
   } else {
     // convert geometry
+    props.style.color = available_colors[x%available_colors.length]
     annot.geometries = {type:"FeatureCollection", features:[{type:"Feature", properties:props, geometry: annot.geometry}]}
     s = annot.geometry.coordinates[0]
     xs = s.map(x=>x[0])
@@ -52,5 +56,4 @@ for (x in annots){
 var values = Object.keys(res).map(function(key){
     return res[key];
 });
-//console.log(names)
 console.log(JSON.stringify(values))
