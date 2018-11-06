@@ -1,6 +1,6 @@
 // run with node
-// take in a json file of annotations
-// convert annots to new form
+// take in a json file of slides/images metadata
+// convert slides to new form
 // spit out result to stdout
 
 
