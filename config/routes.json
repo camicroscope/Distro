@@ -30,14 +30,14 @@
         "find":"/Overlay/query/find",
         "post":"/Overlay/submit/json",
         "delete":"/Overlay/delete/deleteOverlay",
-        "update":"/Overlay/delete/updateOverlay"
+        "update":"/Overlay/update/updateOverlay"
       },
       "Slide": {
         "get":"/Slide/query/get",
         "find":"/Slide/query/find",
         "post":"/Slide/submit/json",
         "delete":"/Slide/delete/deleteSlide",
-        "update":"/Slide/delete/updateSlide"
+        "update":"/Slide/update/updateSlide"
       },
       "Template": {
         "get":"/Template/query/get",
