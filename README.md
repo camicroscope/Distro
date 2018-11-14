@@ -29,6 +29,16 @@ A mark is a geospatial object following an extended geojson format.
 - findPoint
   - Finds marks by a given point in x and y coordinates in the same space, and slide and name
 
+## Heatmap
+
+  A heatmap is a collection of point associated data.
+
+  - get
+    - Returns a single mark by its objectid
+  - find
+    - Find heatmaps by name or associated slide
+
+
 ## Overlay
 
 An overlay is an image, usually pregenerated, which can be displayed over a slide.
@@ -51,4 +61,3 @@ An overlay is an image, usually pregenerated, which can be displayed over a slid
   - Returns a single template by its objectid
 - Find
   - Find templates by name and type
-
