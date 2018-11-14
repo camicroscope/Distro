@@ -19,6 +19,12 @@
         "post":"/Mark/submit/json",
         "delete":"/Mark/delete/deleteMark"
       },
+      "Heatmap": {
+        "get":"/Heatmap/query/get",
+        "find":"/Heatmap/query/find",
+        "post":"/Heatmap/submit/json",
+        "delete":"/Heatmap/delete/deleteHeatmap"
+      },
       "Overlay": {
         "get":"/Overlay/query/get",
         "find":"/Overlay/query/find",

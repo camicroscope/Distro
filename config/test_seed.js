@@ -1,4 +1,5 @@
 var slides = [{
+    "_id": new ObjectId("5bec456369056d7e537c2a9b"),
     name: "CMU1",
     location: "/images/sample.svs",
     mpp: 0.499
@@ -10,7 +11,7 @@ var auths = [{
 var marks = [{
     "provenance": {
         "image": {
-            "slide": "CMU1"
+            "slide": "5bec456369056d7e537c2a9b"
         },
         "analysis": {
             "source": "human",
@@ -162,6 +163,33 @@ var marks = [{
     }
 }];
 
+heatmap_data = []
+for (var i = 0; i<2220; i+=100){
+  for (var j = 0; j<2967; j+=100)
+    heatmap_data.push([i,j,Math.random(),Math.floor(Math.random()*10)])
+}
+
+
+var heatmaps = [{
+    "provenance": {
+        "image": {
+            "slide": "5bec456369056d7e537c2a9b"
+        },
+        "analysis": {
+            "type": "heatmap",
+            "execution_id": "heatmap_test",
+            "patchsize": "100",
+            "fields": ["necrosis", "tumor"],
+            "ranges": [
+                [0, 1],
+                [0, 10]
+            ],
+            "coordinateSystem": "image"
+        }
+    },
+    "data": heatmap_data
+}]
+
 const annotation_schema = {
     "type": "object",
     "id": "annotation-form",
@@ -312,3 +340,4 @@ db.slide.insertMany(slides)
 db.mark.insertMany(marks)
 db.template.insertMany(templates)
 db.authorization.insertMany(auths)
+db.heatmap.insertMany(heatmaps)

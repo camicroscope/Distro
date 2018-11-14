@@ -103,6 +103,31 @@ db.createCollection("mark", {
  }
 });
 
+db.createCollection("heatmap", {
+  validator: {
+     $jsonSchema: {
+       bsonType: "object",
+        required: [ "provenance" ],
+        properties: {
+          marktype: {
+            bsonType: "object",
+            required: ["image", "analysis"],
+            properties: {
+             image: {
+               bsonType: "object",
+               required: ["slide"],
+             },
+             analysis: {
+               bsonType: "object",
+               required: ["execution_id"],
+             }
+           }
+         }
+       }
+     }
+ }
+});
+
 db.createCollection("template", {
   validator: {
      $jsonSchema: {
