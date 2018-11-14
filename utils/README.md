@@ -6,6 +6,8 @@ Since the annotation type has changed to allow for more dynamic options, the ann
 Run the tool with `node annots-to-to-3.js annots.json > out.json`, where annots.json is a list of QUIP 2.0 style annotations (see debug-annot.json for a short example).
 Use the result with `mongoimport --db camic --collection mark --file out.json --jsonArray` in the ca-mongo container.
 
+**Please note that this should be run on a single image's annotations at a time, otherwise it will combine them incorrectly.**
+
 
 ## Slides
 
