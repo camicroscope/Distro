@@ -1,3 +1,4 @@
+// validation
 db.createCollection("authorization", {
   validator: {
      $jsonSchema: {
@@ -177,5 +178,14 @@ db.createCollection("overlay", {
      }
  }
 });
+
+// performance
 db.mark.createIndex({"geometries.features.bound":"2dsphere"})
 //db.mark.createIndex({"geometries.features.geometry":"2dsphere"})
+
+db.mark.createIndex({"provenance": 1})
+db.mark.createIndex({"provenance.image.slide": 1, "provenance.image.execution_id": 1})
+db.slide.createIndex({'name': 1})
+db.template.createIndex({'id': 1})
+db.template.createIndex({'name': 1})
+db.heatmap.createIndex({"provenance.image.slide": 1, "provenance.image.execution_id": 1})
