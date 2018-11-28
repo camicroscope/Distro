@@ -2,16 +2,17 @@ var slides = [{
     "_id": new ObjectId("5bec456369056d7e537c2a9b"),
     name: "CMU1",
     location: "/images/sample.svs",
-    mpp: 0.499
+    mpp: 0.499,
+    study: '',
+    specimen: ''
 }]
-var auths = [{
-    name: "CMU",
-    slides: ["CMU1"]
-}]
+
 var marks = [{
     "provenance": {
         "image": {
-            "slide": "5bec456369056d7e537c2a9b"
+            "slide": "5bec456369056d7e537c2a9b",
+            "study": "",
+            "specimen": ""
         },
         "analysis": {
             "source": "human",
@@ -88,7 +89,9 @@ var marks = [{
 {
     "provenance": {
         "image": {
-            "slide": "sample"
+            "slide": "sample",
+            "study": "",
+            "specimen": ""
         },
         "analysis": {
             "source": "human",
@@ -173,7 +176,9 @@ for (var i = 0; i<2220; i+=100){
 var heatmaps = [{
     "provenance": {
         "image": {
-            "slide": "5bec456369056d7e537c2a9b"
+            "slide": "5bec456369056d7e537c2a9b",
+            "study": "",
+            "specimen": ""
         },
         "analysis": {
             "type": "heatmap",

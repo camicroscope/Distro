@@ -28,6 +28,14 @@ db.createCollection("slide", {
                bsonType: "string",
                description: "Slide display name"
             },
+            study: {
+               bsonType: "string",
+               description: "Slide study identifier"
+            },
+            specimen: {
+               bsonType: "string",
+               description: "Slide specimen identifier"
+            },
             location: {
                bsonType: "string",
                description: "Slide location, used for opening"
@@ -91,7 +99,7 @@ db.createCollection("mark", {
             properties: {
              image: {
                bsonType: "object",
-               required: ["slide"],
+               required: ["slide","study","specimen"],
              },
              analysis: {
                bsonType: "object",
@@ -116,7 +124,7 @@ db.createCollection("heatmap", {
             properties: {
              image: {
                bsonType: "object",
-               required: ["slide"],
+               required: ["slide","study","specimen"],
              },
              analysis: {
                bsonType: "object",
@@ -184,8 +192,10 @@ db.mark.createIndex({"geometries.features.bound":"2dsphere"})
 //db.mark.createIndex({"geometries.features.geometry":"2dsphere"})
 
 db.mark.createIndex({"provenance": 1})
-db.mark.createIndex({"provenance.image.slide": 1, "provenance.image.execution_id": 1})
+db.mark.createIndex({"provenance.image.slide": 1, "provenance.analysis.execution_id": 1})
+db.mark.createIndex({"provenance.image.study": 1, "provenance.image.specimen": 1, "provenance.image.slide": 1})
 db.slide.createIndex({'name': 1})
 db.template.createIndex({'id': 1})
 db.template.createIndex({'name': 1})
-db.heatmap.createIndex({"provenance.image.slide": 1, "provenance.image.execution_id": 1})
+db.heatmap.createIndex({"provenance.image.slide": 1, "provenance.analysis.execution_id": 1})
+db.heatmap.createIndex({"provenance.image.study": 1, "provenance.image.specimen": 1, "provenance.image.slide": 1})
