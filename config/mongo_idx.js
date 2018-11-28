@@ -50,42 +50,6 @@ db.createCollection("slide", {
   }
 });
 
-db.createCollection("heatmap", {
-  validator: {
-     $jsonSchema: {
-       bsonType: "object",
-        required: [ "slide", "name", "width", "height", "key", "values" ],
-        properties: {
-           name: {
-              bsonType: "string",
-              description: "Hetamap identifier"
-           },
-           slide: {
-              bsonType: "string",
-              description: "The associated slide"
-           },
-           height: {
-              bsonType: "number",
-              minimum: 0,
-              description: "Height of the heatmap in its coordinates"
-           },
-           width: {
-              bsonType: "number",
-              minimum: 0,
-              description: "Width of the heatmap in its coordinates"
-           },
-           key: {
-              bsonType: "string",
-              description: "What the heatmap values mean"
-           },
-           values: {
-              bsonType: "array",
-              description: "array of values, in form of [x,y,value]"
-           }
-         }
-     }
- }
-});
 
 db.createCollection("mark", {
   validator: {
