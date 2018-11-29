@@ -12,7 +12,7 @@ const findurl = "http://localhost:4010/data/Slide/find?slide=TEST"
 describe('Slide Loading Step 1', function () {
 
   it('Posts a Slide', function (done) {
-    var slideData = {"name" : "TEST" , "location" : "/images/sample.svs" , "mpp" : 0.499};
+    var slideData = {"name" : "TEST" , "specimen": '', "study": '', "location" : "/images/sample.svs" , "mpp" : 0.499};
     var postProcess = fetch(posturl, {
         "method":"POST",
         mode: "cors",
