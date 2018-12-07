@@ -344,5 +344,5 @@ var templates = [algorithm_2_schema, algorithm_1_schema, annotation_schema]
 db.slide.insertMany(slides)
 db.mark.insertMany(marks)
 db.template.insertMany(templates)
-db.authorization.insertMany(auths)
+//db.authorization.insertMany(auths)
 db.heatmap.insertMany(heatmaps)
