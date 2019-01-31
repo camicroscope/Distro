@@ -3,7 +3,7 @@ const assert = require('assert');
 const { JSDOM } = jsdom;
 
 // jsdom instance
-const testurl = "http://localhost:4010/viewer.html"
+const testurl = "http://localhost:4010/apps/viewer/viewer.html"
 
 
 describe('Minimal Distribution Test', function () {
