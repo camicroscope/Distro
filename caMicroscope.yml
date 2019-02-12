@@ -29,26 +29,26 @@ services:
       - ./config/bindaas_projects/:/root/bindaas/bin/projects/
       - ./config/bindaas.config.json:/root/bindaas/bin/bindaas.config.json
   iip:
-    build: "https://github.com/camicroscope/iipImage.git#release"
+    build: "https://github.com/camicroscope/iipImage.git#develop"
     container_name: ca-iip
     logging:
       driver: none
     volumes:
       - ./images/:/images/
   viewer:
-    build: "https://github.com/camicroscope/caMicroscope.git#release"
+    build: "https://github.com/camicroscope/caMicroscope.git#develop"
     container_name: ca-front
     logging:
       driver: none
   loader:
-    build: "https://github.com/camicroscope/SlideLoader.git#release"
+    build: "https://github.com/camicroscope/SlideLoader.git#develop"
     container_name: ca-load
     logging:
       driver: none
     volumes:
       - ./images/:/images/
   elevate:
-    build: "https://github.com/camicroscope/Security.git#release"
+    build: "https://github.com/camicroscope/Security.git#develop"
     container_name: ca-security
     logging:
       driver: none
