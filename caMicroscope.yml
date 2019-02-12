@@ -6,6 +6,17 @@ services:
     container_name: ca-mongo
     logging:
       driver: none
+  idxMongo:
+    image: mongo
+    container_name: ca-idx
+    links:
+      - mongo
+    volumes:
+      - ./config:/config
+    command:
+      - /config/run_idx.sh
+    depends_on:
+      - mongo
   bindaas:
     build: "./Deps/Bindaas/"
     depends_on:
