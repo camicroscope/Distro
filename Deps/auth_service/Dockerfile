@@ -6,4 +6,4 @@ WORKDIR /root/src
 RUN npm install
 RUN npm install -g forever
 EXPOSE 8010
-CMD forever start router.js -w ./
+CMD forever app.js
