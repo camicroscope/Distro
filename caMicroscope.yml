@@ -58,7 +58,7 @@ services:
     environment:
       - DISABLE_SEC=true
   auth:
-    build: "./auth_service/"
+    build: "./Deps/auth_service/"
     container_name: ca-auth
     logging:
       driver: none
