@@ -3,7 +3,7 @@ const rp = require('request-promise');
 const app = express();
 var jwt = require('jsonwebtoken');
 var PORT = process.env.PORT || 8010
-var BASE_USER_URL = "http://ca-data:9099/services/caMicroscope/Auth/query/get?name="
+var BASE_USER_URL = "http://ca-data:9099/services/caMicroscope/Authorization/query/getAuth?name="
 
 const getToken = function(req) {
     if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') { // Authorization: Bearer g1jipjgi1ifjioj
@@ -20,25 +20,32 @@ const getToken = function(req) {
 
 app.get("/check", async function(req,res){
   var token = jwt.decode(getToken(req))
-  if (!(token.payload && (token.payload.email || token.payload.sub))){
+  if (!(token && (token.email || token.sub))){
     // jwt doesn't say who you are, so bye
-    res.send(401)
+    res.sendStatus(401)
   } else {
-    var name = token.payload.email || token.payload.sub
+    var name = token.email || token.sub
     var attr = req.query.attr
-    user_detail = await rp({
+    user_detail = rp({
       uri: BASE_USER_URL + name,
       json: true
     })
-    if (user_detail.length >= 1){
-      if (!attr || user_detail[0].attrs.includes(attr)){
-        res.send(200)
+    user_detail.then(x=>{
+      console.log(x)
+      if (x.length >= 1){
+        if (!attr || x[0].attrs.includes(attr)){
+          res.sendStatus(200)
+        } else {
+          res.sendStatus(401)
+        }
       } else {
-        res.send(401)
+        res.sendStatus(401)
       }
-    } else {
-      res.send(401)
-    }
+    })
+    user_detail.catch(e=>{
+      console.log(e)
+      res.sendStatus(401)
+    })
   }
 })
 // get route for check
