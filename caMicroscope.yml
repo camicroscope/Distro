@@ -4,6 +4,8 @@ services:
   mongo:
     image: mongo
     container_name: ca-mongo
+    volumes:
+      -./db:/data/db
     logging:
       driver: none
   idxMongo:
