@@ -944,7 +944,7 @@
           "description": " "
         },
         "findTypes": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"}}\n                        },\n\"fields\" :{ \u0027data\u0027 : 0 }\n}            ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"}},\n\"fields\" :{ \u0027data\u0027 : 0 }                        \n}\n\n}             ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -966,9 +966,9 @@
             "outputFormat": "JSON"
           },
           "name": "findTypes",
-          "timeCreated": "Thu Feb 28 20:06:09 UTC 2019",
+          "timeCreated": "Thu Feb 28 20:10:52 UTC 2019",
           "createdBy": "admin",
-          "description": " "
+          "description": "  "
         }
       },
       "deleteEndpoints": {
