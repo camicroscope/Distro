@@ -896,12 +896,18 @@
       },
       "queryEndpoints": {
         "get": {
-          "queryTemplate": "{\n\t\"_operation\" : \"find\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027_id\u0027 : {\"$oid\":\"$id$\"}} ,\n\t\t\t\t\t\t\t\"limit\" : 1\n\t\t\t\t\t\t}\n}",
+          "queryTemplate": "{\n\t\u0027_operation\u0027: \u0027find\u0027,\n\t\u0027_operation_args\u0027: \n\t{\n\t\u0027query\u0027: {\n\t\t\"provenance.image.case_id\": \"$caseId$\",\n\t\t\"provenance.analysis.execution_id\":\"$execId$\"\n\t},\n\t\t\u0027fields\u0027: {\n\t\t\t\u0027provenance\u0027:1,\n                        \u0027data\u0027:1,\n\t\t\t\u0027_id\u0027: 1\n\t\t}\n\t}\n}      ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
-            "id": {
-              "name": "id",
+            "caseId": {
+              "name": "caseId",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "execId": {
+              "name": "execId",
               "required": true,
               "defaultValue": "",
               "description": ""
@@ -912,7 +918,7 @@
             "outputFormat": "JSON"
           },
           "name": "get",
-          "timeCreated": "Wed Nov 14 15:50:03 UTC 2018",
+          "timeCreated": "Mon Dec 03 22:22:39 UTC 2018",
           "createdBy": "admin",
           "description": ""
         },
