@@ -18,6 +18,7 @@ RUN wget https://github.com/sharmalab/bindaas/releases/download/v3.3.5/bindaas-d
 RUN tar -xvf bindaas-dist-3.3.5.tar.gz && rm bindaas-dist-3.3.5.tar.gz
 
 COPY bindaas.config.json /root/bindaas/bin/
+COPY run.sh /root/bindaas/bin/
 
 # Add java to path
 ENV PATH /root/src/jre1.8.0_171/bin:$PATH
