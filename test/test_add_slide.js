@@ -4,7 +4,6 @@ const { JSDOM } = jsdom;
 const fetch = require("node-fetch")
 
 // jsdom instance
-const testurl = "http://localhost:4010/table.html"
 const posturl = "http://localhost:4010/data/Slide/post"
 const findurl = "http://localhost:4010/data/Slide/find?slide=TEST"
 
@@ -23,6 +22,7 @@ describe('Slide Loading Step 1', function () {
             },
         body:JSON.stringify(slideData)})
     postProcess.then(x=>x.json()).then(x=>{
+      console.log(x)
       assert.equal(x.count,1, "Post Reported Successful")
       done()
     }).catch(e=>{
@@ -38,6 +38,7 @@ describe('Slide Loading Step 2', function () {
     this.timeout(5000);
     let getProcess = fetch(findurl)
     getProcess.then(x=>x.json()).then(x=>{
+      console.log(x)
       assert.equal(x.length,1, "Slide Shows up in API List")
       done()
     }).catch(e=>{
