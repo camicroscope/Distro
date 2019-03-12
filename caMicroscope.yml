@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mongo:
-    image: mongo
+    image: mongo:3.4.19-jessie
     container_name: ca-mongo
     volumes:
       - ./db:/data/db
@@ -26,31 +26,30 @@ services:
     container_name: ca-data
     logging:
       driver: none
-    ports: ["8080:8080", "9099:9099"]
     volumes:
       - ./config/bindaas_projects/:/root/bindaas/bin/projects/
       - ./config/bindaas.config.json:/root/bindaas/bin/bindaas.config.json
   iip:
-    build: "https://github.com/camicroscope/iipImage.git#develop"
+    build: "https://github.com/camicroscope/iipImage.git#v3.1.0"
     container_name: ca-iip
     logging:
       driver: none
     volumes:
       - ./images/:/images/
   viewer:
-    build: "https://github.com/camicroscope/caMicroscope.git#develop"
+    build: "https://github.com/camicroscope/caMicroscope.git#v3.1.0"
     container_name: ca-front
     logging:
       driver: none
   loader:
-    build: "https://github.com/camicroscope/SlideLoader.git#develop"
+    build: "https://github.com/camicroscope/SlideLoader.git#v3.1.0"
     container_name: ca-load
     logging:
       driver: none
     volumes:
       - ./images/:/images/
   elevate:
-    build: "https://github.com/camicroscope/Security.git#develop"
+    build: "https://github.com/camicroscope/Security.git#v3.1.0"
     container_name: ca-security
     ports: ["4010:4010"]
     volumes:
