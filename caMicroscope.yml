@@ -11,6 +11,8 @@ services:
   idxMongo:
     image: mongo:3.4.19-jessie
     container_name: ca-idx
+    logging:
+      driver: none
     links:
       - mongo
     volumes:
