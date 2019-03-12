@@ -54,12 +54,15 @@ services:
     ports: ["4010:4010"]
     volumes:
       - ./config/routes.json:/root/src/routes.json
+      - ./keys/:/keys/
     environment:
       - DISABLE_SEC=true
     logging:
       driver: none
   auth:
     build: "./Deps/auth_service/"
+    volumes:
+      - ./keys/:/keys/
     container_name: ca-auth
     logging:
       driver: none
