@@ -9,7 +9,7 @@ services:
     logging:
       driver: none
   idxMongo:
-    image: mongo
+    image: mongo:3.4.19-jessie
     container_name: ca-idx
     links:
       - mongo
