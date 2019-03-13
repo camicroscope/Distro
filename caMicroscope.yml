@@ -39,7 +39,7 @@ services:
     volumes:
       - ./images/:/images/
   viewer:
-    build: "https://github.com/camicroscope/caMicroscope.git#v3.1.0"
+    build: "https://github.com/camicroscope/caMicroscope.git#v3.1.1"
     container_name: ca-front
     logging:
       driver: none
