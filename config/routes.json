@@ -2,9 +2,7 @@
   "root":"http://ca-front:80/",
   "_root_public": "true",
   "auth":{
-    "elevate_url":"http://ca-auth:8010/check",
-    "elevate_ok":{"mode": "status"},
-    "attr_suffix":"?attr="
+    "permissions_field":"attrs"
   },
   "services":{
     "data":{
