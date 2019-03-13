@@ -9,8 +9,10 @@ services:
     logging:
       driver: none
   idxMongo:
-    image: mongo
+    image: mongo:3.4.19-jessie
     container_name: ca-idx
+    logging:
+      driver: none
     links:
       - mongo
     volumes:
@@ -37,7 +39,7 @@ services:
     volumes:
       - ./images/:/images/
   viewer:
-    build: "https://github.com/camicroscope/caMicroscope.git#v3.1.0"
+    build: "https://github.com/camicroscope/caMicroscope.git#v3.1.1"
     container_name: ca-front
     logging:
       driver: none
@@ -54,12 +56,15 @@ services:
     ports: ["4010:4010"]
     volumes:
       - ./config/routes.json:/root/src/routes.json
+      - ./jwt_keys/:/keys/
     environment:
       - DISABLE_SEC=true
     logging:
       driver: none
   auth:
     build: "./Deps/auth_service/"
+    volumes:
+      - ./jwt_keys/:/keys/
     container_name: ca-auth
     logging:
       driver: none
