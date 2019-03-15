@@ -52,8 +52,8 @@
       "Slide":{
         "_resolver":{
           "destination":"?DeepZoom={OUT}",
-          "url": "https://vinculum.bmi.stonybrookmedicine.edu/node/{IN}?_format=json",
-          "field":"field_iip_path[0].value",
+          "url":"http://ca-data:9099/services/caMicroscope/Slide/query/get?id={IN}",
+          "field":"location",
           "before":["_files", ".dzi"]
         }
       }
@@ -68,14 +68,6 @@
       "Slide":{
         "info":"/data/one",
         "thumb":"/data/thumbnail"
-      }
-    },
-    "pathdb":{
-      "_public": "true",
-      "_base": "https://vinculum.bmi.stonybrookmedicine.edu/",
-      "slide":{
-        "info":"/node/",
-        "unmod":""
       }
     }
   }
