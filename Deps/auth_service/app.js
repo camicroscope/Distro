@@ -7,9 +7,9 @@ var BASE_USER_URL = "http://ca-data:9099/services/caMicroscope/Authorization/que
 var SECRET = process.env.SECRET
 
 try {
-  let pubkey_path = "/keys/key"
-  if(fs.existsSync(pubkey_path)){
-    var PRIKEY = fs.readFileSync(ssl_pk_path, 'utf8')
+  let prikey_path = "/keys/key"
+  if(fs.existsSync(prikey_path)){
+    var PRIKEY = fs.readFileSync(prikey_path, 'utf8')
   }
 } catch (err){
   console.error(err)
