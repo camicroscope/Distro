@@ -15,6 +15,15 @@ try {
   console.error(err)
 }
 
+try {
+  let cert_path = "/keys/certificate"
+  if(fs.existsSync(cert_path)){
+    var SECRET = fs.readFileSync(cert_path, 'utf8')
+  }
+} catch (err){
+  console.error(err)
+}
+
 const getToken = function(req) {
     if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') { // Authorization: Bearer g1jipjgi1ifjioj
         // Handle token presented as a Bearer token in the Authorization header

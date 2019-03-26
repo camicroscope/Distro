@@ -37,8 +37,10 @@ services:
     volumes:
       - ./images/:/images/
   viewer:
-    build: "https://github.com/camicroscope/caMicroscope.git#develop"
+    build: "https://github.com/pranavbudhwant/caMicroscope.git"
     container_name: ca-front
+    volumes:
+      - ./config/login.html:/var/www/html/login.html
     logging:
       driver: none
   loader:
@@ -49,10 +51,8 @@ services:
     volumes:
       - ./images/:/images/
   elevate:
-    build: "https://github.com/camicroscope/Security.git#develop"
+    build: "../Security"
     container_name: ca-security
-    logging:
-      driver: none
     ports: ["4010:4010"]
     volumes:
       - ./config/routes.json:/root/src/routes.json

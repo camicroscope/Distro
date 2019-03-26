@@ -69,6 +69,12 @@
         "info":"/data/one",
         "thumb":"/data/thumbnail"
       }
+    },
+    "auth": {
+      "_base": "http://ca-auth:8010",
+      "Token":{
+        "check":"/check"
+      }
     }
   }
 }
