@@ -30,4 +30,4 @@ Turn off disable security under the elevate service to block routes.
 
 Add users as in ./config/add\_mongo\_users.js. Attributes can be added to deny access to routes (e.g. allow only some users to post and delete)
 
-The … is token.email || token.sub from the identity provider.
+The name field is the email field (or failing that, sub field) in that priority from the identity provider.

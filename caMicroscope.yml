@@ -51,7 +51,7 @@ services:
     volumes:
       - ./images/:/images/
   elevate:
-    build: "../Security"
+    build: "https://github.com/camicroscope/Security.git#develop"
     container_name: ca-security
     ports: ["4010:4010"]
     volumes:
