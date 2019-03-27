@@ -18,7 +18,7 @@ The example given in the Distro within config/login.html is set up for auth0; si
 
 Add the following files; by default, they are mounted:
 
-- --./jwt\_keys/certificate is the certificate/public key/secret from the **identity provider**.
+- --./jwt\_keys/certificate or ./jwt\_keys/jwk.json is the certificate/public key/secret or jwk (respectively) from the **identity provider**. (If both are included, the jwk takes precedence).
 - --./jwt\_keys/key and ./jwt\_keys/key.pub are used as the signing and check keys for the **auth service**
   - --These can (and should) be generated with ./kwt\_keys/make\_keys.sh
 
