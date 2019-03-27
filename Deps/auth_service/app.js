@@ -62,14 +62,14 @@ app.get("/check", async function(req,res){
     user_detail.then(x=>{
       console.log(x)
       if (x.length >= 1 && x[0].hasOwnProperty('name')){
-        let attrs = x.attrs || []
+        let attrs = x[0].attrs || []
         data = {
-          'name':x.name,
+          'name':x[0].name,
           'attrs':attrs
         }
         // sign using the mounted key
-        var token = jwt.sign(data, PRIKEY)
-        res.send(token)
+        var token = jwt.sign(data, PRIKEY, {algorithm:"RS256"})
+        res.send({'token':token})
       } else {
         res.sendStatus(401)
       }
