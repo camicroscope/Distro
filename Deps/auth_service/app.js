@@ -2,6 +2,7 @@ const express = require('express')
 const rp = require('request-promise');
 const app = express();
 var jwt = require('jsonwebtoken');
+var jwkToPem = require('jwk-to-pem');
 var PORT = process.env.PORT || 8010
 var BASE_USER_URL = "http://ca-data:9099/services/caMicroscope/Authorization/query/getAuth?name="
 var SECRET = process.env.SECRET
@@ -19,6 +20,15 @@ try {
   let cert_path = "/keys/certificate"
   if(fs.existsSync(cert_path)){
     var SECRET = fs.readFileSync(cert_path, 'utf8')
+  }
+} catch (err){
+  console.error(err)
+}
+// jwks
+try {
+  let jwk_path = "/keys/jwk.json"
+  if(fs.existsSync(jwk_path)){
+    var SECRET = jwkToPem(JSON.parse(fs.readFileSync(jwk_path, 'utf8')))
   }
 } catch (err){
   console.error(err)
