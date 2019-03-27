@@ -2,8 +2,9 @@
 <h1>Redirecting...</h1>
 <script>
 // config vars, these are DEFAULTS
-var redirect_uri = "https://wolf.cci.emory.edu/camic_uat/login.html"
-var default_redirect = "https://wolf.cci.emory.edu/camic_uat/apps/viewer/viewer.html"
+var base_deployment_url = "https://wolf.cci.emory.edu/seer_vtr/"
+var redirect_uri = base_deployment_url + "login.html"
+var default_redirect = base_deployment_url + "apps/table.html"
 var audience = "wolf.cci.emory.edu/camic_uat"
 var scope = "openid%20email"
 var client_id = "YLRDUmEs5Jivi6FX3XtNNAt97X3a0epD"
