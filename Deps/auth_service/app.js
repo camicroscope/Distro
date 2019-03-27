@@ -1,6 +1,7 @@
 const express = require('express')
 const rp = require('request-promise');
 const app = express();
+const fs = require("fs");
 var jwt = require('jsonwebtoken');
 var jwkToPem = require('jwk-to-pem');
 var PORT = process.env.PORT || 8010
