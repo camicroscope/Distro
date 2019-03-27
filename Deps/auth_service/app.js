@@ -61,7 +61,7 @@ app.get("/check", async function(req,res){
     })
     user_detail.then(x=>{
       console.log(x)
-      if (x.length >= 1 && x.hasOwnProperty('name')){
+      if (x.length >= 1 && x[0].hasOwnProperty('name')){
         let attrs = x.attrs || []
         data = {
           'name':x.name,
