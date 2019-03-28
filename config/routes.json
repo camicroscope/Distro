@@ -6,7 +6,6 @@
   },
   "services":{
     "data":{
-      "_public": "true",
       "_base": "http://ca-data:9099/services/caMicroscope",
       "Mark": {
         "get":"/Mark/query/get",
