@@ -7,6 +7,7 @@ var jwkToPem = require('jwk-to-pem');
 var PORT = process.env.PORT || 8010
 var BASE_USER_URL = "http://ca-data:9099/services/caMicroscope/Authorization/query/getAuth?name="
 var SECRET = process.env.SECRET
+var EXPIRY = process.env.EXPIRY || "1h"
 
 try {
   let prikey_path = "/keys/key"
@@ -68,7 +69,7 @@ app.get("/check", async function(req,res){
           'attrs':attrs
         }
         // sign using the mounted key
-        var token = jwt.sign(data, PRIKEY, {algorithm:"RS256"})
+        var token = jwt.sign(data, PRIKEY, {algorithm:"RS256", expiresIn: EXPIRY})
         res.send({'token':token})
       } else {
         res.sendStatus(401)
