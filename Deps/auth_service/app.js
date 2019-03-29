@@ -1,15 +1,36 @@
 const express = require('express')
 const rp = require('request-promise');
 const app = express();
+const fs = require("fs");
 var jwt = require('jsonwebtoken');
+var jwkToPem = require('jwk-to-pem');
 var PORT = process.env.PORT || 8010
 var BASE_USER_URL = "http://ca-data:9099/services/caMicroscope/Authorization/query/getAuth?name="
 var SECRET = process.env.SECRET
+var EXPIRY = process.env.EXPIRY || "1h"
 
 try {
-  let pubkey_path = "/keys/key"
-  if(fs.existsSync(pubkey_path)){
-    var PRIKEY = fs.readFileSync(ssl_pk_path, 'utf8')
+  let prikey_path = "/keys/key"
+  if(fs.existsSync(prikey_path)){
+    var PRIKEY = fs.readFileSync(prikey_path, 'utf8')
+  }
+} catch (err){
+  console.error(err)
+}
+
+try {
+  let cert_path = "/keys/certificate"
+  if(fs.existsSync(cert_path)){
+    var SECRET = fs.readFileSync(cert_path, 'utf8')
+  }
+} catch (err){
+  console.error(err)
+}
+// jwks
+try {
+  let jwk_path = "/keys/jwk.json"
+  if(fs.existsSync(jwk_path)){
+    var SECRET = jwkToPem(JSON.parse(fs.readFileSync(jwk_path, 'utf8')))
   }
 } catch (err){
   console.error(err)
@@ -41,15 +62,15 @@ app.get("/check", async function(req,res){
     })
     user_detail.then(x=>{
       console.log(x)
-      if (x.length >= 1 && x.hasOwnProperty('name')){
-        let attrs = x.attrs || []
+      if (x.length >= 1 && x[0].hasOwnProperty('name')){
+        let attrs = x[0].attrs || []
         data = {
-          'name':x.name,
+          'name':x[0].name,
           'attrs':attrs
         }
         // sign using the mounted key
-        var token = jwt.sign(data, PRIKEY)
-        res.send(token)
+        var token = jwt.sign(data, PRIKEY, {algorithm:"RS256", expiresIn: EXPIRY})
+        res.send({'token':token})
       } else {
         res.sendStatus(401)
       }

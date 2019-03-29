@@ -6,7 +6,6 @@
   },
   "services":{
     "data":{
-      "_public": "true",
       "_base": "http://ca-data:9099/services/caMicroscope",
       "Mark": {
         "get":"/Mark/query/get",
@@ -68,6 +67,13 @@
       "Slide":{
         "info":"/data/one",
         "thumb":"/data/thumbnail"
+      }
+    },
+    "auth": {
+      "_public": "true",
+      "_base": "http://ca-auth:8010",
+      "Token":{
+        "check":"/check"
       }
     }
   }
