@@ -37,7 +37,7 @@ services:
     volumes:
       - ./images/:/images/
   viewer:
-    build: "https://github.com/pranavbudhwant/caMicroscope.git"
+    build: "https://github.com/camicroscope/caMicroscope.git"
     container_name: ca-front
     volumes:
       - ./config/login.html:/var/www/html/login.html
