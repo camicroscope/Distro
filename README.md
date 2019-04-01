@@ -1,4 +1,7 @@
 # caMicroscope Distribution
+
+[![Build Status](https://travis-ci.org/camicroscope/Distro.svg?branch=master)](https://travis-ci.org/camicroscope/Distro)
+
 caMicroscope 3.X distribution
 
 
