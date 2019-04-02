@@ -19,6 +19,15 @@ try {
 }
 
 try {
+  let pubkey_path = "/keys/key.pub"
+  if(fs.existsSync(pubkey_path)){
+    var PUBKEY = fs.readFileSync(pubkey_path, 'utf8')
+  }
+} catch (err){
+  console.error(err)
+}
+
+try {
   let cert_path = "/keys/certificate"
   if(fs.existsSync(cert_path)){
     var SECRET = fs.readFileSync(cert_path, 'utf8')
@@ -49,6 +58,7 @@ const getToken = function(req) {
     }
 }
 
+
 app.get("/check", async function(req,res){
   var token = jwt.verify(getToken(req), SECRET)
   if (!(token && (token.email || token.sub))){
@@ -56,6 +66,40 @@ app.get("/check", async function(req,res){
     res.sendStatus(401)
   } else {
     var name = token.email || token.sub
+    user_detail = rp({
+      uri: BASE_USER_URL + name,
+      json: true
+    })
+    user_detail.then(x=>{
+      console.log(x)
+      if (x.length >= 1 && x[0].hasOwnProperty('name')){
+        let attrs = x[0].attrs || []
+        data = {
+          'sub':name,
+          'name':x[0].name,
+          'attrs':attrs
+        }
+        // sign using the mounted key
+        var token = jwt.sign(data, PRIKEY, {algorithm:"RS256", expiresIn: EXPIRY})
+        res.send({'token':token})
+      } else {
+        res.sendStatus(401)
+      }
+    })
+    user_detail.catch(e=>{
+      console.log(e)
+      res.sendStatus(401)
+    })
+  }
+})
+// renew a token
+app.get("/renew", async function(req,res){
+  var token = jwt.verify(getToken(req), PUBKEY)
+  if (!(token && (token.name || token.email || token.sub))){
+    // jwt doesn't say who you are, so bye
+    res.sendStatus(401)
+  } else {
+    var name = token.name || token.email || token.sub
     user_detail = rp({
       uri: BASE_USER_URL + name,
       json: true
@@ -81,8 +125,4 @@ app.get("/check", async function(req,res){
     })
   }
 })
-// get route for check
-// does the user exist?
-// are there attr options? what are they? do we have them?
-
 app.listen(PORT, () => console.log('listening on ' + PORT))
