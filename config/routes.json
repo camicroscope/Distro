@@ -73,7 +73,8 @@
       "_public": "true",
       "_base": "http://ca-auth:8010",
       "Token":{
-        "check":"/check"
+        "check":"/check",
+        "renew":"/renew"
       }
     }
   }
