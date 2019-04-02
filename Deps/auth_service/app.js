@@ -4,10 +4,14 @@ const app = express();
 const fs = require("fs");
 var jwt = require('jsonwebtoken');
 var jwkToPem = require('jwk-to-pem');
+var cookieParser = require('cookie-parser');
 var PORT = process.env.PORT || 8010
 var BASE_USER_URL = "http://ca-data:9099/services/caMicroscope/Authorization/query/getAuth?name="
 var SECRET = process.env.SECRET
 var EXPIRY = process.env.EXPIRY || "1h"
+
+// get cookies
+app.use(cookieParser())
 
 try {
   let prikey_path = "/keys/key"
