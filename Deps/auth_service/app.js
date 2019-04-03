@@ -8,7 +8,7 @@ var cookieParser = require('cookie-parser');
 var PORT = process.env.PORT || 8010
 var BASE_USER_URL = "http://ca-data:9099/services/caMicroscope/Authorization/query/getAuth?name="
 var SECRET = process.env.SECRET
-var EXPIRY = process.env.EXPIRY || "1h"
+var EXPIRY = process.env.EXPIRY || "1d"
 
 // get cookies
 app.use(cookieParser())
