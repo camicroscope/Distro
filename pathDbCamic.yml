@@ -45,9 +45,7 @@ services:
     container_name: ca-security
     ports: ["4010:4010"]
     volumes:
-      - ./config/routes.json:/root/src/routes.json
-    environment:
-      - DISABLE_SEC=true
+      - ./config/pathdb_routes.json:/root/src/routes.json
   pathdb:
     build: "https://github.com/SBU-BMI/PathDB.git#master"
     container_name: quip-pathdb
