@@ -38,7 +38,7 @@ Packages - Packages are built in the viewer service using parcel, mount a differ
 
 ## PathDB
 
-To use pathdb, use pathDbCamic.yml instead of caMicroscope.yml, and replace routes.json with pathdb_routes.json. This deployment does not include the auth and loader as separate services, as this PathDB provides that functionality.
+To use PathDB, use pathDbCamic.yml instead of caMicroscope.yml. This deployment does not include the auth and loader as separate services, as this PathDB provides that functionality.
 
 ## Support
-Feel free to add any support inquiry as a github issue to this repository.
+Feel free to add any support inquiry as a github issue to this repository. Other feedback can be given via [this form](https://docs.google.com/forms/d/e/1FAIpQLScL91LxrpAZjU88GBZP9gmcdgdf8__uNUwhws2lzU6Lr4qNwA/viewform).
