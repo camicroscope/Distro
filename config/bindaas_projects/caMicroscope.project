@@ -923,7 +923,7 @@
           "description": ""
         },
         "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"}}\n                        }\n}          ",
+        "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.subject_id\" : {$regex: \"$subject$\", $options: \"i\"},\n                                        \"provenance.image.case_id\" : {$regex: \"$case$\", $options: \"i\"},\n                                        \"provenance.image.slide_id\" : {$regex: \"$slide$\", $options: \"i\"}}\n                        }\n}          ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -935,6 +935,18 @@
             },
             "slide": {
               "name": "slide",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "subject": {
+              "name": "subject",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },            
+            "case": {
+              "name": "case",
               "required": false,
               "defaultValue": "",
               "description": ""
@@ -950,7 +962,7 @@
           "description": " "
         },
         "findTypes": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"}},\n\"fields\" :{ \u0027data\u0027 : 0 }                        \n}\n\n}             ",
+	          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.subject_id\" : {$regex: \"$subject$\", $options: \"i\"},\n                                        \"provenance.image.case_id\" : {$regex: \"$case$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"}},\n                                        \"fields\" :{ \u0027data\u0027 : 0 }                        \n}\n\n}             ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -962,6 +974,18 @@
             },
             "slide": {
               "name": "slide",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "subject": {
+              "name": "subject",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },            
+            "case": {
+              "name": "case",
               "required": false,
               "defaultValue": "",
               "description": ""
