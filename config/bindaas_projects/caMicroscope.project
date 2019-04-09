@@ -896,18 +896,23 @@
       },
       "queryEndpoints": {
         "get": {
-          "queryTemplate": "{\n\t\u0027_operation\u0027: \u0027find\u0027,\n\t\u0027_operation_args\u0027: \n\t{\n\t\u0027query\u0027: {\n\t\t\"provenance.image.case_id\": \"$caseId$\",\n\t\t\"provenance.analysis.execution_id\":\"$execId$\"\n\t},\n\t\t\u0027fields\u0027: {\n\t\t\t\u0027provenance\u0027:1,\n                        \u0027data\u0027:1,\n\t\t\t\u0027_id\u0027: 1\n\t\t}\n\t}\n}      ",
+          "queryTemplate": "{\n\t\u0027_operation\u0027: \u0027find\u0027,\n\t\u0027_operation_args\u0027: \n\t{\n\t\u0027query\u0027: {\n\t\t\"provenance.image.case_id\": \"$case$\",\n\t\t\"provenance.image.subject_id\": \"$subject$\",\n\t\t\"provenance.analysis.execution_id\":\"$exec$\"\n\t},\n\t\t\u0027fields\u0027: {\n\t\t\t\u0027provenance\u0027:1,\n                        \u0027data\u0027:1,\n\t\t\t\u0027_id\u0027: 1\n\t\t}\n\t}\n}      ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
-            "caseId": {
-              "name": "caseId",
+            "case": {
+              "name": "case",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },"subject": {
+              "name": "subject",
               "required": true,
               "defaultValue": "",
               "description": ""
             },
-            "execId": {
-              "name": "execId",
+            "exec": {
+              "name": "exec",
               "required": true,
               "defaultValue": "",
               "description": ""
