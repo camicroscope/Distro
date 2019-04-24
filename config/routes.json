@@ -22,7 +22,7 @@
         "types":"/Heatmap/query/findTypes",
         "post":{"path": "/Heatmap/submit/json", "attr": "write"},
         "delete":{"path": "/Heatmap/delete/deleteHeatmap", "attr": "write"},
-        "update":{"path": "/Heatmap/delete/updateThreshold", "attr": "write"}
+        "threshold":{"path": "/Heatmap/delete/updateThreshold", "attr": "write"}
       },
       "Overlay": {
         "get":"/Overlay/query/get",
