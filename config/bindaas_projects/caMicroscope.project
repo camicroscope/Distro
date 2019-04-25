@@ -1147,7 +1147,7 @@
           "description": ""
         },
         "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : {\u0027user_id\u0027: {$regex: \"$user$\", $options: \"i\"},\n                                            \u0027provenance.image.slide\u0027: {$regex: \"$slide$\", $options: \"i\"},\n                                            \u0027provenance.image.study\u0027: {$regex: \"$study$\", $options: \"i\"},\n                                            \u0027provenance.image.specimen\u0027: {$regex: \"$specimen$\", $options: \"i\"},\n                                            \u0027provenance.image.study\u0027: {$regex: \"$study$\", $options: \"i\"},\n                                            \u0027provenance.analysis.execution_id\u0027: {$regex: \"$execution$\", $options: \"i\"}}\n                        }\n}                   ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : {\u0027user_id\u0027: {$regex: \"$user$\", $options: \"i\"},\n                                            \u0027provenance.image.subject_id\u0027: {$regex: \"$subject$\", $options: \"i\"},\n                                            \u0027provenance.image.case_id\u0027: {$regex: \"$case$\", $options: \"i\"},\n                                            \u0027provenance.image.study\u0027: {$regex: \"$study$\", $options: \"i\"},\n                                            \u0027provenance.image.specimen\u0027: {$regex: \"$specimen$\", $options: \"i\"},\n                                            \u0027provenance.analysis.execution_id\u0027: {$regex: \"$execution$\", $options: \"i\"}}\n                        }\n}                     ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -1157,8 +1157,14 @@
               "defaultValue": "",
               "description": ""
             },
-            "slide": {
-              "name": "slide",
+            "subject": {
+              "name": "subject",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "case": {
+              "name": "case",
               "required": false,
               "defaultValue": "",
               "description": ""
@@ -1169,14 +1175,14 @@
               "defaultValue": "",
               "description": ""
             },
-            "specimen": {
-              "name": "specimen",
+            "execution": {
+              "name": "execution",
               "required": false,
               "defaultValue": "",
               "description": ""
             },
-            "execution": {
-              "name": "execution",
+            "specimen": {
+              "name": "specimen",
               "required": false,
               "defaultValue": "",
               "description": ""
@@ -1187,9 +1193,9 @@
             "outputFormat": "JSON"
           },
           "name": "find",
-          "timeCreated": "Wed Apr 24 18:14:34 GMT 2019",
+          "timeCreated": "Wed Apr 24 20:32:37 GMT 2019",
           "createdBy": "admin",
-          "description": ""
+          "description": "  "
         }
       },
       "deleteEndpoints": {
