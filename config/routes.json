@@ -1,5 +1,5 @@
-
-ot":"http://ca-front:80/",
+{
+  "root":"http://ca-front:80/",
   "_root_public": "true",
   "auth":{
     "permissions_field":"attrs"
@@ -86,4 +86,3 @@ ot":"http://ca-front:80/",
     }
   }
 }
-
