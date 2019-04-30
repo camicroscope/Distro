@@ -1,5 +1,5 @@
-{
-  "root":"http://ca-front:80/",
+
+ot":"http://ca-front:80/",
   "_root_public": "true",
   "auth":{
     "permissions_field":"attrs"
@@ -81,9 +81,9 @@
       "_public": "true",
       "_base": "http://ca-auth:8010",
       "Token":{
-        "check":"/check",
-        "renew":"/renew"
+        "check":"/check"
       }
     }
   }
 }
+

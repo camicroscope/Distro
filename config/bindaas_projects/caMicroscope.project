@@ -1032,7 +1032,7 @@
           "description": ""
         },
         "updateThreshold": {
-          "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027provenance.image.subject_id\u0027 : \u0027$subject$\u0027,\u0027provenance.analysis.execution_id\u0027 : \u0027$execution$\u0027,\u0027provenance.image.case_id\u0027 : \u0027$case$\u0027, } ,\n\t\t\t\t\t\t\t\"update\": {$set: { \u0027fields\u0027 : $fields$ }},\n\t\t\t\t\t\t\t\"upsert\": \u0027true\u0027,\n\t\t\t\t\t\t\t\"multi\" : \u0027false\u0027\n\t\t\t\t\t\t}\n}\n       ",
+          "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027provenance.image.subject_id\u0027 : \u0027$subject$\u0027,\u0027provenance.analysis.execution_id\u0027 : \u0027$execution$\u0027,\u0027provenance.image.case_id\u0027 : \u0027$case$\u0027} ,\n\t\t\t\t\t\t\t\"update\": {$set: { \u0027provenance.analysis.fields\u0027 : $fields$ }},\n\t\t\t\t\t\t\t\"upsert\": true,\n\t\t\t\t\t\t\t\"multi\" : true\n\t\t\t\t\t\t}\n}\n         ",
           "tags": [],
           "bindVariables": {
             "subject": {
@@ -1062,7 +1062,7 @@
           },
           "stage": "UNVERIFIED",
           "name": "updateThreshold",
-          "timeCreated": "Thu Apr 25 14:45:23 GMT 2019",
+          "timeCreated": "Fri Apr 26 17:11:58 GMT 2019",
           "createdBy": "admin",
           "description": ""
         }
@@ -1235,7 +1235,7 @@
           "description": ""
         },
         "update": {
-          "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027user_id\u0027 : \u0027$user$\u0027, \u0027provenance.image.subject_id\u0027:\u0027$subject$\u0027, \n\u0027provenance.image.case_id\u0027:\u0027$case$\u0027,\u0027provenance.analysis.execution_id\u0027:\u0027$execution$\u0027 } ,\n\t\t\t\t\t\t\t\"update\": {$set: { \u0027data\u0027 : parse(\u0027$data$\u0027) }},\n\t\t\t\t\t\t\t\"upsert\": \u0027true\u0027,\n\t\t\t\t\t\t\t\"multi\" : \u0027false\u0027\n\t\t\t\t\t\t}\n}\n    ",
+          "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027user_id\u0027 : \u0027$user$\u0027, \u0027provenance.image.subject_id\u0027:\u0027$subject$\u0027, \n\u0027provenance.image.case_id\u0027:\u0027$case$\u0027,\u0027provenance.analysis.execution_id\u0027:\u0027$execution$\u0027 } ,\n\t\t\t\t\t\t\t\"update\": {$set: { \u0027data\u0027 : $data$}},\n\t\t\t\t\t\t\t\"upsert\": true,\n\t\t\t\t\t\t\t\"multi\" : true\n\t\t\t\t\t\t}\n}\n      ",
           "tags": [],
           "bindVariables": {
             "user": {
@@ -1271,7 +1271,7 @@
           },
           "stage": "UNVERIFIED",
           "name": "update",
-          "timeCreated": "Wed Apr 24 22:20:51 GMT 2019",
+          "timeCreated": "Thu Apr 25 15:01:38 GMT 2019",
           "createdBy": "admin",
           "description": ""
         }
