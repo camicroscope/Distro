@@ -31,27 +31,32 @@ services:
       - ./config/bindaas_projects/:/root/bindaas/bin/projects/
       - ./config/bindaas.config.json:/root/bindaas/bin/bindaas.config.json
   iip:
-    build: "https://github.com/camicroscope/iipImage.git#v3.1.0"
+    build: "https://github.com/camicroscope/iipImage.git#v3.2.0"
     container_name: ca-iip
     volumes:
       - ./images/:/data/images/
   viewer:
-    build: "https://github.com/camicroscope/caMicroscope.git#release"
+    build: "https://github.com/camicroscope/caMicroscope.git#v3.3.0"
     container_name: ca-front
     logging:
       driver: none
   elevate:
-    build: "https://github.com/camicroscope/Security.git#v3.2.0"
+    build: "https://github.com/camicroscope/Security.git#v3.2.1"
     container_name: ca-security
     ports: ["4010:4010"]
     volumes:
       - ./config/routes.json:/root/src/routes.json
     environment:
       - DISABLE_SEC=true
+  auth:
+    build: "./Deps/auth_service/"
+    container_name: ca-auth
+    logging:
+      driver: none
   pathdb:
-    build: "https://github.com/SBU-BMI/PathDB.git#master"
+    build: "https://github.com/SBU-BMI/PathDB.git#1.0"
     container_name: quip-pathdb
-    ports: ["8887:80"]
+    ports: ["443:443","80:80"]
     volumes:
       - ./data:/data/
       - ./images/:/data/pathdb/files/wsi
