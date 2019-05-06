@@ -41,6 +41,7 @@ Packages - Packages are built in the viewer service using parcel, mount a differ
 To use PathDB, use pathDbCamic.yml instead of caMicroscope.yml. This deployment does not include the auth and loader as separate services, as this PathDB provides that functionality.
 
 Running QuIP with PathDB:
+
 0) place yourself in quip_distro folder.
 1) copy config/httpd.conf.template to config/httpd.conf
 2) copy config/pathdb_routes.json to config/routes.json (this will overwrite an existing routes.json file)
