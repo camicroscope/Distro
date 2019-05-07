@@ -41,6 +41,8 @@ services:
     container_name: ca-front
     volumes:
       - ./config/login.html:/var/www/html/login.html
+      - ./customization/table.html:/var/www/html/apps/table.html
+      - ./customization/viewer_init.js:/var/www/html/apps/viewer/init.js
     logging:
       driver: none
   loader:
