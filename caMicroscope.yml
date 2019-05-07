@@ -6,6 +6,7 @@ services:
     container_name: ca-mongo
     volumes:
       - ./db:/data/db
+      - /sharmalab/vtr_hm/:/hm
     logging:
       driver: none
   idxMongo:
@@ -17,6 +18,7 @@ services:
       - mongo
     volumes:
       - ./config:/config
+      - /hm:/hm
     command:
       - /config/run_idx.sh
     depends_on:
@@ -35,12 +37,14 @@ services:
     build: "https://github.com/camicroscope/iipImage.git#v3.2.0"
     container_name: ca-iip
     volumes:
-      - ./images/:/images/
+      - /sharmalab/SEER-VTR/VTR-Pending/:/data/SEER-VTR/VTR-Pending/
+      - /sharmalab/vtrdata/img/:/data/images/
   viewer:
     build: "https://github.com/camicroscope/caMicroscope.git#v3.3.1"
     container_name: ca-front
     volumes:
       - ./config/login.html:/var/www/html/login.html
+      - ./landing.html:/var/www/html/apps/landing/landing.html
       - ./customization/table.html:/var/www/html/apps/table.html
       - ./customization/viewer_init.js:/var/www/html/apps/viewer/init.js
     logging:
@@ -51,7 +55,8 @@ services:
     logging:
       driver: none
     volumes:
-      - ./images/:/images/
+      - /sharmalab/SEER-VTR/VTR-Pending/:/data/SEER-VTR/VTR-Pending/
+      - /sharmalab/vtrdata/img/:/data/images/
   elevate:
     build: "https://github.com/camicroscope/Security.git#v3.2.1"
     container_name: ca-security
@@ -59,8 +64,6 @@ services:
     volumes:
       - ./config/routes.json:/root/src/routes.json
       - ./jwt_keys/:/keys/
-    environment:
-      - DISABLE_SEC=true
   auth:
     build: "./Deps/auth_service/"
     volumes:
