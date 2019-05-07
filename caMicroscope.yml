@@ -45,6 +45,8 @@ services:
     volumes:
       - ./config/login.html:/var/www/html/login.html
       - ./landing.html:/var/www/html/apps/landing/landing.html
+      - ./customization/table.html:/var/www/html/apps/table.html
+      - ./customization/viewer_init.js:/var/www/html/apps/viewer/init.js
     logging:
       driver: none
   loader:
