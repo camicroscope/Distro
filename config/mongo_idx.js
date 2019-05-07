@@ -1,5 +1,6 @@
 db.authorization.createIndex( { "name": 1 }, { unique: true } )
 db.mark.createIndex({"geometries.features.bound":"2dsphere"})
+db.mark.createIndex({"provenance.image.slide": 1, "provenance.analysis.execution_id": 1, "footprint":1, "x":1, "y":1})
 db.mark.createIndex({"provenance": 1})
 db.mark.createIndex({"provenance.image.slide": 1, "provenance.analysis.execution_id": 1})
 db.mark.createIndex({"provenance.image.study": 1, "provenance.image.specimen": 1, "provenance.image.slide": 1})
