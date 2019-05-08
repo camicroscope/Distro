@@ -57,5 +57,6 @@ services:
       - ./images/:/data/pathdb/files/wsi
       - ./jwt_keys/:/keys/
       - ./config:/config
+      - ./config/pathdb_home_redir.html:/quip/web/caMicroscope/apps/table.html
     command:
       - /config/pathdb_pre.sh
