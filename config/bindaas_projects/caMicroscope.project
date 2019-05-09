@@ -238,19 +238,13 @@
           "description": "   "
         },
         "findTypes": {
-          "queryTemplate": "{ \"_operation\" : \"distinct\" , \"_operation_args\" : { \"field\" : \"provenance.analysis\", \"query\" : {\u0027provenance.analysis.execution_id\u0027: {$regex: \"$name$\", $options: \"i\"},\u0027provenance.image.slide\u0027: {$regex: \"$slide$\", $options: \"i\"} } } }     ",
+          "queryTemplate": "{ \"_operation\" : \"distinct\" , \"_operation_args\" : { \"field\" : \"provenance.analysis\", \"query\" : {\u0027provenance.image.slide\u0027: $slide$ } } }  ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
-            "name": {
-              "name": "name",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
             "slide": {
               "name": "slide",
-              "required": false,
+              "required": true,
               "defaultValue": "",
               "description": ""
             }
@@ -260,9 +254,36 @@
             "outputFormat": "JSON"
           },
           "name": "findTypes",
-          "timeCreated": "Wed May 08 19:02:10 GMT 2019",
+          "timeCreated": "Thu May 09 14:52:28 GMT 2019",
           "createdBy": "admin",
-          "description": "       "
+          "description": "        "
+        },
+        "findTypesExec": {
+          "queryTemplate": "{ \"_operation\" : \"distinct\" , \"_operation_args\" : { \"field\" : \"provenance.analysis\", \"query\" : {\u0027provenance.image.slide\u0027: $slide$,\u0027provenance.analysis.execution_id\u0027: $name$  } } } ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "slide": {
+              "name": "slide",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "name": {
+              "name": "name",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "findTypesExec",
+          "timeCreated": "Thu May 09 15:09:53 GMT 2019",
+          "createdBy": "admin",
+          "description": "          "
         }
       },
       "deleteEndpoints": {
