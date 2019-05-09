@@ -119,9 +119,11 @@ for (var i = 0; i<2220; i+=100){
 var heatmaps = [{
     "provenance": {
         "image": {
-            "slide": "5bec456369056d7e537c2a9b",
+            "slide": "CMU1",
             "study": "",
             "specimen": ""
+            "case_id":"",
+            "subject_id":""
         },
         "analysis": {
             "type": "heatmap",
