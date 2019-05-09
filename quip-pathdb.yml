@@ -35,8 +35,8 @@ services:
     container_name: ca-iip
     volumes:
       - ./images/:/data/images/
-  elevate:
-    build: "https://github.com/camicroscope/Security.git#v3.2.1"
+  security:
+    build: "https://github.com/camicroscope/Security.git#v3.2.2"
     container_name: ca-security
     ports: ["4010:4010"]
     volumes:
