@@ -122,8 +122,8 @@ var heatmaps = [{
             "slide": "CMU1",
             "study": "",
             "specimen": ""
-            "case_id":"",
-            "subject_id":""
+            "case_id":"CMU1",
+            "subject_id":"CMU1"
         },
         "analysis": {
             "type": "heatmap",
