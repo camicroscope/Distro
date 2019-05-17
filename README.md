@@ -45,11 +45,11 @@ To use PathDB, use pathDbCamic.yml instead of caMicroscope.yml. This deployment 
 
 Running QuIP with PathDB:
 
-0) place yourself in quip_distro folder.
-1) copy config/httpd.conf.template to config/httpd.conf
-2) copy config/pathdb_routes.json to config/routes.json (this will overwrite an existing routes.json file)
-3) configure httpd.conf with your certificates to enable https.
-4) build with, "docker-compose -f quip-pathdb.yml build"
+0) place yourself in quip\_distro folder.<br>
+1) copy config/httpd.conf.template to config/httpd.conf<br>
+2) copy config/pathdb\_routes.json to config/routes.json (this will overwrite an existing routes.json file)<br>
+3) configure httpd.conf with your certificates to enable https.<br>
+4) build with, "docker-compose -f quip-pathdb.yml build"<br>
 5) run with, "docker-compose -f quip-pathdb.yml run"
 
 ## Support
