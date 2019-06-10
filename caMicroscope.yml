@@ -50,7 +50,7 @@ services:
       driver: none
     volumes:
       - ./images/:/images/
-  elevate:
+  security:
     build: "https://github.com/camicroscope/Security.git#v3.2.1"
     container_name: ca-security
     ports: ["4010:4010"]
