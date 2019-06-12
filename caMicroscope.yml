@@ -4,6 +4,7 @@ services:
   mongo:
     image: mongo:3.4.19-jessie
     container_name: ca-mongo
+    restart: unless-stopped
     volumes:
       - ./db:/data/db
     logging:
@@ -11,6 +12,7 @@ services:
   idxMongo:
     image: mongo:3.4.19-jessie
     container_name: ca-idx
+    restart: unless-stopped
     logging:
       driver: none
     links:
@@ -26,6 +28,7 @@ services:
     depends_on:
       - "mongo"
     container_name: ca-data
+    restart: unless-stopped
     logging:
       driver: none
     volumes:
@@ -34,11 +37,13 @@ services:
   iip:
     build: "https://github.com/camicroscope/iipImage.git#v3.2.0"
     container_name: ca-iip
+    restart: unless-stopped
     volumes:
       - ./images/:/images/
   viewer:
     build: "https://github.com/camicroscope/caMicroscope.git#develop"
     container_name: ca-front
+    restart: unless-stopped
     volumes:
       - ./config/login.html:/var/www/html/login.html
     logging:
@@ -46,6 +51,7 @@ services:
   loader:
     build: "https://github.com/camicroscope/SlideLoader.git#v3.2.0"
     container_name: ca-load
+    restart: unless-stopped
     logging:
       driver: none
     volumes:
@@ -53,6 +59,7 @@ services:
   security:
     build: "https://github.com/camicroscope/Security.git#v3.2.1"
     container_name: ca-security
+    restart: unless-stopped
     ports: ["4010:4010"]
     volumes:
       - ./config/routes.json:/root/src/routes.json
@@ -64,5 +71,6 @@ services:
     volumes:
       - ./jwt_keys/:/keys/
     container_name: ca-auth
+    restart: unless-stopped
     logging:
       driver: none
