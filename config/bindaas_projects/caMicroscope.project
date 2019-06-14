@@ -1190,17 +1190,11 @@
           "description": ""
         },
         "delete": {
-          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027user_id\u0027 : \u0027$user$\u0027, \u0027provenance.image.specimen\u0027: \"$specimen$\", \u0027provenance.image.slide\u0027: \"$slide$\", provenance.image.study\u0027: \"$study$\", \u0027provenance.analysis.execution_id\u0027: \"$name$\" }\n\t\t\t\t\t\t}\n}\n     ",
+          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027user_id\u0027 : \u0027$user$\u0027,\u0027provenance.image.slide\u0027: \"$slide$\", \u0027provenance.analysis.execution_id\u0027: \"$name$\" }\n\t\t\t\t\t\t}\n}\n      ",
           "tags": [],
           "bindVariables": {
             "user": {
               "name": "user",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            },
-            "specimen": {
-              "name": "specimen",
               "required": true,
               "defaultValue": "",
               "description": ""
@@ -1216,17 +1210,11 @@
               "required": true,
               "defaultValue": "",
               "description": ""
-            },
-            "study": {
-              "name": "study",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
             }
           },
           "stage": "UNVERIFIED",
           "name": "delete",
-          "timeCreated": "Mon Jun 10 20:22:55 GMT 2019",
+          "timeCreated": "Fri Jun 14 18:09:59 GMT 2019",
           "createdBy": "admin",
           "description": ""
         }

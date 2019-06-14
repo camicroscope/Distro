@@ -11,9 +11,7 @@ var marks = [
     {
         "provenance": {
             "image": {
-                "slide": "5bec456369056d7e537c2a9b",
-                "specimen": "",
-                "study": ""
+                "slide": "5bec456369056d7e537c2a9b"
             },
             "analysis": {
                 "source": "human",
