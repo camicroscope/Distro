@@ -12,7 +12,6 @@ services:
   idxMongo:
     image: mongo:3.4.19-jessie
     container_name: ca-idx
-    restart: unless-stopped
     logging:
       driver: none
     links:
