@@ -12,7 +12,6 @@ services:
   idxMongo:
     image: mongo:3.4.19-jessie
     container_name: ca-idx
-    restart: unless-stopped
     logging:
       driver: none
     links:
@@ -27,6 +26,8 @@ services:
     build: "./Deps/Bindaas/"
     depends_on:
       - "mongo"
+    ports:
+      - "8080:8080"
     container_name: ca-data
     restart: unless-stopped
     logging:
@@ -41,7 +42,7 @@ services:
     volumes:
       - ./images/:/images/
   viewer:
-    build: "https://github.com/camicroscope/caMicroscope.git#develop"
+    build: "https://github.com/camicroscope/caMicroscope.git#topic-uuid"
     container_name: ca-front
     restart: unless-stopped
     volumes:
@@ -60,7 +61,8 @@ services:
     build: "https://github.com/camicroscope/Security.git#v3.2.1"
     container_name: ca-security
     restart: unless-stopped
-    ports: ["4010:4010"]
+    ports:
+      - "4010:4010"
     volumes:
       - ./config/routes.json:/root/src/routes.json
       - ./jwt_keys/:/keys/
