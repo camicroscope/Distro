@@ -5,8 +5,6 @@ services:
     image: mongo
     container_name: ca-mongo
     restart: unless-stopped
-    volumes:
-      - ./db:/data/db
     logging:
       driver: none
   idxMongo:
@@ -39,7 +37,7 @@ services:
     volumes:
       - ./images/:/data/images/
   security:
-    build: "https://github.com/camicroscope/Security.git#v3.2.2"
+    build: "https://github.com/camicroscope/Security.git#v3.2.1"
     container_name: ca-security
     restart: unless-stopped
     ports: ["4010:4010"]
@@ -53,7 +51,7 @@ services:
     logging:
       driver: none
   pathdb:
-    build: "https://github.com/SBU-BMI/PathDB.git#1.0.4"
+    build: "https://github.com/camicroscope/PathDB.git#develop"
     container_name: quip-pathdb
     restart: unless-stopped
     ports: ["443:443","80:80"]
