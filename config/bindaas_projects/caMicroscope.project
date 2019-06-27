@@ -919,35 +919,8 @@
           "createdBy": "admin",
           "description": "  "
         },
-        "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.specimen\" : {$regex: \"$specimen$\", $options: \"i\"}\n                        }\n}            ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "name": {
-              "name": "name",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
-            "slide": {
-              "name": "slide",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "find",
-          "timeCreated": "Fri Jun 14 16:29:58 GMT 2019",
-          "createdBy": "admin",
-          "description": "   "
-        },
         "findTypes": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"}},\n                                        \"fields\" :{ \u0027data\u0027 : 0 }                        \n}\n\n}               ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : $slide$},\n                                        \"fields\" :{ \u0027data\u0027 : 0 }                        \n}\n\n}                ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -969,7 +942,34 @@
             "outputFormat": "JSON"
           },
           "name": "findTypes",
-          "timeCreated": "Fri Jun 14 16:30:43 GMT 2019",
+          "timeCreated": "Thu Jun 27 19:39:21 GMT 2019",
+          "createdBy": "admin",
+          "description": "     "
+        },
+        "find": {
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"}\n                        }\n}             ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "find",
+          "timeCreated": "Thu Jun 27 19:40:22 GMT 2019",
           "createdBy": "admin",
           "description": "    "
         }
@@ -1114,7 +1114,7 @@
           "description": ""
         },
         "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : {\u0027user_id\u0027: {$regex: \"$user$\", $options: \"i\"},\n                                            \u0027provenance.image.slide\u0027: {$regex: \"$slide$\", $options: \"i\"},\n                                            \u0027provenance.analysis.execution_id\u0027: {$regex: \"$name$\", $options: \"i\"}}\n                        }\n}                       ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : {\u0027user_id\u0027: {$regex: \"$user$\", $options: \"i\"},\n                                            \u0027provenance.image.slide\u0027: $slide$,\n                                            \u0027provenance.analysis.execution_id\u0027: {$regex: \"$name$\", $options: \"i\"}}\n                        }\n}                        ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -1142,9 +1142,9 @@
             "outputFormat": "JSON"
           },
           "name": "find",
-          "timeCreated": "Fri Jun 14 16:32:57 GMT 2019",
+          "timeCreated": "Thu Jun 27 19:40:01 GMT 2019",
           "createdBy": "admin",
-          "description": "    "
+          "description": "     "
         }
       },
       "deleteEndpoints": {
