@@ -892,33 +892,6 @@
         "initialize": true
       },
       "queryEndpoints": {
-        "get": {
-          "queryTemplate": "{\n\t\u0027_operation\u0027: \u0027find\u0027,\n\t\u0027_operation_args\u0027: \n\t{\n\t\u0027query\u0027: {\n\t\t\"provenance.image.slide\": \"$slide$\",\n\t\t\"provenance.analysis.execution_id\":\"$name$\"\n\t},\n\t\t\u0027fields\u0027: {\n\t\t\t\u0027provenance\u0027:1,\n                        \u0027data\u0027:1,\n\t\t\t\u0027_id\u0027: 1\n\t\t}\n\t}\n}        ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "slide": {
-              "name": "slide",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            },
-            "name": {
-              "name": "name",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "get",
-          "timeCreated": "Fri Jun 14 16:29:22 GMT 2019",
-          "createdBy": "admin",
-          "description": "  "
-        },
         "findTypes": {
           "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" : { \"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                        \"provenance.image.slide\" : $slide$},\n                                        \"fields\" :{ \u0027data\u0027 : 0 }                        \n}\n\n}                ",
           "metaData": {},
@@ -972,6 +945,33 @@
           "timeCreated": "Thu Jun 27 19:40:22 GMT 2019",
           "createdBy": "admin",
           "description": "    "
+        },
+        "get": {
+          "queryTemplate": "{\n\t\u0027_operation\u0027: \u0027find\u0027,\n\t\u0027_operation_args\u0027: \n\t{\n\t\u0027query\u0027: {\n\t\t\"provenance.image.slide\": $slide$,\n\t\t\"provenance.analysis.execution_id\":\"$name$\"\n\t},\n\t\t\u0027fields\u0027: {\n\t\t\t\u0027provenance\u0027:1,\n                        \u0027data\u0027:1,\n\t\t\t\u0027_id\u0027: 1\n\t\t}\n\t}\n}         ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "slide": {
+              "name": "slide",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "name": {
+              "name": "name",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "get",
+          "timeCreated": "Mon Jul 01 20:07:42 GMT 2019",
+          "createdBy": "admin",
+          "description": "   "
         }
       },
       "deleteEndpoints": {
