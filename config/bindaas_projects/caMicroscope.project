@@ -30,63 +30,6 @@
           "createdBy": "admin",
           "description": "         "
         },
-        "findBound": {
-          "queryTemplate": "{ \"_operation\" : \"find\" , \"_operation_args\" : { \"query\" : {\"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"},\n \"provenance.analysis.source\" : {$regex: \"$key$\", $options: \"i\"}, \"geometries.features.bound\": { $geoIntersects: { $geometry: { \"type\": \"Polygon\", \"coordinates\": [[[ $x0$, $y0$ ],[ $x0$, $y1$ ],[ $x1$, $y1$ ],[ $x1$, $y0$ ],[ $x0$, $y0$ ]]] } } } }, \"limit\" : 1000} }   ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "name": {
-              "name": "name",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
-            "key": {
-              "name": "key",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
-            "slide": {
-              "name": "slide",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
-            "x0": {
-              "name": "x0",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            },
-            "y0": {
-              "name": "y0",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            },
-            "x1": {
-              "name": "x1",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            },
-            "y1": {
-              "name": "y1",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "findBound",
-          "timeCreated": "Thur Nov 1 18:12:11 UTC 2018",
-          "createdBy": "admin",
-          "description": "find where bound intersects given rect"
-        },
         "findTypes": {
           "queryTemplate": "{ \"_operation\" : \"distinct\" , \"_operation_args\" : { \"field\" : \"provenance.analysis\", \"query\" : {\u0027provenance.image.slide\u0027: $slide$ } } }  ",
           "metaData": {},
@@ -135,71 +78,8 @@
           "createdBy": "admin",
           "description": "          "
         },
-        "find": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" :{$and: [\n                                        {\"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                            \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"},\n                                            \"footprint\": { $not: {$lt: $footprint$}},\n                                            \"provenance.analysis.source\" : {$regex: \"$source$\", $options: \"i\"}},\n                                        {\"x\": { $not: {$lt: $x0$}}},\n                                        {\"x\": { $not: {$gt: $x1$}}},\n                                        {\"y\": { $not: {$lt: $y0$}}},\n                                        {\"y\": { $not: {$gt: $y1$}}}\n                                    ]}\n                        }\n}\n        ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "name": {
-              "name": "name",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
-            "slide": {
-              "name": "slide",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
-            "source": {
-              "name": "source",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
-            "footprint": {
-              "name": "footprint",
-              "required": false,
-              "defaultValue": "0",
-              "description": ""
-            },
-            "x0": {
-              "name": "x0",
-              "required": false,
-              "defaultValue": "0",
-              "description": ""
-            },
-            "x1": {
-              "name": "x1",
-              "required": false,
-              "defaultValue": "9",
-              "description": ""
-            },
-            "y0": {
-              "name": "y0",
-              "required": false,
-              "defaultValue": "0",
-              "description": ""
-            },
-            "y1": {
-              "name": "y1",
-              "required": false,
-              "defaultValue": "9",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "find",
-          "timeCreated": "Fri Jun 14 16:26:22 GMT 2019",
-          "createdBy": "admin",
-          "description": "                          "
-        },
         "multiFind": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" :{$and: [\n                                        {\"provenance.analysis.execution_id\": {$in: $name$},\n                                            \"provenance.image.slide\" : {$regex: \"$slide$\", $options: \"i\"},\n                                            \"footprint\": { $not: {$lt: $footprint$}},\n                                            \"provenance.analysis.source\" : {$regex: \"$source$\", $options: \"i\"}},\n                                        {\"x\": { $not: {$lt: $x0$}}},\n                                        {\"x\": { $not: {$gt: $x1$}}},\n                                        {\"y\": { $not: {$lt: $y0$}}},\n                                        {\"y\": { $not: {$gt: $y1$}}}\n                                    ]}\n                        }\n}\n            ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" :{$and: [\n                                        {\"provenance.analysis.execution_id\": {$in: $name$},\n                                            \"provenance.image.slide\" : $slide$,\n                                            \"footprint\": { $not: {$lt: $footprint$}},\n                                            \"provenance.analysis.source\" : {$regex: \"$source$\", $options: \"i\"}},\n                                        {\"x\": { $not: {$lt: $x0$}}},\n                                        {\"x\": { $not: {$gt: $x1$}}},\n                                        {\"y\": { $not: {$lt: $y0$}}},\n                                        {\"y\": { $not: {$gt: $y1$}}}\n                                    ]}\n                        }\n}\n             ",
           "metaData": {},
           "tags": [],
           "bindVariables": {
@@ -257,9 +137,129 @@
             "outputFormat": "JSON"
           },
           "name": "multiFind",
-          "timeCreated": "Fri Jun 14 16:27:26 GMT 2019",
+          "timeCreated": "Tue Jul 02 17:47:09 GMT 2019",
           "createdBy": "admin",
-          "description": "       "
+          "description": "        "
+        },
+        "find": {
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"query\" :{$and: [\n                                        {\"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n                                            \"provenance.image.slide\" : $slide$,\n                                            \"footprint\": { $not: {$lt: $footprint$}},\n                                            \"provenance.analysis.source\" : {$regex: \"$source$\", $options: \"i\"}},\n                                        {\"x\": { $not: {$lt: $x0$}}},\n                                        {\"x\": { $not: {$gt: $x1$}}},\n                                        {\"y\": { $not: {$lt: $y0$}}},\n                                        {\"y\": { $not: {$gt: $y1$}}}\n                                    ]}\n                        }\n}\n         ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "source": {
+              "name": "source",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "footprint": {
+              "name": "footprint",
+              "required": false,
+              "defaultValue": "0",
+              "description": ""
+            },
+            "x0": {
+              "name": "x0",
+              "required": false,
+              "defaultValue": "0",
+              "description": ""
+            },
+            "x1": {
+              "name": "x1",
+              "required": false,
+              "defaultValue": "9",
+              "description": ""
+            },
+            "y0": {
+              "name": "y0",
+              "required": false,
+              "defaultValue": "0",
+              "description": ""
+            },
+            "y1": {
+              "name": "y1",
+              "required": false,
+              "defaultValue": "9",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "find",
+          "timeCreated": "Tue Jul 02 17:48:26 GMT 2019",
+          "createdBy": "admin",
+          "description": "                           "
+        },
+        "findBound": {
+          "queryTemplate": "{ \"_operation\" : \"find\" , \"_operation_args\" : { \"query\" : {\"provenance.analysis.execution_id\" : {$regex: \"$name$\", $options: \"i\"},\n \"provenance.image.slide\" : $slide$,\n \"provenance.analysis.source\" : {$regex: \"$key$\", $options: \"i\"}, \"geometries.features.bound\": { $geoIntersects: { $geometry: { \"type\": \"Polygon\", \"coordinates\": [[[ $x0$, $y0$ ],[ $x0$, $y1$ ],[ $x1$, $y1$ ],[ $x1$, $y0$ ],[ $x0$, $y0$ ]]] } } } }, \"limit\" : 1000} }    ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "name": {
+              "name": "name",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "key": {
+              "name": "key",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "x0": {
+              "name": "x0",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "y0": {
+              "name": "y0",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "x1": {
+              "name": "x1",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "y1": {
+              "name": "y1",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "findBound",
+          "timeCreated": "Tue Jul 02 17:49:32 GMT 2019",
+          "createdBy": "admin",
+          "description": "find where bound intersects given rect "
         }
       },
       "deleteEndpoints": {
@@ -1148,8 +1148,37 @@
         }
       },
       "deleteEndpoints": {
+        "delete": {
+          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027user_id\u0027 : \u0027$user$\u0027,\u0027provenance.image.slide\u0027: \"$slide$\", \u0027provenance.analysis.execution_id\u0027: \"$name$\" }\n\t\t\t\t\t\t}\n}\n      ",
+          "tags": [],
+          "bindVariables": {
+            "user": {
+              "name": "user",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slide": {
+              "name": "slide",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "name": {
+              "name": "name",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "name": "delete",
+          "timeCreated": "Fri Jun 14 18:09:59 GMT 2019",
+          "createdBy": "admin",
+          "description": ""
+        },
         "update": {
-          "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027user_id\u0027 : \u0027$user$\u0027, \u0027provenance.image.specimen\u0027:\u0027$specimen$\u0027, \n\u0027provenance.image.slide\u0027:\u0027$slide$\u0027,\u0027provenance.analysis.execution_id\u0027:\u0027$name$\u0027 } ,\n\t\t\t\t\t\t\t\"update\": {$set: { \u0027data\u0027 : $data$}},\n\t\t\t\t\t\t\t\"upsert\": true,\n\t\t\t\t\t\t\t\"multi\" : true\n\t\t\t\t\t\t}\n}\n       ",
+          "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027user_id\u0027 : \u0027$user$\u0027, \u0027provenance.image.specimen\u0027:\u0027$specimen$\u0027, \n\u0027provenance.image.slide\u0027:$slide$,\u0027provenance.analysis.execution_id\u0027:\u0027$name$\u0027 } ,\n\t\t\t\t\t\t\t\"update\": {$set: { \u0027data\u0027 : $data$}},\n\t\t\t\t\t\t\t\"upsert\": true,\n\t\t\t\t\t\t\t\"multi\" : true\n\t\t\t\t\t\t}\n}\n        ",
           "tags": [],
           "bindVariables": {
             "user": {
@@ -1185,36 +1214,7 @@
           },
           "stage": "UNVERIFIED",
           "name": "update",
-          "timeCreated": "Mon Jun 10 17:58:52 GMT 2019",
-          "createdBy": "admin",
-          "description": ""
-        },
-        "delete": {
-          "queryTemplate": "{\n\t\"_operation\" : \"delete\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \u0027user_id\u0027 : \u0027$user$\u0027,\u0027provenance.image.slide\u0027: \"$slide$\", \u0027provenance.analysis.execution_id\u0027: \"$name$\" }\n\t\t\t\t\t\t}\n}\n      ",
-          "tags": [],
-          "bindVariables": {
-            "user": {
-              "name": "user",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            },
-            "slide": {
-              "name": "slide",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            },
-            "name": {
-              "name": "name",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "name": "delete",
-          "timeCreated": "Fri Jun 14 18:09:59 GMT 2019",
+          "timeCreated": "Tue Jul 02 17:50:23 GMT 2019",
           "createdBy": "admin",
           "description": ""
         }
