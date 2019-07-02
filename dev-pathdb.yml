@@ -26,18 +26,20 @@ services:
     restart: unless-stopped
     logging:
       driver: none
-    ports: ["8080:8080", "9099:9099"]
+    ports:
+      -"8080:8080"
+      -"9099:9099"
     volumes:
       - ./config/bindaas_projects/:/root/bindaas/bin/projects/
       - ./config/bindaas.config.json:/root/bindaas/bin/bindaas.config.json
   iip:
-    build: "https://github.com/camicroscope/iipImage.git#v3.2.0"
+    build: "https://github.com/camicroscope/iipImage.git#develop"
     container_name: ca-iip
     restart: unless-stopped
     volumes:
       - ./images/:/data/images/
   security:
-    build: "https://github.com/camicroscope/Security.git#v3.2.1"
+    build: "https://github.com/camicroscope/Security.git#develop"
     container_name: ca-security
     restart: unless-stopped
     ports: ["4010:4010"]
