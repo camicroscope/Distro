@@ -999,7 +999,7 @@
           "description": ""
         },
         "updateThreshold": {
-          "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : {\u0027provenance.analysis.execution_id\u0027 : \u0027$name$\u0027,\u0027provenance.image.slide\u0027 : \u0027$slide$\u0027} ,\n\t\t\t\t\t\t\t\"update\": {$set: { \u0027provenance.analysis.fields\u0027 : $fields$,\u0027provenance.analysis.setting\u0027 : $setting$ }},\n\t\t\t\t\t\t\t\"upsert\": true,\n\t\t\t\t\t\t\t\"multi\" : true\n\t\t\t\t\t\t}\n}\n            ",
+          "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : {\u0027provenance.analysis.execution_id\u0027 : \u0027$name$\u0027,\u0027provenance.image.slide\u0027 : $slide$} ,\n\t\t\t\t\t\t\t\"update\": {$set: { \u0027provenance.analysis.fields\u0027 : $fields$,\u0027provenance.analysis.setting\u0027 : $setting$ }},\n\t\t\t\t\t\t\t\"upsert\": true,\n\t\t\t\t\t\t\t\"multi\" : true\n\t\t\t\t\t\t}\n}\n             ",
           "tags": [],
           "bindVariables": {
             "name": {
@@ -1029,7 +1029,7 @@
           },
           "stage": "UNVERIFIED",
           "name": "updateThreshold",
-          "timeCreated": "Fri Jun 14 16:31:37 GMT 2019",
+          "timeCreated": "Tue Jul 02 17:06:06 GMT 2019",
           "createdBy": "admin",
           "description": ""
         }
