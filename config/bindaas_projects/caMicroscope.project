@@ -1379,7 +1379,7 @@
           "description": "   "
         },
         "findNoAnnotationLabels": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"fields\" :{\"_id\":1,\"provenance\":1},\n                            \"query\" : {\n                                 \"annotations\":{$eq:[]},\n                                 \"provenance.analysis.computation\": \"label\"}\n                            },\n                            \"limit\":50,\n                            \"sort\":{\"_id\":-1}\n}         ",
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n                            \"fields\" :{\"_id\":1,\"provenance\":1},\n                            \"query\" : {\n                                 \"provenance.analysis.computation\": \"label\"}\n                            },\n                            \"limit\":50,\n                            \"sort\":{\"_id\":-1}\n}          ",
           "metaData": {},
           "tags": [],
           "bindVariables": {},
@@ -1388,9 +1388,9 @@
             "outputFormat": "JSON"
           },
           "name": "findNoAnnotationLabels",
-          "timeCreated": "Mon Jul 08 20:07:46 GMT 2019",
+          "timeCreated": "Wed Jul 10 20:44:23 GMT 2019",
           "createdBy": "admin",
-          "description": "find ROI by conditions     "
+          "description": "find ROI by conditions      "
         }
       },
       "deleteEndpoints": {
