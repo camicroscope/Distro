@@ -64,3 +64,12 @@ services:
       - ./config:/config
     command:
       - /config/pathdb_pre.sh
+  imageloader:
+    build: "https://github.com/SBU-BMI/ImageLoader.git#1.0.0"
+    container_name: quip-imageloader
+    volumes:
+      - ./data:/data/
+      - ./images:/data/images
+    environment:
+      - QUIP_IMAGE_PATH=$PWD/images
+      - QUIP_DATA_PATH=$PWD/data
