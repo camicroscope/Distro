@@ -71,6 +71,8 @@ services:
     volumes:
       - ./jwt_keys/:/keys/
     container_name: ca-auth
+    environment:
+      JWKS: "https://www.googleapis.com/oauth2/v3/certs"
     restart: unless-stopped
     logging:
       driver: none
