@@ -39,7 +39,7 @@ services:
     volumes:
       - ./images/:/data/images/
   security:
-    build: "https://github.com/camicroscope/Security.git#v3.2.2"
+    build: "https://github.com/camicroscope/Security.git#v3.4.6"
     container_name: ca-security
     restart: unless-stopped
     ports: ["4010:4010"]
