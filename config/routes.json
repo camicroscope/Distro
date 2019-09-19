@@ -34,7 +34,7 @@
       },
       "Slide": {
         "get":"/Slide/query/get",
-        "find":{"path":"/Slide/query/find", "key_method": "filter"},
+        "find":"/Slide/query/find",
         "post":{"path": "/Slide/submit/json", "attr": "write"},
         "delete":{"path": "/Slide/delete/deleteSlide", "attr": "write"},
         "update":{"path": "/Slide/delete/updateSlide", "attr": "write"}
