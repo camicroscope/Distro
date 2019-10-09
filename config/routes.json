@@ -1,5 +1,5 @@
 {
-  "root":"http://quip-pathdb/",
+  "root":"http://ca-front:80/",
   "_root_public": "true",
   "services":{
     "data":{
