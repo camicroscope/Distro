@@ -51,11 +51,19 @@
         "delete":{"path": "/HeatmapEdit/delete/delete", "attr": "write"},
         "update":{"path": "/HeatmapEdit/delete/update", "attr": "write"}
       },
+      "Auth": {
+        "get":{"path": "/Authorization/query/getAuth", "attr": "admin"},
+        "post":{"path": "/Authorization/submit/json", "attr": "admin"}
+      },
       "Labeling": {
         "get":"/Labeling/query/get",
         "find":"/Labeling/query/find",
         "findAllLabelsWithoutAnnotations":"/Labeling/query/findNoAnnotationLabels",
         "mutiFindByIds":"/Labeling/query/mutiFindByIds",
+        "countBySlide":"/Labeling/query/countBySlide",
+        "countByCreator":"/Labeling/query/countByCreator",
+        "countAllByType":"/Labeling/query/countAllByType",
+        "allLabelSheet":"/Labeling/query/allLabelSheet",
         "addAnnotations":{"path": "/Labeling/delete/addAnnotations", "attr": "write"},
         "post":{"path": "/Labeling/submit/json", "attr": "write"}
       }

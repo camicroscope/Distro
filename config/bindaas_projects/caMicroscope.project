@@ -1391,6 +1391,69 @@
           "timeCreated": "Wed Jul 10 20:44:23 GMT 2019",
           "createdBy": "admin",
           "description": "find ROI by conditions      "
+        },
+        "countBySlide": {
+          "queryTemplate": "{\n\t\"_operation\":\"group\" ,\n\t\"_operation_args\" : {\n\t\t\"key\":{\"provenance.image.name\":1},\n\t\t\"condition\":{\"provenance.analysis.computation\": \"label\"},\n\t\t\"reduce\":\u0027function(curr,result){result.total+\u003d1}\u0027,\n\t\t\"initial\":{total:0},\n\t\t\"finalize\":\u0027function(){}\u0027\n\t}\n}  ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {},
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "countBySlide",
+          "timeCreated": "Thu Oct 24 03:43:56 GMT 2019",
+          "createdBy": "admin",
+          "description": "  "
+        },
+        "countByCreator": {
+          "queryTemplate": "{\n\t\"_operation\":\"group\" ,\n\t\"_operation_args\" : {\n\t\t\"key\":{\"creator\":1},\n\t\t\"condition\":{\"provenance.analysis.computation\": \"label\"},\n\t\t\"reduce\":\u0027function(curr,result){result.total+\u003d1}\u0027,\n\t\t\"initial\":{total:0},\n\t\t\"finalize\":\u0027function(){}\u0027\n\t}\n}                 ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {},
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "HTML"
+          },
+          "name": "countByCreator",
+          "timeCreated": "Thu Oct 24 03:45:28 GMT 2019",
+          "createdBy": "admin",
+          "description": "                 "
+        },
+        "countAllByType": {
+          "queryTemplate": "{\n\t\"_operation\" : \"count\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \"provenance.analysis.computation\" : $type$}\n\t\t\t\t\t\t}\n}",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "type": {
+              "name": "type",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "countAllByType",
+          "timeCreated": "Thu Oct 24 03:48:57 GMT 2019",
+          "createdBy": "admin",
+          "description": ""
+        },
+        "allLabelSheet": {
+          "queryTemplate": "{ \n   \"_operation\":\"find\",\n   \"_operation_args\":{ \n      \"query\":{},\n      \"fields\":{ \n         \"_id\":1,\n         \"creator\":1,\n         \"provenance.image.name\":1,\n         \"provenance.analysis.computation\":1,\n         \"properties.x\":1,\n         \"properties.y\":1,\n         \"properties.width\":1,\n         \"properties.height\":1,\n         \"properties.type\":1,\n         \"properties.til_desity\":1,\n         \"parent\":1,\n         \"subrois\":1,\n         \"create_date_time\":1\n      }\n   }\n}",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {},
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "allLabelSheet",
+          "timeCreated": "Thu Oct 24 17:46:39 GMT 2019",
+          "createdBy": "admin",
+          "description": ""
         }
       },
       "deleteEndpoints": {
