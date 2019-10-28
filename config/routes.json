@@ -57,6 +57,16 @@
         "post":{"path": "/Authorization/submit/json", "attr": "admin"}
       }
     },
+    "private":{
+      "_base": "http://ca-data:9099/services/caMicroscopePrivate",
+      "Slide": {
+        "get":"/Slide/query/get",
+        "find":{"path": "/Slide/query/find","check_param": "collection"},
+        "post":{"path": "/Slide/submit/json", "attr": "write"},
+        "delete":{"path": "/Slide/delete/deleteSlide", "attr": "write"},
+        "update":{"path": "/Slide/delete/updateSlide", "attr": "write"}
+      }
+    },
     "img": {
       "_base":"http://ca-iip/fcgi-bin/iipsrv.fcgi",
       "IIP": {
