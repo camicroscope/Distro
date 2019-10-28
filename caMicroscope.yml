@@ -62,7 +62,7 @@ services:
     ports:
       - "4010:4010"
     volumes:
-      - ./config/routes.json:/root/src/routes.json
+      - ./config/non-pathdb-routes.json:/root/src/routes.json
       - ./jwt_keys/:/keys/
     environment:
       - DISABLE_SEC=true
