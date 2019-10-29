@@ -55,6 +55,9 @@
       "Auth": {
         "get":{"path": "/Authorization/query/getAuth", "attr": "admin"},
         "post":{"path": "/Authorization/submit/json", "attr": "admin"}
+      },
+      "Log": {
+        "post": "/Log/submit/json"
       }
     },
     "private":{
