@@ -62,6 +62,7 @@
         "mutiFindByIds":"/Labeling/query/mutiFindByIds",
         "countBySlide":"/Labeling/query/countBySlide",
         "countByCreator":"/Labeling/query/countByCreator",
+        "countByLabelType":"/Labeling/query/countByLabelType",
         "countAllByType":"/Labeling/query/countAllByType",
         "allLabelSheet":"/Labeling/query/allLabelSheet",
         "addAnnotations":{"path": "/Labeling/delete/addAnnotations", "attr": "write"},

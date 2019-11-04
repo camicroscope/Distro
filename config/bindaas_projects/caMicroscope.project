@@ -1454,6 +1454,20 @@
           "timeCreated": "Thu Oct 24 20:05:24 GMT 2019",
           "createdBy": "admin",
           "description": " "
+        },
+        "countByLabelType": {
+          "queryTemplate": "{\n\t\"_operation\":\"group\" ,\n\t\"_operation_args\" : {\n\t\t\"key\":{\"properties.type\":1},\n\t\t\"condition\":{\"provenance.analysis.computation\": \"label\"},\n\t\t\"reduce\":\u0027function(curr,result){result.total+\u003d1}\u0027,\n\t\t\"initial\":{total:0},\n\t\t\"finalize\":\u0027function(){}\u0027\n\t}\n}                  ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {},
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "HTML"
+          },
+          "name": "countByLabelType",
+          "timeCreated": "Mon Nov 04 21:33:26 GMT 2019",
+          "createdBy": "admin",
+          "description": "                  "
         }
       },
       "deleteEndpoints": {
