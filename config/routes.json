@@ -55,6 +55,9 @@
         "get":{"path": "/Authorization/query/getAuth", "attr": "admin"},
         "post":{"path": "/Authorization/submit/json", "attr": "admin"}
       },
+      "Log": {
+        "post": "/Log/submit/json"
+      },
       "Labeling": {
         "get":"/Labeling/query/get",
         "find":"/Labeling/query/find",
