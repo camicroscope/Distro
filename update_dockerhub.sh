@@ -8,8 +8,6 @@ docker-compose -f caMicroscope.yml build
 # tag and push images
 docker tag distro_bindaas:latest camicroscope/bindaas:latest
 docker push camicroscope/bindaas:latest
-docker tag distro_viewer:latest camicroscope/viewer:latest
-docker push camicroscope/viewer:latest
 docker tag distro_security:latest camicroscope/security:latest
 docker push camicroscope/security:latest
 docker tag distro_auth:latest camicroscope/auth_service:latest
