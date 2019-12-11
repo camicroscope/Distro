@@ -22,11 +22,10 @@ services:
     depends_on:
       - mongo
   back:
-    #build: "https://github.com/camicroscope/caboodle.git"
     build:
-      context: "../caboodle/"
+      context: "https://github.com/camicroscope/caboodle.git"
       args:
-        viewer: "develop"
+        viewer: "exp"
     depends_on:
       - "mongo"
     ports:
