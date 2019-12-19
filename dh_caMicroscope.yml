@@ -1,0 +1,78 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:3.4.19-jessie
+    container_name: ca-mongo
+    restart: unless-stopped
+    volumes:
+      - ./db:/data/db
+    logging:
+      driver: none
+  idxMongo:
+    image: mongo:3.4.19-jessie
+    container_name: ca-idx
+    logging:
+      driver: none
+    links:
+      - mongo
+    volumes:
+      - ./config:/config
+    command:
+      - /config/run_idx.sh
+    depends_on:
+      - mongo
+  bindaas:
+    image: camicroscope/bindaas:latest
+    depends_on:
+      - "mongo"
+    container_name: ca-data
+    restart: unless-stopped
+    logging:
+      driver: none
+    volumes:
+      - ./config/bindaas_projects/:/root/bindaas/bin/projects/
+      - ./config/bindaas.config.json:/root/bindaas/bin/bindaas.config.json
+  iip:
+    image: camicroscope/iipimage:latest
+    container_name: ca-iip
+    restart: unless-stopped
+    volumes:
+      - ./images/:/images/
+  viewer:
+    image: camicroscope/viewer:latest
+    container_name: ca-front
+    restart: unless-stopped
+    volumes:
+      - ./config/login.html:/var/www/html/login.html
+    logging:
+      driver: none
+  loader:
+    image: camicroscope/slideloader:latest
+    container_name: ca-load
+    restart: unless-stopped
+    logging:
+      driver: none
+    volumes:
+      - ./images/:/images/
+  security:
+    image: camicroscope/security:latest
+    container_name: ca-security
+    restart: unless-stopped
+    ports:
+      - "4010:4010"
+    volumes:
+      - ./config/non-pathdb-routes.json:/root/src/routes.json
+      - ./jwt_keys/:/keys/
+    environment:
+      - DISABLE_SEC=true
+  auth:
+    image: camicroscope/auth_service:latest
+    volumes:
+      - ./jwt_keys/:/keys/
+    container_name: ca-auth
+    environment:
+      JWKS: "https://www.googleapis.com/oauth2/v3/certs"
+    restart: unless-stopped
+    logging:
+      driver: none
