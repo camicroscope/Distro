@@ -70,7 +70,8 @@
         "countAllByType":"/Labeling/query/countAllByType",
         "allLabelSheet":"/Labeling/query/allLabelSheet",
         "addAnnotations":{"path": "/Labeling/delete/addAnnotations", "attr": "write"},
-        "post":{"path": "/Labeling/submit/json", "attr": "write"}
+        "post":{"path": "/Labeling/submit/json", "attr": "write"},
+        "pushLabelAnnotationId":{"path": "/Labeling/delete/pushLabelAnnotationId", "attr": "write"}
       }
     },
     "img": {

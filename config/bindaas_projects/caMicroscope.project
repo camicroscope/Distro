@@ -1520,6 +1520,29 @@
           "timeCreated": "Mon Jul 08 17:46:56 GMT 2019",
           "createdBy": "admin",
           "description": ""
+        },
+        "pushLabelAnnotationId": {
+          "queryTemplate": "{\n\t\"_operation\" : \"update\" ,\n\t\"_operation_args\" : {\n\t\t\t\t\t\t\t\"query\" : { \"_id\" : \u0027$id$\u0027 } ,\n\t\t\t\t\t\t\t\"update\": {$push: { \"annotations\" : \u0027$annotationId$\u0027 }},\n\t\t\t\t\t\t\t\"upsert\": \u0027true\u0027,\n\t\t\t\t\t\t\t\"multi\" : \u0027true\u0027\n\t\t\t\t\t\t}\n}",
+          "tags": [],
+          "bindVariables": {
+            "id": {
+              "name": "id",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            },
+            "annotationId": {
+              "name": "annotationId",
+              "required": true,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "name": "pushLabelAnnotationId",
+          "timeCreated": "Tue Jan 07 20:46:42 GMT 2020",
+          "createdBy": "admin",
+          "description": ""
         }
       },
       "submitEndpoints": {
