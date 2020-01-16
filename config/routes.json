@@ -34,6 +34,7 @@
       "Slide": {
         "get":"/Slide/query/get",
         "find":"/Slide/query/find",
+        "findByCollectionId":"/Slide/query/findByCollectionId",
         "post":{"path": "/Slide/submit/json", "attr": "write"},
         "delete":{"path": "/Slide/delete/deleteSlide", "attr": "write"},
         "update":{"path": "/Slide/delete/updateSlide", "attr": "write"}
@@ -59,16 +60,22 @@
       "Log": {
         "post": "/Log/submit/json"
       },
+      "Collection": {
+        "getAllCollections":"/Collection/query/getAllCollections",
+        "findCollectionById":"/Collection/query/findCollectionById"
+      },
       "Labeling": {
         "get":"/Labeling/query/get",
         "find":"/Labeling/query/find",
         "findAllLabelsWithoutAnnotations":"/Labeling/query/findNoAnnotationLabels",
+        "countSimpleAnnotationBySlideAndCreator":"/Labeling/query/countSimpleAnnotationBySlideAndCreator",
         "mutiFindByIds":"/Labeling/query/mutiFindByIds",
         "countBySlide":"/Labeling/query/countBySlide",
         "countByCreator":"/Labeling/query/countByCreator",
         "countByLabelType":"/Labeling/query/countByLabelType",
         "countAllByType":"/Labeling/query/countAllByType",
         "allLabelSheet":"/Labeling/query/allLabelSheet",
+        "findLabelingByTypeOrCreator":"/Labeling/query/findLabelingByTypeOrCreator",
         "addAnnotations":{"path": "/Labeling/delete/addAnnotations", "attr": "write"},
         "post":{"path": "/Labeling/submit/json", "attr": "write"},
         "pushLabelAnnotationId":{"path": "/Labeling/delete/pushLabelAnnotationId", "attr": "write"}
