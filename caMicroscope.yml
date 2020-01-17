@@ -45,6 +45,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./config/login.html:/var/www/html/login.html
+      - /scratch/searchdemo/search/:/var/www/html/search/
     logging:
       driver: none
   loader:
@@ -64,13 +65,11 @@ services:
     volumes:
       - ./config/routes.json:/root/src/routes.json
       - ./jwt_keys/:/keys/
-    environment:
-      - DISABLE_SEC=true
   auth:
     build: "./Deps/auth_service/"
     volumes:
       - ./jwt_keys/:/keys/
     container_name: ca-auth
     restart: unless-stopped
-    logging:
-      driver: none
+    environment:
+      JWKS: "https://www.googleapis.com/oauth2/v3/certs"

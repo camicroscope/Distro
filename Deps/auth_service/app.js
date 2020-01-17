@@ -163,3 +163,4 @@ app.get("/check", jwk_token_trade(SECRET, PRIKEY))
 app.get("/renew", token_trade(PUBKEY, PRIKEY))
 
 app.listen(PORT, () => console.log('listening on ' + PORT))
+
