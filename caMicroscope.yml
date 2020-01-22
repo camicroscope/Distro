@@ -38,7 +38,7 @@ services:
     container_name: ca-iip
     restart: unless-stopped
     volumes:
-      - ./images/:/images/
+      - /labs/sharmalab/HTT_IMGS/:/images/
   viewer:
     build: "https://github.com/camicroscope/caMicroscope.git#custom/HTT"
     container_name: ca-front
@@ -55,7 +55,7 @@ services:
     logging:
       driver: none
     volumes:
-      - ./images/:/images/
+      - /labs/sharmalab/HTT_IMGS/:/images/
   security:
     build: "https://github.com/camicroscope/Security.git#v3.2.2"
     container_name: ca-security
