@@ -78,7 +78,12 @@
         "findLabelingByTypeOrCreator":"/Labeling/query/findLabelingByTypeOrCreator",
         "addAnnotations":{"path": "/Labeling/delete/addAnnotations", "attr": "write"},
         "post":{"path": "/Labeling/submit/json", "attr": "write"},
-        "pushLabelAnnotationId":{"path": "/Labeling/delete/pushLabelAnnotationId", "attr": "write"}
+        "pushLabelAnnotationId": "/Labeling/delete/pushLabelAnnotationId"
+      },
+      "LabelingAnnotation": {
+        "findByTypeOrCreator": "/LabelingAnnotation/query/findByTypeOrCreator",
+        "countSimpleAnnotationBySlideAndCreator": "/LabelingAnnotation/query/countSimpleAnnotationBySlideAndCreator",
+        "post":"/LabelingAnnotation/submit/json"
       }
     },
     "img": {
