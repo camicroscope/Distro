@@ -7,9 +7,19 @@
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
+      document.cookie = "token=" ;
       console.log('User signed out.');
     });
   }
+  function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};
 </script>
 <script>
 // google's jwk is here: https://www.googleapis.com/oauth2/v3/certs
@@ -62,7 +72,12 @@ function onSignIn(googleUser) {
       console.log("{auth service}", x)
       if (x.hasOwnProperty('token')){
         document.cookie = cookie_name + "=" + x.token;
-        window.location = state
+        let token_data = parseJwt(x.token)
+        if (token_data.attrs && token_data.attrs.length >= 1){
+          window.location = "./apps/landing/landing.html"
+        } else {
+          window.location = "./apps/landing/crowd.html"
+        }
       } else {
         window.alert("User not added")
         window.location = "./apps/signup/signup"
@@ -75,4 +90,3 @@ function onSignIn(googleUser) {
 
 </script>
 <html>
-
