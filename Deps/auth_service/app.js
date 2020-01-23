@@ -144,7 +144,14 @@ function token_trade(check_key, sign_key){
               var token = jwt.sign(data, sign_key, {algorithm:"RS256", expiresIn: EXPIRY})
               res.send({'token':token})
             } else {
-              res.status(401).send({"err":"User Unauthorized"})
+              // CUSTOM -- users not in db treated like "viewer"; attr = []
+              data = {
+                'sub':name,
+                'name':name,
+                'attrs':[],
+              }
+              var token = jwt.sign(data, sign_key, {algorithm:"RS256", expiresIn: EXPIRY})
+              res.send({'token':token})
             }
           })
           user_detail.catch(e=>{
@@ -163,4 +170,3 @@ app.get("/check", jwk_token_trade(SECRET, PRIKEY))
 app.get("/renew", token_trade(PUBKEY, PRIKEY))
 
 app.listen(PORT, () => console.log('listening on ' + PORT))
-
