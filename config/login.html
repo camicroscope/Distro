@@ -75,7 +75,12 @@ function onSignIn(googleUser) {
       console.log("{auth service}", x)
       if (x.hasOwnProperty('token')){
         document.cookie = cookie_name + "=" + x.token;
-        window.location = state
+        let token_data = parseJwt(x.token)
+        if (token_data.attrs && token_data.attrs.length >= 1){
+          window.location = "../apps/landing/landing.html"
+        } else {
+          window.location = "../apps/landing/crowd.html"
+        }
       } else {
         window.alert("User not added")
         window.location = "./apps/signup/signup"
