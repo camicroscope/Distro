@@ -1,9 +1,10 @@
 // these roles are customizable, and should match the routes.json attrs
 
 // lists
-let admin_list = ["admin@camicroscope.org"];
-let editor_list = ["editor@camicroscope.org"];
-let viewer_list = ["viewer@camicroscope.org"];
+let admin_list = [];
+let editor_list = ["qigong@gwu.edu"];
+
+let viewer_list = [];
 // admin users
 let admin_attrs = ['admin', 'write']
 // edit users
@@ -18,11 +19,11 @@ admin_list.forEach(x=>{
 })
 
 editor_list.forEach(x=>{
-  users.push({name:x, attrs: editor_attrs})
+  users.push({name:x, attrs: editor_attrs,})
 })
-
+lists
 viewer_list.forEach(x=>{
   users.push({name:x, attrs: viewer_attrs})
 })
 
-db.authorization.insertMany(users)
+db.authorization.insertMany(name:"",alias:"",attrs:'write'])

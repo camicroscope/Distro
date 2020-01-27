@@ -47,6 +47,8 @@ function onSignIn(googleUser) {
     signOut()
     deleteCookies()
     console.log("logging out")
+    window.location.href = "./login.html";
+    
   } else {
   var id_token = googleUser.getAuthResponse().id_token;
   console.info(id_token)
