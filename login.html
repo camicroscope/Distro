@@ -23,7 +23,15 @@ function randomString(length) {
     });
     return result.join('');
 }
-
+function deleteCookies() {
+   var allcookies = document.cookie.split(";");
+   for (var i = 0; i < allcookies.length; i++) {
+        var cookie = allcookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+    }
+}
 function getUrlParam(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, '\\$&');
@@ -35,40 +43,47 @@ function getUrlParam(name, url) {
 }
 
 function onSignIn(googleUser) {
-  var id_token = googleUser.getAuthResponse().id_token;
-  console.info(id_token)
-  // trade for camic token
-  var cookie_name = "token" // "token" is expected by elevate router
-  var base_deployment_url = window.location.toString().split("/").slice(0,-1).join("/")
-  var redirect_uri = base_deployment_url + "/login.html"
-  var default_redirect = base_deployment_url + "/apps/table.html"
-  var state
-  if (getUrlParam("state"))
-  {
-    state = decodeURIComponent(getUrlParam("state"))
-  }
-  if (!state){
-    state = default_redirect
-  }
+    // don't if we're logging out
+  if (getUrlParam("logout")){
+    signOut()
+    deleteCookies()
+    console.log("logging out")
+  } else {
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.info(id_token)
+    // trade for camic token
+    var cookie_name = "token" // "token" is expected by elevate router
+    var base_deployment_url = window.location.toString().split("/").slice(0,-1).join("/")
+    var redirect_uri = base_deployment_url + "/login.html"
+    var default_redirect = base_deployment_url + "/apps/table.html"
+    var state
+    if (getUrlParam("state"))
+    {
+      state = decodeURIComponent(getUrlParam("state"))
+    }
+    if (!state){
+      state = default_redirect
+    }
 
-  if (id_token){
-    document.cookie = cookie_name + "=" + id_token;
-    fetch("./auth/Token/check",
-    {headers: {
-        'Authorization': "Bearer " + id_token
-     }}
-    ).then(x=>x.json()).then(x=>{
-      console.log("{id provider", id_token)
-      console.log("{auth service}", x)
-      if (x.hasOwnProperty('token')){
-        document.cookie = cookie_name + "=" + x.token;
-        window.location = state
-      } else {
-        window.alert("User not added")
-        window.location = "./apps/signup/signup"
-      }
+    if (id_token){
+      document.cookie = cookie_name + "=" + id_token;
+      fetch("./auth/Token/check",
+      {headers: {
+          'Authorization': "Bearer " + id_token
+       }}
+      ).then(x=>x.json()).then(x=>{
+        console.log("{id provider", id_token)
+        console.log("{auth service}", x)
+        if (x.hasOwnProperty('token')){
+          document.cookie = cookie_name + "=" + x.token;
+          window.location = state
+        } else {
+          window.alert("User not added")
+          window.location = "./apps/signup/signup"
+        }
 
-    })
+      })
+    }
   }
 }
 
