@@ -12,6 +12,15 @@
   }
 </script>
 <script>
+function deleteCookies() {
+   var allcookies = document.cookie.split(";");
+   for (var i = 0; i < allcookies.length; i++) {
+        var cookie = allcookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+    }
+}
 // google's jwk is here: https://www.googleapis.com/oauth2/v3/certs
 function randomString(length) {
     var bytes = new Uint8Array(length);
@@ -33,6 +42,12 @@ function getUrlParam(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 function onSignIn(googleUser) {
+  // don't if we're logging out
+  if (getUrlParam("logout")){
+    signOut()
+    deleteCookies()
+    console.log("logging out")
+  } else {
   var id_token = googleUser.getAuthResponse().id_token;
   console.info(id_token)
   // trade for camic token
@@ -66,6 +81,8 @@ function onSignIn(googleUser) {
       }
     })
   }
+  }
+  
 }
 </script>
 <html>
