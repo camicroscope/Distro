@@ -71,9 +71,9 @@ function getUrlParam(name, url) {
 function onSignIn(googleUser) {
   // don't if we're logging out
   if (getUrlParam("logout")){
+    removeUserConsentAcceptance(getUserId())
     signOut()
     deleteCookies()
-    removeUserConsentAcceptance(getUserId())
     console.log("logging out")
     window.location.href = "./login.html";
   } else {
