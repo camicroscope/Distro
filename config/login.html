@@ -2,7 +2,7 @@
 <meta name="google-signin-client_id" content="539699277901-buh78f048405grejogqbrskj233rt0d0.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <script type='text/javascript' src='./common/util.js'></script>
-<div id="google-signin2" class="g-signin2" data-onsuccess="onSignIn"></div>
+<div id="google-signin2" class="g-signin2"></div>
 <!-- <a href="#" onclick="signOut();">Sign out</a> -->
 <script>
   function signOut() {
@@ -19,6 +19,7 @@
       'height': 50,
       'longtitle': true,
       'theme': 'dark',
+      'onsuccess': onSignIn,
       'onfailure': onFailure
     });
   }
