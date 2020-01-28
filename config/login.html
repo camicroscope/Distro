@@ -1,14 +1,35 @@
 <html>
 <meta name="google-signin-client_id" content="539699277901-buh78f048405grejogqbrskj233rt0d0.apps.googleusercontent.com">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
-<a href="#" onclick="signOut();">Sign out</a>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+<script type='text/javascript' src='./apps/common/util.js'></script>
+<div id="google-signin2" class="g-signin2" data-onsuccess="onSignIn"></div>
+<!-- <a href="#" onclick="signOut();">Sign out</a> -->
 <script>
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');
     });
+  }
+
+  function renderButton() {
+    gapi.signin2.render('google-signin2', {
+      'scope': 'profile email',
+      'width': 240,
+      'height': 50,
+      'longtitle': true,
+      'theme': 'dark',
+      'onsuccess': onSuccess,
+      'onfailure': onFailure
+    });
+  }
+
+  function onSuccess(googleUser) {
+    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+  }
+
+  function onFailure(error) {
+    console.log(error);
   }
 </script>
 <script>
@@ -57,6 +78,7 @@ function onSignIn(googleUser) {
   if (getUrlParam("logout")){
     signOut()
     deleteCookies()
+    removeUserConsentAcceptance(getUserId())
     console.log("logging out")
     window.location.href = "./login.html";
   } else {
