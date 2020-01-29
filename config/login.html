@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>FDA HTT - CaMicroscope</title>
+  <meta charset="utf-8" />  
   <meta name="google-signin-client_id" content="539699277901-buh78f048405grejogqbrskj233rt0d0.apps.googleusercontent.com">
-  <script type="text/javascript" src="./common/util.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./apps/landing/main.css" />  
+  <script type="text/javascript" src="./apps/common/util.js"></script>
 </head>
 <body>
+  <section id="main" class="wrapper">
+    <div class="inner">
+      <header class="major">
+        <h2>HTT ROI Annotation</h2>
+      </header>
+      <!-- Content -->
+
+      <div class="content">
+        <p><strong>HTT ROI Annotation</strong> is a tool to view, label, and annotate biomedical images.</p>
+        <a href="#" class="image fit"><img src="./banner1.jpg" alt="" /></a>
+
+      </div>
+
+      <div class="posts">
+        <!-- Organizer -->
+        <section class="post">
+            <a href="../table.html" class="image"><img src="./camic.jpg" alt=""/></a>
+            <div class="content">
+                <h3>ROI Creation - Organizers</h3>
+                <p>Organizers select a slide and create ROIs.</p>
+                <a href="../table.html" class="button">Create</a>
+                <a href="../labeling/statistics.html" class="button">Result</a>
+            </div>
+        </section>
+
+        <section class="post">
+            <a href="../collection/viewer.html" class="image"><img src="./camic.jpg" style="-webkit-filter: hue-rotate(30deg);filter: hue-rotate(30deg);" alt=""/></a>
+            <div class="content">
+                <h3>ROI Annotation - Participants</h3>
+                <p>Participants randomly pick up a ROI and annotate on it.</p>
+                <a href="../collection/viewer.html" class="button">Pick & Annotate</a>
+            </div>
+        </section>
+      </div>
+  </section>
   <div id="google-signin2"></div>
   <script>
     function onSuccess(googleUser) {
