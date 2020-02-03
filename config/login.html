@@ -14,7 +14,7 @@
     <nav id="nav">
         <ul>
             <li><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScL91LxrpAZjU88GBZP9gmcdgdf8__uNUwhws2lzU6Lr4qNwA/viewform">Feedback</a></li>
-            <!-- <li><a href="../../login.html?logout=true">Sign Out</a></li> -->
+            <li><a href="../../login.html?logout=true">Sign Out</a></li>
         </ul>
     </nav>
   </header>  
@@ -36,7 +36,7 @@
         <section class="post">
             <a href="../table.html" class="image"><img src="./apps/landing/camic.jpg" alt=""/></a>
             <div class="content">
-                <h3>Sign In As Study Organizers</h3>
+                <h3>Please Sign In With Your Google Account</h3>
                 <div id="google-signin2"></div>
             </div>
         </section>
@@ -80,15 +80,14 @@
           })
             .then(x => x.json())
             .then(x => {
-              // console.log("{id provider", id_token);
-              // console.log("{auth service}", x);
               if (x.hasOwnProperty("token")) {
                 document.cookie = cookie_name + "=" + x.token;
                 let token_data = parseJwt(x.token);
                 if (token_data.attrs && token_data.attrs.length >= 1) {
                   window.location = "./apps/landing/landing.html";
+
                 } else {
-                  // window.location = "./apps/landing/crowd.html";
+                  window.location = "./apps/landing/crowd.html";
                 }
               } else {
                 window.alert("User not added");
