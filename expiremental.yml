@@ -32,7 +32,7 @@ services:
       - "8010:8010"
     container_name: ca-back
     volumes:
-      - ./login.html:/root/src/camicroscope/login.html
+      - ./config/login.html:/root/src/static/login.html
       - ./jwt_keys/:/root/src/keys/
 
     environment:
