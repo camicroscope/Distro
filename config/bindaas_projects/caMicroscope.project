@@ -1859,39 +1859,6 @@
         "initialize": true
       },
       "queryEndpoints": {
-        "findByTypeOrCreator": {
-          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n        \"query\" : {\n            \"provenance.image.slide\": $slideId$,\n            \"provenance.analysis.computation\": {$regex: \"$computation$\", $options: \"i\"},\n            \"creator\": {$regex: \"$creator$\", $options: \"i\"}\n        },\n        \"fields\" :{ \"geometries\" : 0 }\n    }\n}       ",
-          "metaData": {},
-          "tags": [],
-          "bindVariables": {
-            "slideId": {
-              "name": "slideId",
-              "required": true,
-              "defaultValue": "",
-              "description": ""
-            },
-            "computation": {
-              "name": "computation",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            },
-            "creator": {
-              "name": "creator",
-              "required": false,
-              "defaultValue": "",
-              "description": ""
-            }
-          },
-          "stage": "UNVERIFIED",
-          "outputFormat": {
-            "outputFormat": "JSON"
-          },
-          "name": "findByTypeOrCreator",
-          "timeCreated": "Thu Jan 23 16:56:03 GMT 2020",
-          "createdBy": "admin",
-          "description": ""
-        },
         "countSimpleAnnotationBySlideAndCreator": {
           "queryTemplate": "{\n\t\"_operation\":\"group\" ,\n\t\"_operation_args\" : {\n\t\t\"key\":{\"provenance.image.name\":1},\n\t\t\"condition\":{\n\t\t\t\"provenance.image.name\": {$in: $name$},\n\t\t\t\"provenance.analysis.computation\": \"annotation\",\n\t\t\t\"provenance.analysis.type\": \"simple\",\n\t\t\t\"creator\": $creatorId$\n\t\t},\n\t\t\"reduce\":\u0027function(curr,result){result.total+\u003d1}\u0027,\n\t\t\"initial\":{total:0},\n\t\t\"finalize\":\u0027function(){}\u0027\n\t}\n}        ",
           "metaData": {},
@@ -1918,6 +1885,45 @@
           "timeCreated": "Thu Jan 23 17:02:04 GMT 2020",
           "createdBy": "admin",
           "description": ""
+        },
+        "findByTypeOrCreator": {
+          "queryTemplate": "{\n    \"_operation\" : \"find\" ,\n    \"_operation_args\" : {\n        \"query\" : {\n            \"provenance.image.slide\": {$regex:\"$slideId$\",$options:\"i\"},\n            \"provenance.image.name\": {$regex:\"$slideName$\",$options:\"i\"},\n            \"provenance.analysis.computation\": {$regex: \"$computation$\", $options: \"i\"},\n            \"creator\": {$regex: \"$creator$\", $options: \"i\"}\n        },\n        \"fields\" :{ \"geometries\" : 0 }\n    }\n}           ",
+          "metaData": {},
+          "tags": [],
+          "bindVariables": {
+            "slideId": {
+              "name": "slideId",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "computation": {
+              "name": "computation",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "creator": {
+              "name": "creator",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            },
+            "slideName": {
+              "name": "slideName",
+              "required": false,
+              "defaultValue": "",
+              "description": ""
+            }
+          },
+          "stage": "UNVERIFIED",
+          "outputFormat": {
+            "outputFormat": "JSON"
+          },
+          "name": "findByTypeOrCreator",
+          "timeCreated": "Tue Mar 10 15:28:57 GMT 2020",
+          "createdBy": "admin",
+          "description": "    "
         }
       },
       "deleteEndpoints": {},
