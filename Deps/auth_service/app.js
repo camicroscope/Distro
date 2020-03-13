@@ -10,7 +10,7 @@ const jwksClient = require('jwks-rsa');
 var PORT = process.env.PORT || 8010
 var BASE_USER_URL = "http://ca-data:9099/services/caMicroscope/Authorization/query/getAuth?name="
 var SECRET = process.env.SECRET
-var EXPIRY = process.env.EXPIRY || "1d"
+var EXPIRY = process.env.EXPIRY || "1y"
 var JWK_URL = process.env.JWKS
 var KEY_FIELD = process.env.KEY_FIELD || "accessCollection"
 var AUD = process.env.AUD || false
