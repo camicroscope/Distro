@@ -40,11 +40,11 @@ services:
     volumes:
       - ./images/:/images/
   viewer:
-    build: "https://github.com/camicroscope/caMicroscope.git#v3.5.10"
+    build: "https://github.com/camicroscope/caMicroscope.git#v3.6.0"
     container_name: ca-front
     restart: unless-stopped
     volumes:
-      - ./config/login.html:/var/www/html/login.html
+      - ./config/login.html:/usr/local/apache2/htdocs/login.html
     logging:
       driver: none
   loader:
