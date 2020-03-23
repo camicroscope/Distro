@@ -44,7 +44,7 @@ services:
     container_name: ca-front
     restart: unless-stopped
     volumes:
-      - ./config/login.html:/var/www/html/login.html
+      - ./config/login.html:/usr/local/apache2/htdocs/login.html
     logging:
       driver: none
   loader:
