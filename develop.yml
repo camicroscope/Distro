@@ -29,22 +29,24 @@ services:
       - ./config/bindaas_projects/:/root/bindaas/bin/projects/
       - ./config/bindaas.config.json:/root/bindaas/bin/bindaas.config.json
   iip:
-    build: "https://github.com/camicroscope/iipImage.git#develop"
+    build: "https://github.com/caMicroscope/iipImage.git#develop"
     container_name: ca-iip
     volumes:
       - ./images/:/images/
   viewer:
-    build: "https://github.com/camicroscope/caMicroscope.git#develop"
+    build: "https://github.com/caMicroscope/caMicroscope.git#develop"
     container_name: ca-front
+    environment:
+      - cacheoff=true
     volumes:
       - ./config/login.html:/usr/local/apache2/htdocs/login.html
   loader:
-    build: "https://github.com/camicroscope/SlideLoader.git#develop"
+    build: "https://github.com/caMicroscope/SlideLoader.git#develop"
     container_name: ca-load
     volumes:
       - ./images/:/images/
   security:
-    build: "https://github.com/camicroscope/Security.git#develop"
+    build: "https://github.com/caMicroscope/Security.git#develop"
     container_name: ca-security
     ports:
       - "4010:4010"
@@ -57,6 +59,6 @@ services:
     build: "./Deps/auth_service/"
     volumes:
       - ./jwt_keys/:/keys/
-    environment:
-      JWKS: "https://birmstuff.auth0.com/.well-known/jwks.json"
     container_name: ca-auth
+    environment:
+      JWKS: "https://www.googleapis.com/oauth2/v3/certs"

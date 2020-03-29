@@ -1,8 +1,10 @@
-# caMicroscope Distribution
+<h2 align="center">
+  <a href="http://camicroscope.org/"><img src="https://avatars2.githubusercontent.com/u/12075069?s=400&v=4" style="background-color:rgba(0,0,0,0);" height=230 alt="camicroscope: a web-based image viewer optimized for large bio-medical image data viewing"></a>
+</h2>
 
 [![Build Status](https://travis-ci.org/camicroscope/Distro.svg?branch=master)](https://travis-ci.org/camicroscope/Distro)
 
-caMicroscope 3.X distribution
+# caMicroscope distribution
 
 
 run with `docker-compose -f caMicroscope.yml up`
@@ -36,8 +38,6 @@ Logging - Container Logging is, for HIPAA reasons, disabled. Feel free to use a 
 Security and Routes - This is handled by the security container. By default routes go the viewer, unless a specific pattern in routes.json is matched. If security is enabled, supply the SECRET (pub key or secret of JWT) for verification, otherwise set DISABLE_SEC to true.
 
 Image Volume - This is, by default, the images directory in this directory. If this is changed, please make the same change across all impacted services.
-
-Packages - Packages are built in the viewer service using parcel, mount a different directory with packages.js to the package directory to overwrite or add functionality.
 
 ## PathDB
 
