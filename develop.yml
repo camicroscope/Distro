@@ -36,6 +36,8 @@ services:
   viewer:
     build: "https://github.com/camicroscope/caMicroscope.git#develop"
     container_name: ca-front
+    environment:
+      - cacheoff=true
     volumes:
       - ./config/login.html:/usr/local/apache2/htdocs/login.html
   loader:
