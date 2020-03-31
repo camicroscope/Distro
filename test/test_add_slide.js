@@ -23,7 +23,7 @@ describe('Slide Loading Step 1', function () {
         body:JSON.stringify(slideData)})
     postProcess.then(x=>x.json()).then(x=>{
       console.log(x)
-      assert.equal(x.count,1, "Post Reported Successful")
+      assert.equal(x.result.ok,1, "Post Reported Successful")
       done()
     }).catch(e=>{
       console.log("err")
