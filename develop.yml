@@ -34,11 +34,11 @@ services:
     volumes:
       - ./config/login.html:/root/src/static/login.html
       - ./jwt_keys/:/root/src/keys/
-
     environment:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip/fcgi-bin/iipsrv.fcgi"
       MONGO_URI: "mongodb://ca-mongo"
+      DISABLE_SEC: "true"
   iip:
     build: "https://github.com/camicroscope/iipImage.git#develop"
     container_name: ca-iip
