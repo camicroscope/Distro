@@ -1,4 +1,5 @@
 db.authorization.createIndex( { "name": 1 }, { unique: true } )
+db.user.createIndex( { "email": 1 }, { unique: true } )
 db.mark.createIndex({"provenance.image.slide": 1, "provenance.analysis.execution_id": 1, "footprint":1, "x":1, "y":1})
 db.mark.createIndex({"provenance.image.slide":1,"provenance.analysis.execution_id":1,"provenance.analysis": 1})
 db.mark.createIndex({"provenance.image.slide":1,"provenance.analysis": 1})

@@ -23,7 +23,7 @@ services:
       - mongo
   back:
     build:
-      context: "https://github.com/camicroscope/caboodle.git"
+      context: "https://github.com/camicroscope/caracal.git#develop"
       args:
         viewer: "exp"
     depends_on:
