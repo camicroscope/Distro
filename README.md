@@ -39,9 +39,23 @@ Security and Routes - This is handled by the security container. By default rout
 
 Image Volume - This is, by default, the images directory in this directory. If this is changed, please make the same change across all impacted services.
 
+## Securing caMicroscope
+
+### Getting an Identity Provider and Setting up Login
+
+When selecting, an identity provider, note that we expect it to provide a JWT, and to have a certificate/public key/secret which can be used to verify such JWTs.
+
+The example given in the Distro within config/login.html is set up to use google as an identity provider. See [this guide from google](https://developers.google.com/identity/sign-in/web/sign-in) to set up your own project, which is necessary to enable login on your instance.
+
+### Adding Users to Database
+
+Add users as in ./config/add\_mongo\_users.js. Attributes can be added to deny access to routes (e.g. allow only some users to post and delete)
+
+The name field is the email field (or failing that, sub field) in that priority from the identity provider.
+
 ## PathDB
 
-To use PathDB, use quip-pathdb.yml instead of caMicroscope.yml. This deployment does not include the auth and loader as separate services, as this PathDB provides that functionality.
+To use PathDB, use quip-pathdb.yml instead of caMicroscope.yml. This deployment does not include the auth and loader as separate services, as this PathDB implements that functionality itself.
 
 Running QuIP with PathDB (https://github.com/SBU-BMI/PathDB):
 
