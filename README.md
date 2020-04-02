@@ -22,20 +22,18 @@ mongo - vanilla mongo container
 
 idxMongo - ephemeral container to index mongo (that is, this container is *expected* to exit once it's done its job)
 
-bindaas - api service for mongo (see https://github.com/sharmalab/bindaas)
-
 iip - slide tile server (see https://github.com/camicroscope/iipImage)
-
-viewer - hosts the viewer files and builds packages ( see https://github.com/camicroscope/caMicroscope)
 
 loader - extracts metadata needed for image loading (see https://github.com/camicroscope/SlideLoader)
 
-security - security proxy (see https://github.com/camicroscope/Security)
+back - security, data, and routing (see https://github.com/camicroscope/caracal)
+
+back/viewer - within back, viewer files ( see https://github.com/camicroscope/caMicroscope)
 
 ## Configuration
 Logging - Container Logging is, for HIPAA reasons, disabled. Feel free to use a different logging engine if desired, especially for development.
 
-Security and Routes - This is handled by the security container. By default routes go the viewer, unless a specific pattern in routes.json is matched. If security is enabled, supply the SECRET (pub key or secret of JWT) for verification, otherwise set DISABLE_SEC to true.
+See backend and security config notes (here)[https://github.com/camicroscope/caracal]
 
 Image Volume - This is, by default, the images directory in this directory. If this is changed, please make the same change across all impacted services.
 
@@ -51,11 +49,11 @@ The example given in the Distro within config/login.html is set up to use google
 
 Add users as in ./config/add\_mongo\_users.js. Attributes can be added to deny access to routes (e.g. allow only some users to post and delete)
 
-The name field is the email field (or failing that, sub field) in that priority from the identity provider.
+The email field is the email field (or failing that, sub field) in that priority from the identity provider.
 
 ## PathDB
 
-To use PathDB, use quip-pathdb.yml instead of caMicroscope.yml. This deployment does not include the auth and loader as separate services, as this PathDB implements that functionality itself.
+To use PathDB, use quip-pathdb.yml instead of caMicroscope.yml.
 
 Running QuIP with PathDB (https://github.com/SBU-BMI/PathDB):
 
