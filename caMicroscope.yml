@@ -29,7 +29,7 @@ services:
     depends_on:
       - "mongo"
     ports:
-      - "4010:8010"
+      - "4010:4010"
     container_name: ca-back
     volumes:
       - ./config/login.html:/root/src/static/login.html
