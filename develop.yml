@@ -25,7 +25,7 @@ services:
     build:
       context: "https://github.com/camicroscope/caracal.git#develop"
       args:
-        viewer: "develop"
+        viewer: "e"
     depends_on:
       - "mongo"
     ports:
@@ -39,6 +39,7 @@ services:
       IIP_PATH: "http://ca-iip/fcgi-bin/iipsrv.fcgi"
       MONGO_URI: "mongodb://ca-mongo"
       DISABLE_SEC: "true"
+      ALLOW_PUBLIC: "true"
   iip:
     image: camicroscope/iipimage:latest
     container_name: ca-iip
