@@ -1,15 +1,15 @@
-version: '2'
+version: '3'
 
 services:
   mongo:
-    image: mongo:3.4.19-jessie
+    image: mongo:4.0.17-xenial
     container_name: ca-mongo
     logging:
       driver: none
     volumes:
       - ./db:/data/db
   idxMongo:
-    image: mongo:3.4.19-jessie
+    image: mongo:4.0.17-xenial
     container_name: ca-idx
     logging:
       driver: none
@@ -21,9 +21,11 @@ services:
       - /config/run_idx.sh
     depends_on:
       - mongo
+    tty: true
+    stdin_open: true
   back:
     build:
-      context: "https://github.com/camicroscope/caracal.git#develop"
+      context: "../Caracal"
       args:
         viewer: "develop"
     depends_on:
@@ -34,6 +36,7 @@ services:
     volumes:
       - ./config/login.html:/root/src/static/login.html
       - ./jwt_keys/:/root/src/keys/
+      - ../caMicroscope:/root/src/camicroscope
     environment:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip/fcgi-bin/iipsrv.fcgi"
