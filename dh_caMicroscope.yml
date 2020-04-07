@@ -32,6 +32,7 @@ services:
     volumes:
       - ./config/login.html:/root/src/static/login.html
       - ./jwt_keys/:/root/src/keys/
+      - ./images/:/images/
   iip:
     image: camicroscope/iipimage:latest
     container_name: ca-iip

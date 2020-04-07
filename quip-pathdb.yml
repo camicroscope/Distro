@@ -38,6 +38,7 @@ services:
     container_name: ca-back
     volumes:
       - ./keys/:/root/src/keys/
+      - ./images/:/images/
     environment:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip/fcgi-bin/iipsrv.fcgi"
