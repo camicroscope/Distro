@@ -51,4 +51,3 @@ services:
     container_name: ca-load
     volumes:
       - ./images/:/images/
-      - ./jwt_keys/key.pub:/var/www/keys/key.pub
