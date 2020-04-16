@@ -35,7 +35,7 @@ services:
       - "mongo"
     ports:
       - "4010:8010"
-    container_name: ca-back
+    container_name: ca-security
     volumes:
       - ./keys/:/root/src/keys/
     environment:
