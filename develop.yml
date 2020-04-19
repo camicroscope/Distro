@@ -43,7 +43,7 @@ services:
       ALLOW_PUBLIC: "true"
       PROTO_TOKEN_EXPIRY: "1h"
       PROTO_TOKEN_EXPIRY_IN_MSEC: "3600000" # PROTO_TOKEN_EXPIRY time in milliseconds
-      ACTIVATE_PROTO_TOKEN: "false"
+      ACTIVATE_PROTO_TOKEN: "true" # Set to false to deactivate prototype token generation
   iip:
     image: camicroscope/iipimage:latest
     container_name: ca-iip
