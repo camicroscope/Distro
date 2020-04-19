@@ -34,12 +34,16 @@ services:
     volumes:
       - ./config/login.html:/root/src/static/login.html
       - ./jwt_keys/:/root/src/keys/
+      - ../caMicroscope:/root/src/camicroscope
     environment:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip/fcgi-bin/iipsrv.fcgi"
       MONGO_URI: "mongodb://ca-mongo"
-      DISABLE_SEC: "true"
+      DISABLE_SEC: "false"
       ALLOW_PUBLIC: "true"
+      PROTO_TOKEN_EXPIRY: "1h"
+      PROTO_TOKEN_EXPIRY_IN_MSEC: "3600000" # PROTO_TOKEN_EXPIRY time in milliseconds
+      ACTIVATE_PROTO_TOKEN: "false"
   iip:
     image: camicroscope/iipimage:latest
     container_name: ca-iip
