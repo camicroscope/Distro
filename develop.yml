@@ -35,16 +35,15 @@ services:
     volumes:
       - ./config/login.html:/root/src/static/login.html
       - ./jwt_keys/:/root/src/keys/
-      - ../caMicroscope:/root/src/camicroscope
     environment:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip/fcgi-bin/iipsrv.fcgi"
       MONGO_URI: "mongodb://ca-mongo"
-      DISABLE_SEC: "false"
+      DISABLE_SEC: "true"
       ALLOW_PUBLIC: "true"
       PROTO_TOKEN_EXPIRY: "1h"
-      PROTO_TOKEN_EXPIRY_IN_MSEC: "60000" # PROTO_TOKEN_EXPIRY time in milliseconds
-      ACTIVATE_PROTO_TOKEN: "false"
+      PROTO_TOKEN_EXPIRY_IN_MSEC: "3600000" # PROTO_TOKEN_EXPIRY time in milliseconds
+      ACTIVATE_PROTO_TOKEN: "true" # Set to false to deactivate prototype token generation
   iip:
     image: camicroscope/iipimage:latest
     container_name: ca-iip
