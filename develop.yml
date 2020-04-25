@@ -23,8 +23,7 @@ services:
       - mongo
   back:
     build:
-      # context: "https://github.com/camicroscope/caracal.git#develop"
-      context: "../Caracal"
+      context: "https://github.com/camicroscope/caracal.git#develop"
       args:
         viewer: "develop"
     depends_on:
@@ -39,11 +38,11 @@ services:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip/fcgi-bin/iipsrv.fcgi"
       MONGO_URI: "mongodb://ca-mongo"
-      DISABLE_SEC: "true"
+      DISABLE_SEC: "false"
       ALLOW_PUBLIC: "true"
-      PROTO_TOKEN_EXPIRY: "1h"
-      PROTO_TOKEN_EXPIRY_IN_MSEC: "3600000" # PROTO_TOKEN_EXPIRY time in milliseconds
-      ACTIVATE_PROTO_TOKEN: "true" # Set to false to deactivate prototype token generation
+      # Date to enable security protocols at if DISABLE_SEC is set to 'false'. 
+      # Date format in MM/DD/YYYY hh:mm:ss in local server time. Set to empty string to disable feature.  
+      ENABLE_SECURITY_AT: ""
   iip:
     image: camicroscope/iipimage:latest
     container_name: ca-iip
@@ -51,9 +50,7 @@ services:
     volumes:
       - ./images/:/images/
   loader:
-    # build: "https://github.com/camicroscope/SlideLoader.git#develop"
-    build: 
-      context: "../SlideLoader"
+    build: "https://github.com/camicroscope/SlideLoader.git#develop"
     container_name: ca-load
     volumes:
       - ./images/:/images/
