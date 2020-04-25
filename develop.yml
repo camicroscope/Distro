@@ -23,7 +23,8 @@ services:
       - mongo
   back:
     build:
-      context: "https://github.com/camicroscope/caracal.git#develop"
+      # context: "https://github.com/camicroscope/caracal.git#develop"
+      context: "../Caracal"
       args:
         viewer: "develop"
     depends_on:
@@ -42,7 +43,7 @@ services:
       DISABLE_SEC: "false"
       ALLOW_PUBLIC: "true"
       PROTO_TOKEN_EXPIRY: "1h"
-      PROTO_TOKEN_EXPIRY_IN_MSEC: "3600000" # PROTO_TOKEN_EXPIRY time in milliseconds
+      PROTO_TOKEN_EXPIRY_IN_MSEC: "60000" # PROTO_TOKEN_EXPIRY time in milliseconds
       ACTIVATE_PROTO_TOKEN: "false"
   iip:
     image: camicroscope/iipimage:latest
@@ -51,7 +52,9 @@ services:
     volumes:
       - ./images/:/images/
   loader:
-    build: "https://github.com/camicroscope/SlideLoader.git#develop"
+    # build: "https://github.com/camicroscope/SlideLoader.git#develop"
+    build: 
+      context: "../SlideLoader"
     container_name: ca-load
     volumes:
       - ./images/:/images/
