@@ -23,8 +23,7 @@ services:
       - mongo
   back:
     build:
-      # context: "https://github.com/camicroscope/caracal.git#develop"
-      context: "../Caracal"
+      context: "https://github.com/camicroscope/caracal.git#develop"
       args:
         viewer: "develop"
     depends_on:
@@ -35,7 +34,6 @@ services:
     volumes:
       - ./config/login.html:/root/src/static/login.html
       - ./jwt_keys/:/root/src/keys/
-      - ../caMicroscope:/root/src/camicroscope
     environment:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip/fcgi-bin/iipsrv.fcgi"
@@ -43,8 +41,8 @@ services:
       DISABLE_SEC: "false"
       ALLOW_PUBLIC: "true"
       # Date to enable security protocols at if DISABLE_SEC is set to 'false'. 
-      # Date format in MM/DD/YYYY hh:mm:ss in local server time. Set to empty string to disable feature.  
-      ENABLE_SECURITY_AT: "04/25/2020 21:16:30"
+      # Date format in MM/DD/YYYY hh:mm:ss in UTC time. Set to empty string to disable feature.  
+      ENABLE_SECURITY_AT: ""
   iip:
     image: camicroscope/iipimage:latest
     container_name: ca-iip
@@ -52,9 +50,7 @@ services:
     volumes:
       - ./images/:/images/
   loader:
-    # build: "https://github.com/camicroscope/SlideLoader.git#develop"
-    build: 
-      context: "../SlideLoader"
+    build: "https://github.com/camicroscope/SlideLoader.git#develop"
     container_name: ca-load
     volumes:
       - ./images/:/images/
