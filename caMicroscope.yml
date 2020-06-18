@@ -18,8 +18,7 @@ services:
       - mongo
     volumes:
       - ./config:/config
-    command:
-      - /config/run_idx.sh
+    command: bash /config/run_idx.sh
     depends_on:
       - mongo
   back:

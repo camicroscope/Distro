@@ -11,14 +11,11 @@ services:
   idxMongo:
     image: mongo:3.4.19-jessie
     container_name: ca-idx
-    logging:
-      driver: none
     links:
       - mongo
     volumes:
       - ./config:/config
-    command:
-      - /config/run_idx.sh
+    command: bash /config/run_idx.sh
     depends_on:
       - mongo
   back:
