@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mongo:
-    image: mongo
+    image: mongo:3.6.18-xenial
     container_name: ca-mongo
     restart: unless-stopped
     volumes:
@@ -10,7 +10,7 @@ services:
     logging:
       driver: none
   idxMongo:
-    image: mongo
+    image: mongo:3.6.18-xenial
     container_name: ca-idx
     links:
       - mongo
@@ -76,3 +76,6 @@ services:
     ports: ["27017:27017"]
     volumes:
       - ./data:/mnt/data/
+    environment:
+      - TZ=America/New_York
+      - DEBIAN_FRONTEND=noninteractive
