@@ -431,4 +431,4 @@ var defaultConfigs=[{
    ]
 }];
 
-db.config.insertMany(defaultConfigs)
+db.configuration.insertMany(defaultConfigs)
