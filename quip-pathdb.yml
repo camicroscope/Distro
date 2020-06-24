@@ -28,9 +28,9 @@ services:
       - ./images/:/data/images/
   back:
     build:
-      context: "https://github.com/camicroscope/caracal.git#develop"
+      context: "https://github.com/camicroscope/caracal.git#3.7.6"
       args:
-        viewer: "develop"
+        viewer: "3.7.6"
     depends_on:
       - "mongo"
     ports:
@@ -72,7 +72,7 @@ services:
     volumes:
       - ./data:/data
   heatmaploader:
-    build: "https://github.com/SBU-BMI/uploadHeatmaps.git#master"
+    build: "https://github.com/SBU-BMI/uploadHeatmaps.git#v1.5.2"
     container_name: quip-hmloader
     volumes:
       - ./data:/mnt/data/
