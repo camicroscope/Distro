@@ -28,7 +28,7 @@ services:
       - ./images/:/data/images/
   back:
     build:
-      context: "https://github.com/camicroscope/caracal.git#3.7.6"
+      context: "https://github.com/camicroscope/caracal.git#v3.7.6"
       args:
         viewer: "3.7.6"
     depends_on:
