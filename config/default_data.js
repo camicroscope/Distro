@@ -26,409 +26,199 @@ let defaultTemplate = {
 db.template.insert(defaultTemplate)
 
 var defaultConfigs=[{
-   config_name:"preset_label",
-   configuration:[
-      {
-         title:"Lymph",
-         value:"Lymph",
-         children:[
-            {
-               title:"Positive",
-               value:"Positive",
-               children:[
-                  {
-                     title:100,
-                     value:100,
-                     color:"#ff6296",
-                     checked:true,
-                     data:{
-                        color:"#ff6296",
-                        mode:"grid",
-                        type:"Lymph-Positive",
-                        size:100
-                     }
-                  },
-                  {
-                     title:"Point",
-                     value:"Point",
-                     color:"#ff6296",
-                     data:{
-                        color:"#ff6296",
-                        mode:"point",
-                        type:"Lymph-Positive"
-                     }
-                  }
-               ]
-            },
-            {
-               title:"Negative",
-               value:"Negative",
-               children:[
-                  {
-                     title:100,
-                     value:100,
-                     color:"#62ffcb",
-                     data:{
-                        color:"#62ffcb",
-                        mode:"grid",
-                        type:"Lymph-Negative",
-                        size:100
-                     }
-                  },
-                  {
-                     title:"Point",
-                     value:"Point",
-                     color:"#62ffcb",
-                     data:{
-                        color:"#62ffcb",
-                        mode:"point",
-                        type:"Lymph-Negative"
-                     }
-                  }
-               ]
-            }
-         ]
-      },
-      {
-         title:"Neutrophil",
-         value:"Neutrophil",
-         children:[
-            {
-               title:"Positive",
-               value:"Positive",
-               color:"#ffcb62",
-               data:{
-                  color:"#ffcb62",
-                  mode:"grid",
-                  type:"Neutrophil-Positive",
-                  size:50
-               }
-            },
-            {
-               title:"Negative",
-               value:"Negative",
-               color:"#6296ff",
-               data:{
-                  color:"#6296ff",
-                  mode:"grid",
-                  type:"Neutrophil-Negative",
-                  size:50
-               }
-            }
-         ]
-      },
-      {
-         title:"Necrosis",
-         value:"Necrosis",
-         children:[
-            {
-               title:"Positive",
-               value:"Positive",
-               children:[
-                  {
-                     title:100,
-                     value:100,
-                     color:"#ff00d9",
-                     data:{
-                        color:"#ff00d9",
-                        mode:"grid",
-                        type:"Necrosis-Positive",
-                        size:100
-                     }
-                  },
-                  {
-                     title:500,
-                     value:500,
-                     color:"#ff00d9",
-                     data:{
-                        color:"#ff00d9",
-                        mode:"grid",
-                        type:"Necrosis-Positive",
-                        size:500
-                     }
-                  }
-               ]
-            },
-            {
-               title:"Negative",
-               value:"Negative",
-               children:[
-                  {
-                     title:100,
-                     value:100,
-                     color:"#00ff26",
-                     data:{
-                        color:"#00ff26",
-                        mode:"grid",
-                        type:"Necrosis-Negative",
-                        size:100
-                     }
-                  },
-                  {
-                     title:500,
-                     value:500,
-                     color:"#00ff26",
-                     data:{
-                        color:"#00ff26",
-                        mode:"grid",
-                        type:"Necrosis-Negative",
-                        size:500
-                     }
-                  }
-               ]
-            }
-         ]
-      },
-      {
-         title:"Tumor",
-         value:"Tumor",
-         children:[
-            {
-               title:"Positive",
-               value:"Positive",
-               children:[
-                  {
-                     title:100,
-                     value:100,
-                     color:"#790cff",
-                     data:{
-                        color:"#790cff",
-                        mode:"grid",
-                        type:"Tumor-Positive",
-                        size:100
-                     }
-                  },
-                  {
-                     title:300,
-                     value:300,
-                     color:"#790cff",
-                     data:{
-                        color:"#790cff",
-                        mode:"grid",
-                        type:"Tumor-Positive",
-                        size:300
-                     }
-                  },
-                  {
-                     title:1000,
-                     value:1000,
-                     color:"#790cff",
-                     data:{
-                        color:"#790cff",
-                        mode:"grid",
-                        type:"Tumor-Positive",
-                        size:1000
-                     }
-                  },
-                  {
-                     title:2000,
-                     value:2000,
-                     color:"#790cff",
-                     data:{
-                        color:"#790cff",
-                        mode:"grid",
-                        type:"Tumor-Positive",
-                        size:2000
-                     }
-                  }
-               ]
-            },
-            {
-               title:"Negative",
-               value:"Negative",
-               children:[
-                  {
-                     title:100,
-                     value:100,
-                     color:"#92ff0c",
-                     data:{
-                        color:"#92ff0c",
-                        mode:"grid",
-                        type:"Tumor-Negative",
-                        size:100
-                     }
-                  },
-                  {
-                     title:300,
-                     value:300,
-                     color:"#92ff0c",
-                     data:{
-                        color:"#92ff0c",
-                        mode:"grid",
-                        type:"Tumor-Negative",
-                        size:300
-                     }
-                  },
-                  {
-                     title:1000,
-                     value:1000,
-                     color:"#92ff0c",
-                     data:{
-                        color:"#92ff0c",
-                        mode:"grid",
-                        type:"Tumor-Negative",
-                        size:1000
-                     }
-                  },
-                  {
-                     title:2000,
-                     value:2000,
-                     color:"#92ff0c",
-                     data:{
-                        color:"#92ff0c",
-                        mode:"grid",
-                        type:"Tumor-Negative",
-                        size:2000
-                     }
-                  }
-               ]
-            }
-         ]
-      },
-      {
-         title:"Prostate",
-         value:"Prostate",
-         children:[
-            {
-               title:"Benign",
-               value:"Benign",
-               color:"#8dd3c7",
-               checked:true,
-               data:{
-                  color:"#8dd3c7",
-                  mode:"free",
-                  type:"Prostate-Benign"
-               }
-            },
-            {
-               title:"Gleason 3",
-               value:"Gleason 3",
-               color:"#ffffb3",
-               data:{
-                  color:"#ffffb3",
-                  mode:"free",
-                  type:"Prostate-Gleason 3"
-               }
-            },
-            {
-               title:"Gleason 4",
-               value:"Gleason 4",
-               color:"#bebada",
-               data:{
-                  color:"#bebada",
-                  mode:"free",
-                  type:"Prostate-Gleason 4"
-               }
-            },
-            {
-               title:"Gleason 5",
-               value:"Gleason 5",
-               color:"#fb8072",
-               data:{
-                  color:"#fb8072",
-                  mode:"free",
-                  type:"Prostate-Gleason 5"
-               }
-            },
-            {
-               title:"Cancer NOS",
-               value:"Cancer NOS",
-               color:"#80b1d3",
-               data:{
-                  color:"#80b1d3",
-                  mode:"free",
-                  type:"Prostate-Cancer NOS"
-               }
-            }
-         ]
-      },
-      {
-         title:"NSCLC",
-         value:"NSCLC",
-         children:[
-            {
-               title:"Benign",
-               value:"Benign",
-               color:"#fdb462",
-               data:{
-                  color:"#fdb462",
-                  mode:"free",
-                  type:"NSCLC-Benign"
-               }
-            },
-            {
-               title:"Squamous CA",
-               value:"Squamous CA",
-               color:"#b3de69",
-               data:{
-                  color:"#b3de69",
-                  mode:"free",
-                  type:"NSCLC-Squamous CA"
-               }
-            },
-            {
-               title:"Adeno CA (all)",
-               value:"Adeno CA (all)",
-               color:"#fccde5",
-               data:{
-                  color:"#fccde5",
-                  mode:"free",
-                  type:"NSCLC-Adeno CA (all)"
-               }
-            },
-            {
-               title:"Acinar",
-               value:"Acinar",
-               color:"#d9d9d9",
-               data:{
-                  color:"#d9d9d9",
-                  mode:"free",
-                  type:"NSCLC-Acinar"
-               }
-            },
-            {
-               title:"Lapidic",
-               value:"Lapidic",
-               color:"#bc80bd",
-               data:{
-                  color:"#bc80bd",
-                  mode:"free",
-                  type:"NSCLC-Lapidic"
-               }
-            },
-            {
-               title:"Solid",
-               value:"Solid",
-               color:"#ccebc5",
-               data:{
-                  color:"#ccebc5",
-                  mode:"free",
-                  type:"NSCLC-Solid"
-               }
-            },
-            {
-               title:"Papillary",
-               value:"Papillary",
-               color:"#ffed6f",
-               data:{
-                  color:"#ffed6f",
-                  mode:"free",
-                  type:"NSCLC-Papillary"
-               }
-            },
-            {
-               title:"Micropapillary",
-               value:"Micropapillary",
-               color:"#6a3d9a",
-               data:{
-                  color:"#6a3d9a",
-                  mode:"free",
-                  type:"NSCLC-Micropapillary"
-               }
-            }
-         ]
-      }
-   ]
+	"configuration" : [
+		{
+			"color" : "#ff6296",
+			"mode" : "grid",
+			"type" : "Lymph-Positive",
+			"size" : 100,
+			"key" : "1"
+		},
+		{
+			"color" : "#ff6296",
+			"mode" : "point",
+			"type" : "Lymph-Positive",
+			"key" : "2"
+		},
+		{
+			"color" : "#62ffcb",
+			"mode" : "grid",
+			"type" : "Lymph-Negative",
+			"size" : 100,
+			"key" : "3"
+		},
+		{
+			"color" : "#62ffcb",
+			"mode" : "point",
+			"type" : "Lymph-Negative",
+			"key" : "4"
+		},
+		{
+			"color" : "#ffcb62",
+			"mode" : "grid",
+			"type" : "Neutrophil-Positive",
+			"size" : 50,
+			"key" : "5"
+		},
+		{
+			"color" : "#6296ff",
+			"mode" : "grid",
+			"type" : "Neutrophil-Negative",
+			"size" : 50,
+			"key" : "6"
+		},
+		{
+			"color" : "#ff00d9",
+			"mode" : "grid",
+			"type" : "Necrosis-Positive",
+			"size" : 100,
+			"key" : "7"
+		},
+		{
+			"color" : "#ff00d9",
+			"mode" : "grid",
+			"type" : "Necrosis-Positive",
+			"size" : 500,
+			"key" : "8"
+		},
+		{
+			"color" : "#00ff26",
+			"mode" : "grid",
+			"type" : "Necrosis-Negative",
+			"size" : 100,
+			"key" : "9"
+		},
+		{
+			"color" : "#00ff26",
+			"mode" : "grid",
+			"type" : "Necrosis-Negative",
+			"size" : 500,
+			"key" : "0"
+
+		},
+		{
+			"color" : "#790cff",
+			"mode" : "grid",
+			"type" : "Tumor-Positive",
+			"size" : 100,
+			"key" : "b"
+		},
+		{
+			"color" : "#790cff",
+			"mode" : "grid",
+			"type" : "Tumor-Positive",
+			"size" : 300,
+			"key" : "c"
+		},
+		{
+			"color" : "#790cff",
+			"mode" : "grid",
+			"type" : "Tumor-Positive",
+			"size" : 1000,
+			"key" : "d"
+		},
+		{
+			"color" : "#790cff",
+			"mode" : "grid",
+			"type" : "Tumor-Positive",
+			"size" : 2000,
+			"key" : "e"
+		},
+		{
+			"color" : "#92ff0c",
+			"mode" : "grid",
+			"type" : "Tumor-Negative",
+			"size" : 100,
+			"key" : "f"	
+		},
+		{
+			"color" : "#92ff0c",
+			"mode" : "grid",
+			"type" : "Tumor-Negative",
+			"size" : 300,
+			"key" : "g"
+		},
+		{
+			"color" : "#92ff0c",
+			"mode" : "grid",
+			"type" : "Tumor-Negative",
+			"size" : 1000,
+			"key" : "h"	
+		},
+		{
+			"color" : "#92ff0c",
+			"mode" : "grid",
+			"type" : "Tumor-Negative",
+			"size" : 2000,
+			"key" : "i"			
+		}, {
+			"color" : "#8dd3c7",
+			"mode" : "free",
+			"type" : "Prostate-Benign",
+			"key" : "j"
+		}, {
+			"color" : "#ffffb3",
+			"mode" : "free",
+			"type" : "Prostate-Gleason3",
+			"key" : "k"
+		}, {
+			"color" : "#bebada",
+			"mode" : "free",
+			"type" : "Prostate-Gleason4",
+			"key" : "l"	
+		}, {
+			"color" : "#fb8072",
+			"mode" : "free",
+			"type" : "Prostate-Gleason5",
+			"key" : "n"
+		}, {
+			"color" : "#80b1d3",
+			"mode" : "free",
+			"type" : "Prostate-CancerNOS",
+			"key" : "o"
+		}, {
+			"color" : "#fdb462",
+			"mode" : "free",
+			"type" : "NSCLC-Benign",
+			"key" : "p"
+		}, {
+			"color" : "#b3de69",
+			"mode" : "free",
+			"type" : "NSCLC-SquamousCA",
+			"key" : "l"
+		}, {
+			"color" : "#fccde5",
+			"mode" : "free",
+			"type" : "NSCLC-AdenoCA(all)",
+			"key" : "t"
+		}, {
+			"color" : "#d9d9d9",
+			"mode" : "free",
+			"type" : "NSCLC-Acinar",
+			"key" : "u"
+		}, {
+			"color" : "#bc80bd",
+			"mode" : "free",
+			"type" : "NSCLC-Lapidic",
+			"key" : "v"
+		}, {
+			"color" : "#ccebc5",
+			"mode" : "free",
+			"type" : "NSCLC-Solid",
+			"key" : "w"
+		}, {
+			"color" : "#ffed6f",
+			"mode" : "free",
+			"type" : "NSCLC-Papillary",
+			"key" : "x"
+		}, {
+			"color" : "#6a3d9a",
+			"mode" : "free",
+			"type" : "NSCLC-Micropapillary",
+			"key" : "y"
+		}
+	],
+	"config_name" : "preset_label"
 }];
 
 db.configuration.insertMany(defaultConfigs)
