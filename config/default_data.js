@@ -185,7 +185,7 @@ var defaultConfigs=[{
 			"color" : "#b3de69",
 			"mode" : "free",
 			"type" : "NSCLC-SquamousCA",
-			"key" : "l"
+			"key" : "q"
 		}, {
 			"color" : "#fccde5",
 			"mode" : "free",
