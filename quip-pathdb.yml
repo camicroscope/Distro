@@ -38,6 +38,7 @@ services:
     container_name: ca-security
     volumes:
       - ./keys/:/root/src/keys/
+      - ./config/routes.json:/root/src/routes.json
     environment:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip/fcgi-bin/iipsrv.fcgi"
