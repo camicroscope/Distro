@@ -218,7 +218,8 @@ var defaultConfigs=[{
 			"id" : "031"
 		}
 	],
-	"config_name" : "preset_label"
+	"config_name" : "preset_label".
+	"version" : "1.0.0"
 }];
 
 db.configuration.insertMany(defaultConfigs)
