@@ -28,72 +28,72 @@ db.template.insert(defaultTemplate)
 var defaultConfigs=[{
 	"configuration" : [
 		{
+			"id" : "001",
 			"color" : "#ff6296",
 			"mode" : "grid",
 			"type" : "Lymph-Positive",
-			"size" : 100,
-			"key" : "1"
+			"size" : 100
 		},
 		{
+			"id" : "002",
 			"color" : "#ff6296",
 			"mode" : "point",
-			"type" : "Lymph-Positive",
-			"key" : "2"
+			"type" : "Lymph-Positive"
 		},
 		{
+			"id" : "003",			
 			"color" : "#62ffcb",
 			"mode" : "grid",
 			"type" : "Lymph-Negative",
-			"size" : 100,
-			"key" : "3"
+			"size" : 100
 		},
 		{
+			"id" : "004",
 			"color" : "#62ffcb",
 			"mode" : "point",
-			"type" : "Lymph-Negative",
-			"key" : "4"
+			"type" : "Lymph-Negative"
 		},
 		{
+			"id" : "005",
 			"color" : "#ffcb62",
 			"mode" : "grid",
 			"type" : "Neutrophil-Positive",
-			"size" : 50,
-			"key" : "5"
+			"size" : 50
 		},
 		{
 			"color" : "#6296ff",
 			"mode" : "grid",
 			"type" : "Neutrophil-Negative",
 			"size" : 50,
-			"key" : "6"
+			"id" : "006"
 		},
 		{
 			"color" : "#ff00d9",
 			"mode" : "grid",
 			"type" : "Necrosis-Positive",
 			"size" : 100,
-			"key" : "7"
+			"id" : "007"
 		},
 		{
 			"color" : "#ff00d9",
 			"mode" : "grid",
 			"type" : "Necrosis-Positive",
 			"size" : 500,
-			"key" : "8"
+			"id" : "008"
 		},
 		{
 			"color" : "#00ff26",
 			"mode" : "grid",
 			"type" : "Necrosis-Negative",
 			"size" : 100,
-			"key" : "9"
+			"id" : "009"
 		},
 		{
 			"color" : "#00ff26",
 			"mode" : "grid",
 			"type" : "Necrosis-Negative",
 			"size" : 500,
-			"key" : "0"
+			"id" : "010"
 
 		},
 		{
@@ -101,124 +101,125 @@ var defaultConfigs=[{
 			"mode" : "grid",
 			"type" : "Tumor-Positive",
 			"size" : 100,
-			"key" : "b"
+			"id" : "011"
 		},
 		{
 			"color" : "#790cff",
 			"mode" : "grid",
 			"type" : "Tumor-Positive",
 			"size" : 300,
-			"key" : "c"
+			"id" : "012"
 		},
 		{
 			"color" : "#790cff",
 			"mode" : "grid",
 			"type" : "Tumor-Positive",
 			"size" : 1000,
-			"key" : "d"
+			"id" : "013"
 		},
 		{
 			"color" : "#790cff",
 			"mode" : "grid",
 			"type" : "Tumor-Positive",
 			"size" : 2000,
-			"key" : "e"
+			"id" : "014"
 		},
 		{
 			"color" : "#92ff0c",
 			"mode" : "grid",
 			"type" : "Tumor-Negative",
 			"size" : 100,
-			"key" : "f"	
+			"id" : "015"	
 		},
 		{
 			"color" : "#92ff0c",
 			"mode" : "grid",
 			"type" : "Tumor-Negative",
 			"size" : 300,
-			"key" : "g"
+			"id" : "016"
 		},
 		{
 			"color" : "#92ff0c",
 			"mode" : "grid",
 			"type" : "Tumor-Negative",
 			"size" : 1000,
-			"key" : "h"	
+			"id" : "017"	
 		},
 		{
 			"color" : "#92ff0c",
 			"mode" : "grid",
 			"type" : "Tumor-Negative",
 			"size" : 2000,
-			"key" : "i"			
+			"id" : "018"			
 		}, {
 			"color" : "#8dd3c7",
 			"mode" : "free",
 			"type" : "Prostate-Benign",
-			"key" : "j"
+			"id" : "019"
 		}, {
 			"color" : "#ffffb3",
 			"mode" : "free",
 			"type" : "Prostate-Gleason3",
-			"key" : "k"
+			"id" : "020"
 		}, {
 			"color" : "#bebada",
 			"mode" : "free",
 			"type" : "Prostate-Gleason4",
-			"key" : "l"	
+			"id" : "021"	
 		}, {
 			"color" : "#fb8072",
 			"mode" : "free",
 			"type" : "Prostate-Gleason5",
-			"key" : "n"
+			"id" : "022"
 		}, {
 			"color" : "#80b1d3",
 			"mode" : "free",
 			"type" : "Prostate-CancerNOS",
-			"key" : "o"
+			"id" : "023"
 		}, {
 			"color" : "#fdb462",
 			"mode" : "free",
 			"type" : "NSCLC-Benign",
-			"key" : "p"
+			"id" : "024"
 		}, {
 			"color" : "#b3de69",
 			"mode" : "free",
 			"type" : "NSCLC-SquamousCA",
-			"key" : "q"
+			"id" : "025"
 		}, {
 			"color" : "#fccde5",
 			"mode" : "free",
 			"type" : "NSCLC-AdenoCA(all)",
-			"key" : "t"
+			"id" : "026"
 		}, {
 			"color" : "#d9d9d9",
 			"mode" : "free",
 			"type" : "NSCLC-Acinar",
-			"key" : "u"
+			"id" : "027"
 		}, {
 			"color" : "#bc80bd",
 			"mode" : "free",
 			"type" : "NSCLC-Lapidic",
-			"key" : "v"
+			"id" : "028"
 		}, {
 			"color" : "#ccebc5",
 			"mode" : "free",
 			"type" : "NSCLC-Solid",
-			"key" : "w"
+			"id" : "029"
 		}, {
 			"color" : "#ffed6f",
 			"mode" : "free",
 			"type" : "NSCLC-Papillary",
-			"key" : "x"
+			"id" : "030"
 		}, {
 			"color" : "#6a3d9a",
 			"mode" : "free",
 			"type" : "NSCLC-Micropapillary",
-			"key" : "y"
+			"id" : "031"
 		}
 	],
-	"config_name" : "preset_label"
+	"config_name" : "preset_label".
+	"version" : "1.0.0"
 }];
 
 db.configuration.insertMany(defaultConfigs)
