@@ -7,8 +7,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./db:/data/db
-    logging:
-      driver: none
   idxMongo:
     image: mongo:3.6.18-xenial
     container_name: ca-idx
