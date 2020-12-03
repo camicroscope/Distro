@@ -66,12 +66,12 @@ services:
       - ./data:/data/
       - ./images:/data/images
   segloader:
-    build: "https://github.com/SBU-BMI/SegmentationLoader.git#1.0.1"
+    build: "https://github.com/SBU-BMI/SegmentationLoader.git#2.0"
     container_name: quip-segloader
     volumes:
       - ./data:/data
   heatmaploader:
-    build: "https://github.com/SBU-BMI/uploadHeatmaps.git#v1.5.2"
+    build: "https://github.com/SBU-BMI/uploadHeatmaps.git#v1.5.3"
     container_name: quip-hmloader
     volumes:
       - ./data:/mnt/data/
