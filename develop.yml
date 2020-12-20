@@ -48,3 +48,4 @@ services:
     container_name: ca-load
     volumes:
       - ./images/:/images/
+      - ./cloud-upload-apis/:/cloud-upload-apis/
