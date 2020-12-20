@@ -26,6 +26,12 @@
     "handlers":[
       {"function":"proxyHandler", "args": ["http://ca-load:4000/"]}
     ]
+  },{
+    "method":"use",
+    "route": "/googleAuth/",
+    "handlers":[
+      {"function":"proxyHandler", "args": ["http://ca-load:4001/"]}
+    ]
   },
 
   {
