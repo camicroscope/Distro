@@ -6,10 +6,9 @@ services:
     container_name: ca-mongo
     restart: always
     logging:
-      driver: "json-file"
       options:
-          max-file: 5
-          max-size: 10m
+          max-file: "5"
+          max-size: "10m"
     volumes:
       - ./db:/data/db
   idxMongo:
@@ -21,10 +20,9 @@ services:
       - ./config:/config
     command: bash /config/run_idx.sh
     logging:
-      driver: "json-file"
       options:
-          max-file: 5
-          max-size: 10m
+          max-file: "5"
+          max-size: "10m"
     depends_on:
       - mongo
   back:
@@ -39,10 +37,9 @@ services:
     container_name: ca-back
     restart: always
     logging:
-      driver: "json-file"
       options:
-          max-file: 5
-          max-size: 10m
+          max-file: "5"
+          max-size: "10m"
     volumes:
       - ./config/login.html:/root/src/static/login.html
       - ./jwt_keys/:/root/src/keys/
@@ -55,10 +52,9 @@ services:
     image: camicroscope/iipimage:latest
     container_name: ca-iip
     logging:
-      driver: "json-file"
       options:
-          max-file: 5
-          max-size: 10m
+          max-file: "5"
+          max-size: "10m"
     restart: always
     volumes:
       - ./images/:/images/
@@ -67,9 +63,8 @@ services:
     container_name: ca-load
     restart: always
     logging:
-      driver: "json-file"
       options:
-          max-file: 5
-          max-size: 10m
+          max-file: "5"
+          max-size: "10m"
     volumes:
       - ./images/:/images/
