@@ -30,9 +30,9 @@ services:
       MONGO_URI: "mongodb://ca-mongo"
     container_name: ca-back
     volumes:
-      - ./config/login.html:/root/src/static/login.html
-      - ./jwt_keys/:/root/src/keys/
-      - ./config/routes.json:/root/src/routes.json
+      - ./config/login.html:/src/static/login.html
+      - ./jwt_keys/:/src/keys/
+      - ./config/routes.json:/src/routes.json
   iip:
     image: camicroscope/iipimage:latest
     container_name: ca-iip
