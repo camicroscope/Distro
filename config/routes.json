@@ -340,7 +340,7 @@
       {"function":"mongoUpdate", "args": ["camic", "freeform"]}
     ]
   },
-  
+
   {
     "route":"/data/Configuration/find",
     "method":"get",
@@ -429,34 +429,6 @@
     "method":"get",
     "handlers":[
       {"function":"wcido", "args": []}
-    ]
-  },{
-    "route":"/workbench/uploadDataset",
-    "method":"post",
-    "handlers":[
-      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
-      {"function":"getDataset", "args": []}
-    ]
-  },{
-    "route":"/workbench/trainModel",
-    "method":"post",
-    "handlers":[
-      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
-      {"function":"trainModel", "args": []}
-    ]
-  },{
-    "route":"/workbench/deleteUserData",
-    "method":"post",
-    "handlers":[
-      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
-      {"function":"deleteDataset", "args": []}
-    ]
-  },{
-    "route":"/workbench/modelDownload",
-    "method":"post",
-    "handlers":[
-      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
-      {"function":"sendTrainedModel", "args": []}
     ]
   }
 ]

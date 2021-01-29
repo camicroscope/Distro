@@ -27,7 +27,7 @@ services:
       - mongo
   back:
     build:
-      context: "https://github.com/camicroscope/caracal.git#v3.8.4"
+      context: "https://github.com/camicroscope/caracal.git#simplified"
       args:
         viewer: "v3.8.4"
     depends_on:
