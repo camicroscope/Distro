@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../../caMicroscope.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: idxmongo
+  name: idxmongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: idxmongo
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../../caMicroscope.yml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: idxmongo
+    spec:
+      containers:
+        - args:
+            - bash
+            - /config/run_idx.sh
+          image: mongo:3.6.18-xenial
+          name: ca-idx
+          resources: {}
+          volumeMounts:
+            - mountPath: /config
+              name: idxmongo-claim0
+      restartPolicy: Always
+      volumes:
+        - name: idxmongo-claim0
+          persistentVolumeClaim:
+            claimName: idxmongo-claim0
+status: {}

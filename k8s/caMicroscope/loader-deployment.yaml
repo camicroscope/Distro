@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../../caMicroscope.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: loader
+  name: loader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: loader
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../../caMicroscope.yml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: loader
+    spec:
+      containers:
+        - image: loader
+          name: ca-load
+          resources: {}
+          volumeMounts:
+            - mountPath: /images/
+              name: loader-claim0
+      restartPolicy: Always
+      volumes:
+        - name: loader-claim0
+          persistentVolumeClaim:
+            claimName: loader-claim0
+status: {}

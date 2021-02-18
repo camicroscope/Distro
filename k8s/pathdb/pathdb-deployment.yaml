@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../../quip-pathdb.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: pathdb
+  name: pathdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: pathdb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../../quip-pathdb.yml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: pathdb
+    spec:
+      containers:
+        - args:
+            - /config/pathdb_pre.sh
+          image: pathdb
+          name: quip-pathdb
+          ports:
+            - containerPort: 443
+            - containerPort: 80
+          resources: {}
+          volumeMounts:
+            - mountPath: /data/
+              name: pathdb-claim0
+            - mountPath: /data/pathdb/files/wsi
+              name: pathdb-claim1
+            - mountPath: /quip/web/sites/default
+              name: pathdb-claim2
+            - mountPath: /keys/
+              name: pathdb-claim3
+            - mountPath: /config
+              name: pathdb-claim4
+      restartPolicy: Always
+      volumes:
+        - name: pathdb-claim0
+          persistentVolumeClaim:
+            claimName: pathdb-claim0
+        - name: pathdb-claim1
+          persistentVolumeClaim:
+            claimName: pathdb-claim1
+        - name: pathdb-claim2
+          persistentVolumeClaim:
+            claimName: pathdb-claim2
+        - name: pathdb-claim3
+          persistentVolumeClaim:
+            claimName: pathdb-claim3
+        - name: pathdb-claim4
+          persistentVolumeClaim:
+            claimName: pathdb-claim4
+status: {}

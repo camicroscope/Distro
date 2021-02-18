@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../../caMicroscope.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: iip
+  name: iip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: iip
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../../caMicroscope.yml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: iip
+    spec:
+      containers:
+        - image: camicroscope/iipimage:version-3.8.4
+          name: ca-iip
+          resources: {}
+          volumeMounts:
+            - mountPath: /images/
+              name: iip-claim0
+      restartPolicy: Always
+      volumes:
+        - name: iip-claim0
+          persistentVolumeClaim:
+            claimName: iip-claim0
+status: {}

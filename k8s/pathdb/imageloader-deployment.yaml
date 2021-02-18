@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../../quip-pathdb.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: imageloader
+  name: imageloader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: imageloader
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../../quip-pathdb.yml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: imageloader
+    spec:
+      containers:
+        - image: imageloader
+          name: quip-imageloader
+          resources: {}
+          volumeMounts:
+            - mountPath: /data/
+              name: imageloader-claim0
+            - mountPath: /data/images
+              name: imageloader-claim1
+      restartPolicy: Always
+      volumes:
+        - name: imageloader-claim0
+          persistentVolumeClaim:
+            claimName: imageloader-claim0
+        - name: imageloader-claim1
+          persistentVolumeClaim:
+            claimName: imageloader-claim1
+status: {}

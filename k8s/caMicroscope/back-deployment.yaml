@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../../caMicroscope.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: back
+  name: back
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: back
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../../caMicroscope.yml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: back
+    spec:
+      containers:
+        - env:
+            - name: IIP_PATH
+              value: http://ca-iip:8080/fcgi-bin/iipsrv.fcgi
+            - name: JWK_URL
+              value: https://www.googleapis.com/oauth2/v3/certs
+            - name: MONGO_URI
+              value: mongodb://ca-mongo
+          image: back
+          name: ca-back
+          ports:
+            - containerPort: 4010
+          resources: {}
+          volumeMounts:
+            - mountPath: /src/static/login.html
+              name: back-claim0
+            - mountPath: /src/keys/
+              name: back-claim1
+            - mountPath: /src/routes.json
+              name: back-claim2
+      restartPolicy: Always
+      volumes:
+        - name: back-claim0
+          persistentVolumeClaim:
+            claimName: back-claim0
+        - name: back-claim1
+          persistentVolumeClaim:
+            claimName: back-claim1
+        - name: back-claim2
+          persistentVolumeClaim:
+            claimName: back-claim2
+status: {}
