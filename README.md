@@ -12,7 +12,7 @@ run with `docker-compose -f caMicroscope.yml up`
 this will build all services and run in the foreground.
 Use `docker-compose -f caMicroscope.yml build` to rebuild the services.
 
-Once everything is up, go to <the host this is running on>:4010/ to see the landing page.
+Once everything is up, go to http://localhost:4010/ to see the landing page.
 
 ## SSL
 To enable ssl, mount the private key and certificate files to the ca-back service in /root/src/ssl/privatekey.pem and /root/src/ssl/certificate.pem respectively. HTTPS mode will only be enabled if both of these files are present.
