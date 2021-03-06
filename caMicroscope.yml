@@ -27,9 +27,9 @@ services:
       - mongo
   back:
     build:
-      context: "https://github.com/camicroscope/caracal.git#v3.9.0"
+      context: "https://github.com/camicroscope/caracal.git#v3.9.1"
       args:
-        viewer: "v3.9.0"
+        viewer: "v3.9.1"
     depends_on:
       - "mongo"
     ports:
