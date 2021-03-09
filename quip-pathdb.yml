@@ -45,7 +45,7 @@ services:
       DISABLE_SEC: "true"
   pathdb:
     build:
-      context: "https://github.com/SBU-BMI/PathDB.git#1.4.1"
+      context: "https://github.com/SBU-BMI/PathDB.git#1.5.0"
       args:
         viewer: "v3.9.1"
     container_name: quip-pathdb
