@@ -31,7 +31,7 @@ back - security, data, and routing (see https://github.com/camicroscope/caracal)
 back/viewer - within back, viewer files ( see https://github.com/camicroscope/caMicroscope)
 
 ## Configuration
-Logging - Container Logging is, for HIPAA reasons, disabled. Feel free to use a different logging engine if desired, especially for development.
+Logging - Logging is enabled by default with a set configurable maximum size. If you need to disable logs, for example due to HIPAA requirements, set the logging driver to none.
 
 See backend and security config notes (here)[https://github.com/camicroscope/caracal]
 
