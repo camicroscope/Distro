@@ -33,7 +33,7 @@ back/viewer - within back, viewer files ( see https://github.com/camicroscope/ca
 ## Configuration
 Logging - Logging is enabled by default with a set configurable maximum size. If you need to disable logs, for example due to HIPAA requirements, set the logging driver to none.
 
-See backend and security config notes (here)[https://github.com/camicroscope/caracal]
+See backend and security config notes [here](https://github.com/camicroscope/caracal).
 
 Image Volume - This is, by default, the images directory in this directory. If this is changed, please make the same change across all impacted services.
 
