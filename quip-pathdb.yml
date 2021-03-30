@@ -43,6 +43,7 @@ services:
       MONGO_URI: "mongodb://ca-mongo"
       DEFAULT_USER_TYPE: "Editor"
       DISABLE_SEC: "true"
+      DISABLE_CSP: "true"
   pathdb:
     build:
       context: "https://github.com/SBU-BMI/PathDB.git#1.5.0"
