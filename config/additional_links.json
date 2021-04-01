@@ -1,0 +1,17 @@
+[
+    {
+        "displayName":"Sample link 1",
+        "url":"http://sample-link-1.com",
+        "icon": "supervisor_account"
+    },
+    {
+        "displayName":"Sample link 2",
+        "url":"http://sample-link-2.com",
+        "icon": "speaker_notes"
+    },
+    {
+        "displayName":"Sample link 3",
+        "url":"http://sample-link-3.com",
+        "openInNewTab": false
+    }
+]
