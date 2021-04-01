@@ -14,6 +14,22 @@ Use `docker-compose -f caMicroscope.yml build` to rebuild the services.
 
 Once everything is up, go to <the host this is running on>:4010/ to see the landing page.
 
+**Setup for Windows:**
+1. Install Windows Subsystem for Linux (WSL2) from the link given here: <a href = "https://docs.microsoft.com/en-us/windows/wsl/install-win10#manual-installation-steps">WSL2</a>, **FOLLOW STEPS 1 to 5 ONLY (Step 6 - Install your Linux distribution of choice IS NOT REQUIRED)** 
+2. After completing all the five steps, <a href = "https://hub.docker.com/editions/community/docker-ce-desktop-windows/">Install Docker Desktop for Windows</a>, click on the "Get Docker" button on the right and run the "Docker Desktop Installer" to complete the installation.
+3. Clone the Distro repository using <code>git clone</code> command given below:<br>
+    <code>git clone https://github.com/camicroscope/Distro.git</code><br>
+
+4. Open the "caMicroscope.yml" file which can be found in the Distro folder, "Distro/caMicroscope.yml".
+5. Add <code>DISABLE_SEC: "true"</code> as shown below, adding this line will help us get rid of JsonWebTokenError.
+
+![disable_sec](https://user-images.githubusercontent.com/40331239/113166920-d4d24d80-9260-11eb-9bc1-7cb8d301c46c.jpg)
+
+6. Now we are ready to build the docker images, go ahead and execute <code>docker-compose -f caMicroscope.yml build</code> command from the command prompt (Make sure that you are in the Distro directory).
+7. After the build has completed successfully, execute <code>docker-compose -f caMicroscope.yml up</code> command to run the application.
+8. Go to http://localhost:4010/ on your web browser to see the application running.
+9. Finally, if you wish to stop the application, execute <code>docker-compose -f caMicroscope.yml down</code> command.
+
 ## SSL
 To enable ssl, mount the private key and certificate files to the ca-back service in /root/src/ssl/privatekey.pem and /root/src/ssl/certificate.pem respectively. HTTPS mode will only be enabled if both of these files are present.
 
