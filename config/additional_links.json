@@ -2,6 +2,7 @@
     {
         "displayName":"Bug Report",
         "url":"https://goo.gl/forms/mgyhx4ADH0UuEQJ53",
-        "icon": "bug_report"
+        "icon": "bug_report",
+        "openInNewTab": true
     }
 ]
