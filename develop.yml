@@ -18,7 +18,7 @@ services:
       - mongo
   back:
     build:
-     context: "https://github.com/camicroscope/caracal.git#v3.9.1"
+     context: "https://github.com/camicroscope/caracal.git#develop"
       args:
         viewer: "develop"
         fork: "camicroscope"
