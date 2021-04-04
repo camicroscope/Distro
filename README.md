@@ -6,7 +6,6 @@
 
 # caMicroscope distribution
 
-
 run with `docker-compose -f caMicroscope.yml up`
 
 this will build all services and run in the foreground.
@@ -14,21 +13,30 @@ Use `docker-compose -f caMicroscope.yml build` to rebuild the services.
 
 Once everything is up, go to <the host this is running on>:4010/ to see the landing page.
 
+To use docker-compose and run the application, install Docker Desktop Application. <br>
+**NOTE for Windows users:** The Docker Desktop Application also need WSL2 so follow the setup for Windows given below to install Docker on Windows 10. 
+
 **Setup for Windows:**
 1. Install Windows Subsystem for Linux (WSL2) from the link given here: <a href = "https://docs.microsoft.com/en-us/windows/wsl/install-win10#manual-installation-steps">WSL2</a>, **FOLLOW STEPS 1 to 5 ONLY (Step 6 - Install your Linux distribution of choice IS NOT REQUIRED)** 
 2. After completing all the five steps, <a href = "https://hub.docker.com/editions/community/docker-ce-desktop-windows/">Install Docker Desktop for Windows</a>, click on the "Get Docker" button on the right and run the "Docker Desktop Installer" to complete the installation.
-3. Clone the Distro repository using <code>git clone</code> command given below:<br>
-    <code>git clone https://github.com/camicroscope/Distro.git</code><br>
 
-4. Open the "caMicroscope.yml" file which can be found in the Distro folder, "Distro/caMicroscope.yml".
-5. Add <code>DISABLE_SEC: "true"</code> as shown below, adding this line will help us get rid of JsonWebTokenError.
+# Fast Local Changes
+When using the hosted setup, you can have the distribution host the changes from your local. Follow these steps :<br>
+1. Clone <a href = "https://github.com/camicroscope/Distro">Distro</a> repository, the <a href = "https://github.com/camicroscope/Caracal">Caracal </a> repository and the <a href = "https://github.com/camicroscope/caMicroscope">caMicroscope </a>repository in the same parent directory.<br>
+2. Set the build to build your local changes instead of the hosted git versions by editing the ca-back container section of your **'develop.yml' of Distro repository**. 
+3. Replace the build context section with the path to your local caracal folder("../Caracal"), and add - ```../caMicroscope:/src/camicroscope``` to the volumes as shown below.
 
-![disable_sec](https://user-images.githubusercontent.com/40331239/113166920-d4d24d80-9260-11eb-9bc1-7cb8d301c46c.jpg)
+![developFile](https://user-images.githubusercontent.com/40331239/113511371-158dd780-957d-11eb-8a26-c0f6a3554e72.jpg)
 
-6. Now we are ready to build the docker images, go ahead and execute <code>docker-compose -f caMicroscope.yml build</code> command from the command prompt (Make sure that you are in the Distro directory).
-7. After the build has completed successfully, execute <code>docker-compose -f caMicroscope.yml up</code> command to run the application.
-8. Go to http://localhost:4010/ on your web browser to see the application running.
-9. Finally, if you wish to stop the application, execute <code>docker-compose -f caMicroscope.yml down</code> command.
+4. Remove this line from **'Dockerfile' in Caracal repository** :
+```RUN git clone https://github.com/${fork:-camicroscope}/camicroscope.git --branch=${viewer:-master}```
+
+![dockerFile](https://user-images.githubusercontent.com/40331239/113511379-1e7ea900-957d-11eb-8e07-5710754fd0a5.jpg)
+
+5. Now open cmd and navigate to the distro folder, <br>
+6. First use ```docker-compose -f develop.yml build``` to build the application. <br>
+7. After building, use ```docker-compose -f develop.yml up``` to run the application. <br>
+Use ctrl-c to stop the application.
 
 ## SSL
 To enable ssl, mount the private key and certificate files to the ca-back service in /root/src/ssl/privatekey.pem and /root/src/ssl/certificate.pem respectively. HTTPS mode will only be enabled if both of these files are present.
