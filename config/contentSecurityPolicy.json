@@ -11,6 +11,7 @@
   "ajax.googleapis.com",
   "cdn.jsdelivr.net",
   "unpkg.com",
+  "stackpath.bootstrapcdn.com",
   "http://openseadragon.github.io"
 ],
 "styleSrc": [
@@ -19,6 +20,7 @@
   "fonts.googleapis.com",
   "use.fontawesome.com",
   "cdnjs.cloudflare.com",
+  "stackpath.bootstrapcdn.com",
   "cdn.jsdelivr.net"
 ],
 "fontSrc": [
