@@ -12,7 +12,9 @@
   "cdn.jsdelivr.net",
   "unpkg.com",
   "stackpath.bootstrapcdn.com",
-  "http://openseadragon.github.io"
+  "http://openseadragon.github.io",
+  "unpkg.com",
+  "cdn.datatables.net"
 ],
 "styleSrc": [
   "'self'",
@@ -21,7 +23,9 @@
   "use.fontawesome.com",
   "cdnjs.cloudflare.com",
   "stackpath.bootstrapcdn.com",
-  "cdn.jsdelivr.net"
+  "cdn.jsdelivr.net",
+  "code.jquery.com",
+  "cdn.datatables.net"
 ],
 "fontSrc": [
   "'self'",
@@ -30,7 +34,9 @@
   "cdnjs.cloudflare.com"
 ],
 "imgSrc": [
-  "'self'"
+  "'self'",
+  "data:",
+  "cdn.datatables.net"
 ],
 "frameSrc": [
  "'self'",
