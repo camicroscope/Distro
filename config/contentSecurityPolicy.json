@@ -13,7 +13,6 @@
   "unpkg.com",
   "stackpath.bootstrapcdn.com",
   "http://openseadragon.github.io",
-  "unpkg.com",
   "cdn.datatables.net"
 ],
 "styleSrc": [
@@ -25,6 +24,7 @@
   "stackpath.bootstrapcdn.com",
   "cdn.jsdelivr.net",
   "code.jquery.com",
+  "unpkg.com",
   "cdn.datatables.net"
 ],
 "fontSrc": [
