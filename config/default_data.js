@@ -41,7 +41,7 @@ var defaultConfigs=[{
 			"type" : "Lymph-Positive"
 		},
 		{
-			"id" : "003",			
+			"id" : "003",
 			"color" : "#62ffcb",
 			"mode" : "grid",
 			"type" : "Lymph-Negative",
@@ -129,7 +129,7 @@ var defaultConfigs=[{
 			"mode" : "grid",
 			"type" : "Tumor-Negative",
 			"size" : 100,
-			"id" : "015"	
+			"id" : "015"
 		},
 		{
 			"color" : "#92ff0c",
@@ -143,14 +143,14 @@ var defaultConfigs=[{
 			"mode" : "grid",
 			"type" : "Tumor-Negative",
 			"size" : 1000,
-			"id" : "017"	
+			"id" : "017"
 		},
 		{
 			"color" : "#92ff0c",
 			"mode" : "grid",
 			"type" : "Tumor-Negative",
 			"size" : 2000,
-			"id" : "018"			
+			"id" : "018"
 		}, {
 			"color" : "#8dd3c7",
 			"mode" : "free",
@@ -165,7 +165,7 @@ var defaultConfigs=[{
 			"color" : "#bebada",
 			"mode" : "free",
 			"type" : "Prostate-Gleason4",
-			"id" : "021"	
+			"id" : "021"
 		}, {
 			"color" : "#fb8072",
 			"mode" : "free",
@@ -222,4 +222,19 @@ var defaultConfigs=[{
 	"version" : "1.0.0"
 }];
 
+
 db.configuration.insertMany(defaultConfigs)
+
+var defaultLinks  = {
+   "configuration":[
+      {
+         "displayName":"Bug Report",
+         "url":"https://goo.gl/forms/mgyhx4ADH0UuEQJ53",
+         "icon":"bug_report",
+         "openInNewTab":true
+      }
+   ],
+   "config_name":"additional_links",
+   "version":"1.0.0"
+}
+db.configuration.insert(defaultLinks)
