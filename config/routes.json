@@ -84,6 +84,12 @@
       {"function":"editHandler", "args": ["data", "userFilter", "filter"]},
       {"function":"mongoUpdate", "args": ["camic", "slide"]}
     ]
+  },{
+    "route":"/data/Slide/metadata",
+    "method":"get",
+    "handlers":[
+      {"function":"metadata", "args": []}
+    ]
   },
 
   {
