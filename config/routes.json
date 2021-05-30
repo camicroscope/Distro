@@ -314,6 +314,33 @@
   },
 
   {
+    "route":"/data/Evaluation/find",
+    "method":"get",
+    "handlers":[
+      {"function":"mongoFind", "args": ["camic", "evaluation"]}
+    ]
+  },{
+    "route":"/data/Evaluation/post",
+    "method":"post",
+    "handlers":[
+      {"function":"mongoAdd", "args": ["camic", "evaluation"]}
+    ]
+  },{
+    "route":"/data/Evaluation/delete",
+    "method":"delete",
+    "handlers":[
+      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
+      {"function":"mongoDelete", "args": ["camic", "evaluation"]}
+    ]
+  },{
+    "route":"/data/Evaluation/update",
+    "method":"post",
+    "handlers":[
+      {"function":"mongoUpdate", "args": ["camic", "evaluation"]}
+    ]
+  },
+
+  {
     "route":"/data/Freeform/find",
     "method":"get",
     "handlers":[
