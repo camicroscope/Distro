@@ -58,7 +58,6 @@ services:
       - ./config/pathdb:/quip/web/sites/default
       - ./jwt_keys/:/keys/
       - ./config:/config
-      - ./config/additional_links.json:/quip/web/caMicroscope/additional_links.json
     command:
       - /config/pathdb_pre.sh
   imageloader:
