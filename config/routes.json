@@ -367,6 +367,35 @@
       {"function":"mongoUpdate", "args": ["camic", "freeform"]}
     ]
   },
+
+  {
+    "route":"/data/CollabRoom/find",
+    "method":"get",
+    "handlers":[
+      {"function":"mongoFind", "args": ["camic", "collabRoom"]}
+    ]
+  },{
+    "route":"/data/CollabRoom/post",
+    "method":"post",
+    "handlers":[
+      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
+      {"function":"mongoAdd", "args": ["camic", "collabRoom"]}
+    ]
+  },{
+    "route":"/data/CollabRoom/update",
+    "method":"post",
+    "handlers":[
+      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
+      {"function":"mongoUpdate", "args": ["camic", "collabRoom"]}
+    ]
+  },{
+    "route":"/data/CollabRoom/delete",
+    "method":"delete",
+    "handlers":[
+      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
+      {"function":"mongoDelete", "args": ["camic", "collabRoom"]}
+    ]
+  },
   
   {
     "route":"/data/Configuration/find",

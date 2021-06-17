@@ -27,6 +27,7 @@ services:
     ports:
       - "4010:4010"
       - "4050:4050" # =========== Socketio
+      - "5000:5000" # =========== Socketio
     container_name: ca-back
     volumes:
       - ./config/login.html:/src/static/login.html
@@ -39,7 +40,7 @@ services:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip:8080/fcgi-bin/iipsrv.fcgi"
       MONGO_URI: "mongodb://ca-mongo"
-      DISABLE_SEC: "true"
+      DISABLE_SEC: "false"
       ALLOW_PUBLIC: "true"
   iip:
     build: "https://github.com/camicroscope/iipimage.git#develop"
