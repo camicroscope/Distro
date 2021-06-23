@@ -64,7 +64,8 @@
     "method":"post",
     "handlers":[
       {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
-      {"function":"mongoAdd", "args": ["camic", "slide"]}
+      {"function":"mongoAdd", "args": ["camic", "slide"]},
+      {"function": "addDefaultCollabRoomOnSlideCreate", "args": ["camic", "collabRoom"]}
     ]
   },{
     "route":"/data/Slide/delete",
@@ -73,7 +74,8 @@
       {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
       {"function":"mongoFind", "args": ["camic", "slide"]},
       {"function":"editHandler", "args": ["data", "userFilter", "filter"]},
-      {"function":"mongoDelete", "args": ["camic", "slide"]}
+      {"function":"mongoDelete", "args": ["camic", "slide"]},
+      {"function":"removeCollabRoomOnSlideDelete", "args": ["camic", "collabRoom"]}
     ]
   },{
     "route":"/data/Slide/update",
@@ -385,14 +387,16 @@
     "route":"/data/CollabRoom/update",
     "method":"post",
     "handlers":[
-      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
+      {"function":"mongoFind", "args": ["camic", "collabRoom"]},
+      {"function":"permissionHandlerForCollabRooms", "args": [["admin", "general"]]},
       {"function":"mongoUpdate", "args": ["camic", "collabRoom"]}
     ]
   },{
     "route":"/data/CollabRoom/delete",
     "method":"delete",
     "handlers":[
-      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
+      {"function":"mongoFind", "args": ["camic", "collabRoom"]},
+      {"function":"permissionHandlerForCollabRooms", "args": [["admin"]]},
       {"function":"mongoDelete", "args": ["camic", "collabRoom"]}
     ]
   },
