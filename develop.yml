@@ -26,7 +26,6 @@ services:
       - "mongo"
     ports:
       - "4010:4010"
-      - "4050:4050" # =========== Socketio
       - "5000:5000" # =========== Socketio
     container_name: ca-back
     volumes:
