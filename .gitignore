@@ -2,3 +2,5 @@
 .DS_Store/*
 test/node_modules/*
 data/pathdb/mysql/*
+.env
+.env.bak
