@@ -1,0 +1,101 @@
+# Getting Started Guide For Users - Real Time Collaboration in CaMicroscope
+
+
+Welcome to CaMicroscope. This document aims to explain the features of Real Time Collaboration System in CaMicroscope in detail to help users get a walkthroughs of it. 
+
+
+### Installation
+
+1. Clone caMicroscope, Caracal, and Distro in the same parent directory
+```bash
+git clone https://github.com/camicroscope/caMicroscope
+git clone https://github.com/camicroscope/Caracal
+git clone https://github.com/camicroscope/Distro
+```
+
+2. Follow the instructions for fast local changes as provided here -> [https://github.com/camicroscope/caMicroscope#fast-local-changes](https://github.com/camicroscope/caMicroscope#fast-local-changes)
+
+3. Go to Distro and run configure-jitsi.sh
+```bash
+cd Distro
+./configure-jitsi.sh
+```
+This would  set up the jitsi config file in your project. You should see files such as `.env` in root of `distro` directory.
+
+4. Run develop.yml or caMicroscope.yml using docker-compose
+```bash
+## for prod
+docker-compose -f caMicroscope.yml up 
+
+## for dev
+docker-compose -f develop.yml up 
+```
+
+This concludes the setup for real time collaboration system.
+
+
+ - **Note**: Make sure `DISABLE_SOCKETS` is set to `false` to use real time collaboration feature
+
+&nbsp;
+
+### Real Time Collaboration System
+
+1. **Configuring real time collaboration system in Table View**
+
+- Go to table view (table.html) and it should list all available slides
+	![table view default](https://lh3.googleusercontent.com/hiOPYnYI1_lZz3ZrLeCufsuI6VCW-rhNgqqu6jHtBL-nnLx9hX7v0Kx2JXoSrRH6dGHfvHDp17apnoc8-tyaoGEM8ffK8nCjcrJOh9OqajsTW6ByyDoqj5p_Y0DTOwWkvVaSRMbafi3zeEDlhAheM6l3bZrPV7M19P56B8Ma9LRYvcj3DdomWTND2Dtv_GEzEhGsMIonsBWNvYV1l8951fLQo-HftbLEaMnKHyrcmNELgux7bYlsnezRiRZxfIcwircM0vn0P7ZNEll873_J_J0QYhh4HNsVhDf_ES50MJKVdP5xYP4XJVwrZXo3yUbowCn2H3-DW_ElAZQqF3M9slRg-FgG42dPOafH6Hu46TYBSFPc84pO_4Uh1RNxC4fjloVg-gMEF5EdZs1sOgncNsq81tcejE4qKUL3diM8gY3-WCC-YvEU9hPw9xAhRG4XNz480YhDpMt9jIIXe5z-6hY6bueuFTexPPm3JPY0lmSMfeNdOznz2tY7AIK8Ad5ts_VgVjjblnz45oHyGRzo_Q4HC1aDVJEp7thOw5vJ1LtUjvazW__9-Ovyam8LM00sHwbn-RjdAe-91O3GwEjD6lMu1AERzoIDLpmuumY4mSbiWuPmdPaeWy0pSqGDa09jAMfuGI6EB962xFkYZi9GJ7CH99qXSVIOAME5HZr_Tbo6sbv6X6zWfp8G0izfvdh1WVdWyx27defk-PlPwTvq-A=w970-h606-no?authuser=0)
+  
+
+ - Click the manage collaboration button and a popup should open. Add more members to the room and click on 'Save'. (You need to have admin permissions to do this. Slide creators are by default the admins of the room)
+
+![table view popup open](https://lh3.googleusercontent.com/U0ronW-Eyaoh6VBccsM3gDExXwQGPtRyJtcQMj376x4eVXGjc_Xki61BAfI7GcqZM9c3tlhu-AaAqnX5JN9l3s30r2GBjIZRIInGOlzjz7000KdEdW16Pw4JJ53UrhCTVo4D3RPYtt6MND5Xd3_2qcG-9Mo4ctINuPAphwZqTPukgnd9AioCYMZh5DCp5kcPXiFJ5cpOAgIxDr-wFczP2b-vKAp_Vf0I6qo5OnYXNjmRRM9q3o3QAh0W3Mq4xD2wdLCzbCNisMfxZdndI1Nexau48yBEz2yT7H9CFh8m3SWUjxc_FdhZbiML5-1VrZV-cVFGooWf1oD-4iGAyI7fyWplAe9pXV2Zh4P6R6h3VjbgvnkHCVZLyjCNxSRcCn0eFAUMT7CyJIVds_E2zuqUF5e3G14dqQjjE49tZW4Ctd7IZekyRKMQyob4-N4thWgIIQ5NpAneE9H-BsSS8gcQzoEjutkM_cO4Vag67Hq3AvTiu_GKUqE5mKL7g3pBruRmP4BnrsyV52uEvI4jOpeoGYhK2M3hoVB77NOV-2xRlDwYpXqiJ279n49CVpKa9I1uPi45OWnej9t4T8xxDmlnLYCCHR8evobWXQRA9Qn1Gp82_KLdxLy098gUG3udGc1WFhUlQ40qLYaChPcNngWC3jH5ueN24_FrJ6ZRg_Sbw6H9SLT-yBeouc3gbfpR0ybwx4gHVDM-SExkBqkWSOp_OQ=w2334-h1458-no?authuser=0)
+
+
+![table view select members](https://lh3.googleusercontent.com/HMAWaZwSHiVISs8sp5dVDMXKSGfmVuzSP-ds7DOidYZgIMdhEJ851BWwuvq7HM3PetULBxMaoZF5RrXspf3kCqGD9hoQGqQuzQqLAEI1ipowXCscz3Yq_PQrj_OF621D8FMNlKd4fE4fJEYPccrWfudC3rRcrrUwKu0J1ItPx-Z-tSIeSqtEd_64WrepVY73llfCU547a8ZiNf7YJGhtNs_hptMquIBeQTTMB1Ih7HyJxutZStS9N0jws4-2ZWpk4XUeWQyw-h1I8Cb1s6_XVF0Ctk-60uqMq2XQLuvwjYWfnpTewHLh1QgEVjiIFMC6ANXZsGCPuTNXZIak-ZO5KOEqNq54yyDmStN6nsU2Ah5EKI7kUJ2yRqnPI-OL9S_KgPKGXvD43Jt6TFGRfPMPfqKyHsTcS3VFf77h9cBVCu42ucnJ8ZudgIZ5yVJWpD2SS354IGe2d3eZnnNpqXJPhDKwkeMlE5FvKmTqBt9as-U05K22PoldlBfPxGB_a9N3b4KbPg-zFHfBGFynPLaHt8RXr9aOGbXw7ErR29XybhkBa43hAe-WoOrbdIZl0PYwS-yTGp9hpUlmm7DLyCDEjJESRWvVsmiZ9r-kZQ_T5JJfnDGeSsxiD0ZeyroemS1Xcg0RCBvJdQmAH4nUPHJoDt67fUUjShuc3zW_nnb6k4u0XGaFdba45KTskAEAAU6kuTfU4sQTb7HsMChLFMebPQ=w2424-h1514-no?authuser=0)
+
+
+- Once saved, you can open the popup again and edit the permission level of other users. (You need to have admin permissions to edit permission level of other members. Also any member added is by default given the role of 'contributor'). Click on 'Save' to save changes.
+
+![table view see new members](https://lh3.googleusercontent.com/6R5qLcTmWFcAZ-n7GOSsBoIc_Hiz1LCS4vszI3-EqFh4-_H67f7FqMgQ1jAwTi8o-nD59mJ7cZqwm_zycL1Vj7W56DQow7AA1Vc_K9na3tKtlN5QYEJscvFaUtczWU_f1PfVFEf4arCQvOvkC-kZzfpFkOi19TtlRLzbPL-_wyqh1h6hsJw5gLP3Cf-wckeZQSiCGNl5MJnEmjhIFLG6zdQwmWRSqosHCwGSOfxnknJboWGPamKIbYOuY5G-mOQk9fsbV9jpdGQw2483wfDzIYtHySE12RQgSlbLacFUy8B3G4cpLZO3xNwotKFiYJlLb9W_ciZRLXP7T1JnEuVRTeS3syq8RSzudFSkHSqT8BixA18XYVg5q_FKCJAfZMMBIsjld69htU9L58eUsKdd4Zzktgx_8EeNApKQchGn5Y-CAndrPw2exJMI8f5Qa3SKWZzVG_W_kaCyIkIqhWw16fC3OQjdNhOPjPRnMPbKgK9NdPiWyUjvvQx9BzyOeJ4ot1N002oIhNQamnXEsoTmvWoS7f7tVxku_5QCEHwTk8yN5KLgfKobrqKvHbaJ2CxSVw6wp5OgPo3F6Ar5FoI_COVEfqv60nNlCx3cJSxIpsBSbZ4ab9lE-0lZPlhyCoaulQNBJvUy_ril_BXOEO6l7amzmQxZJAPCOIffRv-v9-NTG1r48w-8dcGtOHKthOsBw-vmJPf2fNaXirWZrXYvGg=w2424-h1514-no?authuser=0)
+
+![table view update permissions](https://lh3.googleusercontent.com/Iriojw8qCi_sTAWiPTLb9jThQTDIgEFxYApR7sLwZxQCsSfnjrhCQ2bGd6O9vHNLqp3MeVkXytrdHPYZC4v-yoFZWyrGSRC6GIMjAVU6C42udTer0qKR3uuhL4qmj56XUpF-wbKBfXAGCxh6TG5reCUIrngtmErdpYzQq6zO2S24XihnoGQU_yKKiXNWdY7AbXOy4ubXxotviidCnRn1KnR2II2_h8EAJbzdP-43ELXzOnF0lzfFDhnX0c-dElLhdU98gGhfpr2y9Xlq4zsI_0G4ZwMAO80sU9K-h9lBYr_LCk_I-HlnLtCfNzaVkzax-s-k_IEkVMfhfB_D5bavjtWopYb_cSaIqPHIqe7LSzNeIWSYEDcVXS7wqO8lkrfdCi0uln57Jtb9ltWIecczltoWUxYIOEYm1M7k57q_Qm7m-yuLKHeSBcdaGcLv7wLp_Le4XJEarK5fFKszTuT6Jo8ABmyBvzqP7O3QSkjXL6a3frfre_w6UIr9d5Yufb7FVXBn8bqBfQ7C4K1yfS6nOop63QmrGWJkwonlWW6_MOEn4P2yRKCwemCnRS_gXBqocZ_-9CyKjaPWmjbtk82IMPSnu9dPsfEG-lrKSzhgLhuR7mJ9tMkAqhcKW677GXEwWePYjFyNSZgRXO1G9ft8Dvla1T-Cep6CqmoV9ekKWxW22rg7QmW0XMlmfbXbtm-rXWTMDduEvRnrmSRs_3biwg=w2424-h1514-no?authuser=0)
+
+- You can toggle the active or inactive state of collaboration room for a slide with the toggle. Click on 'Save' once done. (This too requires admin permissions)
+
+![table view collaboration room inactive](https://lh3.googleusercontent.com/w_Waz9AEcu5DVmigLUye_GTykAEZCa7L8spmjqhigvpIXlU5yW7fCFZOohETKzwj4nrrwHfQQ-wfUynVmDD-C41MGthNNjHekV4aAmcV06dtD8Tt0zzvO_mP0pOnGJFengD3RmjQHUQqudyEpGZG9r3WHcV1XGn7MKp2GSG8aAZZVDTSob-P8rRTLnLjourhT9HtgDFkPnbzVTQP5kiqEiqR_QBgdIOfnxVaN-qU1XfNM73ITUP4aMJ9tKFiuJUrSSx_dIL94HlN5jGlNHZ83YGyVhG0mMiHgPzGIxar08ieKaUyplv08D59EZXsEYRYOYHyrGct2WVgo-O5ZTcxkmv9yuQ0QmfBYEU0uzrvNMael9w8SFZkXX6KcE-JOvjDvwHQxEr8I_gZLoM7rBWraXIva2vKTpg0HHUHeOe-S7kYd07cUmgsJ3lLNG22gYwQWMOjnIFR_B1YPhLZA2HltW-ILdYeThZsS0cmVcsdfQnPUDiDB01zT5Cs9lm7_K3lJZNm9vvdczklSegnRdmjFjLyCjk6TAF3S_HHSCwpKKceuBHgAZFV8LyVTOXaX3mFETzd4aB_6N5HUVlk6Os7ekI7gFXOILxIH5r24SMuWAxRhr4BevjUPGdQz0Fj1zKTHO3Y8YkjEMPS4Ui3OQBM9RyOj4kcsXNNKfd0WcDdjAT4C3sh_IOG9q7AK15tn2U35ES23DOfZky6qP1oByAP3Q=w2424-h1514-no?authuser=0)
+
+![table view collaboration room active](https://lh3.googleusercontent.com/No-jto9pqsM-WbI7w2QS9lsWYi8PShMhFkJBssYO6QPmiqRwnR010B9FRMHtCmXaKPxusJfoYdY1fTOsx_ciFT86OP_OC8wPgli4DUi6_nfZaoOzoC1XjWJ8vCU_nwnD_co67qfuUVWtpVd5brF6pAtPx_16SXzl_sIo7yN3hDInoLNej0Qh9BG5FiA0yUwnTeMTpgCrwNbCi6lLYXT0NoiPTLzMGyzvwrII7_-Q8qFBRnatvFzmtiBq6LtV6oVxIpuUjXOoMXx-dEPM8hJtCYqtZQI7okDALIXcO_qbVpF5FISbC6YUAd9evoivgo_WmgMgrQFR7ZhS3XgD0KijW39YDb9fOUUEx4r2Wlju4lSzWQLXjMuxJYXv3IT2LSy4sbnPgsxNnlzXXvTKF7WJWZDYGmjYVAhUFwkdqhaOwQ8YeLrEhJPi40F83BP2cgCjYfKkNvD1uF3oFzydVfY05SrE8DQSjlGz1sH4F-OCdiEwnN6qCKCYgAh4wwLusPnMbgVTy_427FD7LkgOmKQMud0PD8VynoAbMayKTD-hE1wTDrgGyHXkV14IoP75tRthJM97DJnMUmTUzCAtlDEUzxmpwePXSxSoddjlbfOCUe4vLvO_ktOc1NF3A5UXlNWA8Hltf5kCK6qsmLK0zbwK8hWZptoXxlsER1l5vrzAQxcBoHTFkxrQ40ttRkQSeXSSJfNN8exFmO8_eAghswx-Rg=w2334-h1458-no?authuser=0)
+
+
+2. **Configuring real time collaboration system in Slide View**
+
+- Open the collaboration popup by clicking the collaboration icon on the menu bar
+
+![viewer view menubar collaboration icon](https://lh3.googleusercontent.com/683_rFgrDVWI57sdFZiUOIVLm-16Hu5z4udMdEabYf_fFLdumLCU1MlRhkXfh1CGI8e65ZaQZ4OUvIDlf_xRkhDbkGwW9uddJfukr1GQHwPaSwBN5Ymh4piEYnDEnN9-SKoFrWjZFWSi0j3gQja8XSttVD01Df1p98lnUkwRtRSMRjo-qkchn8RkHnJSp6HWwqBP3M-0ItqQ96sS-oo_bUR4LcguANGkv7nXL9-lcm1XoVAfu-h2SqrPOv08z6TOMoL2fYyAyasRXbHuFqygbi9MpNm4SZ16FmxNfGqE2NLjMzkzIGbaFpzsfHbPu2ocQmMLCmnc0RJznHDQULDNtFt2kYrVrElRl4Tx9HiotXtF6-WXtzJ5iEBWhOY__Z0ijX1a0K8MpnT3ZY1gqPgP4pGFJGuLGs_Qc_VV_Y-LXvXSHgTfufymYtwNIVzMUd3r92g9VE9X5ML3TL_b3rtB75XRQdLHmo5tsShS5olWaZFofKibCn9xviNbi_0-zlH6jrmXZM06E5r5-iZ-mbdhEQRLVPFElE8LCYWF6UaqjML0qCMCqjAnaLrQKak0AqZDNNIyxs9mfrYkBL-mNxw_1miP7P4WQ-D-ku6y7gEUvCTzu3kgbiRT-qicybjCCnRpKjXqjeyLpXd8voCyFg4GeFG80u9C1i_BZWmaU7MNWzIdhQEZBlr2qWvJyE8TOWbnU_3dwk4Uwi6YBHHlU4Ck5w=w2424-h1514-no?authuser=0)
+
+- You can configure in the same manner as on the table view on this popup. Note that the changes require admin permissions similar to ones explained in the table view section. Click on 'Save' to save changes.
+
+![viewer view collaboration popup](https://lh3.googleusercontent.com/vIB1OZY3Yd2tmOn8N4_tueb5FzGMVOLUKp5iGLVt7JEUhjYSG9_Ykb8IiA6dhVyCr_6TweQwnDw3OP4NDxwb_UvyDRWiXijS9GGN74S2V0uuDD985T1jzmLhZINQst67XiP_UtXLPTNw1elJ2chLYk-dPiezZQ8eL7KQj-d8i1iKT1WWZxTsAYTP0FBYIZL_n-XWflar63SpCKUL_gAXuAGhu9ybmEKCe1UGDmM3u8w_R8pLSTF865rZLqygRVZJXAEeG4uncWZLawAtJ6Fp0mCrX4iK7JhGrO0k704g7CEHSstkf-kUh_iuku9tnvoTVFq_xzu5b2IdZTkHr6U0_5xRsvObQ9k_Sba2q8Cx3nHAYFxgE9EymNCBHr1YSqTRiu8Z4BIz2DZAgfkuwcjvJslp2SxrD7B2EqiQ6GUr5_xSdgA-gLinJnFwqDyjd6sh1ktqMOGXNMHhV6PJxLHtH71RwLJdUcqbMFvoialYz6mKnLVZbwe4a-t1WXPnR4HJBokNk2lK-JLLNZ-IbwjKKpZjBiKU0x_HtP0aOKF0Vw4333sLbJz1WiC7m2IclwBN-GqN23x-IcXRq4qvNKuKDKbPh4wcvHww8CQ5c0LiV4UFFZvCc04agejZP9Q5nRX7G2iXWmM3gv7ZMp7_0KALOfeGDhT5Y1ccoFDvsxUgs3zO0fHuZN7oR7mAwaic4gj6FG3t-VxjxjBBfggms3tnig=w2424-h1514-no?authuser=0)
+
+
+3. **Jitsi Meet in Slide View**
+
+- Make sure you have jitsi meet containers running in the docker swarm.
+
+- Click on the calling icon to open jitsi meet in a new tab.
+
+![viewer view jitsi meet](https://lh3.googleusercontent.com/RTTTB4sR0_4A5vXbgMqgpuqi5P4nIdlFWJw-5btNGYVxz2kgxcCm0x9KgEtJOAS8GcEFG2QQSp4D7OWO5jBn0Er0YaaDfqw0_RCmAviC5Sg5p6LQbQeYzyHtxAN50ryGNfx2K7ezip6BFiGB3e-6sn7dyes18H7EtllgcxHVeWXCUec4Mo2ITtadM6JisBe46BtSca4TAKgN9SPz54Izz7tsMNpEfQQOy_iXewndoAqhyIipCHXb6gR7B6p3MbNfN2z9xIvGK-Bb9ecSV20kXRxGPR33hgDV_mNR0EmHqLJdT0ftuY7ZDbgiQdZX3SNYSM1ckEDyGmb8NxuMMdjFu4aX5rUwk5tvd6UD0Psu9x7NIT7-s7fxtmoHZ1R4BlBn0oVKZomx8keDmted3XRw2tnP7Jk4SLRbFum6ekkuEGMOqCcNx3V53vLd-Iy5qcQyd43Ib35ycmHbEUpuhsMbuD52hQ1HZpUPLc323ifY5ZptO5LeKfeDqw5aAOOwHYjaJFapgglvGHBw0g2KTukxCqeRSGJ2cU0JNN1Yztz16c7ulQRH0xappeJaD9_YFQ6CKNHOE5qx5M2gYeprGSJYn-tNpqULNqtekOBvZmKcdyF74HEYzsjy1CY7k1-8whMXKaTR0vgezDzxoOP9Vea5-SyC5QI_q_02oo8u4AViYWYuoyzGsgo4f0gJfssg_ygxW4Lr4k1QtYVwbhY8yb9z9Q=w2424-h1514-no?authuser=0)
+
+- Type in a meeting name and start the meeting, or join any existing meetings if present.
+
+- Jitsi Meet supports various features such as:
+	- Audio and Video call
+	- End to end encrypted meetings
+	- Password protected meetings
+	- Sharing invites
+	- In-call chat
+	- Recording meeting
+	- Sharing screen
+
+and more as described on [Jitsi Meet](https://jitsi.org/about/).
+
