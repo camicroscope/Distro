@@ -151,13 +151,13 @@
     "route":"/data/Mark/multi",
     "method":"post",
     "handlers":[
-      {"function":"markMulti", "args": []}
+      {"function":"markMulti", "args": ["mark"]}
     ]
   },{
     "route":"/data/Mark/spatial",
     "method":"get",
     "handlers":[
-      {"function":"markSpatial", "args": []}
+      {"function":"markSpatial", "args": ["mark"]}
     ]
   },{
     "route":"/data/Mark/findMarkTypes",
@@ -165,7 +165,61 @@
     "handlers":[
       {"function":"findMarkTypes", "args": []}
     ]
+  },
+
+
+  {
+    "route":"/data/Segmentation/find",
+    "method":"get",
+    "handlers":[
+      {"function":"mongoFind", "args": ["camic", "segmentation"]}
+    ]
   },{
+    "route":"/data/Segmentation/post",
+    "method":"post",
+    "handlers":[
+      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
+      {"function":"mongoAdd", "args": ["camic", "segmentation"]}
+    ]
+  },{
+    "route":"/data/Segmentation/delete",
+    "method":"delete",
+    "handlers":[
+      {"function":"mongoFind", "args": ["camic", "segmentation"]},
+      {"function":"editHandler", "args": ["data"]},
+      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
+      {"function":"mongoDelete", "args": ["camic", "segmentation"]}
+    ]
+  },{
+    "route":"/data/Segmentation/update",
+    "method":"post",
+    "handlers":[
+      {"function":"mongoFind", "args": ["camic", "segmentation"]},
+      {"function":"editHandler", "args": ["data"]},
+      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
+      {"function":"mongoUpdate", "args": ["camic", "segmentation"]}
+    ]
+  },{
+    "route":"/data/Segmentation/types",
+    "method":"get",
+    "handlers":[
+      {"function":"mongoFind", "args": ["camic", "segmentationMeta"]}
+    ]
+  },{
+    "route":"/data/Segmentation/multi",
+    "method":"post",
+    "handlers":[
+      {"function":"markMulti", "args": ["segmentation"]}
+    ]
+  },{
+    "route":"/data/Segmentation/spatial",
+    "method":"get",
+    "handlers":[
+      {"function":"markSpatial", "args": ["segmentation"]}
+    ]
+  },
+
+  {
     "route":"/data/Presetlabels/add",
     "method":"post",
     "handlers":[
@@ -367,7 +421,7 @@
       {"function":"mongoUpdate", "args": ["camic", "freeform"]}
     ]
   },
-  
+
   {
     "route":"/data/Configuration/find",
     "method":"get",
