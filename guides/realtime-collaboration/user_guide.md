@@ -82,7 +82,11 @@ This concludes the setup for real time collaboration system.
 
 - Make sure you have jitsi meet containers running in the docker swarm.
 
-- Click on the calling icon to open jitsi meet in a new tab.
+- Click on the calling icon to open jitsi meet in a mini draggable window.
+
+- Click on 'X' icon to close and leave the call.
+
+- Click on '->' (arrow) icon to open call in a new tab. 
 
 ![viewer view jitsi meet](https://raw.githubusercontent.com/Vedant1202/Distro/develop/guides/realtime-collaboration/images/jitsi.png)
 
