@@ -103,3 +103,22 @@ This concludes the setup for real time collaboration system.
 
 and more as described on [Jitsi Meet](https://jitsi.org/about/).
 
+3. **In viewer chat**
+
+- Click on the messaging icon to open up the chat sidebar.
+
+![in viewer chat system icon](https://raw.githubusercontent.com/Vedant1202/Distro/develop/guides/realtime-collaboration/images/chat-icon.png)
+
+- Start typing your messages in the chat text area (at the bottom of the sidebar), and hit the enter button to send the message.
+
+![in viewer chat sidebar](https://raw.githubusercontent.com/Vedant1202/Distro/develop/guides/realtime-collaboration/images/chat.png)
+
+- You can search the chat by using the search field in the top of the sidebar.
+
+![in viewer chat search](https://raw.githubusercontent.com/Vedant1202/Distro/develop/guides/realtime-collaboration/images/chat-search.png)
+
+
+- Click on the messaging icon on the primary toolbar again to collapse the chat sidebar. 
+
+
+
