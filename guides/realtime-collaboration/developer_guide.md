@@ -39,6 +39,7 @@ This concludes the setup for real time collaboration system.
 ```
 -\handlers
 	-\CollabRoomHandlers.js          - handlers (middlewares) for handling collaboration room requests. 
+	-\ChatHandlers.js                - handlers for in-viewer chat system.
 -\socketio
 	-\init.sockets.js                - initialization and configuration of socket server
 -\caracal.js                         - start the socket server
@@ -56,7 +57,10 @@ This concludes the setup for real time collaboration system.
 ```
 -\core
 	-\socketio
-		-\init.socket.js              - configure and initialize socket client
+		-\init.socket.js              - configure and initialize socket client.
+		-\handlers.sockets.js            - callback functions to handle socket events.
+	-\jitsi-handlers
+		-\jitsi.handler.js            - initialize and configure jitsi in-viewer calling.
 ```
 
 ### Developer Guide
@@ -66,13 +70,19 @@ This concludes the setup for real time collaboration system.
 - `socketio\init.sockets.js` contains the initial setup of sockets. In this file, we have initialised a server that listens to socket connections.
 - The server checks for auth tokens and whether the requesting user has access to the slides. If all checks pass, the socket connection is established successfully.
 
-![Socket server flowchart](https://lh3.googleusercontent.com/pw/AM-JKLWUhioBZenoQ7QrCiyplHhovqtpGQK5kLU59AKuT2GBJtOdM71xTmX01RkmtUnIu2WOjKc2vG38bapIWNKX77nPTVh4DFSaPS6_8mPYOagalfukbSywT0B2qMvcFmxuGD5VvwA_Y-Y5EWQKw2GH7DM2=w1062-h1372-no)
+![Socket server flowchart](https://raw.githubusercontent.com/Vedant1202/Distro/develop/guides/realtime-collaboration/images/GSOC-21-real-time-pathology-server.png)
 
 
 - `handlers/CollabRoomHandlers.js` contains middleware handlers to handle DB requests for manage collaboration room.
 	- `permissionHandlerForCollabRooms` is used to check if the requesting client has permissions to access the specific collaboration room.
 	-	`addDefaultCollabRoomOnSlideCreate` is used to create a new collaboration room entry in the database collection whenever a new slide is created. This collaboration room is automatically linked to the ID of the slide created.
 	-	`removeCollabRoomOnSlideDelete` is used to delete the corresponding collaboration room when the particular slide is deleted.
+
+
+- `handlers/ChatHandlers.js` contains middleware handlers to handle DB requests for manage collaboration room.
+	- `addMessage` is used to add a message to the db for chats.
+	-	`searchMessages` is used to search for message containing a particular string match in the content body of the message.
+	
 
 - `caracal.js` contains a script that starts up the socket server at a default port of `5000`. This socket server is started in a master thread rather than a worker thread (, since in doing so solved the web sockets + docker error that was blocking cross client communication of socket channels).
 
@@ -87,10 +97,12 @@ This concludes the setup for real time collaboration system.
 
 - `core/socketio/init.sockets.js` contains the initialisation of the web socket client. 
 
-![Socket client flowchart](https://lh3.googleusercontent.com/0t1kMr84gumOWGG826OxbQkdsRbX2LGKyUVgY7bgc-CjwoHWaTKtl5VXZQvCk0bw3xk-qdhb5yMMP6UPwwexJxvdOn_cW1Wwwxphu9xggMYLwcjTkF75HKcmbFn1SmV3bohwHSTZlbhhEdBqNtFrOApFL2sxiAsFLFG2JX6zp_AVaex1i_sYIz9fyUhviUpuNitBxdzQ1nSIomzANXA9refawHiHGGMkjxufccPg32WBfA6WabWSTLlYcrWXZ9biz8Zv8Tm4NI2-rfxVEg62TMSJ3GMS5V63eaYIX7Z1C4AchU-KPD-6RlC21x7u-K-9U8lpTcpI-xSoMmAJFk6qrI3tg6bym4tFbHLm8cKW1te6hBz9q3fGaWi-sGdHaAh9Bnhdgn0hxanz0u22RHGPFuI7ftjVPlxQLjm5xqPzoouyiEFDTabU9Txk0jwtf5Lq2EA-9ACGUbM5Eal8uEPzbg5Rklwxmqila9XRKP798AuYtHVMtuu6MVsjmyR7-TvF8AZglnvZUd2UMPSgKSKASWCadNPB8zEBZDATXkmXT483lomLPUoaHA7bYIEIgwKP0yg-wl83T6prOJbPFgKLmNLpTsvitlFabGeoY87WhqyHODzHbB1Q3brpWDFlANA6d1bGUdHvhqa8oASLs2EKjAweh1zWIsSdmLxNgw5b2e-ZWeYyZYoDu9ilwTkgtYCpBJOJloFqe8l_-nomnSE=w1264-h1642-no?authuser=0)
+- `core/socketio/handlers.sockets.js` contains the callback handlers for events of the web socket client. 
+
+![Socket client flowchart](https://raw.githubusercontent.com/Vedant1202/Distro/develop/guides/realtime-collaboration/images/GSOC-21-real-time-pathology-client.png)
 
 - This file also contains the request interceptor used to handle socket communications.
-![Socket interceptor working](https://lh3.googleusercontent.com/Mr01bUyluWHxhKsxu-tATRikmp8njm5AnAoFj3xEiI9Ex_uCJ0hnBuR0jhCN2ej8B4lca4HOIjqbEXyFaJNxlq942D2Kkmik5W6uC4aKaiTDsA7ladAWuXn8_jZWg5HvnGq0ZSX1nrX4yaWcMQvmWBH8EKyd_3qgFWf_yJb-r9UiY_63MsE4vcW5pe0EMpnfWX3a77ZDSE2RqWw1RWpKEWC8UVIWAPrdLrw0WmDe62ZHLypiwf7MWLVz97ifV59gbNAcZMFb_375x6kFv0J5dY7sax4V1XjqFKk03Nsdk3jEE3qU1lmcXqexQkmVQv1t9Td90o6kGC_WSlJQ1-IkL24yPZ2K7mJTMnETEb8h9PMtSGauVaaQcUv4vln968VX3__9YR1TJrS_C9FwVEB6QTmE6GIe86EtMllL964yeunJd6QgivcLS70-LDyR9bjxyGTF6WUVr6ZfbuS7eCWj6Pd4hN69keUVd8orZzo7AAALkvow4Gozl8DgyWJgOJL_R2xAVA10GnJjRCJxA3GmNYdvCy-2nlzJDooDz3Q8ZpP0d-vLcDJKB3RCoGWO48FiJwkqN-sFgxapJNqnqG7OeYF4eVdnJ46BzGi8QfT5z_MmZckarCUE5r9eVNnzkJPOP9QKHR-g35zLensVEOdrbvYWB3Ve4l6rlXZ6nwlOiqP4_yNYKAuSW_5a045_BSUEcfGH3jNoLXhmM87MVn0=w651-h1121-no?authuser=0)
+![Socket interceptor working](https://raw.githubusercontent.com/Vedant1202/Distro/develop/guides/realtime-collaboration/images/GSOC-21-real-time-pathology.png)
 
 - The client first checks if the socket server is active by making a request to `protocol://hostname:socket_port/socketStatus`.
 - If status is active, it makes a request to the socket server to make a connection. This request contains the JWT token stored.
@@ -129,4 +141,14 @@ addMark(json) {
 }
 
 ```
+
+- `/core/jitsi-handlers/jitsi.handler.js` contains the handlers and initialization functions for jitsi meetings. The meeting opens up in an in-viewer draggable window which can be further expanded to open up fully in a new tab.
+
+	- The jitsi iframe is embedded in a div with id `jitsi-iframe'`
+	- The domain on which jitsi server is running can be changed in the `domain` variable in this file
+	- The options for the jitsi iframe can be changed in the `options` object in this file
+	- The jitsi iframe uses Jitsi IFrame API and the relevant docs can be found here - [https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe)  
+
+
+
 
