@@ -22,13 +22,11 @@ cd Distro
 ```
 This would  set up the jitsi config file in your project. You should see files such as `.env` in root of `distro` directory.
 
-4. Run develop.yml or caMicroscope.yml using docker-compose
+4. Run realtime-collab.yml using docker-compose
 ```bash
-## for prod
-docker-compose -f caMicroscope.yml up 
+## for realtime server
+docker-compose -f realtime-collab.yml up 
 
-## for dev
-docker-compose -f develop.yml up 
 ```
 
 This concludes the setup for real time collaboration system.

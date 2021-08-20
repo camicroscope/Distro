@@ -21,13 +21,11 @@ cd Distro
 ```
 This would  set up the jitsi config file in your project. You should see files such as `.env` in root of `distro` directory.
 
-4. Run develop.yml or caMicroscope.yml using docker-compose
+4. Run realtime-collab.yml using docker-compose
 ```bash
-## for prod
-docker-compose -f caMicroscope.yml up 
+## for realtime server
+docker-compose -f realtime-collab.yml up 
 
-## for dev
-docker-compose -f develop.yml up 
 ```
 
 This concludes the setup for real time collaboration system.
@@ -49,8 +47,7 @@ This concludes the setup for real time collaboration system.
 2. **Distro**
 ```
 -\configure-jitsi.sh                 - add configurations for jitsi server.
--\develop.yml                         - .yml file for dev environment
--\develop.yml                         - .yml file for prod environment
+-\realtime-collab.yml                         - .yml file for realtime system environment
 ```
 
 3. **caMicroscope**
@@ -89,7 +86,7 @@ This concludes the setup for real time collaboration system.
 #### Distro 
 
 - `configure-jitsi.sh` contains a script that creates a `.env` and related files containing the default configuration for the jitsi server. This file can be edited as per the user's needs.
-- `develop.yml` contains the configuration for all the docker containers including those required for jitsi.
+- `realtime-collab.yml` contains the configuration for all the docker containers including those required for jitsi.
 	- In container `ca-back`, the exposed port `5000:5000` is for the socket server. 
 	- The images for jitsi are at the very end as indicated by a comment, and these can be disabled by commenting it out in case the jitsi  feature is unneeded.
 
