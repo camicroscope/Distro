@@ -388,7 +388,7 @@
     "method":"post",
     "handlers":[
       {"function":"mongoFind", "args": ["camic", "collabRoom"]},
-      {"function":"permissionHandlerForCollabRooms", "args": [["admin", "general"]]},
+      {"function":"permissionHandlerForCollabRooms", "args": [["admin", "general"], "admin"]},
       {"function":"mongoUpdate", "args": ["camic", "collabRoom"]}
     ]
   },{
