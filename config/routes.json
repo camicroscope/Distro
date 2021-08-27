@@ -64,7 +64,8 @@
     "method":"post",
     "handlers":[
       {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
-      {"function":"mongoAdd", "args": ["camic", "slide"]}
+      {"function":"mongoAdd", "args": ["camic", "slide"]},
+      {"function": "addDefaultCollabRoomOnSlideCreate", "args": ["camic", "collabRoom"]}
     ]
   },{
     "route":"/data/Slide/delete",
@@ -73,7 +74,8 @@
       {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
       {"function":"mongoFind", "args": ["camic", "slide"]},
       {"function":"editHandler", "args": ["data", "userFilter", "filter"]},
-      {"function":"mongoDelete", "args": ["camic", "slide"]}
+      {"function":"mongoDelete", "args": ["camic", "slide"]},
+      {"function":"removeCollabRoomOnSlideDelete", "args": ["camic", "collabRoom"]}
     ]
   },{
     "route":"/data/Slide/update",
@@ -367,7 +369,66 @@
       {"function":"mongoUpdate", "args": ["camic", "freeform"]}
     ]
   },
-  
+
+  {
+    "route":"/data/CollabRoom/find",
+    "method":"get",
+    "handlers":[
+      {"function":"mongoFind", "args": ["camic", "collabRoom"]}
+    ]
+  },{
+    "route":"/data/CollabRoom/post",
+    "method":"post",
+    "handlers":[
+      {"function":"permissionHandler", "args": [["Admin", "Editor"]]},
+      {"function":"mongoAdd", "args": ["camic", "collabRoom"]}
+    ]
+  },{
+    "route":"/data/CollabRoom/update",
+    "method":"post",
+    "handlers":[
+      {"function":"mongoFind", "args": ["camic", "collabRoom"]},
+      {"function":"permissionHandlerForCollabRooms", "args": [["admin", "general"], "admin"]},
+      {"function":"mongoUpdate", "args": ["camic", "collabRoom"]}
+    ]
+  },{
+    "route":"/data/CollabRoom/delete",
+    "method":"delete",
+    "handlers":[
+      {"function":"mongoFind", "args": ["camic", "collabRoom"]},
+      {"function":"permissionHandlerForCollabRooms", "args": [["admin"]]},
+      {"function":"mongoDelete", "args": ["camic", "collabRoom"]}
+    ]
+  },
+  {
+    "route":"/data/Chat/find",
+    "method":"get",
+    "handlers":[
+      {"function":"mongoFind", "args": ["camic", "chat"]}
+    ]
+  },
+  {
+    "route":"/data/Chat/search",
+    "method":"get",
+    "handlers":[
+      {"function":"searchMessagesChatHandler", "args": ["camic", "chat"]}
+    ]
+  },{
+    "route":"/data/Chat/post",
+    "method":"post",
+    "handlers":[
+      {"function":"addMessageChatHandler", "args": ["camic", "chat"]}
+    ]
+  },{
+    "route":"/data/Chat/delete",
+    "method":"delete",
+    "handlers":[
+      {"function":"mongoFind", "args": ["camic", "chat"]},
+      {"function":"permissionHandlerForCollabRooms", "args": [["admin"]]},
+      {"function":"mongoDelete", "args": ["camic", "chat"]}
+    ]
+  },
+
   {
     "route":"/data/Configuration/find",
     "method":"get",

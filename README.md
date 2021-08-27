@@ -6,8 +6,11 @@
 
 # caMicroscope distribution
 
+- Run `./configure-jitsi.sh` first
 
-run with `docker-compose -f caMicroscope.yml up`
+- Optionally, edit the `.env` file created with any additional configurations as required for Jitsi.
+
+- Run with `docker-compose -f caMicroscope.yml up`
 
 this will build all services and run in the foreground.
 Use `docker-compose -f caMicroscope.yml build` to rebuild the services.
