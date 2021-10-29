@@ -2,6 +2,10 @@
   "defaultSrc": [
   "'self'"
 ],
+"workerSrc": [
+"'self'",
+"blob:"
+],
 "scriptSrc": [
   "'self'",
   "'unsafe-inline'",
@@ -41,7 +45,8 @@
   "'self'",
   "data:",
   "cdn.datatables.net",
-  "code.jquery.com"
+  "code.jquery.com",
+  "cdnjs.cloudflare.com"
 ],
 "frameSrc": [
  "'self'",
