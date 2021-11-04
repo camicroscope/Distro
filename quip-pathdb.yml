@@ -2,13 +2,13 @@ version: '3'
 
 services:
   mongo:
-    image: mongo:4.0-xenial
+    image: mongo:4.2-bionic
     container_name: ca-mongo
     restart: unless-stopped
     volumes:
       - ./db:/data/db
   idxMongo:
-    image: mongo:4.0-xenial
+    image: mongo:4.2-bionic
     container_name: ca-idx
     links:
       - mongo
@@ -46,7 +46,7 @@ services:
       DISABLE_CSP: "true"
   pathdb:
     build:
-      context: "https://github.com/SBU-BMI/PathDB.git#1.7.0"
+      context: "https://github.com/SBU-BMI/PathDB.git#1.7.1"
       args:
         viewer: "v3.9.8"
     container_name: quip-pathdb
@@ -61,7 +61,7 @@ services:
     command:
       - /config/pathdb_pre.sh
   imageloader:
-    build: "https://github.com/SBU-BMI/ImageLoader.git#2.1.0"
+    build: "https://github.com/SBU-BMI/ImageLoader.git#2.1.1"
     container_name: quip-imageloader
     volumes:
       - ./data:/data/
