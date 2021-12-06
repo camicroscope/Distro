@@ -1,5 +1,14 @@
-So, I'll just talk about current progress here, so no one later, including me, gets lost.
+# Kubernetes Version of caMicroscope and quip
 
-I'm working on a deployment for ../devlop.yml, but the images mount needs to be shared between two containers. So I'm working on a deingle deployment for all relevant containers. It's not working yet, due to back not finding mongo I think.
+## FYI
+- ALL host mounts are ignored, at least as of now.
 
-Wish me luck!
+## Develop
+Use d-apply.sh to create everything, cleanup.sh to remove when done.
+
+## caMicroscope
+TODO
+
+## quip
+TODO
+(worried about non-optional config mounts and image mount in particular)

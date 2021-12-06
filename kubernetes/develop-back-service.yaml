@@ -5,8 +5,9 @@ metadata:
     name: back
   name: back
 spec:
+  type: NodePort
   ports:
-    - port: 27017
-      targetPort: 27017
+    - port: 4010
+      targetPort: 4010
   selector:
     name: back
