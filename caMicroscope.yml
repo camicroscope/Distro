@@ -11,13 +11,6 @@ services:
           max-size: "10m"
     volumes:
       - ./db:/data/db
-  idxMongo:
-    image: mongo:4.2-bionic
-    container_name: ca-idx
-    links:
-      - mongo
-    volumes:
-      - ./config:/config
     command: bash /config/run_idx.sh
     logging:
       options:

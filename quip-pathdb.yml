@@ -7,17 +7,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./db:/data/db
-  idxMongo:
-    image: mongo:4.2-bionic
-    container_name: ca-idx
-    links:
-      - mongo
-    volumes:
-      - ./config:/config
-    command:
-      - /config/run_idx.sh
-    depends_on:
-      - mongo
   iip:
     image: camicroscope/iipimage:version-3.8.4
     container_name: ca-iip
