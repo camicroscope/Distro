@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    name: loader
-  name: loader
+    name: ca-load
+  name: ca-load
 spec:
   ports:
     - port: 4000
