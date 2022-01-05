@@ -6,6 +6,9 @@
 ## Develop
 Use d-apply.sh to create everything, cleanup.sh to remove when done.
 
+When using minikube, run `minikube tunnel` then `minikube service ca-back --url` to get the url.
+
+
 ## caMicroscope
 TODO
 

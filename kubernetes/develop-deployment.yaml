@@ -2,14 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: camic-dev
+  labels:
+    service: back
 spec:
   selector:
     matchLabels:
-      app: camic-dev
+      service: back
   template:
     metadata:
       labels:
-        app: camic-dev
+        service: back
     spec:
       volumes:
         - name: images
