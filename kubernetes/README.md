@@ -4,7 +4,7 @@
 - ALL host mounts are ignored, at least as of now.
 
 ## Develop
-Use d-apply.sh to create everything, cleanup.sh to remove when done.
+run `kubectl apply -f develop.yml` to create, cleanup.sh to remove *everything* when done.
 
 When using minikube, run `minikube tunnel` then `minikube service ca-back --url` to get the url.
 

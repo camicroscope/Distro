@@ -4,7 +4,7 @@ items:
  - apiVersion: apps/v1
    kind: Deployment
    metadata:
-     name: camic-dev
+     name: back
      labels:
        service: back
    spec:
@@ -16,6 +16,13 @@ items:
          labels:
            service: back
        spec:
+         hostAliases:
+         - ip: "127.0.0.1"
+           hostnames:
+           - "ca-load"
+           - "ca-iip"
+           - "ca-mongo"
+           - "ca-back"
          volumes:
            - name: images
              emptyDir: {}
@@ -25,10 +32,12 @@ items:
              ports:
                - containerPort: 27017
            - name: back
-             image: ghcr.io/camicroscope/caracal:ch-container-action
+             image: ghcr.io/camicroscope/caracal:develop
              ports:
                - containerPort: 4010
              env:
+               - name: PORT
+                 value: "4010"
                - name: JWK_URL
                  value: "https://www.googleapis.com/oauth2/v3/certs"
                - name: IIP_PATH
@@ -38,6 +47,8 @@ items:
                - name: DISABLE_SEC
                  value: "true"
                - name: ALLOW_PUBLIC
+                 value: "true"
+               - name: DISABLE_CSP
                  value: "true"
            - name: iip
              image: camicroscope/iipimage:latest
@@ -56,7 +67,7 @@ items:
  - apiVersion: v1
    kind: Service
    metadata:
-     name: camic-dev
+     name: back
      labels:
        service: back
    spec:
@@ -69,3 +80,15 @@ items:
          targetPort: 4010
          nodePort: 30401
      type: LoadBalancer
+ - apiVersion: v1
+   kind: Service
+   metadata:
+     labels:
+       name: ca-load
+     name: ca-load
+   spec:
+     ports:
+       - port: 4000
+         targetPort: 4000
+     selector:
+       name: loader
