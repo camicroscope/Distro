@@ -11,13 +11,6 @@ services:
           max-size: "10m"
     volumes:
       - ./db:/data/db
-    command: bash /config/run_idx.sh
-    logging:
-      options:
-          max-file: "5"
-          max-size: "10m"
-    depends_on:
-      - mongo
   back:
     build:
       context: "https://github.com/camicroscope/caracal.git#v3.9.10"
