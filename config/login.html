@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CaMicroscope</title>
+  <title>FDA HTT - CaMicroscope</title>
   <meta charset="utf-8" />
   <meta name="google-signin-client_id" content="539699277901-buh78f048405grejogqbrskj233rt0d0.apps.googleusercontent.com">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="./apps/landing/main.css" />
   <script type="text/javascript" src="./common/util.js"></script>
+  <style>
+    #google-signin2 span {
+      color:#fff;
+    }
+    .content p {
+      font-family:'Open Sans', Helvetica, sans-serif;
+      font-weight: 300;
+    }
+  </style>
 </head>
 <body>
   <header id="header">
@@ -21,12 +30,12 @@
   <section id="main" class="wrapper" style="padding:3em;">
     <div class="inner">
       <header class="major">
-        <h2 style="margin:0;">caMicroscope</h2>
+        <h2 style="margin:0;font-weight: 700;">HTT ROI Annotation</h2>
       </header>
       <!-- Content -->
 
       <div class="content">
-        <p><strong>caMicroscope</strong> is a tool to view, label, and annotate biomedical images.</p>
+        <p><strong>HTT ROI Annotation</strong> is a tool to view, label, and annotate biomedical images.</p>
         <a href="#" class="image fit"><img src="./apps/landing/banner1.jpg" alt="" /></a>
 
       </div>
@@ -36,8 +45,8 @@
         <section class="post">
           <a href="#" class="image"><img src="./apps/landing/camic.jpg" alt=""/></a>
             <div class="content">
-                <h3>Please Sign In With Your Google Account</h3>
-                <div id="google-signin2"></div>
+                <h3 style="font-weight:700;font-size: 1rem; ">Please Sign In With Your Google Account</h3>
+                <div id="google-signin2" ></div>
             </div>
         </section>
       </div>
@@ -63,7 +72,7 @@
           .slice(0, -1)
           .join("/");
         var redirect_uri = base_deployment_url + "/login.html";
-        var default_redirect = base_deployment_url + "/apps/table.html";
+        var default_redirect = base_deployment_url + "/apps/htt-table.html";
         var state;
         if (getUrlParam("state")) {
           state = decodeURIComponent(getUrlParam("state"));
@@ -83,10 +92,13 @@
               if (x.hasOwnProperty("token")) {
                 document.cookie = cookie_name + "=" + x.token;
                 let token_data = parseJwt(x.token);
-                window.location = "./apps/landing/landing.html";
+                if (token_data.userType && token_data.userType === 'Admin') {
+                  window.location = "./apps/landing/landing.html";
+                } else {
+                  window.location = "./apps/landing/crowd.html";
+                }
               } else {
-                window.alert("User not added");
-                window.location = "./apps/signup/signup.html";
+                window.location = "./apps/registration/registration.html";
               }
             });
         }
@@ -156,7 +168,7 @@
         .slice(0, -1)
         .join("/");
       var redirect_uri = base_deployment_url + "/login.html";
-      var default_redirect = base_deployment_url + "/apps/table.html";
+      var default_redirect = base_deployment_url + "/apps/htt-table.html";
       var state;
       if (getUrlParam("state")) {
         state = decodeURIComponent(getUrlParam("state"));
