@@ -1,16 +1,13 @@
 # Kubernetes Version of caMicroscope and quip
 
-## FYI
-- ALL host mounts are ignored, at least as of now.
+Note that the images persistent volume starts empty. Please replace `emptyDir` with an alternate source if required.
 
-## Develop
+## develop and caMicroscope
 run `kubectl apply -f develop.yml` to create, cleanup.sh to remove *everything* when done.
 
-When using minikube, run `minikube tunnel` then `minikube service ca-back --url` to get the url.
+When using minikube, run `minikube tunnel` then `minikube service back --url` to get the url.
 
-
-## caMicroscope
-TODO
+For instances where security is enabled, after generating keys in 'jwt_keys', run `kubectl create secret generic camic-jwt-keys --from-file=key=../jwt_keys/key --from-file=key.pub=../jwt_keys/key.pub`
 
 ## quip
 TODO
