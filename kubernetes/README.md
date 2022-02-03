@@ -7,7 +7,7 @@ run `kubectl apply -f develop.yml` to create, cleanup.sh to remove *everything* 
 
 When using minikube, run `minikube tunnel` then `minikube service back --url` to get the url.
 
-For instances where security is enabled, after generating keys in 'jwt_keys', run `kubectl create secret generic camic-jwt-keys --from-file=key=../jwt_keys/key --from-file=key.pub=../jwt_keys/key.pub`
+For instances where security is enabled, after generating keys in 'jwt_keys' and confiuring login.html, run `add_config.sh` or some modification thereof as needed for your configuration.
 
 ## quip
 TODO

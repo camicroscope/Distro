@@ -30,8 +30,8 @@ items:
              secret:
                secretName: camic-jwt-keys
            - name: loginpage
-             secret:
-               secretName: camic-login
+             configMap:
+               name: camic-login
          containers:
            - name: mongo
              image: mongo:4.2-bionic
