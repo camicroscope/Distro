@@ -26,6 +26,7 @@ items:
            - "ca-iip"
            - "ca-mongo"
            - "ca-back"
+           - "ca-security"
          volumes:
            - name: images
              emptyDir: {}
@@ -77,7 +78,7 @@ items:
                - containerPort: 8080
              volumeMounts:
              - name: images
-               mountPath: /images/
+               mountPath: /data/images/
            - name: imageloader
              image: camicroscope/pathdb-imageloader:latest
              volumeMounts:
