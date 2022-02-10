@@ -11,6 +11,6 @@ For instances where security is enabled, after generating keys in 'jwt_keys' and
 
 ## quip
 * Setup required configuration by running `pathdb_add_config.sh`
-* Change the persistent volume configuration in quip-pathdb.yml to match where your slide and other data files are as required. (This is optional for single-node deployments)
+* Change the persistent volume configuration in quip-pathdb.yml to match where your slide and other data files are.
 * Run `kubectl apply -f quip-pathdb.yml` to create the pod
 * When using minikube, run `minikube tunnel` then `minikube service pathdb --url` to get the url.
