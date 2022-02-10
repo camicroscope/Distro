@@ -34,15 +34,12 @@ items:
            - name: jwtkeys
              secret:
                secretName: camic-jwt-keys
-           - name: loginpage
+           - name: pathdb-sites
              configMap:
-               name: camic-login
+               name: pathdb-sites
            - name: pathdb-config
              configMap:
                name: pathdb-config
-           - name: pathdb-pre
-             configMap:
-               name: pathdb-pre
          containers:
            - name: mongo
              image: mongo:4.2-bionic
@@ -55,8 +52,6 @@ items:
              volumeMounts:
              - name: jwtkeys
                mountPath: /src/keys/
-             - name: loginpage
-               mountPath: /src/static/
              env:
                - name: PORT
                  value: "4010"
@@ -88,11 +83,6 @@ items:
                mountPath: /data/
              - name: images
                mountPath: /data/images/
-           - name: segloader
-             image: camicroscope/pathdb-segloader:latest
-             volumeMounts:
-             - name: data
-               mountPath: /data/
            - name: heatmaploader
              image: camicroscope/pathdb-heatmaploader:latest
              volumeMounts:
@@ -104,8 +94,6 @@ items:
                - name: "DEBIAN_FRONTEND"
                  value: "noninteractive"
            - name: pathdb
-             args:
-                - /config/pathdb_pre.sh
              image: camicroscope/pathdb:latest
              ports:
                - containerPort: 443
@@ -115,10 +103,10 @@ items:
                mountPath: /data/
              - name: images
                mountPath: /data/pathdb/files/wsi
-             - name: pathdb-pre
-               mountPath: /config/pathdb_pre.sh
-             - name: pathdb-config
+             - name: pathdb-sites
                mountPath: /quip/web/sites/default
+             - name: pathdb-config
+               mountPath: /config/
              - name: jwtkeys
                mountPath: /keys/
  - apiVersion: v1

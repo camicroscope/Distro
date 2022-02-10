@@ -7,8 +7,9 @@ run `kubectl apply -f develop.yml` to create, cleanup.sh to remove *everything* 
 
 When using minikube, run `minikube tunnel` then `minikube service back --url` to get the url.
 
-For instances where security is enabled, after generating keys in 'jwt_keys' and confiuring login.html, run `add_config.sh` or some modification thereof as needed for your configuration.
+For instances where security is enabled, after generating keys in 'jwt_keys' and confiuring login.html, run `camicroscope_add_config.sh` or some modification thereof as needed for your configuration.
 
 ## quip
-TODO
-(worried about non-optional config mounts and image mount in particular)
+* Setup required configuration by running `pathdb_add_config.sh`
+* run `kubectl apply -f quip-pathdb.yml` to create the pod
+* When using minikube, run `minikube tunnel` then `minikube service pathdb --url` to get the url.
