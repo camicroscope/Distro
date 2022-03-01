@@ -213,7 +213,10 @@
   {
     "route": "/data/Mark/count",
     "method": "get",
-    "handlers": [{ "function": "mongoCount", "args": ["camic", "mark"] }]
+    "handlers": [
+      { "function": "setCreatorAsUserHandler", "args": ["data"] },
+      { "function": "mongoCount", "args": ["camic", "mark"] }
+    ]
   },
   {
     "route": "/data/Mark/getSlidesHumanMarkNum",
