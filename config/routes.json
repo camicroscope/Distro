@@ -117,6 +117,16 @@
     ]
   },
   {
+    "route": "/data/SlideInformativeness/removeRank",
+    "method": "post",
+    "handlers": [
+      {
+        "function": "slideInformativenessRemoveRank",
+        "args": ["camic", "request"]
+      }
+    ]
+  },
+  {
     "route": "/data/SlideInformativeness/rank",
     "method": "post",
     "handlers": [
