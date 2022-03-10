@@ -265,6 +265,11 @@
     ]
   },
   {
+    "route": "/data/LabelingAnnotation/findByTypeOrCreator",
+    "method": "get",
+    "handlers": [{ "function": "findByTypeOrCreator", "args": [] }]
+  },
+  {
     "route": "/data/LabelingAnnotation/post",
     "method": "post",
     "handlers": [
@@ -493,7 +498,14 @@
       { "function": "mongoDelete", "args": ["camic", "collection"] }
     ]
   },
-
+  {
+    "route": "/data/ExpertsFeedback/find",
+    "method": "get",
+    "handlers": [
+      { "function": "permissionHandler", "args": [["Editor", "Admin"]] },
+      { "function": "mongoFind", "args": ["camic", "expertsFeedback"] }
+    ]
+  },
   {
     "route": "/data/User/find",
     "method": "get",
