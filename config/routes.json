@@ -53,7 +53,11 @@
       { "function": "sanitizeBody", "args": [] }
     ]
   },
-
+  {
+    "route": "/data/Slide/download",
+    "method": "get",
+    "handlers": [{ "function": "downloadSlide", "args": [] }]
+  },
   {
     "route": "/data/Slide/find",
     "method": "get",
