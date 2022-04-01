@@ -539,6 +539,11 @@
     "handlers": [{ "function": "wcido", "args": [] }]
   },
   {
+    "route": "/data/Email/registration",
+    "method": "get",
+    "handlers": [{ "function": "sendRegistrationEmail", "args": [] }]
+  },
+  {
     "route": "/workbench/uploadDataset",
     "method": "post",
     "handlers": [
