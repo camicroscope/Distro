@@ -39,10 +39,7 @@
   {
     "method": "use",
     "route": "/img/IIP/raw/",
-    "handlers": [
-      { "function": "loginHandler", "args": [] },
-      { "function": "iipHandler", "args": [] }
-    ]
+    "handlers": [{ "function": "iipHandler", "args": [] }]
   },
 
   {
