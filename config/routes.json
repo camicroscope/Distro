@@ -38,12 +38,8 @@
     "method":"use",
     "route": "/img/IIP/raw/",
     "handlers":[
-
       {"function": "loginHandler", "args":[]},
-      {"function":"preIip", "args": []},
-      {"function":"iipCheck", "args": []},
       {"function":"iipHandler", "args": []}
-
     ]
   },
 
