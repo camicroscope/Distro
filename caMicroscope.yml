@@ -27,13 +27,14 @@ services:
       - mongo
   back:
     build:
-      context: "https://github.com/camicroscope/caracal.git#fda/htt"
+      context: "https://github.com/caMicroscope/caracal.git#fda/htt"
       args:
         viewer: "fda/htt"
+        fork: "caMicroscope"
     depends_on:
       - "mongo"
     ports:
-      - "4010:4010"
+      - "443:4010"
     container_name: ca-back
     restart: always
     logging:
@@ -41,7 +42,7 @@ services:
           max-file: "5"
           max-size: "10m"
     volumes:
-      - /labs/sharmalab/HTT_IMGS/:/images/
+      - C:/Users/Phoebe.Qian/Documents/whole_slide/:/images/
       - ./config/login.html:/src/static/login.html
       - ./jwt_keys/:/src/keys/
       - ./config/routes.json:/src/routes.json
@@ -52,6 +53,7 @@ services:
       MONGO_URI: "mongodb://ca-mongo"
       DISABLE_TF: "true"
       ALLOW_PUBLIC: "true"
+      DISABLE_SEC: "true"
   iip:
     image: camicroscope/iipimage:version-3.8.4
     container_name: ca-iip
@@ -61,7 +63,7 @@ services:
           max-size: "10m"
     restart: always
     volumes:
-      - /labs/sharmalab/HTT_IMGS/:/images/
+      - C:/Users/Phoebe.Qian/Documents/whole_slide/:/images/
   loader:
     build: "https://github.com/camicroscope/SlideLoader.git#v3.9.8"
     container_name: ca-load
@@ -71,4 +73,4 @@ services:
           max-file: "5"
           max-size: "10m"
     volumes:
-      - /labs/sharmalab/HTT_IMGS/:/images/
+      - C:/Users/Phoebe.Qian/Documents/whole_slide/:/images/
