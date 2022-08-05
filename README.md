@@ -63,6 +63,8 @@ Running QuIP with PathDB (https://github.com/SBU-BMI/PathDB):
 3) build with, "docker-compose -f quip-pathdb.yml build"<br>
 4) run with, "docker-compose -f quip-pathdb.yml up -d"
 
+The default login for pathdb is `admin` with password `bluecheese2018`. Please change this password before exposing this service to the internet.
+
 ## Support
 Feel free to add any support inquiry as a github issue to this repository. Other feedback can be given via [this form](https://docs.google.com/forms/d/e/1FAIpQLScL91LxrpAZjU88GBZP9gmcdgdf8__uNUwhws2lzU6Lr4qNwA/viewform).
 
