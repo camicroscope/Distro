@@ -1,6 +1,18 @@
 version: '3'
 
 services:
+  e2e_tests:
+    image: ubuntu:14.04
+    depends_on:
+      - web
+    command: 'nc -vz web 8080'
+  web:
+    image: ubuntu:14.04
+    command: >
+      /bin/bash -c "
+        sleep 5;
+        nc -lk 0.0.0.0 8080;
+      "
   mongo:
     image: mongo:4.2-bionic
     container_name: ca-mongo
@@ -74,3 +86,16 @@ services:
           max-size: "10m"
     volumes:
       - ./images/:/images/
+  start_dependencies:
+    image: ubuntu:14.04
+    depends_on:
+      - web
+    command: >
+      /bin/bash -c "
+        while ! nc -z web 8080;
+        do
+          echo sleeping;
+          sleep 1;
+        done;
+        echo Connected!;
+      "
