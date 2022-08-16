@@ -247,7 +247,10 @@
   {
     "route": "/data/Labeling/post",
     "method": "post",
-    "handlers": [{ "function": "mongoAdd", "args": ["camic", "labeling"] }]
+    "handlers": [
+      {"function":"writeFile", "args": ["/src/bkps/", "labeling"]},
+      { "function": "mongoAdd", "args": ["camic", "labeling"] }
+    ]
   },
   {
     "route": "/data/Labeling/pullAnnotation",
@@ -276,6 +279,7 @@
     "method": "post",
     "handlers": [
       { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
+      {"function":"writeFile", "args": ["/src/bkps/", "labelingAnnotation"]},
       { "function": "mongoAdd", "args": ["camic", "labelingAnnotation"] }
     ]
   },
@@ -516,7 +520,9 @@
   {
     "route": "/data/User/post",
     "method": "post",
-    "handlers": [{ "function": "mongoAdd", "args": ["camic", "user"] }]
+    "handlers": [
+      {"function":"writeFile", "args": ["/src/bkps/", "user"]},
+      { "function": "mongoAdd", "args": ["camic", "user"] }]
   },
   {
     "route": "/data/User/delete",
