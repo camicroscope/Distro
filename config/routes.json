@@ -130,6 +130,7 @@
     "method": "post",
     "handlers": [
       { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
+      {"function":"writeFile", "args": ["/src/bkps/", "mark"]},
       { "function": "mongoAdd", "args": ["camic", "mark"] }
     ]
   },

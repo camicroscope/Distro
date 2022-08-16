@@ -44,6 +44,7 @@ services:
       - /labs/sharmalab/HTT_IMGS/:/images/
       - ./config/login.html:/src/static/login.html
       - ./jwt_keys/:/src/keys/
+      - ./bkps/:/src/bkps/
       - ./config/routes.json:/src/routes.json
       - ./config/contentSecurityPolicy.json:/src/contentSecurityPolicy.json
     environment:
