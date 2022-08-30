@@ -39,6 +39,13 @@
       { "function": "proxyHandler", "args": ["http://ca-load:4001/"] }
     ]
   },
+  {
+    "method":"get",
+    "route":"./auth/Token/header",
+    "handlers": [
+      { "function": "loginWithHeader", "args": ["x-remote-user"] }
+    ]
+  },
 
   {
     "method": "use",
