@@ -41,7 +41,7 @@ services:
           max-file: "5"
           max-size: "10m"
     volumes:
-      - /labs/sharmalab/HTT_IMGS/:/images/
+      - ./images/:/images/
       - ./config/login.html:/src/static/login.html
       - ./jwt_keys/:/src/keys/
       - ./bkps/:/src/bkps/
@@ -62,7 +62,7 @@ services:
           max-size: "10m"
     restart: always
     volumes:
-      - /labs/sharmalab/HTT_IMGS/:/images/
+      - ./images/:/images/
   loader:
     build: "https://github.com/camicroscope/SlideLoader.git#v3.9.8"
     container_name: ca-load
@@ -72,4 +72,4 @@ services:
           max-file: "5"
           max-size: "10m"
     volumes:
-      - /labs/sharmalab/HTT_IMGS/:/images/
+      - ./images/:/images/
