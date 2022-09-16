@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CaMicroscope</title>
+  <title>DOE caMicroscope</title>
   <meta charset="utf-8" />
-  <meta name="google-signin-client_id" content="539699277901-buh78f048405grejogqbrskj233rt0d0.apps.googleusercontent.com">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="./apps/landing/main.css" />
   <script type="text/javascript" src="./common/util.js"></script>
@@ -21,12 +20,12 @@
   <section id="main" class="wrapper" style="padding:3em;">
     <div class="inner">
       <header class="major">
-        <h2 style="margin:0;">caMicroscope</h2>
+        <h2 style="margin:0;">DOE caMicroscope</h2>
       </header>
       <!-- Content -->
 
       <div class="content">
-        <p><strong>caMicroscope</strong> is a tool to view, label, and annotate biomedical images.</p>
+        <p>DOE <strong>caMicroscope</strong> is a tool to view, label, and annotate biomedical images.</p>
         <a href="#" class="image fit"><img src="./apps/landing/banner1.jpg" alt="" /></a>
 
       </div>
@@ -36,26 +35,29 @@
         <section class="post">
           <a href="#" class="image"><img src="./apps/landing/camic.jpg" alt=""/></a>
             <div class="content">
-                <h3>Please Sign In With Your Google Account</h3>
-                <div id="google-signin2"></div>
+                <h3 id="login_txt">Please sign in or out.</h3>
+                <button id="sign_in" class="btn-primary">Sign In</button>
+                <button id="sign_out" class="btn-warning">Sign Out</button>
             </div>
         </section>
       </div>
   </section>
-
+ <style>
+   .hidden{
+     display: none;
+   }
+   </style>
   <script>
-    function onSuccess(googleUser) {
-      // don't if we're logging out
-      if (getUrlParam("logout")) {
-        removeUserConsentAcceptance(getUserId());
-        signOut();
-        deleteCookies();
-        console.log("logging out");
-        window.location.href = "./login.html";
-      } else {
-        var id_token = googleUser.getAuthResponse().id_token;
-        // console.info(id_token);
-        // trade for camic token
+    function logOut(){
+      deleteCookie("token");
+      console.log("logging out");
+    }
+
+    function logIn() {
+      // relative url for login using the header inserted before backend.
+      var logInUrl = "./auth/Token/header";
+      fetch(logInUrl).then(x=>x.json()).then(x=>{
+        console.log(x);
         var cookie_name = "token"; // "token" is the expected cookie name
         var base_deployment_url = window.location
           .toString()
@@ -71,108 +73,46 @@
         if (!state) {
           state = default_redirect;
         }
-        if (id_token) {
-          document.cookie = cookie_name + "=" + id_token;
-          fetch("./auth/Token/check", {
-            headers: {
-              Authorization: "Bearer " + id_token
-            }
-          })
-            .then(x => x.json())
-            .then(x => {
-              if (x.hasOwnProperty("token")) {
-                document.cookie = cookie_name + "=" + x.token;
-                let token_data = parseJwt(x.token);
-                window.location = "./apps/landing/landing.html";
-              } else {
-                window.alert("User not added");
-                window.location = "./apps/signup/signup.html";
-              }
-            });
-        }
-      }
-    }
-
-    function onFailure(error) {
-      console.error(error);
-    }
-
-    function renderButton() {
-      gapi.signin2.render('google-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
+        document.cookie = cookie_name + "=" + x.token;
+        let token_data = parseJwt(x.token);
+      }).catch(err=>{
+        console.error(err);
       });
     }
 
-    function signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function() {
-        console.log("User signed out.");
-      });
-    }
-
-    function deleteCookies() {
+    function deleteCookie(selected) {
       var allcookies = document.cookie.split(";");
       for (var i = 0; i < allcookies.length; i++) {
         var cookie = allcookies[i];
         var eqPos = cookie.indexOf("=");
         var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+        if (name==selected){
+          document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+        }
       }
     }
 
-    // google's jwk is here: https://www.googleapis.com/oauth2/v3/certs
-    function randomString(length) {
-      var bytes = new Uint8Array(length);
-      var random = window.crypto.getRandomValues(bytes);
-      var result = [];
-      var charset =
-        "0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._~";
-      random.forEach(function(c) {
-        result.push(charset[c % charset.length]);
-      });
-      return result.join("");
+  function checkLoginStatus(){
+    if(getCookie("token")){
+      // we're logged in; set text
+      document.getElementById("login_txt").innerText="You are currently logged in";
+      // show logout button
+      document.getElementById("sign_out").classList.remove("hidden");
+      // hide login button
+      document.getElementById("sign_in").classList.add("hidden");
+    } else {
+      // we're logged out; set text
+      document.getElementById("login_txt").innerText="You are currently logged out";
+      // show login button
+      document.getElementById("sign_in").classList.remove("hidden");
+      // hide logout button
+      document.getElementById("sign_out").classList.add("hidden");
     }
-
-    function getUrlParam(name, url) {
-      if (!url) url = window.location.href;
-      name = name.replace(/[\[\]]/g, "\\$&");
-      var regex = new RegExp("[?&#]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return "";
-      return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
-  if (getUrlParam("token")){
-      var cookie_name = "token"; // "token" is the expected cookie name
-      var base_deployment_url = window.location
-        .toString()
-        .split("/")
-        .slice(0, -1)
-        .join("/");
-      var redirect_uri = base_deployment_url + "/login.html";
-      var default_redirect = base_deployment_url + "/apps/table.html";
-      var state;
-      if (getUrlParam("state")) {
-        state = decodeURIComponent(getUrlParam("state"));
-      }
-      if (!state) {
-        state = default_redirect;
-      }
-      console.info("logging in with a url param");
-      document.cookie = cookie_name + "=" + getUrlParam("token");
-      window.location = state;
   }
-  </script>
 
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-
-  <script>
+  window.onload = checkLoginStatus
+  document.getElementById("sign_out").onclick = logOut;
+  document.getElementById("sign_in").onclick = logIn;
 
   </script>
 </body>
