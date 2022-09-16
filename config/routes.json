@@ -11,7 +11,6 @@
     "method": "static",
     "use": "thumbnails"
   },
-
   {
     "method": "use",
     "route": "/loader/",
@@ -218,6 +217,11 @@
     "route": "/data/Mark/findMarkTypes",
     "method": "get",
     "handlers": [{ "function": "findMarkTypes", "args": [] }]
+  },
+  {
+    "route": "/data/Mark/findCurrentUserMarkTypes",
+    "method": "get",
+    "handlers": [{ "function": "findCurrentUserMarkTypes", "args": [] }]
   },
   {
     "route": "/data/Mark/updateMarksLabel",
@@ -518,6 +522,22 @@
     ]
   },
   {
+    "route": "/data/Collection/addUsersToCollection",
+    "method": "post",
+    "handlers": [
+      { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
+      { "function": "addUsersToCollection", "args": [] }
+    ]
+  },
+  {
+    "route": "/data/Collection/removeUsersFromCollection",
+    "method": "post",
+    "handlers": [
+      { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
+      { "function": "removeUsersFromCollection", "args": [] }
+    ]
+  },  
+  {
     "route": "/data/Collection/setCollectionTaskStatus",
     "method": "post",
     "handlers": [
@@ -534,9 +554,20 @@
     ]
   },
   {
+    "route": "/data/User/getCurrentUser",
+    "method": "get",
+    "handlers": [
+      { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
+      { "function": "getCurrentUser", "args": [] }
+    ]
+  },
+  {
     "route": "/data/User/find",
     "method": "get",
-    "handlers": [{ "function": "mongoFind", "args": ["camic", "user"] }]
+    "handlers": [
+      { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
+      { "function": "mongoFind", "args": ["camic", "user"] }
+    ]
   },
   {
     "route": "/data/User/post",
