@@ -17,7 +17,7 @@ services:
     build:
       context: "https://github.com/camicroscope/caracal.git#v3.9.10"
       args:
-        viewer: "v3.9.10"
+        viewer: "pdb-iip"
     depends_on:
       - "mongo"
     ports:
@@ -37,7 +37,7 @@ services:
     build:
       context: "https://github.com/SBU-BMI/PathDB.git#1.7.1"
       args:
-        viewer: "v3.9.10"
+        viewer: "pdb-iip"
     container_name: quip-pathdb
     restart: unless-stopped
     ports: ["443:443","80:80"]
