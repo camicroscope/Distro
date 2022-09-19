@@ -9,7 +9,7 @@
   },
   {
     "method": "static",
-    "use": "thumbnails"
+    "use": "/images/thumbnails"
   },
   {
     "method": "use",
@@ -543,7 +543,7 @@
       { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
       { "function": "removeUsersFromCollection", "args": [] }
     ]
-  },  
+  },
   {
     "route": "/data/Collection/setCollectionTaskStatus",
     "method": "post",
