@@ -518,6 +518,11 @@
     ]
   },
   {
+    "route": "/data/User/getCurrentUserId",
+    "method": "get",
+    "handlers": [{ "function": "getCurrentUserId", "args": [] }]
+  },  
+  {
     "route": "/data/User/find",
     "method": "get",
     "handlers": [{ "function": "mongoFind", "args": ["camic", "user"] }]
