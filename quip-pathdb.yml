@@ -15,7 +15,7 @@ services:
       - ./images/:/data/images/
   back:
     build:
-      context: "https://github.com/camicroscope/caracal.git#v3.9.11"
+      context: "https://github.com/camicroscope/caracal.git#pdb-iip"
       args:
         viewer: "pdb-iip"
     depends_on:
