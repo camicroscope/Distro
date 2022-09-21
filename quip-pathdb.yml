@@ -15,7 +15,7 @@ services:
       - ./images/:/data/images/
   back:
     build:
-      context: "https://github.com/camicroscope/caracal.git#v3.9.10"
+      context: "https://github.com/camicroscope/caracal.git#v3.9.11"
       args:
         viewer: "pdb-iip"
     depends_on:
@@ -35,7 +35,7 @@ services:
       DISABLE_CSP: "true"
   pathdb:
     build:
-      context: "https://github.com/SBU-BMI/PathDB.git#1.7.1"
+      context: "https://github.com/SBU-BMI/PathDB.git#2.0.0"
       args:
         viewer: "pdb-iip"
     container_name: quip-pathdb
@@ -50,7 +50,7 @@ services:
     command:
       - /config/pathdb_pre.sh
   imageloader:
-    build: "https://github.com/SBU-BMI/ImageLoader.git#2.1.1"
+    build: "https://github.com/SBU-BMI/ImageLoader.git#3.0.0"
     container_name: quip-imageloader
     volumes:
       - ./data:/data/
