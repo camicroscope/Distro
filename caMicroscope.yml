@@ -44,6 +44,7 @@ services:
     volumes:
       - ./images/:/images/
       - ./config/login.html:/src/static/login.html
+      - ./config/user.json:/src/static/user.json
       - ./jwt_keys/:/src/keys/
       - ./bkps/:/src/bkps/
       - ./config/routes.json:/src/routes.json
