@@ -26,11 +26,7 @@ services:
     depends_on:
       - mongo
   back:
-    build:
-      context: "https://github.com/camicroscope/caracal.git#fda/htt"
-      args:
-        viewer: "fda/htt"
-        fork: "camicroscope"
+    image: ghcr.io/camicroscope/caracal:fda-htt
     depends_on:
       - "mongo"
     ports:
@@ -68,7 +64,7 @@ services:
     volumes:
       - ./images/:/images/
   loader:
-    build: "https://github.com/camicroscope/SlideLoader.git#v3.9.8"
+    image: ghcr.io/camicroscope/slideloader:master
     container_name: ca-load
     restart: always
     logging:
