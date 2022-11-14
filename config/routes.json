@@ -238,7 +238,11 @@
     "method": "get",
     "handlers": [{ "function": "mongoFind", "args": ["camic", "labeling"] }]
   },
-
+  {
+    "route": "/data/Labeling/delete",
+    "method": "delete",
+    "handlers": [{ "function": "mongoDelete", "args": ["camic", "labeling"] }]
+  },
   {
     "route": "/data/Slide/countLabeling",
     "method": "get",
