@@ -35,6 +35,7 @@ services:
       - "mongo"
     ports:
       - "4010:4010"
+      - "8080:4010"
     container_name: ca-back
     restart: always
     logging:
