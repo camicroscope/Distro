@@ -45,7 +45,25 @@ When selecting, an identity provider, note that we expect it to provide a JWT, a
 
 The example given in the Distro within config/login.html is set up to use google as an identity provider. See [this guide from google](https://developers.google.com/identity/sign-in/web/sign-in) to set up your own project, which is necessary to enable login on your instance.
 
-Alternatively, you can use kc_caMicroscope.yml for a keycloak configuration. See keycloak_config.md for instructions and notes.
+#### Using Keycloak as a self-contained Identity Provider
+Alternatively, you can use kc_caMicroscope.yml for a keycloak configuration.
+
+* Set up Keycloak (covered by docker compose kc_caMicroscope.yml)
+    * URL for this is [http://localhost:8080/admin/master/console/#/](http://localhost:8080/admin/master/console/#/), sub host/port as needed
+* Set up realm
+    * Add realm called ‘camic’
+    * All following steps happen in this realm.
+* Set up client
+    * Clients -> Add Client
+    * Set client_id to camicroscope-test.
+    * Openid connect with mostly default settings, but **set client authentication to on**
+    * Once saved, Under the credentials tab, get the client secret
+    * Add the client secret to config/keycloak_login.html for client_secret.
+* Add users
+    * Users -> add user
+    * Make sure to add an email to match user documents in mongo.
+    * Set a password under credentials -> add password
+
 
 ### Adding Users to caMicroscope
 
