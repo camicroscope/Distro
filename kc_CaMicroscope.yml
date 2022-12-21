@@ -42,7 +42,7 @@ services:
       - ./config/routes.json:/src/routes.json
       - ./config/contentSecurityPolicy.json:/src/contentSecurityPolicy.json
     environment:
-      JWK_URL: "http://ca-key:8080/realms/camic/protocol/openid-connect/certs"
+      JWK_URL: "http://ca-back:4010/keycloak/realms/camic/protocol/openid-connect/certs"
       IIP_PATH: "http://ca-iip:8080/fcgi-bin/iipsrv.fcgi"
       MONGO_URI: "mongodb://ca-mongo"
       GENERATE_KEY_IF_MISSING: "true"
