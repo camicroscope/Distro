@@ -10,8 +10,6 @@ services:
         KEYCLOAK_ADMIN_PASSWORD: password
       ports:
         - 8080:8080
-      depends_on:
-        - mysql
   mongo:
     image: mongo:4.2-bionic
     container_name: ca-mongo
@@ -39,12 +37,12 @@ services:
           max-size: "10m"
     volumes:
       - ./images/:/images/
-      - ./config/login.html:/src/static/login.html
+      - ./config/keycloak_login.html:/src/static/login.html
       - ./jwt_keys/:/src/keys/
       - ./config/routes.json:/src/routes.json
       - ./config/contentSecurityPolicy.json:/src/contentSecurityPolicy.json
     environment:
-      JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
+      JWK_URL: "http://ca-key:8080/realms/camic/protocol/openid-connect/certs"
       IIP_PATH: "http://ca-iip:8080/fcgi-bin/iipsrv.fcgi"
       MONGO_URI: "mongodb://ca-mongo"
       GENERATE_KEY_IF_MISSING: "true"
