@@ -28,9 +28,9 @@
     ]
   },{
     "method":"use",
-    "route": "/googleAuth/",
+    "route": "/keycloak/",
     "handlers":[
-      {"function":"proxyHandler", "args": ["http://ca-load:4001/"]}
+      {"function":"proxyHandler", "args": ["http://ca-key:8080/"]}
     ]
   },
 

@@ -1,0 +1,61 @@
+<html>
+<title>caMicroscope Keycloak Login</title>
+<head>
+  <script type="text/javascript" src="./common/util.js"></script>
+</head>
+<body>
+  <form>
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="button" onclick="onLogin()" value="Login">
+  </form>
+</body>
+<script>
+  // Configuration
+  var client_secret = "MS3NXMPABktO2Dom7qoT0BStlYk1Z1jc";
+  var client_id = "camicroscope-test";
+
+  // login handler
+  async function onLogin(){
+    let token_url = "./keycloak/realms/camic/protocol/openid-connect/token";
+    let id_token = await fetch(token_url, {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+            'username': document.getElementById("username").value,
+            'password': document.getElementById("password").value,
+            'scope': 'openid',
+            'grant_type': 'password',
+            'client_id' : client_id,
+            'client_secret': client_secret
+        })
+    }).then(x=>x.json());
+    console.log(id_token['access_token']);
+    console.log(id_token);
+    if (id_token['access_token']) {
+      document.cookie = "token=" + id_token['access_token'];
+      fetch("./auth/Token/check", {
+        headers: {
+          Authorization: "Bearer " + id_token['access_token']
+        }
+      })
+        .then(x => x.json())
+        .then(x => {
+          if (x.hasOwnProperty("token")) {
+            document.cookie = "token=" + x.token;
+            let token_data = parseJwt(x.token);
+            window.location = "./apps/table.html";
+          } else {
+            window.alert("User not added");
+            window.location = "./apps/signup/signup.html";
+          }
+        });
+  }
+}
+</script>
+
+</html>
