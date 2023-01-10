@@ -1,21 +1,63 @@
 <html>
 <title>caMicroscope Keycloak Login</title>
 <head>
+  <meta name="client_secret" content="MS3NXMPABktO2Dom7qoT0BStlYk1Z1jc">
+  <meta name="client_id" content="camicroscope-test">
+  <link rel="stylesheet" href="./apps/landing/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script type="text/javascript" src="./common/util.js"></script>
 </head>
+
 <body>
-  <form>
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username"><br>
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password"><br><br>
-    <input type="button" onclick="onLogin()" value="Login">
-  </form>
+  <header id="header">
+    <label style="color:white;padding:0 15px;font-size:20px;position:relative;">CaMicroscope<a target="_blank" style="position:absolute;right:2vw;" href="https://docs.google.com/forms/d/e/1FAIpQLScL91LxrpAZjU88GBZP9gmcdgdf8__uNUwhws2lzU6Lr4qNwA/viewform">Feedback</a></label>
+    <nav id="nav">
+        <ul>
+            <!-- <li><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScL91LxrpAZjU88GBZP9gmcdgdf8__uNUwhws2lzU6Lr4qNwA/viewform">Feedback</a></li> -->
+            <!-- <li><a href="./login.html?logout=true">Sign Out</a></li> -->
+        </ul>
+    </nav>
+  </header>
+  <section id="main" class="wrapper" style="padding:3em;">
+    <div class="inner">
+      <header class="major">
+        <h2 style="margin:0;">caMicroscope</h2>
+      </header>
+      <!-- Content -->
+
+      <div class="content">
+        <p><strong>caMicroscope</strong> is a tool to view, label, and annotate biomedical images.</p>
+        <a href="#" class="image fit"><img src="./apps/landing/banner1.jpg" alt="" /></a>
+
+      </div>
+
+      <div class="posts" style="justify-content: center;">
+        <!-- Organizer -->
+        <section class="post">
+          <a href="#" class="image"><img src="./apps/landing/camic.jpg" alt=""/></a>
+            <div class="content">
+                <h3>Please Sign In</h3>
+                <form>
+                  <label for="username">Username:</label><br>
+                  <input type="text" id="username" name="username"><br>
+                  <label for="password">Password:</label><br>
+                  <input type="password" id="password" name="password"><br><br>
+                  <input type="button" onclick="onLogin()" value="Login">
+                </form>
+            </div>
+        </section>
+      </div>
+  </section>
+</body>
+
+
+<body>
+
 </body>
 <script>
   // Configuration
-  var client_secret = "MS3NXMPABktO2Dom7qoT0BStlYk1Z1jc";
-  var client_id = "camicroscope-test";
+  var client_secret = document.querySelector('meta[name="client_secret"]').content;
+  var client_id = document.querySelector('meta[name="client_id"]').content;
 
   // login handler
   async function onLogin(){
