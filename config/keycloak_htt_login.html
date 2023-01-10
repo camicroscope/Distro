@@ -90,14 +90,10 @@
           if (x.hasOwnProperty("token")) {
             document.cookie = "token=" + x.token;
             let token_data = parseJwt(x.token);
-            if (token_data.userType && token_data.userType === 'Admin') {
-              window.location = "./apps/landing/landing.html";
-            } else {
-              window.location = "./apps/landing/crowd.html";
-            }
+            window.location = "./apps/table.html";
           } else {
-            window.alert("User not added to mongodb");
-            window.location = "./apps/registration/registration.html";
+            window.alert("User not added");
+            window.location = "./apps/signup/signup.html";
           }
         });
   }
