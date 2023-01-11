@@ -172,6 +172,13 @@
       {"function":"updateMarksLabel", "args": []}
     ]
   },{
+    "route":"/data/Mark/segmentationCount",
+    "method":"get",
+    "handlers":[
+      {"function":"markSegmentationCount", "args": []}
+    ]
+  },
+  {
     "route":"/data/Presetlabels/add",
     "method":"post",
     "handlers":[
