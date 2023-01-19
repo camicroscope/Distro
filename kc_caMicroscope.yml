@@ -1,11 +1,15 @@
 version: '3'
 
+volumes:
+  postgres_data:
+    name: postgres_data
+
 services:
   postgres:
     image: postgres:15
     container_name: ca-key-db
     volumes:
-      - ./postgres_data/data/:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
