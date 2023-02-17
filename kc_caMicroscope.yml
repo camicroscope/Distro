@@ -51,9 +51,9 @@ services:
       - ./db:/data/db
   back:
     build:
-      context: "https://github.com/camicroscope/caracal.git#v3.10.0"
+      context: "https://github.com/camicroscope/caracal.git#htt-keycloak"
       args:
-        viewer: "v3.10.1"
+        viewer: "fda/htt-keycloak"
     depends_on:
       - "mongo"
     ports:
@@ -75,6 +75,11 @@ services:
       IIP_PATH: "http://ca-iip:8080/fcgi-bin/iipsrv.fcgi"
       MONGO_URI: "mongodb://ca-mongo"
       GENERATE_KEY_IF_MISSING: "true"
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: password
+      KEYCLOAK_APP_REALM: camic
+    extra_hosts:
+      - "localhost.localdomain:127.0.0.1"
   iip:
     image: camicroscope/iipimage:version-3.8.4
     container_name: ca-iip

@@ -1,7 +1,7 @@
 <html>
 <title>caMicroscope Keycloak Login</title>
 <head>
-  <meta name="client_secret" content="MS3NXMPABktO2Dom7qoT0BStlYk1Z1jc">
+  <meta name="client_secret" content="KndkRMwmugPURLOZzk9K9n535Lh8Hq8P">
   <meta name="client_id" content="camicroscope-test">
   <link rel="stylesheet" href="./apps/landing/main.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -90,10 +90,10 @@
           if (x.hasOwnProperty("token")) {
             document.cookie = "token=" + x.token;
             let token_data = parseJwt(x.token);
-            window.location = "./apps/table.html";
+            // todo, go to different admin page if admin
+            window.location = "./apps/collection/viewer.html";
           } else {
-            window.alert("User not added");
-            window.location = "./apps/signup/signup.html";
+            window.alert("User removed from caMicroscope");
           }
         });
   }

@@ -26,14 +26,35 @@
     "handlers":[
       {"function":"proxyHandler", "args": ["http://ca-load:4000/"]}
     ]
-  },{
+  },
+  {
+    "method":"post",
+    "route": "/kcAddUser",
+    "handlers":[
+      {"function":"userRegistrationFlow", "args": []}
+    ]
+  },
+  {
+    "method":"post",
+    "route": "/addPublicUser",
+    "handlers":[
+      {"function":"dataEnforce", "args": ["{\"userType\": \"Null\", \"userFilter\": []}"]},
+      {"function":"mongoAdd", "args": ["camic", "user"]},
+      {"function":"sendData", "args": []}
+    ]
+  },
+  {
     "method":"use",
     "route": "/keycloak/",
     "handlers":[
       {"function":"proxyHandler", "args": ["http://ca-key:8080/"]}
     ]
   },
-
+  {
+    "route":"/data/Mark/segmentationCount",
+    "method":"get",
+    "handlers":[{"function":"markSegmentationCount", "args": []}]
+  },
   {
     "method":"use",
     "route": "/img/IIP/raw/",
@@ -85,7 +106,11 @@
       {"function":"mongoUpdate", "args": ["camic", "slide"]}
     ]
   },
-
+  {
+    "route": "/data/Slide/findLabelingStat",
+    "method": "get",
+    "handlers": [{ "function": "findLabelingStat", "args": [] }]
+  },
   {
     "route":"/data/Request/find",
     "method":"get",
@@ -172,13 +197,6 @@
       {"function":"updateMarksLabel", "args": []}
     ]
   },{
-    "route":"/data/Mark/segmentationCount",
-    "method":"get",
-    "handlers":[
-      {"function":"markSegmentationCount", "args": []}
-    ]
-  },
-  {
     "route":"/data/Presetlabels/add",
     "method":"post",
     "handlers":[
@@ -223,6 +241,75 @@
     "handlers":[
       {"function":"permissionHandler", "args": [["Admin"]]},
       {"function":"mongoUpdate", "args": ["camic", "template"]}
+    ]
+  },
+  {
+    "route": "/data/Labeling/find",
+    "method": "get",
+    "handlers": [{ "function": "mongoFind", "args": ["camic", "labeling"] }]
+  },
+  {
+    "route": "/data/Labeling/delete",
+    "method": "delete",
+    "handlers": [{ "function": "mongoDelete", "args": ["camic", "labeling"] }]
+  },
+  {
+    "route": "/data/Slide/countLabeling",
+    "method": "get",
+    "handlers": [{ "function": "countLabelingBySlide", "args": [] }]
+  },
+  {
+    "route": "/data/Labeling/pushAnnotation",
+    "method": "get",
+    "handlers": [{ "function": "labelingPushAnnotation", "args": [] }]
+  },
+  {
+    "route": "/data/Labeling/post",
+    "method": "post",
+    "handlers": [
+      {"function":"writeFile", "args": ["/src/bkps/", "labeling"]},
+      { "function": "mongoAdd", "args": ["camic", "labeling"] }
+    ]
+  },
+  {
+    "route": "/data/Labeling/pullAnnotation",
+    "method": "get",
+    "handlers": [{ "function": "labelingPullAnnotation", "args": [] }]
+  },
+  {
+    "route": "/data/LabelingAnnotation/advancedFind",
+    "method": "get",
+    "handlers": [{ "function": "advancedFindLabelingAnnotation", "args": [] }]
+  },
+  {
+    "route": "/data/LabelingAnnotation/find",
+    "method": "get",
+    "handlers": [
+      { "function": "mongoFind", "args": ["camic", "labelingAnnotation"] }
+    ]
+  },
+  {
+    "route": "/data/LabelingAnnotation/findByTypeOrCreator",
+    "method": "get",
+    "handlers": [{ "function": "findByTypeOrCreator", "args": [] }]
+  },
+  {
+    "route": "/data/LabelingAnnotation/post",
+    "method": "post",
+    "handlers": [
+      { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
+      {"function":"writeFile", "args": ["/src/bkps/", "labelingAnnotation"]},
+      { "function": "mongoAdd", "args": ["camic", "labelingAnnotation"] }
+    ]
+  },
+  {
+    "route": "/data/LabelingAnnotation/update",
+    "method": "post",
+    "handlers": [
+      { "function": "mongoFind", "args": ["camic", "labelingAnnotation"] },
+      { "function": "editHandler", "args": ["data"] },
+      { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
+      { "function": "mongoUpdate", "args": ["camic", "labelingAnnotation"] }
     ]
   },
 
