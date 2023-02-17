@@ -11,16 +11,26 @@ services:
           max-size: "10m"
     volumes:
       - ./db:/data/db
+  idxMongo:
+    image: mongo:4.2-bionic
+    container_name: ca-idx
+    links:
+      - mongo
+    volumes:
+      - ./config:/config
+    command: bash /config/run_idx.sh
+    logging:
+      options:
+          max-file: "5"
+          max-size: "10m"
+    depends_on:
+      - mongo
   back:
-    build:
-      context: "https://github.com/camicroscope/caracal.git#v3.10.0"
-      args:
-        viewer: "v3.10.1"
+    image: ghcr.io/camicroscope/caracal:fda-htt
     depends_on:
       - "mongo"
     ports:
       - "4010:4010"
-      - "8080:4010"
     container_name: ca-back
     restart: always
     logging:
@@ -54,7 +64,7 @@ services:
     volumes:
       - ./images/:/images/
   loader:
-    build: "https://github.com/camicroscope/SlideLoader.git#v3.10.0"
+    image: ghcr.io/camicroscope/slideloader:master
     container_name: ca-load
     restart: always
     logging:
