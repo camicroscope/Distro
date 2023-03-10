@@ -156,7 +156,6 @@
     "method": "post",
     "handlers": [
       { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
-      {"function":"writeFile", "args": ["/src/bkps/", "mark"]},
       { "function": "mongoAdd", "args": ["camic", "mark"] }
     ]
   },
@@ -278,7 +277,6 @@
     "route": "/data/Labeling/post",
     "method": "post",
     "handlers": [
-      {"function":"writeFile", "args": ["/src/bkps/", "labeling"]},
       { "function": "mongoAdd", "args": ["camic", "labeling"] }
     ]
   },
@@ -309,7 +307,6 @@
     "method": "post",
     "handlers": [
       { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
-      {"function":"writeFile", "args": ["/src/bkps/", "labelingAnnotation"]},
       { "function": "mongoAdd", "args": ["camic", "labelingAnnotation"] }
     ]
   },
@@ -367,7 +364,7 @@
     "handlers": [{ "function": "findLabelingStat", "args": [] }]
   },
   {
-    "route": "/data/HeatmapEdit/find",
+    "route": "/data/Heatmap/data/LabelingAnnotation/findByTypeOrCreatorEdit/find",
     "method": "get",
     "handlers": [{ "function": "mongoFind", "args": ["camic", "heatmapEdit"] }]
   },
@@ -426,76 +423,6 @@
       { "function": "mongoUpdate", "args": ["camic", "log"] }
     ]
   },
-  {
-    "route": "/data/Labeling/find",
-    "method": "get",
-    "handlers": [{ "function": "mongoFind", "args": ["camic", "labeling"] }]
-  },
-  {
-    "route": "/data/Labeling/delete",
-    "method": "delete",
-    "handlers": [{ "function": "mongoDelete", "args": ["camic", "labeling"] }]
-  },
-  {
-    "route": "/data/Slide/countLabeling",
-    "method": "get",
-    "handlers": [{ "function": "countLabelingBySlide", "args": [] }]
-  },
-  {
-    "route": "/data/Labeling/pushAnnotation",
-    "method": "get",
-    "handlers": [{ "function": "labelingPushAnnotation", "args": [] }]
-  },
-  {
-    "route": "/data/Labeling/post",
-    "method": "post",
-    "handlers": [
-      {"function":"writeFile", "args": ["/src/bkps/", "labeling"]},
-      { "function": "mongoAdd", "args": ["camic", "labeling"] }
-    ]
-  },
-  {
-    "route": "/data/Labeling/pullAnnotation",
-    "method": "get",
-    "handlers": [{ "function": "labelingPullAnnotation", "args": [] }]
-  },
-  {
-    "route": "/data/LabelingAnnotation/advancedFind",
-    "method": "get",
-    "handlers": [{ "function": "advancedFindLabelingAnnotation", "args": [] }]
-  },
-  {
-    "route": "/data/LabelingAnnotation/find",
-    "method": "get",
-    "handlers": [
-      { "function": "mongoFind", "args": ["camic", "labelingAnnotation"] }
-    ]
-  },
-  {
-    "route": "/data/LabelingAnnotation/findByTypeOrCreator",
-    "method": "get",
-    "handlers": [{ "function": "findByTypeOrCreator", "args": [] }]
-  },
-  {
-    "route": "/data/LabelingAnnotation/post",
-    "method": "post",
-    "handlers": [
-      { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
-      {"function":"writeFile", "args": ["/src/bkps/", "labelingAnnotation"]},
-      { "function": "mongoAdd", "args": ["camic", "labelingAnnotation"] }
-    ]
-  },
-  {
-    "route": "/data/LabelingAnnotation/update",
-    "method": "post",
-    "handlers": [
-      { "function": "mongoFind", "args": ["camic", "labelingAnnotation"] },
-      { "function": "editHandler", "args": ["data"] },
-      { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
-      { "function": "mongoUpdate", "args": ["camic", "labelingAnnotation"] }
-    ]
-  },
-
   {
     "route": "/data/Evaluation/find",
     "method": "get",
