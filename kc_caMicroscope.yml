@@ -51,8 +51,7 @@ services:
       - ./db:/data/db
   back:
     build:
-      #context: "https://github.com/camicroscope/caracal.git#htt-keycloak"
-      context: "../caracal"
+      context: "https://github.com/camicroscope/caracal.git#htt-keycloak"
       args:
         viewer: "fda/htt-keycloak"
     depends_on:
