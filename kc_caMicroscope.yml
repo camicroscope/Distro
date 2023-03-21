@@ -51,7 +51,8 @@ services:
       - ./db:/data/db
   back:
     build:
-      context: "https://github.com/camicroscope/caracal.git#htt-keycloak"
+      #context: "https://github.com/camicroscope/caracal.git#htt-keycloak"
+      context: "../caracal"
       args:
         viewer: "fda/htt-keycloak"
     depends_on:
@@ -70,6 +71,7 @@ services:
       - ./jwt_keys/:/src/keys/
       - ./config/routes.json:/src/routes.json
       - ./config/contentSecurityPolicy.json:/src/contentSecurityPolicy.json
+      - ../caMicroscope:/src/camicroscope
     environment:
       JWK_URL: "http://ca-back:4010/keycloak/realms/camic/protocol/openid-connect/certs"
       IIP_PATH: "http://ca-iip:8080/fcgi-bin/iipsrv.fcgi"
@@ -78,6 +80,7 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: password
       KEYCLOAK_APP_REALM: camic
+      RESET_URL: https://wolf.cci.emory.edu/camic_htt/apps/registration/resetPassword.html
     extra_hosts:
       - "localhost.localdomain:127.0.0.1"
   iip:

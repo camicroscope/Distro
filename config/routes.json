@@ -44,6 +44,21 @@
     ]
   },
   {
+    "method":"post",
+    "route": "/requestResetPassword",
+    "handlers":[
+      {"function":"requestResetPassword", "args": []}
+    ]
+  },
+  {
+    "method":"post",
+    "route": "/resetPassword",
+    "handlers":[
+      { "function": "loginHandler", "args": [] },
+      {"function":"resetPassword", "args": []}
+    ]
+  },
+  {
     "method":"use",
     "route": "/keycloak/",
     "handlers":[
