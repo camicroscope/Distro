@@ -79,6 +79,7 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: password
       KEYCLOAK_APP_REALM: camic
       RESET_URL: https://wolf.cci.emory.edu/camic_htt/apps/registration/resetPassword.html
+      SENDGRID_API_KEY: REPLACE
     extra_hosts:
       - "localhost.localdomain:127.0.0.1"
   iip:
