@@ -120,7 +120,11 @@
 </style>
 <body>
   <header id="header">
-    <label style="color:white;padding:0 15px;font-size:20px;position:relative;">CaMicroscope<a style="position:absolute;right:12vw;" href="./apps/registration/registration.html">Sign Up</a><a target="_blank" style="position:absolute;right:2vw;" href="./apps/registration/resetPassword.html">Forgot Password</a></label>
+    <label style="color:white;padding:0 15px;font-size:20px;position:relative;">
+      CaMicroscope
+      <a style="float: right; padding-left: 10px;" href="./apps/registration/registration.html">Sign Up</a>
+      <a target="_blank" style="float: right; padding-left: 10px;" href="./apps/registration/resetPassword.html">Forgot Password</a>
+    </label>
   </header>
   <div class="container">
     <div class="wrap">
@@ -132,7 +136,7 @@
       <form class="login-form">
         <span class="login-title">User Login</span>
 
-        <input type="text" id="username" placeholder="username" name="username">
+        <input type="text" id="username" placeholder="email" name="username">
         <input type="password" id="password" placeholder="password" name="password">
         <div id="valid-msg" class="invalid-msg" style="display: none;">
           <span aria-invalid="true">Invalid user credentials</span>
