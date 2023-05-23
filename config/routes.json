@@ -727,14 +727,26 @@
 		"route": "/data/Evaluation/find",
 		"method": "get",
 		"handlers": [{
-			"function": "mongoFind",
-			"args": ["camic", "evaluation"]
-		}]
+				"function": "permissionHandler",
+				"args": [
+					["Admin", "Expert", "Particpant"]
+				]
+			},
+			{
+				"function": "mongoFind",
+				"args": ["camic", "evaluation"]
+			}
+		]
 	},
 	{
 		"route": "/data/Evaluation/post",
 		"method": "post",
 		"handlers": [{
+			"function": "permissionHandler",
+			"args": [
+				["Admin"]
+			]
+		}, {
 			"function": "mongoAdd",
 			"args": ["camic", "evaluation"]
 		}]
@@ -743,6 +755,11 @@
 		"route": "/data/Evaluation/delete",
 		"method": "delete",
 		"handlers": [{
+				"function": "permissionHandler",
+				"args": [
+					["Admin"]
+				]
+			}, {
 				"function": "permissionHandler",
 				"args": [
 					["Admin"]
@@ -758,6 +775,11 @@
 		"route": "/data/Evaluation/update",
 		"method": "post",
 		"handlers": [{
+				"function": "permissionHandler",
+				"args": [
+					["Admin"]
+				]
+			}, {
 				"function": "permissionHandler",
 				"args": [
 					["Admin"]
