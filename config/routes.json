@@ -220,7 +220,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Editor"]
+					["Admin", "Expert", "Particpant"]
 				]
 			},
 			{
@@ -398,7 +398,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Editor"]
+					["Admin", "Expert", "Particpant"]
 				]
 			},
 			{
@@ -436,7 +436,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Editor"]
+					["Admin", "Expert", "Particpant"]
 				]
 			},
 			{
@@ -451,7 +451,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Editor"]
+					["Admin", "Expert", "Particpant"]
 				]
 			},
 			{
@@ -498,7 +498,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Editor"]
+					["Admin", "Expert", "Particpant"]
 				]
 			},
 			{
@@ -552,7 +552,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Editor"]
+					["Admin", "Expert", "Particpant"]
 				]
 			},
 			{
@@ -621,7 +621,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Editor"]
+					["Admin", "Expert", "Particpant"]
 				]
 			},
 			{
@@ -993,7 +993,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Editor", "Expert", "Admin"]
+					["Particpant", "Expert", "Admin"]
 				]
 			},
 			{
