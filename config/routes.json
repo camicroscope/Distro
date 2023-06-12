@@ -37,7 +37,7 @@
 		"route": "/addPublicUser",
 		"handlers": [{
 				"function": "dataEnforce",
-				"args": ["{\"userType\": \"Null\", \"userFilter\": []}"]
+				"args": ["{\"userType\": \"Public\", \"userFilter\": []}"]
 			},
 			{
 				"function": "mongoAdd",
@@ -81,7 +81,13 @@
 	{
 		"route": "/data/Mark/segmentationCount",
 		"method": "get",
-		"handlers": [{
+		"handlers": [
+			{
+					"function": "permissionHandler",
+					"args": [
+						["Admin", "Expert", "Particpant"]
+					]
+		  },{
 			"function": "markSegmentationCount",
 			"args": []
 		}]
@@ -202,116 +208,12 @@
 		"route": "/data/Slide/findLabelingStat",
 		"method": "get",
 		"handlers": [{
-			"function": "findLabelingStat",
-			"args": []
-		}]
-	},
-	{
-		"route": "/data/Mark/find",
-		"method": "get",
-		"handlers": [{
-			"function": "mongoFind",
-			"args": ["camic", "mark"]
-		}]
-	},
-	{
-		"route": "/data/Mark/post",
-		"method": "post",
-		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
 					["Admin", "Expert", "Particpant"]
 				]
-			},
-			{
-				"function": "mongoAdd",
-				"args": ["camic", "mark"]
-			}
-		]
-	},
-	{
-		"route": "/data/Mark/delete",
-		"method": "delete",
-		"handlers": [{
-				"function": "mongoFind",
-				"args": ["camic", "mark"]
-			},
-			{
-				"function": "editHandler",
-				"args": ["data"]
-			},
-			{
-				"function": "permissionHandler",
-				"args": [
-					["Admin"]
-				]
-			},
-			{
-				"function": "mongoDelete",
-				"args": ["camic", "mark"]
-			}
-		]
-	},
-	{
-		"route": "/data/Mark/update",
-		"method": "post",
-		"handlers": [{
-				"function": "mongoFind",
-				"args": ["camic", "mark"]
-			},
-			{
-				"function": "editHandler",
-				"args": ["data"]
-			},
-			{
-				"function": "permissionHandler",
-				"args": [
-					["Admin"]
-				]
-			},
-			{
-				"function": "mongoUpdate",
-				"args": ["camic", "mark"]
-			}
-		]
-	},
-	{
-		"route": "/data/Mark/types",
-		"method": "get",
-		"handlers": [{
-			"function": "mongoDistinct",
-			"args": ["camic", "mark", "provenance.analysis"]
-		}]
-	},
-	{
-		"route": "/data/Mark/multi",
-		"method": "post",
-		"handlers": [{
-			"function": "markMulti",
-			"args": []
-		}]
-	},
-	{
-		"route": "/data/Mark/spatial",
-		"method": "get",
-		"handlers": [{
-			"function": "markSpatial",
-			"args": []
-		}]
-	},
-	{
-		"route": "/data/Mark/findMarkTypes",
-		"method": "get",
-		"handlers": [{
-			"function": "findMarkTypes",
-			"args": []
-		}]
-	},
-	{
-		"route": "/data/Mark/updateMarksLabel",
-		"method": "post",
-		"handlers": [{
-			"function": "updateMarksLabel",
+			},{
+			"function": "findLabelingStat",
 			"args": []
 		}]
 	},
@@ -398,7 +300,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Particpant"]
+					["Admin", "Expert"]
 				]
 			},
 			{
@@ -436,7 +338,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Particpant"]
+					["Admin", "Expert"]
 				]
 			},
 			{
@@ -451,7 +353,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Particpant"]
+					["Admin", "Expert"]
 				]
 			},
 			{
@@ -531,156 +433,14 @@
 		]
 	},
 	{
-		"route": "/data/Heatmap/find",
-		"method": "get",
-		"handlers": [{
-			"function": "mongoFind",
-			"args": ["camic", "heatmap"]
-		}]
-	},
-	{
-		"route": "/data/Heatmap/types",
-		"method": "get",
-		"handlers": [{
-			"function": "heatmapTypes",
-			"args": []
-		}]
-	},
-	{
-		"route": "/data/Heatmap/post",
-		"method": "post",
-		"handlers": [{
-				"function": "permissionHandler",
-				"args": [
-					["Admin", "Expert", "Particpant"]
-				]
-			},
-			{
-				"function": "mongoAdd",
-				"args": ["camic", "heatmap"]
-			}
-		]
-	},
-	{
-		"route": "/data/Heatmap/delete",
-		"method": "delete",
-		"handlers": [{
-				"function": "mongoFind",
-				"args": ["camic", "heatmap"]
-			},
-			{
-				"function": "editHandler",
-				"args": ["data"]
-			},
-			{
-				"function": "permissionHandler",
-				"args": [
-					["Admin"]
-				]
-			},
-			{
-				"function": "mongoDelete",
-				"args": ["camic", "heatmap"]
-			}
-		]
-	},
-	{
-		"route": "/data/Heatmap/update",
-		"method": "post",
-		"handlers": [{
-				"function": "mongoFind",
-				"args": ["camic", "heatmap"]
-			},
-			{
-				"function": "editHandler",
-				"args": ["data"]
-			},
-			{
-				"function": "permissionHandler",
-				"args": [
-					["Admin"]
-				]
-			},
-			{
-				"function": "mongoUpdate",
-				"args": ["camic", "heatmap"]
-			}
-		]
-	},
-	{
-		"route": "/data/Heatmap/find",
-		"method": "get",
-		"handlers": [{
-			"function": "mongoFind",
-			"args": ["camic", "heatmapEdit"]
-		}]
-	},
-	{
-		"route": "/data/HeatmapEdit/post",
-		"method": "post",
-		"handlers": [{
-				"function": "permissionHandler",
-				"args": [
-					["Admin", "Expert", "Particpant"]
-				]
-			},
-			{
-				"function": "mongoAdd",
-				"args": ["camic", "heatmapEdit"]
-			}
-		]
-	},
-	{
-		"route": "/data/HeatmapEdit/delete",
-		"method": "delete",
-		"handlers": [{
-				"function": "mongoFind",
-				"args": ["camic", "heatmapEdit"]
-			},
-			{
-				"function": "editHandler",
-				"args": ["data"]
-			},
-			{
-				"function": "permissionHandler",
-				"args": [
-					["Admin"]
-				]
-			},
-			{
-				"function": "mongoDelete",
-				"args": ["camic", "heatmapEdit"]
-			}
-		]
-	},
-	{
-		"route": "/data/HeatmapEdit/update",
-		"method": "post",
-		"handlers": [{
-				"function": "mongoFind",
-				"args": ["camic", "heatmapEdit"]
-			},
-			{
-				"function": "editHandler",
-				"args": ["data"]
-			},
-			{
-				"function": "permissionHandler",
-				"args": [
-					["Admin"]
-				]
-			},
-			{
-				"function": "mongoUpdate",
-				"args": ["camic", "heatmapEdit"]
-			}
-		]
-	},
-
-	{
 		"route": "/data/Log/find",
 		"method": "get",
 		"handlers": [{
+			"function": "permissionHandler",
+			"args": [
+				["Admin"]
+			]
+		},{
 			"function": "mongoFind",
 			"args": ["camic", "log"]
 		}]
@@ -788,60 +548,6 @@
 			{
 				"function": "mongoUpdate",
 				"args": ["camic", "evaluation"]
-			}
-		]
-	},
-
-	{
-		"route": "/data/Freeform/find",
-		"method": "get",
-		"handlers": [{
-				"function": "permissionHandler",
-				"args": [
-					["Admin"]
-				]
-			},
-			{
-				"function": "mongoFind",
-				"args": ["camic", "freeform"]
-			}
-		]
-	},
-	{
-		"route": "/data/Freeform/post",
-		"method": "post",
-		"handlers": [{
-			"function": "mongoAdd",
-			"args": ["camic", "freeform"]
-		}]
-	},
-	{
-		"route": "/data/Freeform/delete",
-		"method": "delete",
-		"handlers": [{
-				"function": "permissionHandler",
-				"args": [
-					["Admin"]
-				]
-			},
-			{
-				"function": "mongoDelete",
-				"args": ["camic", "freeform"]
-			}
-		]
-	},
-	{
-		"route": "/data/Freeform/update",
-		"method": "post",
-		"handlers": [{
-				"function": "permissionHandler",
-				"args": [
-					["Admin"]
-				]
-			},
-			{
-				"function": "mongoUpdate",
-				"args": ["camic", "freeform"]
 			}
 		]
 	},
