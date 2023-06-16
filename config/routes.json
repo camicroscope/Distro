@@ -85,7 +85,7 @@
 			{
 					"function": "permissionHandler",
 					"args": [
-						["Admin", "Expert", "Particpant"]
+						["Admin", "Expert", "Participant"]
 					]
 		  },{
 			"function": "markSegmentationCount",
@@ -210,7 +210,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Particpant"]
+					["Admin", "Expert", "Participant"]
 				]
 			},{
 			"function": "findLabelingStat",
@@ -400,7 +400,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Particpant"]
+					["Admin", "Expert", "Participant"]
 				]
 			},
 			{
@@ -489,7 +489,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert", "Particpant"]
+					["Admin", "Expert", "Participant"]
 				]
 			},
 			{
@@ -721,7 +721,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Particpant", "Expert", "Admin"]
+					["Participant", "Expert", "Admin"]
 				]
 			},
 			{
