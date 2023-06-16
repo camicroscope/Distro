@@ -76,7 +76,7 @@ services:
       MONGO_URI: "mongodb://ca-mongo"
       GENERATE_KEY_IF_MISSING: "true"
   iip:
-    image: camicroscope/iipimage:version-3.8.4
+    image: ghcr.io/camicroscope/iipimage
     container_name: ca-iip
     logging:
       options:
