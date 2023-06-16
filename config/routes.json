@@ -300,7 +300,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert"]
+					["Admin", "Expert", "Participant"]
 				]
 			},
 			{
@@ -338,7 +338,7 @@
 		"handlers": [{
 				"function": "permissionHandler",
 				"args": [
-					["Admin", "Expert"]
+					["Admin", "Expert", "Participant"]
 				]
 			},
 			{
