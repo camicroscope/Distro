@@ -34,6 +34,12 @@ services:
     restart: unless-stopped
     volumes:
       - ./images/:/images/
+  multichannel:
+    build: "https://github.com/lucifertrj/GSoC23_multi_channel.git#main"
+    container_name: ca-multi
+    restart: unless-stopped
+    volumes:
+      - ./images/:/images/
   loader:
     build: "https://github.com/camicroscope/SlideLoader.git#develop"
     container_name: ca-load

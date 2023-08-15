@@ -28,6 +28,12 @@
     ]
   },{
     "method":"use",
+    "route": "/multichannel/",
+    "handlers":[
+      {"function":"proxyHandler", "args": ["http://ca-multi:5000/"]}
+    ]
+  },{
+    "method":"use",
     "route": "/keycloak/",
     "handlers":[
       {"function":"proxyHandler", "args": ["http://ca-key:8080/"]}
