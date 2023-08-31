@@ -29,7 +29,7 @@ services:
       DISABLE_SEC: "true"
       ALLOW_PUBLIC: "true"
   iip:
-    build: "https://github.com/CGDogan/iipImage.git#biof"
+    build: "https://github.com/camicroscope/iipImage.git#develop"
     container_name: ca-iip
     restart: unless-stopped
     volumes:
