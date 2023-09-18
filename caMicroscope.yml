@@ -73,7 +73,7 @@ services:
     volumes:
       - ./jwt_keys/:/root/keys/
       - ./images/:/images/
-      - ./OrthancConfiguration.json:/root/src/Configuration.json
+      - ./config/OrthancConfiguration.json:/root/src/Configuration.json
     environment:
       DICOM_PORT: "11112"
       DICOM_UI_PORT: "8042"
