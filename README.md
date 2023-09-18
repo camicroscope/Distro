@@ -12,6 +12,8 @@ Use `docker-compose -f caMicroscope.yml build` to rebuild the services.
 
 Once everything is up, go to http://localhost:4010/ to see the landing page.
 
+6GB memory is recommended (in total, 2GB RAM + 4GB swap should work well)
+
 ## SSL
 To enable ssl, mount the private key and certificate files to the ca-back service in /root/src/ssl/privatekey.pem and /root/src/ssl/certificate.pem respectively. HTTPS mode will only be enabled if both of these files are present.
 
