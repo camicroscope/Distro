@@ -117,6 +117,14 @@
     ]
   },
   {
+    "route": "/data/SlideInformativeness/delete",
+    "method": "delete",
+    "handlers": [
+      { "function": "permissionHandler", "args": [["Admin", "Editor"]] },
+      { "function": "mongoDelete", "args": ["camic", "slideInformativeness"] }
+    ]
+  },
+  {
     "route": "/data/Seer/getSlidesExtraInfoByCollectionId",
     "method": "get",
     "handlers": [
