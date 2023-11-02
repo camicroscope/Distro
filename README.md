@@ -20,8 +20,6 @@ To enable ssl, mount the private key and certificate files to the ca-back servic
 ## Component Services
 mongo - vanilla mongo container
 
-idxMongo - ephemeral container to index mongo (that is, this container is *expected* to exit once it's done its job)
-
 iip - slide tile server (see https://github.com/camicroscope/iipImage)
 
 loader - extracts metadata needed for image loading (see https://github.com/camicroscope/SlideLoader)
