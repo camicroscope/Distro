@@ -63,10 +63,6 @@ Alternatively, you can use kc_caMicroscope.yml for a keycloak configuration.
     * Set a password under credentials -> add password
 
 
-### Adding Users to caMicroscope
-
-Add users as in ./config/add\_users.js. This can be done either by editing this file before bringing up the stack, or by running similar code against the camic database in ca-mongo. Attributes can be added to deny access to routes (e.g. allow only some users to post and delete) and userFilters can be used to change visibility of particular documents.
-
 The email field is the email field (or failing that, sub field) in that priority from the identity provider.
 
 ## PathDB
@@ -83,8 +79,8 @@ Running QuIP with PathDB (https://github.com/SBU-BMI/PathDB):
 
 The default login for pathdb is `admin` with password `bluecheese2018`. Please change this password before exposing this service to the internet.
 
-## Support
-Feel free to add any support inquiry as a github issue to this repository. Other feedback can be given via [this form](https://docs.google.com/forms/d/e/1FAIpQLScL91LxrpAZjU88GBZP9gmcdgdf8__uNUwhws2lzU6Lr4qNwA/viewform).
+## Support and Questions
+For questions, comments, or any other discussion, please see the [caMicroscope discussion forum](https://github.com/orgs/camicroscope/discussions).
 
 ## System Recommendations
 As of 3.8.0, the non-pathdb caMicroscope deployment seems to peak about 500mb of memory per user from basic tests. The system is most likely to work optimally if the CPU can support two or three threads per concurrent user. The containers themselves take up a total of about 6gb of disk, but note that whole slide images typically use 0.5-2 gb of disk each.
