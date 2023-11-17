@@ -2,8 +2,6 @@
   <a href="http://camicroscope.org/"><img src="https://avatars2.githubusercontent.com/u/12075069?s=400&v=4" style="background-color:rgba(0,0,0,0);" height=230 alt="camicroscope: a web-based image viewer optimized for large bio-medical image data viewing"></a>
 </h2>
 
-[![Build Status](https://travis-ci.org/camicroscope/Distro.svg?branch=master)](https://travis-ci.org/camicroscope/Distro)
-
 # caMicroscope distribution
 
 
@@ -14,13 +12,13 @@ Use `docker-compose -f caMicroscope.yml build` to rebuild the services.
 
 Once everything is up, go to http://localhost:4010/ to see the landing page.
 
+6GB memory is recommended (in total, 2GB RAM + 4GB swap should work well)
+
 ## SSL
 To enable ssl, mount the private key and certificate files to the ca-back service in /root/src/ssl/privatekey.pem and /root/src/ssl/certificate.pem respectively. HTTPS mode will only be enabled if both of these files are present.
 
 ## Component Services
 mongo - vanilla mongo container
-
-idxMongo - ephemeral container to index mongo (that is, this container is *expected* to exit once it's done its job)
 
 iip - slide tile server (see https://github.com/camicroscope/iipImage)
 
@@ -65,10 +63,6 @@ Alternatively, you can use kc_caMicroscope.yml for a keycloak configuration.
     * Set a password under credentials -> add password
 
 
-### Adding Users to caMicroscope
-
-Add users as in ./config/add\_users.js. This can be done either by editing this file before bringing up the stack, or by running similar code against the camic database in ca-mongo. Attributes can be added to deny access to routes (e.g. allow only some users to post and delete) and userFilters can be used to change visibility of particular documents.
-
 The email field is the email field (or failing that, sub field) in that priority from the identity provider.
 
 ## PathDB
@@ -85,8 +79,8 @@ Running QuIP with PathDB (https://github.com/SBU-BMI/PathDB):
 
 The default login for pathdb is `admin` with password `bluecheese2018`. Please change this password before exposing this service to the internet.
 
-## Support
-Feel free to add any support inquiry as a github issue to this repository. Other feedback can be given via [this form](https://docs.google.com/forms/d/e/1FAIpQLScL91LxrpAZjU88GBZP9gmcdgdf8__uNUwhws2lzU6Lr4qNwA/viewform).
+## Support and Questions
+For questions, comments, or any other discussion, please see the [caMicroscope discussion forum](https://github.com/orgs/camicroscope/discussions).
 
 ## System Recommendations
 As of 3.8.0, the non-pathdb caMicroscope deployment seems to peak about 500mb of memory per user from basic tests. The system is most likely to work optimally if the CPU can support two or three threads per concurrent user. The containers themselves take up a total of about 6gb of disk, but note that whole slide images typically use 0.5-2 gb of disk each.
