@@ -8,7 +8,7 @@ services:
     volumes:
       - ./db:/data/db
   iip:
-    image: camicroscope/iipimage:version-3.10.2
+    image: camicroscope/iipimage:version-3.11.0
     container_name: ca-iip
     restart: unless-stopped
     volumes:
