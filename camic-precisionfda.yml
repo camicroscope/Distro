@@ -8,9 +8,9 @@ services:
       - ./db:/data/db
   back:
     build:
-      context: "https://github.com/camicroscope/caracal.git#develop"
+      context: "https://github.com/camicroscope/caracal.git#fda/htt-precision"
       args:
-        viewer: "develop"
+        viewer: "fda/htt-precision"
         fork: "camicroscope"
     depends_on:
       - "mongo"
@@ -22,12 +22,15 @@ services:
       - ./jwt_keys/:/src/keys/
       - ./config/routes.json:/src/routes.json
       - ./config/contentSecurityPolicy.json:/src/contentSecurityPolicy.json
+      - ./backups/:/src/bkps
     environment:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip:8080/fcgi-bin/iipsrv.fcgi"
       MONGO_URI: "mongodb://ca-mongo"
       DISABLE_SEC: "true"
       ALLOW_PUBLIC: "true"
+      userType: "Expert"
+      user: "Testing as Birm"
   iip:
     build: "https://github.com/camicroscope/iipimage.git#develop"
     container_name: ca-iip
@@ -39,4 +42,3 @@ services:
     container_name: ca-load
     volumes:
       - ./images/:/images/
-      - ./cloud-upload-apis/:/cloud-upload-apis/

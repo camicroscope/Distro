@@ -3,14 +3,10 @@
 <head>
   <title>FDA HTT - CaMicroscope</title>
   <meta charset="utf-8" />
-  <meta name="google-signin-client_id" content="539699277901-buh78f048405grejogqbrskj233rt0d0.apps.googleusercontent.com">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="./apps/landing/main.css" />
   <script type="text/javascript" src="./common/util.js"></script>
   <style>
-    #google-signin2 span {
-      color:#fff;
-    }
     .content p {
       font-family:'Open Sans', Helvetica, sans-serif;
       font-weight: 300;
@@ -19,13 +15,6 @@
 </head>
 <body>
   <header id="header">
-    <label style="color:white;padding:0 15px;font-size:20px;position:relative;">CaMicroscope<a target="_blank" style="position:absolute;right:2vw;" href="https://docs.google.com/forms/d/e/1FAIpQLScL91LxrpAZjU88GBZP9gmcdgdf8__uNUwhws2lzU6Lr4qNwA/viewform">Sign Up</a><a target="_blank" style="position:absolute;right:2vw;" href="https://docs.google.com/forms/d/e/1FAIpQLScL91LxrpAZjU88GBZP9gmcdgdf8__uNUwhws2lzU6Lr4qNwA/viewform">Feedback</a></label>
-    <nav id="nav">
-        <ul>
-            <!-- <li><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScL91LxrpAZjU88GBZP9gmcdgdf8__uNUwhws2lzU6Lr4qNwA/viewform">Feedback</a></li> -->
-            <!-- <li><a href="./login.html?logout=true">Sign Out</a></li> -->
-        </ul>
-    </nav>
   </header>
   <section id="main" class="wrapper" style="padding:3em;">
     <div class="inner">
@@ -45,144 +34,24 @@
         <section class="post">
           <a href="#" class="image"><img src="./apps/landing/camic.jpg" alt=""/></a>
             <div class="content">
-                <h3 style="font-weight:700;font-size: 1rem; ">Please Sign In With Your Google Account</h3>
-                <div id="google-signin2" ></div>
+                <h3 style="font-weight:700;font-size: 1rem; ">Signing in should be automatic, please report this page if you see it.</h3>
+                
             </div>
         </section>
       </div>
   </section>
 
   <script>
-    function onSuccess(googleUser) {
-      // don't if we're logging out
-      if (getUrlParam("logout")) {
-        removeUserConsentAcceptance(getUserId());
-        signOut();
-        deleteCookies();
-        console.log("logging out");
-        window.location.href = "./login.html";
-      } else {
-        var id_token = googleUser.getAuthResponse().id_token;
-        // console.info(id_token);
-        // trade for camic token
-        var cookie_name = "token"; // "token" is the expected cookie name
-        var base_deployment_url = window.location
-          .toString()
-          .split("/")
-          .slice(0, -1)
-          .join("/");
-        var redirect_uri = base_deployment_url + "/login.html";
-        var default_redirect = base_deployment_url + "/apps/htt-table.html";
-        var state;
-        if (getUrlParam("state")) {
-          state = decodeURIComponent(getUrlParam("state"));
-        }
-        if (!state) {
-          state = default_redirect;
-        }
-        if (id_token) {
-          document.cookie = cookie_name + "=" + id_token;
-          fetch("./auth/Token/check", {
-            headers: {
-              Authorization: "Bearer " + id_token
-            }
-          })
-            .then(x => x.json())
-            .then(x => {
-              if (x.hasOwnProperty("token")) {
-                document.cookie = cookie_name + "=" + x.token;
-                let token_data = parseJwt(x.token);
-                if (token_data.userType && token_data.userType === 'Admin') {
-                  window.location = "./apps/landing/landing.html";
-                } else {
-                  window.location = "./apps/landing/crowd.html";
-                }
-              } else {
-                window.location = "./apps/registration/registration.html";
-              }
-            });
-        }
-      }
+    async function login(){
+      // get token
+      let token = await fetch("./auth/customLogin/").then(x=>x.json())
+      console.error(token)
+      document.cookie = "token=" + token['token']
+      // go to page
+      window.location = "./apps/landing/landing.html";
     }
-
-    function onFailure(error) {
-      console.error(error);
-    }
-
-    function renderButton() {
-      gapi.signin2.render('google-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-
-    function signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function() {
-        console.log("User signed out.");
-      });
-    }
-
-    function deleteCookies() {
-      var allcookies = document.cookie.split(";");
-      for (var i = 0; i < allcookies.length; i++) {
-        var cookie = allcookies[i];
-        var eqPos = cookie.indexOf("=");
-        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
-      }
-    }
-
-    // google's jwk is here: https://www.googleapis.com/oauth2/v3/certs
-    function randomString(length) {
-      var bytes = new Uint8Array(length);
-      var random = window.crypto.getRandomValues(bytes);
-      var result = [];
-      var charset =
-        "0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._~";
-      random.forEach(function(c) {
-        result.push(charset[c % charset.length]);
-      });
-      return result.join("");
-    }
-
-    function getUrlParam(name, url) {
-      if (!url) url = window.location.href;
-      name = name.replace(/[\[\]]/g, "\\$&");
-      var regex = new RegExp("[?&#]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return "";
-      return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
-  if (getUrlParam("token")){
-      var cookie_name = "token"; // "token" is the expected cookie name
-      var base_deployment_url = window.location
-        .toString()
-        .split("/")
-        .slice(0, -1)
-        .join("/");
-      var redirect_uri = base_deployment_url + "/login.html";
-      var default_redirect = base_deployment_url + "/apps/htt-table.html";
-      var state;
-      if (getUrlParam("state")) {
-        state = decodeURIComponent(getUrlParam("state"));
-      }
-      if (!state) {
-        state = default_redirect;
-      }
-      console.info("logging in with a url param");
-      document.cookie = cookie_name + "=" + getUrlParam("token");
-      window.location = state;
-  }
+    login()
   </script>
-
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
   <script>
 
