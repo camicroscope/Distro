@@ -32,7 +32,7 @@ services:
       userType: "Expert"
       user: "Testing as Birm"
   iip:
-    build: "https://github.com/camicroscope/iipimage.git#develop"
+    image: camicroscope/iipimage:version-3.11.0
     container_name: ca-iip
     restart: unless-stopped
     volumes:
