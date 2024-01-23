@@ -32,7 +32,7 @@ services:
       userType: "Expert"
       user: "Testing as Birm"
   iip:
-    image: camicroscope/iipimage:version-3.11.0
+    image: camicroscope/iipimage:version-3.10.2
     container_name: ca-iip
     restart: unless-stopped
     volumes:
