@@ -44,8 +44,7 @@ services:
       DICOM_PORT: "11112"
       DICOM_UI_PORT: "8042"
   dicomsrv:
-    build: 
-      context: "https://github.com/camicroscope/dicomsrv.git"
+    build: "https://github.com/camicroscope/dicomsrv.git"
     container_name: ca-dicomsrv
     restart: unless-stopped
     stdin_open: true
