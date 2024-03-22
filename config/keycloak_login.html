@@ -71,8 +71,8 @@
             'password': document.getElementById("password").value,
             'scope': 'openid',
             'grant_type': 'password',
-            'client_id' : 'camicroscope-test',
-            'client_secret': 'YMk4dTjJcG0lDLKTFxriqGwStiF3qAwY'
+            'client_id' : client_id,
+            'client_secret': client_secret
         })
     }).then(x=>x.json());
     console.log(id_token['access_token']);
