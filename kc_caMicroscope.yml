@@ -93,7 +93,7 @@ services:
     volumes:
       - ./images/:/images/
   loader:
-    build: "https://github.com/camicroscope/SlideLoader.git#v3.10.0"
+    build: "https://github.com/camicroscope/SlideLoader.git#develop"
     container_name: ca-load
     restart: always
     logging:
