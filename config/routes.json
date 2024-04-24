@@ -114,7 +114,7 @@
     "route":"/data/Mark/find",
     "method":"get",
     "handlers":[
-      {"function":"mongoFind", "args": ["camic", "mark"]}
+      {"function":"mongoPaginatedFind", "args": ["camic", "mark"]}
     ]
   },{
     "route":"/data/Mark/count",
