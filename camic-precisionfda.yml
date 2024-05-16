@@ -30,7 +30,7 @@ services:
       DISABLE_SEC: "true"
       ALLOW_PUBLIC: "true"
       userType: "Expert"
-      user: "Testing as Birm"
+      user: ${userID}
   iip:
     image: camicroscope/iipimage:version-3.10.2
     container_name: ca-iip
