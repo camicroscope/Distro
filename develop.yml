@@ -46,6 +46,9 @@ services:
     environment:
       DICOM_PORT: "11112"
       DICOM_UI_PORT: "8042"
+  controller:
+    build: "https://github.com/camicroscope/3dPrintedMicroscope#dockerize"
+    container_name: ca-controller
   dicomsrv:
     build: "https://github.com/camicroscope/dicomsrv.git"
     container_name: ca-dicomsrv

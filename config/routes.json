@@ -33,7 +33,13 @@
       {"function":"proxyHandler", "args": ["http://ca-key:8080/"]}
     ]
   },
-
+  {
+    "method":"use",
+    "route": "/controller/",
+    "handlers":[
+      {"function":"proxyHandler", "args": ["http://ca-controller:8020/"]}
+    ]
+  },
   {
     "method":"use",
     "route": "/img/IIP/raw/",
