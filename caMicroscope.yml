@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mongo:
-    image: mongo:4.2-bionic
+    image: mongo:6.0.10
     container_name: ca-mongo
     restart: always
     logging:
