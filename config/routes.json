@@ -79,6 +79,19 @@
 		}]
 	},
 	{
+		"route": "/data",
+		"method": "use",
+		"handlers": [{
+				"function": "loginHandler",
+				"args": []
+			},
+			{
+				"function": "sanitizeBody",
+				"args": []
+			}
+		]
+	},
+	{
 		"route":"/data/Mark/find",
 		"method":"get",
 		"handlers":[
@@ -187,20 +200,6 @@
 			"function": "iipHandler",
 			"args": []
 		}]
-	},
-
-	{
-		"route": "/data",
-		"method": "use",
-		"handlers": [{
-				"function": "loginHandler",
-				"args": []
-			},
-			{
-				"function": "sanitizeBody",
-				"args": []
-			}
-		]
 	},
 	{
 		"route": "/data/Slide/download",
