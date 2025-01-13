@@ -79,6 +79,86 @@
 		}]
 	},
 	{
+		"route":"/data/Mark/find",
+		"method":"get",
+		"handlers":[
+		  {"function":"mongoFind", "args": ["camic", "mark"]}
+		]
+	  },{
+		"route":"/data/Mark/post",
+		"method":"post",
+		"handlers":[
+		  {"function":"permissionHandler", "args": [["Admin", "Expert"]]},
+		  {"function":"mongoAdd", "args": ["camic", "mark"]}
+		]
+	  },{
+		"route":"/data/Mark/delete",
+		"method":"delete",
+		"handlers":[
+		  {"function":"mongoFind", "args": ["camic", "mark"]},
+		  {"function":"editHandler", "args": ["data"]},
+		  {"function":"permissionHandler", "args": [["Admin", "Expert"]]},
+		  {"function":"mongoDelete", "args": ["camic", "mark"]}
+		]
+	  },{
+		"route":"/data/Mark/update",
+		"method":"post",
+		"handlers":[
+		  {"function":"mongoFind", "args": ["camic", "mark"]},
+		  {"function":"editHandler", "args": ["data"]},
+		  {"function":"permissionHandler", "args": [["Admin", "Expert"]]},
+		  {"function":"mongoUpdate", "args": ["camic", "mark"]}
+		]
+	  },{
+		"route":"/data/Mark/types",
+		"method":"get",
+		"handlers":[
+		  {"function":"mongoDistinct", "args": ["camic", "mark", "provenance.analysis"]}
+		]
+	  },{
+		"route":"/data/Mark/multi",
+		"method":"post",
+		"handlers":[
+		  {"function":"markMulti", "args": []}
+		]
+	  },{
+		"route":"/data/Mark/spatial",
+		"method":"get",
+		"handlers":[
+		  {"function":"markSpatial", "args": []}
+		]
+	  },{
+		"route":"/data/Mark/findMarkTypes",
+		"method":"get",
+		"handlers":[
+		  {"function":"findMarkTypes", "args": []}
+		]
+	  },{
+		"route":"/data/Mark/updateMarksLabel",
+		"method":"post",
+		"handlers":[
+		  {"function":"updateMarksLabel", "args": []}
+		]
+	  },{
+		"route":"/data/Presetlabels/add",
+		"method":"post",
+		"handlers":[
+		  {"function":"addPresetlabels", "args": []}
+		]
+	  },{
+		"route":"/data/Presetlabels/update",
+		"method":"post",
+		"handlers":[
+		  {"function":"updatePresetlabels", "args": []}
+		]
+	  },{
+		"route":"/data/Presetlabels/remove",
+		"method":"post",
+		"handlers":[
+		  {"function":"removePresetlabels", "args": []}
+		]
+	  },
+	{
 		"route": "/data/Mark/segmentationCount",
 		"method": "get",
 		"handlers": [
@@ -294,6 +374,77 @@
 			}
 		]
 	},
+	{
+		"route":"/data/Heatmap/find",
+		"method":"get",
+		"handlers":[
+		  {"function":"mongoFind", "args": ["camic", "heatmap"]}
+		]
+	  },{
+		"route":"/data/Heatmap/types",
+		"method":"get",
+		"handlers":[
+		  {"function":"heatmapTypes", "args": []}
+		]
+	  },{
+		"route":"/data/Heatmap/post",
+		"method":"post",
+		"handlers":[
+		  {"function":"permissionHandler", "args": [["Admin", "Expert"]]},
+		  {"function":"mongoAdd", "args": ["camic", "heatmap"]}
+		]
+	  },{
+		"route":"/data/Heatmap/delete",
+		"method":"delete",
+		"handlers":[
+		  {"function":"mongoFind", "args": ["camic", "heatmap"]},
+		  {"function":"editHandler", "args": ["data"]},
+		  {"function":"permissionHandler", "args": [["Admin", "Expert"]]},
+		  {"function":"mongoDelete", "args": ["camic", "heatmap"]}
+		]
+	  },{
+		"route":"/data/Heatmap/update",
+		"method":"post",
+		"handlers":[
+		  {"function":"mongoFind", "args": ["camic", "heatmap"]},
+		  {"function":"editHandler", "args": ["data"]},
+		  {"function":"permissionHandler", "args": [["Admin", "Expert"]]},
+		  {"function":"mongoUpdate", "args": ["camic", "heatmap"]}
+		]
+	  },
+	
+	  {
+		"route":"/data/HeatmapEdit/find",
+		"method":"get",
+		"handlers":[
+		  {"function":"mongoFind", "args": ["camic", "heatmapEdit"]}
+		]
+	  },{
+		"route":"/data/HeatmapEdit/post",
+		"method":"post",
+		"handlers":[
+		  {"function":"permissionHandler", "args": [["Admin", "Expert"]]},
+		  {"function":"mongoAdd", "args": ["camic", "heatmapEdit"]}
+		]
+	  },{
+		"route":"/data/HeatmapEdit/delete",
+		"method":"delete",
+		"handlers":[
+		  {"function":"mongoFind", "args": ["camic", "heatmapEdit"]},
+		  {"function":"editHandler", "args": ["data"]},
+		  {"function":"permissionHandler", "args": [["Admin", "Expert"]]},
+		  {"function":"mongoDelete", "args": ["camic", "heatmapEdit"]}
+		]
+	  },{
+		"route":"/data/HeatmapEdit/update",
+		"method":"post",
+		"handlers":[
+		  {"function":"mongoFind", "args": ["camic", "heatmapEdit"]},
+		  {"function":"editHandler", "args": ["data"]},
+		  {"function":"permissionHandler", "args": [["Admin", "Expert"]]},
+		  {"function":"mongoUpdate", "args": ["camic", "heatmapEdit"]}
+		]
+	  },
 	{
 		"route": "/data/Labeling/find",
 		"method": "get",
