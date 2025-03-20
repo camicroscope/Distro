@@ -1,8 +1,3 @@
 CREATE USER ferret WITH PASSWORD 'ferretpassword';
 CREATE DATABASE ferret;
 GRANT ALL PRIVILEGES ON DATABASE ferret TO ferret;
-
-
-CREATE USER keycloak WITH PASSWORD 'password';
-CREATE DATABASE keycloak;
-GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;

@@ -8,7 +8,7 @@ volumes:
 
 services:
   postgres:
-    image: postgres:15
+    image: ghcr.io/ferretdb/postgres-documentdb:16
     container_name: ca-key-db
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -43,7 +43,7 @@ services:
     depends_on:
       - postgres
   ferretdb:
-    image: ghcr.io/ferretdb/ferretdb:latest
+    image: ghcr.io/ferretdb/ferretdb:2
     container_name: ca-ferretdb
     restart: always
     logging:
@@ -52,6 +52,7 @@ services:
         max-size: "10m"
     environment:
       - FERRETDB_POSTGRESQL_URL=postgresql://ferret:ferretpassword@ca-key-db:5432/ferret
+      - FERRETDB_AUTH=0
     volumes:
       - ferret_data:/data/db
     depends_on:

@@ -24,6 +24,7 @@ services:
       - ./jwt_keys/:/src/keys/
       - ./config/routes.json:/src/routes.json
       - ./config/contentSecurityPolicy.json:/src/contentSecurityPolicy.json
+      - ../camicroscope/:/src/camicroscope/
     environment:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip:8080/fcgi-bin/iipsrv.fcgi"
@@ -32,7 +33,7 @@ services:
       ALLOW_PUBLIC: "true"
       NUM_THREADS: 1
   iip:
-    build: "https://github.com/camicroscope/iipImage.git#develop"
+    build: "https://github.com/camicroscope/iipImage.git#greyscale-bf"
     container_name: ca-iip
     restart: unless-stopped
     volumes:
