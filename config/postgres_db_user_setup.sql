@@ -1,3 +1,0 @@
-CREATE USER ferret WITH PASSWORD 'ferretpassword';
-CREATE DATABASE ferret;
-GRANT ALL PRIVILEGES ON DATABASE ferret TO ferret;

@@ -6,44 +6,27 @@ volumes:
   ferret_data:
     name: ferret_data
 
+networks:
+  default:
+    name: ferretdb
+
 services:
   postgres:
-    image: ghcr.io/ferretdb/postgres-documentdb:16
+    image: ghcr.io/ferretdb/postgres-documentdb:17-0.104.0-ferretdb-2.3.1
     container_name: ca-key-db
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./config/postgres_db_user_setup.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+      POSTGRES_USER: ferret
+      POSTGRES_PASSWORD: ferretpassword
     restart: always
     logging:
       options:
         max-file: "5"
         max-size: "10m"
-  keycloak:
-    container_name: ca-key
-    image: quay.io/keycloak/keycloak:latest
-    command: start-dev
-    environment:
-      KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://ca-key-db:5432/keycloak
-      KC_DB_USERNAME: keycloak
-      KC_DB_PASSWORD: password
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: password
-    ports:
-      - 8080:8080
-    restart: always
-    logging:
-      options:
-        max-file: "5"
-        max-size: "10m"
-    depends_on:
-      - postgres
   ferretdb:
-    image: ghcr.io/ferretdb/ferretdb:2
+    image: ghcr.io/ferretdb/ferretdb:2.3.1
     container_name: ca-ferretdb
     restart: always
     logging:
@@ -51,7 +34,7 @@ services:
         max-file: "5"
         max-size: "10m"
     environment:
-      - FERRETDB_POSTGRESQL_URL=postgresql://ferret:ferretpassword@ca-key-db:5432/ferret
+      - FERRETDB_POSTGRESQL_URL=postgresql://ferret:ferretpassword@ca-key-db:5432/postgres
       - FERRETDB_AUTH=0
     volumes:
       - ferret_data:/data/db
@@ -74,7 +57,7 @@ services:
         max-size: "10m"
     volumes:
       - ./images/:/images/
-      - ./config/keycloak_login.html:/src/static/login.html
+      - ./config/login.html:/src/static/login.html
       - ./jwt_keys/:/src/keys/
       - ./config/routes.json:/src/routes.json
       - ./config/contentSecurityPolicy.json:/src/contentSecurityPolicy.json
@@ -107,20 +90,3 @@ services:
     environment:
       DICOM_PORT: "11112"
       DICOM_UI_PORT: "8042"
-  dicomsrv:
-    build: "https://github.com/camicroscope/dicomsrv.git#v3.12.1"
-    container_name: ca-dicomsrv
-    restart: unless-stopped
-    stdin_open: true
-    tty: true
-    ports:
-      - "8042:8042"
-      - "11112:11112"
-    volumes:
-      - ./jwt_keys/:/root/keys/
-      - ./images/:/images/
-      - ./config/OrthancConfiguration.json:/root/src/Configuration.json
-    environment:
-      DICOM_PORT: "11112"
-      DICOM_UI_PORT: "8042"
-      CARACAL_BACK_HOST_PORT: "ca-back:4010"
