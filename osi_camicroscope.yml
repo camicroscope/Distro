@@ -16,6 +16,7 @@ services:
     container_name: ca-key-db
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./config/postgres_db_user_setup.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: ferret
@@ -25,6 +26,26 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
+  keycloak:
+    container_name: ca-key
+    image: quay.io/keycloak/keycloak:latest
+    command: start-dev
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://ca-key-db:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: password
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: password
+    ports:
+      - 8080:8080
+    restart: always
+    logging:
+      options:
+        max-file: "5"
+        max-size: "10m"
+    depends_on:
+      - postgres
   ferretdb:
     image: ghcr.io/ferretdb/ferretdb:2.3.1
     container_name: ca-ferretdb
