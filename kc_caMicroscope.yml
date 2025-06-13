@@ -115,3 +115,4 @@ services:
       DICOM_PORT: "11112"
       DICOM_UI_PORT: "8042"
       CARACAL_BACK_HOST_PORT: "ca-back:4010"
+

@@ -6,4 +6,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the develop stack
-        run: docker-compose -f develop.yml build
+        run: docker compose -f develop.yml build

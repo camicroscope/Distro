@@ -1,0 +1,113 @@
+version: '3'
+
+volumes:
+  postgres_data:
+    name: postgres_data
+  ferret_data:
+    name: ferret_data
+
+networks:
+  default:
+    name: ferretdb
+
+services:
+  postgres:
+    image: ghcr.io/ferretdb/postgres-documentdb:17-0.104.0-ferretdb-2.3.1
+    container_name: ca-key-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./config/postgres_db_user_setup.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: ferret
+      POSTGRES_PASSWORD: ferretpassword
+    restart: always
+    logging:
+      options:
+        max-file: "5"
+        max-size: "10m"
+  keycloak:
+    container_name: ca-key
+    image: quay.io/keycloak/keycloak:latest
+    command: start-dev
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://ca-key-db:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: password
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: password
+    ports:
+      - 8080:8080
+    restart: always
+    logging:
+      options:
+        max-file: "5"
+        max-size: "10m"
+    depends_on:
+      - postgres
+  ferretdb:
+    image: ghcr.io/ferretdb/ferretdb:2.3.1
+    container_name: ca-ferretdb
+    restart: always
+    logging:
+      options:
+        max-file: "5"
+        max-size: "10m"
+    environment:
+      - FERRETDB_POSTGRESQL_URL=postgresql://ferret:ferretpassword@ca-key-db:5432/postgres
+      - FERRETDB_AUTH=0
+    volumes:
+      - ferret_data:/data/db
+    depends_on:
+      - postgres
+  back:
+    build:
+      context: "https://github.com/camicroscope/caracal.git#v3.12.0"
+      args:
+        viewer: "v3.12.1"
+    depends_on:
+      - "ferretdb"
+    ports:
+      - "4010:4010"
+    container_name: ca-back
+    restart: always
+    logging:
+      options:
+        max-file: "5"
+        max-size: "10m"
+    volumes:
+      - ./images/:/images/
+      - ./config/login.html:/src/static/login.html
+      - ./jwt_keys/:/src/keys/
+      - ./config/routes.json:/src/routes.json
+      - ./config/contentSecurityPolicy.json:/src/contentSecurityPolicy.json
+    environment:
+      DISABLE_SEC: "true"
+      JWK_URL: "http://ca-back:4010/keycloak/realms/camic/protocol/openid-connect/certs"
+      IIP_PATH: "http://ca-iip:8080/fcgi-bin/iipsrv.fcgi"
+      MONGO_URI: "mongodb://ca-ferretdb"
+      GENERATE_KEY_IF_MISSING: "true"
+  iip:
+    image: camicroscope/iipimage:version-3.11.0
+    container_name: ca-iip
+    logging:
+      options:
+        max-file: "5"
+        max-size: "10m"
+    restart: always
+    volumes:
+      - ./images/:/images/
+  loader:
+    build: "https://github.com/camicroscope/SlideLoader.git#v3.12.0"
+    container_name: ca-load
+    restart: always
+    logging:
+      options:
+        max-file: "5"
+        max-size: "10m"
+    volumes:
+      - ./images/:/images/
+    environment:
+      DICOM_PORT: "11112"
+      DICOM_UI_PORT: "8042"
