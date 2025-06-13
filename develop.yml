@@ -33,7 +33,7 @@ services:
       ALLOW_PUBLIC: "true"
       NUM_THREADS: 1
   iip:
-    build: "https://github.com/camicroscope/iipImage.git#greyscale-bf"
+    build: "https://github.com/camicroscope/iipImage.git#develop"
     container_name: ca-iip
     restart: unless-stopped
     volumes:
