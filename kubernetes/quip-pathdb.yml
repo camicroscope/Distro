@@ -99,7 +99,7 @@ items:
                name: pathdb-config
          containers:
            - name: mongo
-             image: mongo:4.2-bionic
+             image: mongo:6.0.10
              ports:
                - containerPort: 27017
            - name: back
