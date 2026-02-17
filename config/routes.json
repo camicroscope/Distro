@@ -716,6 +716,20 @@
 		]
 	},
 	{
+		"method": "use",
+		"route": "/data/User/impersonate",
+		"handlers": [{
+				"function": "permissionHandler",
+				"args": [
+						["Admin"]
+				]
+		}, {
+				"function": "impersonate",
+				"args": [
+				]
+		}]
+	},
+	{
 		"route": "/data/ExpertsFeedback/find",
 		"method": "get",
 		"handlers": [{
