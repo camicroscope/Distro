@@ -4,6 +4,8 @@
 
 # caMicroscope distribution
 
+![Docker Compose Test](https://github.com/camicroscope/distro/actions/workflows/main.yml/badge.svg)
+![License](https://img.shields.io/github/license/camicroscope/distro)
 
 run with `docker-compose -f caMicroscope.yml up`
 

@@ -1,22 +1,35 @@
 name: Docker Compose Test
 on: push
+
+permissions:
+  contents: read
+
 jobs:
+  hardening-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - run: ./check-hardening.sh
+
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22'
+      - name: Install test dependencies
+        working-directory: test
+        run: npm ci
+      - name: Audit dependencies
+        working-directory: test
+        run: npm audit --audit-level=high
       - name: Build the develop stack
         run: docker compose -f develop.yml build
       - name: Start the develop stack
         run: docker compose -f develop.yml up -d
       - name: Wait for the back service to be healthy
         run: timeout 180 bash -c 'until curl -sf http://localhost:4010/apps/viewer/viewer.html > /dev/null; do sleep 3; done'
-      - name: Install test dependencies
-        working-directory: test
-        run: npm ci
       - name: Run test suite
         working-directory: test
         run: npm test
