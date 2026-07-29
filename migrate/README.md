@@ -20,4 +20,4 @@ Before migration, move heatmaps to a different collection, as to not confuse the
 The other collections use a single script which should run in mongo. This makes needed changes to the collections, and puts the results in the camic database. These utilities may behave strangely with non-standard or older form data.
 
 ## Authorization
-Authorization is handled differently in the 3.0 version. See config/add_mongo_users.js for an example. Edit that file to add your original users. Name should match the subject of the jwt. This is not needed for deployments which rely on pathdb, or use another custom authorization service.
+Authorization is handled differently in the 3.0 version. See config/users.json for an example. Edit that file to add your original users. Name should match the subject of the jwt. This is not needed for deployments which rely on pathdb, or use another custom authorization service.

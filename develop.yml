@@ -2,16 +2,19 @@ version: '2'
 
 services:
   mongo:
-    image: mongo:4.2-bionic
+    image: mongo:8.0
     container_name: ca-mongo
     volumes:
       - ./db:/data/db
   back:
-    build:
-      context: "https://github.com/camicroscope/caracal.git#develop"
-      args:
-        viewer: "develop"
-        fork: "camicroscope"
+    # TEMPORARY local-build override for building/testing against local sibling
+    # repo checkouts -- revert to the github context below before committing.
+    #build:
+    #  context: "https://github.com/camicroscope/caracal.git#develop"
+    #  args:
+    #    viewer: "develop"
+    #    fork: "camicroscope"
+    build: "../caracal/"
     depends_on:
       - "mongo"
     ports:
@@ -28,18 +31,28 @@ services:
     environment:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip:8080/fcgi-bin/iipsrv.fcgi"
+      MC_TILE_PATH: "http://ca-mctile:8008/"
       MONGO_URI: "mongodb://ca-mongo"
       DISABLE_SEC: "true"
       ALLOW_PUBLIC: "true"
       NUM_THREADS: 1
   iip:
-    build: "https://github.com/camicroscope/iipImage.git#develop"
+    #build: "https://github.com/camicroscope/alt_iip.git#develop"
+    build: "../alt_iip/"
     container_name: ca-iip
     restart: unless-stopped
     volumes:
       - ./images/:/images/
+  mctile:
+    build: "../camicroscope-mctile/"
+    container_name: ca-mctile
+    restart: unless-stopped
+    volumes:
+      - ./images/:/images/
   loader:
-    build: "https://github.com/camicroscope/SlideLoader.git#develop"
+    # TEMPORARY local-build override -- revert before committing.
+    #build: "https://github.com/camicroscope/SlideLoader.git#develop"
+    build: "../slideloader/"
     container_name: ca-load
     volumes:
       - ./images/:/images/
@@ -48,7 +61,9 @@ services:
       DICOM_PORT: "11112"
       DICOM_UI_PORT: "8042"
   dicomsrv:
-    build: "https://github.com/camicroscope/dicomsrv.git"
+    # TEMPORARY local-build override -- revert before committing.
+    #build: "https://github.com/camicroscope/dicomsrv.git"
+    build: "../dicomsrv/"
     container_name: ca-dicomsrv
     restart: unless-stopped
     stdin_open: true
