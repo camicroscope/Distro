@@ -16,6 +16,8 @@ Once everything is up, go to https://localhost/ to see the landing page (a self-
 
 6GB memory is recommended (in total, 2GB RAM + 4GB swap should work well)
 
+For local development, use `develop.yml` instead -- it builds each service from its GitHub `develop` branch and runs with security disabled for convenience. If you're actively developing against local sibling checkouts of the component repos (`../caracal/`, `../alt_iip/`, ...), use `local_dev.yml` instead, which is identical to `develop.yml` but builds from those local directories rather than GitHub.
+
 ## SSL
 `caMicroscope.yml` fronts the whole stack with an nginx reverse proxy (the `proxy` service) that terminates TLS -- `ca-back` and `ca-dicomsrv` are no longer published directly to the host. To enable HTTPS, place your certificate and private key at `certs/certificate.pem` and `certs/privatekey.pem` respectively (this directory is gitignored). nginx will refuse to start without both files present, so for local testing you can generate a self-signed pair, e.g.:
 
