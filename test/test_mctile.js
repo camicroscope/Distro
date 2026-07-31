@@ -23,7 +23,7 @@ describe('MCT Slide Setup', function () {
       headers: {"Content-Type": "application/json; charset=utf-8"},
       body: JSON.stringify(slideData)
     }).then(x => x.json()).then(x => {
-      assert.equal(x.result.ok, 1, "Post Reported Successful")
+      assert.equal(x.acknowledged, true, "Post Reported Successful")
       done()
     }).catch(e => done(e))
   })
