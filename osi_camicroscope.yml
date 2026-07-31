@@ -28,7 +28,7 @@ services:
         max-size: "10m"
   keycloak:
     container_name: ca-key
-    image: quay.io/keycloak/keycloak:latest
+    image: quay.io/keycloak/keycloak:26.7
     command: start-dev
     environment:
       KC_DB: postgres
