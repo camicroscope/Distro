@@ -28,7 +28,7 @@ items:
              emptyDir: {}
          containers:
            - name: mongo
-             image: mongo:4.2-bionic
+             image: mongo:8.0
              ports:
                - containerPort: 27017
            - name: back
@@ -51,7 +51,7 @@ items:
                - name: DISABLE_CSP
                  value: "true"
            - name: iip
-             image: camicroscope/iipimage:latest
+             image: camicroscope/iipimage:version-3.11.0
              ports:
                - containerPort: 8080
              volumeMounts:

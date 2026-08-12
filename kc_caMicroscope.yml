@@ -6,7 +6,7 @@ volumes:
 
 services:
   postgres:
-    image: postgres:15
+    image: postgres:17
     container_name: ca-key-db
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -21,7 +21,7 @@ services:
           max-size: "10m"
   keycloak:
       container_name: ca-key
-      image: quay.io/keycloak/keycloak:latest
+      image: quay.io/keycloak/keycloak:26.7
       command: start-dev
       environment:
         KC_DB: postgres
@@ -40,7 +40,7 @@ services:
       depends_on:
         - postgres
   mongo:
-    image: mongo:4.2-bionic
+    image: mongo:8.0
     container_name: ca-mongo
     restart: always
     logging:
