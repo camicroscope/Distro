@@ -19,13 +19,15 @@ Once everything is up, go to https://localhost/ to see the landing page (a self-
 For local development, use `develop.yml` instead -- it builds each service from its GitHub `develop` branch and runs with security disabled for convenience. If you're actively developing against local sibling checkouts of the component repos (`../caracal/`, `../alt_iip/`, ...), use `local_dev.yml` instead, which is identical to `develop.yml` but builds from those local directories rather than GitHub.
 
 ## SSL
-`caMicroscope.yml` fronts the whole stack with an nginx reverse proxy (the `proxy` service) that terminates TLS -- `ca-back` and `ca-dicomsrv` are no longer published directly to the host. To enable HTTPS, place your certificate and private key at `certs/certificate.pem` and `certs/privatekey.pem` respectively (this directory is gitignored). nginx will refuse to start without both files present, so for local testing you can generate a self-signed pair, e.g.:
+`caMicroscope.yml`, `kc_caMicroscope.yml`, and `osi_camicroscope.yml` front the stack with an nginx reverse proxy (the `proxy` service) that terminates TLS -- `ca-back` and `ca-dicomsrv` are no longer published directly to the host. To enable HTTPS, place your certificate and private key at `certs/certificate.pem` and `certs/privatekey.pem` respectively (this directory is gitignored). nginx will refuse to start without both files present, so for local testing you can generate a self-signed pair, e.g.:
 
 ```
 openssl req -x509 -newkey rsa:4096 -keyout certs/privatekey.pem -out certs/certificate.pem -days 365 -nodes -subj "/CN=localhost"
 ```
 
-Other compose variants (`kc_caMicroscope.yml`, `quip-pathdb.yml`) don't include this proxy and keep their own prior SSL setup (mounting certs directly into `ca-back` or configuring `config/httpd.conf`, respectively).
+`osi_camicroscope.yml` has no `dicomsrv` service, so its `proxy` service mounts `config/nginx_osi.conf` instead of `config/nginx.conf` -- the same setup minus the `ca-dicomsrv`-facing server block, which would otherwise keep nginx from starting (it can't resolve a host that isn't on the network).
+
+`quip-pathdb.yml` doesn't include this proxy and keeps its own prior SSL setup (configuring `config/httpd.conf`).
 
 ## Component Services
 mongo - vanilla mongo container
@@ -40,7 +42,7 @@ back/viewer - within back, viewer files ( see https://github.com/camicroscope/ca
 
 dicomsrv - Orthanc-based DICOM server/indexer, providing DICOMweb and raw DICOM protocol access to slides (see https://github.com/camicroscope/dicomsrv)
 
-proxy (`caMicroscope.yml` only) - nginx reverse proxy that TLS-terminates and fronts `back` (port 443) and `dicomsrv`'s REST API/GUI (port 8443). The raw DICOM protocol port (11112) is not published by default -- see "DICOM peer connectivity" below if you need it.
+proxy (`caMicroscope.yml`, `kc_caMicroscope.yml`, `osi_camicroscope.yml`) - nginx reverse proxy that TLS-terminates and fronts `back` (port 443) and, where `dicomsrv` is present, its REST API/GUI (port 8443). The raw DICOM protocol port (11112) is not published by default -- see "DICOM peer connectivity" below if you need it.
 
 ## Configuration
 Logging - Logging is enabled by default with a set configurable maximum size. If you need to disable logs, for example due to HIPAA requirements, set the logging driver to none.

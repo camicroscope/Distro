@@ -68,8 +68,6 @@ services:
         viewer: "v3.13.0"
     depends_on:
       - "ferretdb"
-    ports:
-      - "4010:4010"
     container_name: ca-back
     restart: always
     logging:
@@ -111,3 +109,18 @@ services:
     environment:
       DICOM_PORT: "11112"
       DICOM_UI_PORT: "8042"
+  proxy:
+    image: nginx:1.27-alpine
+    container_name: ca-proxy
+    depends_on:
+      - back
+    ports:
+      - "443:443"
+    volumes:
+      - ./config/nginx_osi.conf:/etc/nginx/nginx.conf:ro
+      - ./certs/:/etc/nginx/certs/:ro
+    restart: always
+    logging:
+      options:
+        max-file: "5"
+        max-size: "10m"
