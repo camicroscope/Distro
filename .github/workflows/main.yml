@@ -25,7 +25,18 @@ jobs:
         working-directory: test
         run: npm audit --audit-level=high
       - name: Build the develop stack
-        run: docker compose -f develop.yml build
+        run: |
+          n=0
+          until [ $n -ge 3 ]; do
+            docker compose -f develop.yml build && break
+            n=$((n+1))
+            echo "Build failed (attempt $n/3) -- dicomsrv's Orthanc fetch over Mercurial is known to be flaky. Retrying in 15s..."
+            sleep 15
+          done
+          if [ $n -ge 3 ]; then
+            echo "Build failed after 3 attempts."
+            exit 1
+          fi
       - name: Start the develop stack
         run: docker compose -f develop.yml up -d
       - name: Wait for the back service to be healthy
