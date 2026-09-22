@@ -44,6 +44,34 @@
   },
 
   {
+    "method":"use",
+    "route": "/img/MCT/composited/",
+    "handlers":[
+      {"function": "loginHandler", "args":[]},
+      {"function": "preMct", "args":[]},
+      {"function":"mctileHandler", "args": []}
+    ]
+  },
+
+  {
+    "method":"use",
+    "route": "/img/MCT/meta/",
+    "handlers":[
+      {"function": "loginHandler", "args":[]},
+      {"function":"proxyHandler", "args": ["http://ca-mctile:8008/", 3]}
+    ]
+  },
+
+  {
+    "method":"use",
+    "route": "/img/MCT/raw/",
+    "handlers":[
+      {"function": "loginHandler", "args":[]},
+      {"function":"proxyHandler", "args": ["http://ca-mctile:8008/", 3]}
+    ]
+  },
+
+  {
     "route":"/data",
     "method":"use",
     "handlers":[

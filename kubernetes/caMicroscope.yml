@@ -61,10 +61,12 @@ items:
                name: camic-login
          containers:
            - name: mongo
-             image: mongo:4.2-bionic
+             image: mongo:8.0
              ports:
                - containerPort: 27017
            - name: back
+             # TODO: no versioned (semver) image is published for caracal on ghcr.io today,
+             # only floating branch tags -- pin to a release tag once upstream publishes one.
              image: ghcr.io/camicroscope/caracal:master
              ports:
                - containerPort: 4010
@@ -85,13 +87,15 @@ items:
                - name: GENERATE_KEY_IF_MISSING
                  value: "true"
            - name: iip
-             image: camicroscope/iipimage:latest
+             image: camicroscope/iipimage:version-3.11.0
              ports:
                - containerPort: 8080
              volumeMounts:
              - name: images
                mountPath: /images/
            - name: loader
+             # TODO: no versioned (semver) image is published for slideloader on ghcr.io today,
+             # only floating branch tags -- pin to a release tag once upstream publishes one.
              image: ghcr.io/camicroscope/slideloader:master
              ports:
                - containerPort: 4000

@@ -1,3 +1,7 @@
+# Local development against sibling repo checkouts, instead of building
+# from each repo's GitHub "develop" branch as develop.yml does. Requires
+# ../caracal/, ../alt_iip/, ../slideloader/, ../multichannel_tile/ and ../dicomsrv/ to exist as
+# sibling directories of this repo.
 version: '2'
 
 services:
@@ -7,11 +11,7 @@ services:
     volumes:
       - ./db:/data/db
   back:
-    build:
-      context: "https://github.com/camicroscope/caracal.git#develop"
-      args:
-        viewer: "develop"
-        fork: "camicroscope"
+    build: "../caracal/"
     depends_on:
       - "mongo"
     ports:
@@ -24,7 +24,7 @@ services:
       - ./jwt_keys/:/src/keys/
       - ./config/routes.json:/src/routes.json
       - ./config/contentSecurityPolicy.json:/src/contentSecurityPolicy.json
-    #  - ../camicroscope/:/src/camicroscope/
+      - ../camicroscope/:/src/camicroscope/
     environment:
       JWK_URL: "https://www.googleapis.com/oauth2/v3/certs"
       IIP_PATH: "http://ca-iip:8080/fcgi-bin/iipsrv.fcgi"
@@ -34,19 +34,19 @@ services:
       ALLOW_PUBLIC: "true"
       NUM_THREADS: 1
   iip:
-    build: "https://github.com/camicroscope/alt_iip.git#develop"
+    build: "../iipimage/"
     container_name: ca-iip
     restart: unless-stopped
     volumes:
       - ./images/:/images/
   mctile:
-    build: "https://github.com/camicroscope/multichannel_tile.git"
+    build: "../multichannel_tile/"
     container_name: ca-mctile
     restart: unless-stopped
     volumes:
       - ./images/:/images/
   loader:
-    build: "https://github.com/camicroscope/SlideLoader.git#develop"
+    build: "../slideloader/"
     container_name: ca-load
     volumes:
       - ./images/:/images/
@@ -55,7 +55,7 @@ services:
       DICOM_PORT: "11112"
       DICOM_UI_PORT: "8042"
   dicomsrv:
-    build: "https://github.com/camicroscope/dicomsrv.git"
+    build: "../dicomsrv/"
     container_name: ca-dicomsrv
     restart: unless-stopped
     stdin_open: true
